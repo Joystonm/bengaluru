@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { publicFull, publicRegion } from '../cloudinary/imageDelivery';
 
 /**
@@ -13,6 +14,13 @@ import { publicFull, publicRegion } from '../cloudinary/imageDelivery';
  * of the original, and Cloudinary crops that rectangle out of the original
  * and delivers it at the size it is displayed. The detail on a zoom comes
  * out of the photograph rather than out of a magnified copy of it.
+ *
+ * The viewer is rendered through a portal at the end of the document. It
+ * lives inside the landmark panel, and the panel carries a transform and a
+ * backdrop filter — either of which makes it the containing block for
+ * anything positioned `fixed`, so a `fixed inset-0` viewer would be laid out
+ * inside the panel and clipped by it. A portal puts it back in the viewport,
+ * which is where a full-screen viewer belongs.
  */
 
 /** One photograph the viewer can show. */
@@ -262,7 +270,7 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
     setDragging(false);
   };
 
-  return (
+  return createPortal(
     <div
       className="nb-fade fixed inset-0 z-[80] bg-ink-950/97 backdrop-blur-xl"
       role="dialog"
@@ -377,6 +385,7 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
