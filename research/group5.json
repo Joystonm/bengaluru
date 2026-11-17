@@ -1,0 +1,859 @@
+[
+  {
+    "id": "malleswaram",
+    "name": "Malleswaram (Malleshwaram)",
+    "kannadaName": "ಮಲ್ಲೇಶ್ವರಂ",
+    "category": "Neighbourhood",
+    "subcategory": "Residential locality",
+    "latitude": 13.0027,
+    "longitude": 77.5703,
+    "elevationM": 920,
+    "description": "One of Bengaluru's oldest neighbourhoods and its 'cultural heart', Malleswaram is a dense north-central residential locality laid out on a rectilinear grid of 1st and 8th Main Roads. It is anchored by the 17th-century Kadu Malleshwara Temple and by a busy street market that supplies the whole north of the city with oil, millets and provisions. The area also holds the Indian Institute of Science and, at its southern edge, the World Trade Center Bengaluru.",
+    "history": "The area was conquered by Shahaji Bhonsle, a general of the Bijapur Sultanate, during the first half of the 17th century, and Ekoji I, Shahaji's son, donated the village of Medaraninganahalli - near today's Indian Institute of Science - to the Kadu Malleshwara Temple. Inscriptions dated 1669 call the locality 'Mallapura', and a Kannada inscription found near Sampige Road is recorded in Epigraphia Carnatica. The name was absent from British records: the Survey of India in 1878 placed the site inside Ranganathapalya village. In 1889 Maharaja Chamaraja Wodeyar X appointed a committee headed by K. Seshadri Iyer to relieve congestion in central Bengaluru; that committee planned Malleshwaram and Basavanagudi, with Malleshwaram initially covering 291 acres. The committee ended in 1895, when the municipality incorporated the neighbourhood into Bengaluru, and growth was initially slow - during the 1896 plague epidemic health authorities set up camps and medical tents here, and many of the survivors settled permanently.",
+    "facts": [
+      "Inscriptions dated 1669 call the locality 'Mallapura'; the Kadu Malleshwara Temple itself dates to 1669 CE and is built in the Dravidian style.",
+      "The Kadu Malleshwara Temple was built in 1669 by Venkoji, identified as the step-brother of the Maratha king Shivaji; the deity is Shiva worshipped as Mallikarjun.",
+      "The neighbourhood was planned by the 1889 K. Seshadri Iyer committee, which also laid out Basavanagudi, and initially covered 291 acres.",
+      "The committee was wound up in 1895 when the neighbourhood was incorporated into Bengaluru; during the 1896 plague epidemic the area hosted camps and medical tents for infected patients.",
+      "The locality covers 3.95 km2 with a population of 99,625 (2020), and contains the Indian Institute of Science, the Institute of Wood Science and Technology and the World Trade Center Bengaluru, described as the city's tallest commercial building.",
+      "The Kadalekai Parishe groundnut fair is held in Malleshwaram and Basavanagudi every November; in 2025 the Malleshwaram leg ran 8-10 November and more than 200 groundnut vendors took part."
+    ],
+    "architecture": {
+      "style": "Late-19th-century planned colonial residential grid with Kannada temple vernacular",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Plastered brick and later reinforced-concrete frames, Mangalore-tile pitched roofs, teak joinery",
+      "keyFeatures": [
+        "Orthogonal street grid of 1st and 8th Main Roads with narrow 20-30 ft carriageways",
+        "Two- and three-storey independent houses with deep verandas and cantilevers",
+        "Compound walls with pillared gateposts and iron gates",
+        "Kadu Malleshwara Temple's Dravidian gopura and granite Nandi plinth",
+        "Dense street frontage of awnings, signage boards and paan/tobacco kiosks",
+        "Mature rain trees and coconut palms along the main road verges",
+        "Flat-roofed commercial blocks of 3-4 floors along 8th Main Road",
+        "Sankey Tank and small neighbourhood tanks punctuating the grid"
+      ],
+      "footprintHint": "Approximately 2000 m by 2000 m for the 3.95 km2 neighbourhood extent; individual plots are typically 15-20 m wide with 10-12 m setbacks",
+      "silhouette": "A low-rise carpet of pitched-roof houses and three- to four-storey commercial slabs broken by the occasional stepped temple gopura; reads as a low, continuous roofline roughly 10-12 m high."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.57121,13.00637],[77.56925,13.00646],[77.56909,13.01194],[77.56906,13.01199],[77.56898,13.01210],[77.56873,13.01227],[77.56818,13.01261],[77.56727,13.01319],[77.56613,13.01393],[77.56588,13.01407],[77.56582,13.01410],[77.56458,13.01481],[77.56332,13.01550],[77.56222,13.01616],[77.56078,13.01695],[77.56057,13.01708],[77.56043,13.01714],[77.55990,13.01744],[77.55888,13.01813],[77.55797,13.01864],[77.55771,13.01862],[77.55741,13.01827],[77.55740,13.01826],[77.55708,13.01769],[77.55682,13.01721],[77.55664,13.01688],[77.55650,13.01662],[77.55624,13.01619],[77.55604,13.01596],[77.55595,13.01587],[77.55587,13.01580],[77.55586,13.01581],[77.55586,13.01580],[77.55581,13.01577],[77.55581,13.01577],[77.55561,13.01566],[77.55603,13.01522],[77.55634,13.01487],[77.55678,13.01439],[77.55704,13.01410],[77.55708,13.01404],[77.55737,13.01373],[77.55778,13.01326],[77.55810,13.01284],[77.55837,13.01244],[77.55855,13.01210],[77.55881,13.01160],[77.55904,13.01109],[77.55915,13.01077],[77.55917,13.01070],[77.55928,13.01047],[77.55930,13.01041],[77.55942,13.01004],[77.55947,13.00989],[77.55967,13.00927],[77.55977,13.00894],[77.55981,12.99879],[77.55991,13.00845],[77.55997,13.00825],[77.56012,13.00775],[77.56016,13.00763],[77.56017,13.00759],[77.56026,13.00728],[77.56031,13.00712],[77.56042,13.00679],[77.56074,13.00581],[77.56084,13.00556],[77.56090,13.00534],[77.56093,13.00523],[77.56106,13.00489],[77.56119,13.00460],[77.56125,13.00440],[77.56136,13.00416],[77.56142,13.00402],[77.56144,13.00396],[77.56332,13.00075],[77.56351,13.00035],[77.56362,13.00013],[77.56365,13.00008],[77.56374,12.99988],[77.56412,12.99933],[77.56447,12.99879],[77.56495,12.99809],[77.56500,12.99802],[77.56535,12.99758],[77.56553,12.99735],[77.56594,12.99683],[77.56605,12.99663],[77.56608,12.99665],[77.56610,12.99661],[77.56611,12.99661],[77.56614,12.99662],[77.56631,12.99669],[77.56633,12.99670],[77.56641,12.99674],[77.56660,12.99682],[77.56679,12.99686],[77.56692,12.99686],[77.56711,12.99685],[77.56713,12.99685],[77.56715,12.99685],[77.56764,12.99680],[77.56778,12.99679],[77.56796,12.99679],[77.56814,12.99678],[77.56849,12.99676],[77.56853,12.99676],[77.56854,12.99676],[77.56873,12.99675],[77.56903,12.99678],[77.56943,12.99682],[77.56944,12.99682],[77.56946,12.99682],[77.56952,12.99683],[77.57043,12.99683],[77.57101,12.99684],[77.57102,12.99684],[77.57140,12.99685],[77.57142,12.99686],[77.57144,12.99686],[77.57146,12.99686],[77.57143,12.99761],[77.57141,12.99830],[77.57141,12.99834],[77.57138,12.99923],[77.57138,12.99927],[77.57137,13.00006],[77.57137,13.00016],[77.57136,13.00062],[77.57135,13.00100],[77.57134,13.00144],[77.57134,13.00155],[77.57134,13.00169],[77.57133,13.00186],[77.57133,13.00187],[77.57133,13.00187],[77.57133,13.00188],[77.57130,13.00285],[77.57130,13.00332],[77.57130,13.00332],[77.57123,13.00470],[77.57121,13.00544],[77.57121,13.00637]]
+    },
+    "priority": 3,
+    "modelHeightM": 12,
+    "modelFootprintM": { "width": 2000, "depth": 2000 },
+    "sources": [
+      { "title": "Malleshwaram - Wikipedia", "url": "https://en.wikipedia.org/wiki/Malleswaram" },
+      { "title": "Kadu Malleshwara Temple - Wikipedia", "url": "https://en.wikipedia.org/wiki/Kadu_Malleshwara_Temple" },
+      { "title": "Kadalekai Parishe - Wikipedia", "url": "https://en.wikipedia.org/wiki/Kadalekai_Parishe" },
+      { "title": "Nominatim search: Malleswaram, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Malleswaram%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relation 19883296 (Malleshwaram boundary)", "url": "https://api.openstreetmap.org/api/0.6/relation/19883296/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "basavanagudi",
+    "name": "Basavanagudi",
+    "kannadaName": "ಬಸವನಗುಡಿ",
+    "category": "Neighbourhood",
+    "subcategory": "Residential locality",
+    "latitude": 12.9417,
+    "longitude": 77.5755,
+    "elevationM": 920,
+    "description": "Basavanagudi is a residential and commercial locality in south Bengaluru, named after the Bull Temple whose monolithic Nandi gives the place its name - 'basava' means bull and 'gudi' means temple in Kannada. DVG Road runs through it as the neighbourhood's commercial spine, and midway along that road the Gandhi Bazaar market opens into a dense lane of flower, fruit and vegetable stalls. The locality also holds B.M.S. College of Engineering and the century-old Vidyarthi Bhavan restaurant.",
+    "history": "Basavanagudi is described as one of the oldest and 'poshest' localities of Bangalore, a status evidenced by four inscriptions in the neighbourhood, three in Kannada and one in Tamil, and by the 1537 Bull Temple built by Kempe Gowda during the Vijayanagara Empire. Development was guided by the same 1889 K. Seshadri Iyer committee that planned Malleswaram, which laid out Basavanagudi in the same period as a residential quarter south of the old Pete. The commercial spine grew along DVG Road, where several of the retail businesses date back to the 1920s and 1930s; Vidyarthi Bhavan, the neighbourhood's best-known vegetarian restaurant, opened in 1943, and B.M.S. College of Engineering was established in 1946.",
+    "facts": [
+      "The Bull Temple was built in 1537 by Kempe Gowda in Vijayanagara style; its present vimana was added in the early 20th century and decorated with Saivite figures and motifs.",
+      "The temple's monolithic granite Nandi stands on a plinth, blackened by repeated applications of charcoal and oil, and measures about 15 ft (4.6 m) high and 20 ft (6.1 m) long - among the world's largest Nandi images.",
+      "The locality is home to four inscriptions, three in Kannada and one in Tamil.",
+      "B.M.S. College of Engineering was established in 1946 and is credited as the first private engineering college in India.",
+      "Vidyarthi Bhavan, the vegetarian restaurant on the DVG Road, opened in 1943.",
+      "Wikipedia's locality infobox records a population of 32,640 for the Census of 2011; PIN codes are 560004, 560019, 560028 and 560050."
+    ],
+    "architecture": {
+      "style": "Colonial-era residential locality with Vijayanagara temple vernacular and mid-century commercial frontage",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Lime-plastered masonry, later RCC frames, Mangalore-tile pitched roofs, granite plinths",
+      "keyFeatures": [
+        "Bugle Rock park with the Bull Temple's small shrine and porch",
+        "Low, squat Vijayanagara-style shrine with a stepped vimana topped by a kalasha",
+        "Freestanding monolithic Nandi on a raised stone plinth",
+        "Two-storey colonial houses with arched verandas along DVG Road",
+        "Continuous 3-4 storey commercial blocks with deep awnings and roll-up shutters",
+        "Gandhi Bazaar's covered lane of tarpaulin and corrugated-sheet stalls",
+        "Two-wheeler parking and goods handcarts crowding the carriageway",
+        "Flyover and metro viaduct edges at the KR Road end of the district"
+      ],
+      "footprintHint": "Approximately 2000 m by 2000 m for the locality centred on DVG Road and the Bull Temple; individual buildings are 10-30 m wide",
+      "silhouette": "A medium-low roofscape of pitched-roof houses and three-storey shop blocks, punctuated by the small stepped temple tower and the flyover deck; typical height 10-15 m."
+    },
+    "priority": 3,
+    "modelHeightM": 12,
+    "modelFootprintM": { "width": 2000, "depth": 2000 },
+    "sources": [
+      { "title": "Basavanagudi - Wikipedia", "url": "https://en.wikipedia.org/wiki/Basavanagudi" },
+      { "title": "Dodda Basavana Gudi - Wikipedia", "url": "https://en.wikipedia.org/wiki/Dodda_Basavana_Gudi" },
+      { "title": "Bull Temple - Wikipedia", "url": "https://en.wikipedia.org/wiki/Bull_Temple" },
+      { "title": "Nominatim search: Basavanagudi, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Basavanagudi%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" }
+    ],
+    "images": []
+  },
+  {
+    "id": "jayanagar",
+    "name": "Jayanagar",
+    "kannadaName": "ಜಯನಗರ, ಬೆಂಗಳೂರು",
+    "category": "Neighbourhood",
+    "subcategory": "Planned residential locality",
+    "latitude": 12.9293,
+    "longitude": 77.5824,
+    "elevationM": 920,
+    "description": "Jayanagar is south Bengaluru's flagship planned neighbourhood, laid out in 1948 on the model of New Delhi and divided into ten numbered blocks. Its Kannada name combines 'Jaya' and 'nagar' - literally 'Victory City'. Most blocks are residential villas and apartment blocks, while the 3rd and 4th Blocks are the commercial core, home of the Jayanagar Shopping Complex and the district's busiest market street.",
+    "history": "The foundation of Jayanagar was laid in 1948, making it one of Bengaluru's earliest planned neighbourhoods and, at the time, one of the largest in Asia. Before the city's expansion, Jayanagar marked the southern limit of the urban area - the historic South End Circle and the Ashoka Pillar were the boundary markers, with 'South End' still used for the district. The layout was divided into ten blocks numbered 1 to 9 plus a fourth 'T' block, and it was later divided into seven wards. The Jayanagar BDA Shopping Complex opened in 1976 with the Puttanna Kanagal theatre inside; a fire in 2008 damaged it, and redevelopment beginning around 2011-12, at a cost of roughly 193 crore rupees, included demolishing the theatre.",
+    "facts": [
+      "The foundation was laid in 1948 and the neighbourhood was among Asia's largest planned neighbourhoods at the time.",
+      "Jayanagar is divided into ten blocks - Blocks 1 to 9 plus a fourth 'T' block - with the 3rd and 4th Blocks largely commercial and the rest residential.",
+      "The Jayanagar BDA Shopping Complex opened in 1976 and contained the Puttanna Kanagal theatre.",
+      "A fire in 2008 damaged the shopping complex; redevelopment beginning around 2011-12 cost roughly 193 crore rupees and included demolition of the theatre.",
+      "The locality comprises seven wards and had about 180,000 voters in 2013.",
+      "South End Circle and the historic Ashoka Pillar marked Jayanagar as the traditional southern limit of the city."
+    ],
+    "architecture": {
+      "style": "Post-Independence planned neighbourhood (New Delhi grid) with Art Deco-influenced apartment blocks",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "RCC frames, lime plaster and exposed brick bands, stone mosaic cladding, cantilevers",
+      "keyFeatures": [
+        "Wide 30 ft main roads on a rectilinear grid with generous service lanes",
+        "Detached bungalows on 10-15 m plots with front gardens and compound walls",
+        "Three- to four-storey apartment blocks with continuous balconies and sunshades",
+        "The flat-roofed 1976 BDA Shopping Complex with a colonnaded facade",
+        "Market frontage of awnings and signage on the 4th Block shopping street",
+        "Deep street tree canopy of rain trees and gulmohar",
+        "Temple and church structures on corner plots with compound walls",
+        "Open ground-floor parking bays typical of 1980s-2000s commercial blocks"
+      ],
+      "footprintHint": "Approximately 2800 m by 3000 m covering the mapped block cluster; individual blocks are roughly 600 m across",
+      "silhouette": "A regular grid of flat-roofed 3-4 storey apartment slabs alternating with pitched-roof bungalows, with the shopping complex forming the single bulkier mass; overall height 10-15 m."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.57364,12.91791],[77.57377,12.91776],[77.57816,12.91733],[77.58085,12.91723],[77.59860,12.91690],[77.59874,12.92049],[77.59706,12.92684],[77.58929,12.94294],[77.58874,12.94367],[77.58544,12.94369],[77.58038,12.94356],[77.57374,12.92745]]
+    },
+    "priority": 3,
+    "modelHeightM": 15,
+    "modelFootprintM": { "width": 2800, "depth": 3000 },
+    "sources": [
+      { "title": "Jayanagar, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Jayanagar,_Bengaluru" },
+      { "title": "Nominatim search: Jayanagar, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Jayanagar%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relations 17252533-17252543 (Jayanagar block boundaries)", "url": "https://api.openstreetmap.org/api/0.6/relation/17252542/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "indiranagar",
+    "name": "Indiranagar",
+    "kannadaName": "ಇಂದಿರಾನಗರ",
+    "category": "Neighbourhood",
+    "subcategory": "Mixed residential and commercial locality",
+    "latitude": 12.9699,
+    "longitude": 77.6499,
+    "elevationM": 920,
+    "description": "Indiranagar is an east-central locality that began as a bungalow suburb and became one of Bengaluru's most commercialised districts after the IT boom. Its two spine corridors - 100 Feet Road and CMH Hospital Road - carry high-end fashion stores, bars and pubs, while the side streets remain a low-rise residential quarter of independent houses.",
+    "history": "Indiranagar was formed as a Bangalore Development Authority layout in the late 1970s and was named after M. K. Indira. It started as a suburb of bungalows and detached houses and became more commercial after Bengaluru's late-1990s IT boom; it is now both an important residential and a commercial hub. 100 Feet Road and CMH Hospital Road became the commercial corridors, with BMTC bus routes running along CMH Road, 80 Feet Road and 100 Feet Road and 12th Main Road serving the 100 Feet Road corridor. The Purple Line of the Namma Metro serves the area through the Indiranagar and Swami Vivekananda Road stations.",
+    "facts": [
+      "The locality was created as a BDA layout in the late 1970s and named after M. K. Indira.",
+      "100 Feet Road and CMH Hospital Road became the commercial corridors after the late-1990s IT boom, drawing high-end fashion stores, bars and pubs.",
+      "BMTC routes use CMH Road, 80 Feet Road and 100 Feet Road, with 12th Main Road a stop on the 100 Feet Road route.",
+      "The Purple Line of the Namma Metro serves the area through the Indiranagar and Swami Vivekananda Road stations.",
+      "Kempegowda International Airport lies approximately 35-40 km away, normally 45-60 minutes by road.",
+      "The OSM administrative boundary for Indiranagar encloses roughly 2.8 km by 2.9 km of the east-central city."
+    ],
+    "architecture": {
+      "style": "1970s BDA plotted residential layout turned mixed-use commercial corridor",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "RCC frames with plastered and painted facades, exposed brick, glass shopfronts",
+      "keyFeatures": [
+        "Detached bungalows and duplex houses on open plots with mature trees",
+        "Continuous three- to four-storey commercial strips with cantilevered first floors",
+        "Glass-fronted retail at ground level under deep awnings",
+        "Bus bays, autorickshaw stands and heavily parked kerbs along 100 Feet Road",
+        "Painted and lettered hoardings on upper floors and parapets",
+        "Boundary-wall compounds with pillared gates on side streets",
+        "Night-time neon and warm string lighting on the commercial stretches",
+        "Metro viaduct piers and elevated walkway decks near the station"
+      ],
+      "footprintHint": "Approximately 2900 m by 2800 m for the mapped locality boundary; individual shop plots are 6-12 m wide",
+      "silhouette": "A two-level city: a low carpet of pitched-roof bungalows and trees, with a denser, taller 3-4 storey commercial band running along 100 Feet Road and CMH Road."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.64095,12.97610],[77.64096,12.97606],[77.64098,12.97561],[77.64099,12.97544],[77.64104,12.97416],[77.64105,12.97408],[77.64105,12.97404],[77.64106,12.97384],[77.64110,12.97344],[77.64110,12.97338],[77.64113,12.97304],[77.64114,12.97292],[77.64114,12.97270],[77.64115,12.97261],[77.64116,12.97202],[77.64117,12.97162],[77.64117,12.97150],[77.64120,12.97095],[77.64120,12.97077],[77.64121,12.97052],[77.64123,12.97022],[77.64123,12.97019],[77.64123,12.97022],[77.64163,12.97024],[77.64196,12.97025],[77.64197,12.97025],[77.64332,12.97030],[77.64346,12.97030],[77.64357,12.97030],[77.64410,12.97032],[77.64447,12.97033],[77.64500,12.97035],[77.64506,12.97035],[77.64531,12.97036],[77.64556,12.97037],[77.64744,12.97045],[77.64757,12.96978],[77.64763,12.96945],[77.64768,12.96917],[77.64771,12.96896],[77.64776,12.96887],[77.64804,12.96884],[77.64861,12.96878],[77.64879,12.96875],[77.64937,12.96866],[77.64965,12.96859],[77.65001,12.96852],[77.65012,12.96850],[77.65043,12.96842],[77.65075,12.96945],[77.65091,12.97001],[77.65078,12.97152],[77.65076,12.97188],[77.65070,12.97250],[77.65066,12.97249],[77.65057,12.97247],[77.65049,12.97245],[77.65038,12.97244],[77.65021,12.97241],[77.65013,12.97240],[77.65012,12.97240],[77.64990,12.97236],[77.64984,12.97235],[77.64963,12.97234],[77.64958,12.97235],[77.64953,12.97236],[77.64947,12.97237],[77.64940,12.97238],[77.64935,12.97238],[77.64932,12.97238],[77.64900,12.97244],[77.64888,12.97247],[77.64879,12.97250],[77.64874,12.97252],[77.64868,12.97255],[77.64858,12.97261],[77.64849,12.97265],[77.64833,12.97274],[77.64822,12.97282],[77.64809,12.97289],[77.64801,12.97293],[77.64793,12.97297],[77.64770,12.97304],[77.64760,12.97306],[77.64755,12.97308],[77.64750,12.97309],[77.64739,12.97311],[77.64697,12.97312],[77.64696,12.97321],[77.64695,12.97329],[77.64694,12.97352],[77.64691,12.97402],[77.64690,12.97404],[77.64690,12.97412],[77.64688,12.97453],[77.64685,12.97500],[77.64685,12.97502],[77.64793,12.97506],[77.64798,12.97503],[77.64804,12.97439],[77.64863,12.97443],[77.64876,12.97460],[77.64948,12.97432],[77.65027,12.97404],[77.65134,12.97357],[77.65177,12.97568],[77.65208,12.97562],[77.65219,12.97605],[77.65260,12.97626],[77.65311,12.97574],[77.65319,12.97566],[77.65339,12.97543],[77.65345,12.97540],[77.65408,12.97568],[77.65424,12.97574],[77.65428,12.97569],[77.65449,12.97547],[77.65450,12.97545],[77.65514,12.97478],[77.65576,12.97392],[77.65625,12.97430],[77.65677,12.97466],[77.65616,12.97549],[77.65577,12.97592],[77.65559,12.97610],[77.65543,12.97620],[77.65477,12.97689],[77.65475,12.97691],[77.65470,12.97696],[77.65468,12.97698],[77.65459,12.97708],[77.65458,12.97710],[77.65435,12.97735],[77.65423,12.97747],[77.65272,12.97905],[77.65258,12.97920],[77.65248,12.97930],[77.65168,12.98016],[77.65160,12.98025],[77.65116,12.98072],[77.65092,12.98102],[77.65085,12.98112],[77.65074,12.98130],[77.65056,12.98159],[77.65041,12.98184],[77.65000,12.98254],[77.64928,12.98376],[77.64889,12.98442],[77.64842,12.98519],[77.64838,12.98526],[77.64828,12.98549],[77.64825,12.98557],[77.64820,12.98569],[77.64811,12.98606],[77.64808,12.98661],[77.64805,12.98677],[77.64793,12.98685],[77.64752,12.98668],[77.64612,12.98610],[77.64244,12.98476],[77.64292,12.98746],[77.64295,12.98759],[77.64318,12.98939],[77.64340,12.99085],[77.64355,12.99154],[77.64346,12.99155],[77.64273,12.99177],[77.64217,12.99187],[77.64152,12.99195],[77.64079,12.99204],[77.63981,12.99221],[77.63883,12.99245],[77.63790,12.99264],[77.63734,12.99268],[77.63633,12.99288],[77.63482,12.99319],[77.63454,12.99327],[77.63447,12.99329],[77.63412,12.99331],[77.63296,12.99355],[77.63258,12.99363],[77.63191,12.99379],[77.63187,12.99380],[77.63184,12.99380],[77.63179,12.99381],[77.63178,12.99381],[77.63179,12.99374],[77.63100,12.99012],[77.63088,12.98979],[77.63084,12.98968],[77.63090,12.98939],[77.63102,12.98874],[77.63222,12.98899],[77.63281,12.98912],[77.63332,12.98820],[77.63360,12.98774],[77.63372,12.98739],[77.63372,12.98721],[77.63376,12.98720],[77.63404,12.98699],[77.63407,12.98697],[77.63456,12.98706],[77.63514,12.98748],[77.63553,12.98765],[77.63588,12.98763],[77.63640,12.98757],[77.63670,12.98751],[77.63676,12.98747],[77.63679,12.98743],[77.63674,12.98699],[77.63671,12.98683],[77.63658,12.98649],[77.63647,12.98624],[77.63633,12.98593],[77.63625,12.98578],[77.63595,12.98541],[77.63565,12.98506],[77.63533,12.98487],[77.63508,12.98460],[77.63476,12.98430],[77.63462,12.98421],[77.63467,12.98357],[77.63479,12.98264],[77.63481,12.98247],[77.63520,12.98250],[77.63548,12.98252],[77.63559,12.98253],[77.63652,12.98262],[77.63708,12.98277],[77.63741,12.98287],[77.63766,12.98214],[77.63779,12.98203],[77.63790,12.97997],[77.64078,12.98001],[77.64081,12.97903],[77.64083,12.97840],[77.64086,12.97770],[77.64092,12.97673],[77.64095,12.97610]]
+    },
+    "priority": 3,
+    "modelHeightM": 24,
+    "modelFootprintM": { "width": 2890, "depth": 2820 },
+    "sources": [
+      { "title": "Indiranagar, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Indiranagar,_Bengaluru" },
+      { "title": "Nominatim search: Indiranagar, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Indiranagar%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relation 19883335 (Indiranagar boundary)", "url": "https://api.openstreetmap.org/api/0.6/relation/19883335/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "koramangala",
+    "name": "Koramangala",
+    "kannadaName": "ಕೋರಮಂಗಲ",
+    "category": "Neighbourhood",
+    "subcategory": "Startup and commercial hub",
+    "latitude": 12.9357,
+    "longitude": 77.6241,
+    "elevationM": 920,
+    "description": "Koramangala is a south-east Bengaluru locality of tree-lined roads, bungalows and low-rise apartments that became a commercial centre and a prominent startup hub during the technology boom. It is laid out in eight blocks that straddle the Inner Ring Road, which separates Blocks 1-4 from Blocks 5-8. The 80 Feet Road corridor links the blocks and carries the neighbourhood's restaurants, cafes and offices.",
+    "history": "Koramangala was planned as a suburban area after independence; until the 1970s travellers commonly bypassed it, and housing expanded in the late 1970s. Its position between Bengaluru and Electronic City attracted migrants from across India during the city's technology boom in the late 1990s, when it transformed into a major commercial and business destination. The eight blocks cover roughly 1,800 acres, with the Inner Ring Road separating Blocks 1-4 from Blocks 5-8. The neighbourhood's rise coincided with Electronic City's growth as an IT hub, with companies such as Infosys based there.",
+    "facts": [
+      "Koramangala is divided into eight blocks covering roughly 1,800 acres, with the Inner Ring Road separating Blocks 1-4 from Blocks 5-8.",
+      "Planned as a suburban area after independence, it was bypassed by travellers until the 1970s, with housing expanding in the late 1970s.",
+      "The locality's growth was driven by migration from across India during the late-1990s technology boom, and it is now described as a commercial centre and a prominent startup hub.",
+      "Wikipedia's infobox records a population of 35,359 with a density of over 22,000 people per km2.",
+      "80 Feet Road appears in OpenStreetMap street addresses within the locality, including the Koramangala Police Station in Koramangala 5th Block.",
+      "Nearest metro services are at Jayanagar; Majestic is listed at 10.9 km and Kempegowda International Airport at 41.3 km."
+    ],
+    "architecture": {
+      "style": "Post-Independence suburban bungalow layout with 1990s-2010s mixed-use infill",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "RCC and steel frames, exposed brick and painted plaster, glass and aluminium shopfronts",
+      "keyFeatures": [
+        "Detached bungalows and low-rise apartments under a heavy tree canopy",
+        "Four- to six-storey apartment blocks with balconies on the block edges",
+        "Ground-floor retail with wide glass fronts and parking forecourts along 80 Feet Road",
+        "Boundary-wall compounds with covered carports",
+        "Painted shop signage, string lights and outdoor seating spilling onto the pavement",
+        "Overhead canopy of rain trees and coconut palms along the main roads",
+        "The elevated Inner Ring Road running along the western block boundary",
+        "Open stormwater drains and kerbside vendor stalls on the side streets"
+      ],
+      "footprintHint": "Approximately 3600 m by 2000 m for the eight mapped blocks; individual blocks are around 800-900 m across",
+      "silhouette": "A leafy, mostly low-rise (3-5 storey) roofscape with occasional taller apartment slabs and a continuous band of shopfronts along 80 Feet Road."
+    },
+    "priority": 3,
+    "modelHeightM": 24,
+    "modelFootprintM": { "width": 3600, "depth": 2000 },
+    "sources": [
+      { "title": "Koramangala - Wikipedia", "url": "https://en.wikipedia.org/wiki/Koramangala" },
+      { "title": "Nominatim search: Koramangala, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Koramangala%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "Photon geocoder: Koramangala, Bengaluru", "url": "https://photon.komoot.io/api/?q=Koramangala%2C%20Bengaluru&limit=15" }
+    ],
+    "images": []
+  },
+  {
+    "id": "mg-road",
+    "name": "Mahatma Gandhi Road (M. G. Road)",
+    "kannadaName": "ಎಂ. ಜಿ. ರಸ್ತೆ, ಬೆಂಗಳೂರು",
+    "category": "Neighbourhood",
+    "subcategory": "Commercial spine",
+    "latitude": 12.9738,
+    "longitude": 77.6119,
+    "elevationM": 920,
+    "description": "Mahatma Gandhi Road is the principal commercial spine of central Bengaluru, running east-west between Trinity Circle and Anil Kumble Circle past Cubbon Park, M. Chinnaswamy Stadium and the CBD junctions. It is lined continuously with retailers, eateries, restaurants, offices, shops, theatres and banks, and is categorised as an Indian shopping district. Two Namma Metro stations - Mahatma Gandhi Road and Trinity - serve the corridor.",
+    "history": "The road was known as 'South Parade' before independence and was renamed Mahatma Gandhi Road on 26 February 1948. It has since become the city's busiest high-street, and the building of the Namma Metro beneath and along it required a full reconstruction of the boulevard. The Mahatma Gandhi Road metro station opened for service on 20 October 2011.",
+    "facts": [
+      "The road was renamed Mahatma Gandhi Road on 26 February 1948; it was previously known as South Parade.",
+      "It extends between Trinity Circle and Anil Kumble Circle in central Bengaluru.",
+      "The corridor has two Namma Metro stations, Mahatma Gandhi Road and Trinity; the Mahatma Gandhi Road station opened for service on 20 October 2011.",
+      "The boulevard was reconstructed following the construction of the metro.",
+      "Wikipedia categorises M. G. Road as an Indian shopping district and describes it as lined with retailers, eateries, restaurants, offices, shops, theatres and banks.",
+      "Cross streets and nearby landmarks include Cubbon Road, Dickenson Road, St. Marks Road, Residency Road and Brigade Road."
+    ],
+    "architecture": {
+      "style": "Mid-century commercial spine with Art Deco and modern mixed-use infill",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "RCC frames, mosaic and exposed-brick cladding, glass and aluminium shopfronts",
+      "keyFeatures": [
+        "Continuous 4-6 storey commercial blocks with glazed arcade at ground level",
+        "Deep cantilevered awnings and canopies over the footpath",
+        "The utilitarian Public Utility Building and post-war modernist facades",
+        "A wide divided carriageway with a landscaped median and service road",
+        "Light-rail and bus bays on the reconstructed boulevard",
+        "Metro viaduct columns and a station box on the central median",
+        "Painted hoardings, signage gantries and illuminated brand facades",
+        "Curbside parking, autorickshaw stands and pedestrian spill-over onto the median"
+      ],
+      "footprintHint": "Approximately 2200 m long by 45 m of street right-of-way for the OSM-named carriageway in the central city",
+      "silhouette": "An unbroken 4-6 storey commercial wall along both sides of a wide boulevard, stepped up to 6-8 storeys at Trinity Circle and Cubbon Park, with metro structures rising in the median."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.59920,12.97667],[77.61847,12.97263],[77.61895,12.97253],[77.61910,12.97251],[77.61954,12.97266],[77.60198,12.97663],[77.60186,12.97664],[77.59933,12.97670]]
+    },
+    "priority": 2,
+    "modelHeightM": 30,
+    "modelFootprintM": { "width": 2200, "depth": 45 },
+    "sources": [
+      { "title": "M G Road, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/M_G_Road,_Bengaluru" },
+      { "title": "Nominatim search: MG Road, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=MG+Road%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "Photon geocoder: Mahatma Gandhi Road, Bengaluru", "url": "https://photon.komoot.io/api/?q=Mahatma%20Gandhi%20Road%2C%20Bengaluru&limit=15" }
+    ],
+    "images": []
+  },
+  {
+    "id": "brigade-road",
+    "name": "Brigade Road",
+    "kannadaName": "ಬ್ರಿಗೇಡ್ ರಸ್ತೆ",
+    "category": "Neighbourhood",
+    "subcategory": "Shopping street",
+    "latitude": 12.9716,
+    "longitude": 77.6071,
+    "elevationM": 920,
+    "description": "Brigade Road is one of central Bengaluru's busiest retail districts, running north-south from M. G. Road down to Hosur Road with links en route to Residency Road and Church Street. It contains shopping centres, bookstores, international-brand stores, cafes, restaurants and pubs, and it is a long-established city celebration venue with fairy lights strung across the road for New Year.",
+    "history": "Brigade Road grew as the retail spine of the British-era central business district, and it retains several of its colonial and early-20th-century civic buildings - St. Patrick's Church, the Bengaluru Opera House and the Sapper War Memorial, the latter a First World War memorial to fallen members of the Madras Sappers & Miners (Madras Engineer Group). The Opera House was later leased to Samsung and rebranded as the Samsung Opera House, functioning as an experience centre and store. The street also became a marker of modern retail change: India's first KFC branch opened on Brigade Road in June 1995.",
+    "facts": [
+      "Its north end is M G Road and its south end is Hosur Road; it is a one-way link with links en route to Residency Road and Church Street.",
+      "Landmark buildings include St. Patrick's Church, the Bengaluru Opera House and the Sapper War Memorial, a First World War memorial to the Madras Sappers & Miners.",
+      "The Opera House was leased to Samsung and rebranded the Samsung Opera House, now an Experience Centre and store.",
+      "India's first KFC branch opened on Brigade Road in June 1995.",
+      "In 2004 parking meters were imported from France for 85 parking spaces, with an average of 1,400 cars reportedly parked there each day.",
+      "The street has its own bus station and is reachable from the M G Road metro station on the Namma Metro Purple Line."
+    ],
+    "architecture": {
+      "style": "Colonial-era commercial streetscape with post-war retail infill",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Load-bearing brick and plaster, later RCC with mosaic and glass shopfronts",
+      "keyFeatures": [
+        "Two- to three-storey arcade-fronted colonial blocks with shuttered windows",
+        "St. Patrick's Church with a pitched roof and a slender bell tower",
+        "The curved-fronted, pedimented facade of the Bengaluru Opera House",
+        "The stone obelisk and plinth of the Sapper War Memorial",
+        "Continuous shopfronts with deep canopies and stacked signage",
+        "One-way carriageway with bus bays and kerbside retail spill-over",
+        "Strings of fairy lights spanning the carriageway during New Year",
+        "Mixed vehicle and pedestrian traffic with heavy two-wheeler parking"
+      ],
+      "footprintHint": "Approximately 720 m long by 190 m wide overall for the mapped street extent; shopfront bays are 4-8 m wide",
+      "silhouette": "A mostly three-storey street wall with a slim church spire and the flat-roofed Opera House as the two vertical accents; the New Year light canopy adds a horizontal line above the roofline."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.60610,12.96826],[77.60672,12.96622],[77.60804,12.97506],[77.60793,12.97508],[77.60708,12.97233]]
+    },
+    "priority": 2,
+    "modelHeightM": 24,
+    "modelFootprintM": { "width": 720, "depth": 190 },
+    "sources": [
+      { "title": "Brigade Road - Wikipedia", "url": "https://en.wikipedia.org/wiki/Brigade_Road" },
+      { "title": "Nominatim search: Brigade Road, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Brigade+Road%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "Photon geocoder: Brigade Road, Bengaluru", "url": "https://photon.komoot.io/api/?q=Brigade%20Road%2C%20Bengaluru&limit=15" }
+    ],
+    "images": []
+  },
+  {
+    "id": "church-street",
+    "name": "Church Street",
+    "category": "Neighbourhood",
+    "subcategory": "Retail and nightlife street",
+    "latitude": 12.975,
+    "longitude": 77.6048,
+    "elevationM": 920,
+    "description": "Church Street is a 750-metre pedestrian-scale retail street in the central business district, running from Brigade Road to St. Mark's Road alongside M. G. Road. Named for St. Mark's Cathedral, which it leads to, it is a principal shopping and nightlife destination and a popular New Year's Eve gathering point. It was the first Bengaluru street to be paved with granite cobblestones and briefly became a motor-free pedestrian street.",
+    "history": "Church Street took its name from St. Mark's Cathedral, toward which the street leads. Redevelopment works costing 9 crore rupees began in 2017, laying granite cobblestones that made it the first Bengaluru street paved this way, in a 'Kasuti' arrangement intended to evoke Karnataka's cultural heritage. In 2020 the street was closed to motor vehicles under the 'Clean Air Street' trial, with outdoor seating, cultural programmes and buggies or e-rickshaws for disabled people and senior citizens; the trial ended on 31 May 2021. A bomb blast on the street on 14 May 2014 killed one person and injured four, with authorities suspecting the Indian Mujahideen.",
+    "facts": [
+      "The street runs 750 metres from Brigade Road to St. Mark's Road alongside M G Road.",
+      "It is named for St. Mark's Cathedral, toward which the street leads.",
+      "2017 redevelopment works cost 9 crore rupees; the granite cobblestone 'Kasuti' paving made it the first Bengaluru street paved this way.",
+      "During the 2020 'Clean Air Street' trial, average daily footfall rose 92%, peak-period footfall rose 117%, more than half of establishments reported higher revenue, and 98% of surveyed users liked the pedestrianised street; the Indian Institute of Science monitored the trial.",
+      "The pedestrian trial ended on 31 May 2021; the stated reason was transfer to the BBMP, although the BBMP denied receiving instructions to continue.",
+      "An IED blast on the street in 2014 killed one person and injured four others, with authorities suspecting the Indian Mujahideen."
+    ],
+    "architecture": {
+      "style": "Colonial-era commercial street, granite-paved pedestrianisation with mixed retail frontage",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Granite cobblestone paving, exposed brick and plaster facades, glass and timber shopfronts",
+      "keyFeatures": [
+        "Granite cobblestone paving laid in a 'Kasuti' pattern across the carriageway",
+        "St. Mark's Cathedral terminating the street axis with a gabled facade",
+        "Two- to three-storey arcade-fronted blocks with deep wooden verandas",
+        "Continuous retail signage on the upper storey parapets",
+        "Outdoor cafe seating and bollards occupying the pedestrianised carriageway",
+        "Freestanding street trees in granite planters along the kerb line",
+        "Awnings and umbrellas over food stalls spilling onto the pavement",
+        "The street's junction to Brigade Road at the north-west end"
+      ],
+      "footprintHint": "Approximately 750 m long by 40 m of paved carriageway; individual shopfronts are 4-7 m wide",
+      "silhouette": "A low, uniform three-storey street wall of narrow shopfronts closed by the gable of St. Mark's Cathedral, with the pavement read as an open pedestrian plane."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.60167,12.97580],[77.60261,12.97539],[77.60773,12.97433],[77.60173,12.97579]]
+    },
+    "priority": 2,
+    "modelHeightM": 20,
+    "modelFootprintM": { "width": 750, "depth": 40 },
+    "sources": [
+      { "title": "Church Street, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Church_Street,_Bengaluru" },
+      { "title": "St. Mary's Basilica, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/St._Mary%27s_Basilica,_Bengaluru" },
+      { "title": "Nominatim search: Church Street, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Church+Street%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" }
+    ],
+    "images": []
+  },
+  {
+    "id": "commercial-street",
+    "name": "Commercial Street",
+    "kannadaName": "ಕಮರ್ಷಿಯಲ್ ಸ್ಟ್ರೀಟ್, ಬೆಂಗಳೂರು",
+    "category": "Neighbourhood",
+    "subcategory": "Shopping street",
+    "latitude": 12.9822,
+    "longitude": 77.6084,
+    "elevationM": 900,
+    "description": "Commercial Street is one of the oldest and busiest shopping areas of the city, running between OPH Road and K. Kamraj Road in the Tasker Town part of the central business district, with shopping continuing into bylanes such as Dispensary Road and Abrahim Sahab street. It trades in clothes, footwear, jewellery and electronics and is among the city's most crowded streets.",
+    "history": "Commercial Street sits inside the old Pete, the market core laid out by Kempegowda I in 1537 around a mud fort, with roads running to the cardinal directions and gates at their ends. The street's retail character dates from the colonial era, when the cantonment and the Pete markets were linked by a busy thoroughfare; photographs of the street survive from 1900 and from the Eid celebrations of 2012. The area's growth was never formally planned, and commerce has spread from the main carriageway into the surrounding bylanes.",
+    "facts": [
+      "It runs between OPH Road and K. Kamraj Road, with associated shopping continuing into bylanes such as Dispensary Road and Abrahim Sahab street.",
+      "Wikipedia describes it as 'one of the oldest and busiest shopping areas of the city'.",
+      "Principal goods include clothes, footwear, jewellery and electronics, alongside numerous food establishments.",
+      "The street is among the city's most crowded, with only 75 four-wheeler parking spaces reported.",
+      "Archival photographs exist of Commercial Street in 1900 and during Eid in 2012.",
+      "It lies in the Shivajinagar / Tasker Town quarter of the central business district, near M G Road and Russell Market."
+    ],
+    "architecture": {
+      "style": "Old Pete trading street with narrow shophouses and later concrete infill",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Timber and masonry shophouses with corrugated awnings, later RCC and glass",
+      "keyFeatures": [
+        "Narrow 3-4 storey shophouses with narrow 3-4 m shop fronts",
+        "Continuous awnings and retractable canopies over the footpath",
+        "Vertical stacked signage boards projecting from upper storeys",
+        "Cafe and food-stall frontage with outdoor seating spilling into the street",
+        "Bangle and jewellery shops in the Jewellers Street and Ibrahim Sahib Street bylanes",
+        "Densely parked two-wheelers lining both kerbs",
+        "Rear service lanes through the back of the block",
+        "Streetside vendor carts and pushcarts in the carriageway"
+      ],
+      "footprintHint": "Approximately 500 m by 350 m for the mapped Commercial Street shopping area; individual shophouses are 3-5 m wide",
+      "silhouette": "A tight canyon of narrow four-storey shophouses with continuous signage, relieved only by a few taller modern blocks at the OPH Road end."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.60607,12.98245],[77.60652,12.98351],[77.60688,12.98416],[77.60747,12.98409],[77.61060,12.98303],[77.61055,12.98262],[77.61047,12.98226],[77.61021,12.98153],[77.61020,12.98152],[77.61003,12.98103],[77.61001,12.98103],[77.61000,12.98103],[77.60997,12.98104],[77.60955,12.98118],[77.60828,12.98167],[77.60808,12.98174],[77.60801,12.98176],[77.60607,12.98245]]
+    },
+    "priority": 2,
+    "modelHeightM": 20,
+    "modelFootprintM": { "width": 500, "depth": 350 },
+    "sources": [
+      { "title": "Commercial Street, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Commercial_Street,_Bengaluru" },
+      { "title": "Bengaluru Pete - Wikipedia", "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete" },
+      { "title": "Photon geocoder: Commercial Street, Bengaluru", "url": "https://photon.komoot.io/api/?q=Commercial%20Street%2C%20Bengaluru&limit=15" }
+    ],
+    "images": []
+  },
+  {
+    "id": "majestic-area",
+    "name": "Majestic (Kempegowda Bus Station)",
+    "kannadaName": "ಕನ್ನಡ ಬಸ್ ನಿಲ್ದಾಣ",
+    "category": "Neighbourhood",
+    "subcategory": "Intercity bus terminal",
+    "latitude": 12.9768,
+    "longitude": 77.5726,
+    "elevationM": 900,
+    "description": "Majestic is the transport hub of Bengaluru, centred on the Kempegowda Bus Station opposite the KSR Bengaluru railway station. The at-grade complex handles both intercity KSRTC services and intracity BMTC buses, and is bounded by Seshadri Road, Danavanthri Road, Tank Bund Road and Gubbi Thotadappa Road. The Nadaprabhu Kempegowda, Majestic metro station on the Purple and Green lines sits directly above it.",
+    "history": "The bus station was first known as Majestic, after a nearby cinema theatre, and was later named for Kempe Gowda I; Majestic remains the most familiar name. Construction began in 1965 and the intercity station opened in 1969. The semicircular city-bus terminal was added in the 1980s, with the intracity section dated to 1980, and former Karnataka chief minister R. Gundu Rao is credited with developing the station. The site had formerly held Dharmambudhi Lake, which dried up in the early twentieth century. In 2025 Chief Minister Siddaramaiah announced redevelopment of the complex under the Project Majestic public-private-partnership scheme.",
+    "facts": [
+      "Construction began in 1965 and the intercity station opened in 1969; the semicircular city-bus terminal was added in the 1980s, with the intracity section dated to 1980.",
+      "The station was initially known as Majestic after a nearby cinema theatre, and was later named for Kempe Gowda I.",
+      "It is an at-grade integrated complex with four intracity bays and four intercity terminals, handling BMTC city buses and KSRTC intercity services.",
+      "Wikipedia lists 61 intracity platform designations and 16 intercity platform designations.",
+      "The site formerly contained Dharmambudhi Lake, which dried up in the early twentieth century; former chief minister R. Gundu Rao is credited with developing the station.",
+      "In 2025 Chief Minister Siddaramaiah announced redevelopment of the complex under the Project Majestic public-private-partnership scheme."
+    ],
+    "architecture": {
+      "style": "Mid-century concrete transport infrastructure with later metro viaduct overlay",
+      "yearBuilt": 1969,
+      "architect": null,
+      "materials": "Reinforced concrete, steel trusses, glazed and metal cladding",
+      "keyFeatures": [
+        "Semicircular city-bus apron with numbered bays radiating from a central head",
+        "Long, low intercity shed with a shallow pitched metal roof",
+        "Covered pedestrian concourse and foot overbridge to the railway station",
+        "Tall steel lamp standards and a dense grid of bus bay signage",
+        "Ticket counters, waiting halls and shopfronts under the shed",
+        "The metro station box and viaduct piers of Nadaprabhu Kempegowda, Majestic above",
+        "Continuous streams of intercity buses and local buses in the surrounding streets",
+        "Aircraft-style bus parking rows on the northern apron"
+      ],
+      "footprintHint": "Approximately 300 m by 130 m for the mapped bus station footprint, with the bus apron and intercity sheds filling the site",
+      "silhouette": "A long, low horizontal shed of about 12-15 m height interrupted by the metro viaduct and station canopy rising to roughly 20 m above."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.57110,12.97831],[77.57136,12.97830],[77.57141,12.97832],[77.57146,12.97844],[77.57204,12.97866],[77.57277,12.97873],[77.57339,12.97807],[77.57351,12.97794],[77.57377,12.97764],[77.57377,12.97758],[77.57346,12.97758],[77.57343,12.97758],[77.57338,12.97758],[77.57333,12.97758],[77.57323,12.97758],[77.57314,12.97758],[77.57308,12.97759],[77.57304,12.97759],[77.57298,12.97759],[77.57293,12.97759],[77.57288,12.97759],[77.57283,12.97759],[77.57191,12.97760],[77.57187,12.97760],[77.57182,12.97761],[77.57176,12.97761],[77.57173,12.97761],[77.57167,12.97761],[77.57162,12.97761],[77.57143,12.97761],[77.57137,12.97761],[77.57132,12.97761],[77.57128,12.97761],[77.57112,12.97762],[77.57112,12.97767],[77.57114,12.97799],[77.57108,12.97801],[77.57110,12.97831]]
+    },
+    "priority": 2,
+    "modelHeightM": 18,
+    "modelFootprintM": { "width": 300, "depth": 130 },
+    "sources": [
+      { "title": "Kempegowda Bus Station - Wikipedia", "url": "https://en.wikipedia.org/wiki/Kempegowda_Bus_Station" },
+      { "title": "Nominatim search: Kempegowda Bus Station, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Kempegowda+Bus+Station%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "Photon geocoder: Kempegowda Bus Station, Bengaluru", "url": "https://photon.komoot.io/api/?q=Kempegowda%20Bus%20Station%2C%20Bengaluru&limit=15" }
+    ],
+    "images": []
+  },
+  {
+    "id": "whitefield",
+    "name": "Whitefield",
+    "category": "Neighbourhood",
+    "subcategory": "IT suburb",
+    "latitude": 12.9696,
+    "longitude": 77.7497,
+    "elevationM": 920,
+    "description": "Whitefield is an east Bengaluru suburb that began as an Anglo-Indian agricultural settlement in 1882 and is today one of the city's principal IT corridors. The Export Promotion Industrial Park and International Tech Park (ITPL) form the business core, ringed by large residential apartment clusters that grew rapidly after 2002. It is also served by the Purple Line metro extension to Whitefield (Kadugodi) and by an electrified double-track railway line to Chennai.",
+    "history": "The locality began in 1882 as an agricultural settlement for Eurasians and Anglo-Indians, when Mysore's Maharaja Chamarajendra Wadiyar X granted 3,900 acres (16 km2) to the Eurasian and Anglo-Indian Association; it was named for David Emmanuel Starkenburgh White, president of the association and a promoter of the settlement. In the first decade of the 1900s Whitefield had about 45 houses, including 18 on the village site, and around 2,000 acres (8.1 km2) of cultivable land, with 130 residents recorded in 1907. A railway station was built about 3 km south of the settlement on the Bangalore-Madras line, drawing workers from the Kolar Gold Fields roughly 50 km to the east, with regular trains to Bangalore about 20 km west. Whitefield stayed a small village until the late 1990s, when Bengaluru's technology boom transformed it into a major suburb, with residential construction surging from the latter half of the 1990s and particularly from 2002.",
+    "facts": [
+      "The settlement was founded in 1882 when Maharaja Chamarajendra Wadiyar X granted 3,900 acres (16 km2) to the Eurasian and Anglo-Indian Association.",
+      "It was named for David Emmanuel Starkenburgh White, president of the association and a promoter of the settlement.",
+      "In the first decade of the 1900s there were about 45 houses (18 on the village site), roughly 2,000 acres (8.1 km2) of cultivable land, and 130 residents in 1907.",
+      "A railway station was built roughly 3 km south of the settlement on the Bangalore-Madras line, attracting workers from the Kolar Gold Fields about 50 km east.",
+      "The Export Promotion Industrial Park and International Tech Park (ITPL) became major technology centres, with offices including Mercedes-Benz's R&D centre, Caterpillar at RMZ NXT and Societe Generale.",
+      "The Purple Line extension from Krishnarajapura to Whitefield (Kadugodi) runs 13.71 km with 13 intermediate stations; it was inaugurated on 25 March 2023 and opened to passengers on 26 March 2023."
+    ],
+    "architecture": {
+      "style": "1990s-2010s IT-park campus and gated residential apartment clusters",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Glass and aluminium curtain-wall office blocks, RCC and clad residential towers",
+      "keyFeatures": [
+        "Multi-storey corporate office blocks in landscaped IT-park campuses with large setbacks",
+        "Gated apartment colonies of 6-14 storey towers with podium parking",
+        "Wide landscaped boulevards with a mature tree canopy",
+        "Glass-clad transit and retail podiums at the metro and railway stations",
+        "Boundary walls, gatehouses and boom barriers at the colony entrances",
+        "Large surface car parks between the office blocks",
+        "Shopfronts at the ground level of residential towers forming continuous retail strips",
+        "Overhead metro viaduct and the elevated railway line running through the district"
+      ],
+      "footprintHint": "Approximately 3700 m by 2800 m for the mapped Whitefield administrative area; IT-park buildings are typically 60-120 m long and 25-40 m tall",
+      "silhouette": "A modern skyline of mid-rise glass office slabs set well back behind landscaped plazas, with a cluster of 8-14 storey residential towers and the metro viaduct crossing above."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.73312,12.96354],[77.73308,12.96322],[77.73303,12.96261],[77.73296,12.96225],[77.73264,12.96107],[77.73226,12.95986],[77.73213,12.95946],[77.73188,12.95866],[77.73182,12.95854],[77.73168,12.95823],[77.73099,12.95617],[77.73241,12.95636],[77.73414,12.95667],[77.73617,12.95695],[77.73660,12.95698],[77.73671,12.95623],[77.73675,12.95593],[77.73605,12.95571],[77.73586,12.95561],[77.73588,12.95539],[77.73592,12.95516],[77.73598,12.95481],[77.73598,12.95460],[77.73595,12.95404],[77.73602,12.95358],[77.73546,12.95342],[77.73546,12.95225],[77.73605,12.95237],[77.73613,12.95211],[77.73647,12.95225],[77.73685,12.95234],[77.73684,12.95247],[77.73729,12.95263],[77.73753,12.95153],[77.73764,12.95168],[77.73815,12.95214],[77.73854,12.95225],[77.73870,12.95225],[77.73924,12.95218],[77.73940,12.95224],[77.73985,12.95265],[77.74008,12.95274],[77.74137,12.95311],[77.74156,12.95328],[77.74188,12.95331],[77.74299,12.95382],[77.74364,12.95467],[77.74375,12.95507],[77.74405,12.95568],[77.74418,12.95600],[77.74431,12.95640],[77.74344,12.95659],[77.74351,12.95695],[77.74388,12.95688],[77.74489,12.95670],[77.74504,12.95680],[77.74546,12.95714],[77.74572,12.95752],[77.74585,12.95782],[77.74622,12.95859],[77.74639,12.95850],[77.74673,12.95839],[77.74719,12.95822],[77.74889,12.95895],[77.74963,12.95903],[77.75028,12.95908],[77.75025,12.96009],[77.75022,12.96074],[77.75034,12.96140],[77.75052,12.96146],[77.75077,12.96145],[77.75085,12.96138],[77.75142,12.96140],[77.75173,12.96232],[77.75174,12.96259],[77.75178,12.96378],[77.75175,12.96387],[77.74945,12.96247],[77.74909,12.96223],[77.74887,12.96216],[77.74888,12.96218],[77.74889,12.96225],[77.74899,12.96262],[77.74898,12.96263],[77.74901,12.96276],[77.74903,12.96282],[77.74907,12.96297],[77.74908,12.96304],[77.74910,12.96310],[77.74921,12.96345],[77.74938,12.96392],[77.74941,12.96402],[77.74950,12.96430],[77.74957,12.96452],[77.74957,12.96455],[77.74958,12.96455],[77.74963,12.96467],[77.74970,12.96491],[77.74973,12.96498],[77.74983,12.96532],[77.74997,12.96578],[77.75004,12.96600],[77.75008,12.96612],[77.75024,12.96663],[77.75033,12.96692],[77.75034,12.96697],[77.75042,12.96720],[77.75047,12.96737],[77.75047,12.96739],[77.75055,12.96766],[77.75066,12.96799],[77.75075,12.96829],[77.75078,12.96841],[77.75080,12.96849],[77.75081,12.96852],[77.75081,12.96855],[77.75084,12.96866],[77.75101,12.96930],[77.75103,12.96938],[77.75105,12.96955],[77.75106,12.96966],[77.75109,12.96978],[77.75115,12.97007],[77.75123,12.97061],[77.75123,12.97063],[77.75129,12.97106],[77.75130,12.97110],[77.75132,12.97126],[77.75133,12.97138],[77.75135,12.97156],[77.75136,12.97159],[77.75139,12.97182],[77.75281,12.97153],[77.75313,12.97148],[77.75331,12.97149],[77.75380,12.97144],[77.75363,12.97051],[77.75410,12.97046],[77.75491,12.97024],[77.75516,12.97015],[77.75520,12.97013],[77.75532,12.97009],[77.75534,12.97008],[77.75601,12.96980],[77.75728,12.96927],[77.75742,12.96919],[77.75812,12.96891],[77.75968,12.96841],[77.76151,12.96791],[77.76232,12.96778],[77.76277,12.96766],[77.76341,12.96755],[77.76384,12.96781],[77.76386,12.96776],[77.76414,12.96776],[77.76434,12.96751],[77.76413,12.96800],[77.76397,12.96820],[77.76384,12.96866],[77.76386,12.96878],[77.76387,12.96911],[77.76383,12.96923],[77.76380,12.96929],[77.76373,12.96957],[77.76369,12.96999],[77.76372,12.97027],[77.76371,12.97065],[77.76368,12.97104],[77.76370,12.97122],[77.76378,12.97150],[77.76386,12.97191],[77.76384,12.97207],[77.76381,12.97238],[77.76385,12.97255],[77.76383,12.97296],[77.76386,12.97336],[77.76392,12.97371],[77.76403,12.97404],[77.76405,12.97417],[77.76422,12.97466],[77.76372,12.97517],[77.76374,12.97531],[77.76300,12.97539],[77.76280,12.97541],[77.76133,12.97563],[77.76076,12.97577],[77.76009,12.97604],[77.75926,12.97641],[77.75829,12.97664],[77.75707,12.97671],[77.75632,12.97674],[77.75614,12.97617],[77.75587,12.97571],[77.75554,12.97512],[77.75471,12.97545],[77.75470,12.97546],[77.75461,12.97531],[77.75441,12.97504],[77.75419,12.97478],[77.75400,12.97445],[77.75336,12.97330],[77.75215,12.97357],[77.75046,12.97392],[77.75028,12.97217],[77.74984,12.97254],[77.74935,12.97289],[77.74881,12.97308],[77.74848,12.97313],[77.74816,12.97312],[77.74776,12.97303],[77.74728,12.97333],[77.74703,12.97375],[77.74665,12.97449],[77.74657,12.97464],[77.74649,12.97484],[77.74640,12.97503],[77.74634,12.97511],[77.74628,12.97519],[77.74616,12.97533],[77.74600,12.97541],[77.74571,12.97552],[77.74558,12.97556],[77.74532,12.97565],[77.74524,12.97566],[77.74516,12.97567],[77.74499,12.97568],[77.74480,12.97568],[77.74464,12.97568],[77.74455,12.97567],[77.74441,12.97563],[77.74423,12.97559],[77.74408,12.97553],[77.74399,12.97548],[77.74391,12.97546],[77.74375,12.97543],[77.74345,12.97546],[77.74326,12.97550],[77.74319,12.97553],[77.74314,12.97554],[77.74295,12.97559],[77.74282,12.97563],[77.74268,12.97566],[77.74266,12.97566],[77.74251,12.97570],[77.74218,12.97581],[77.74133,12.97604],[77.74101,12.97507],[77.74086,12.97427],[77.74065,12.97420],[77.73999,12.97371],[77.73975,12.97339],[77.73902,12.97187],[77.73862,12.97129],[77.73856,12.97099],[77.73846,12.97050],[77.73839,12.97016],[77.73882,12.97000],[77.73877,12.96975],[77.73904,12.96970],[77.73891,12.96918],[77.73561,12.96935],[77.73552,12.96871],[77.73544,12.96854],[77.73497,12.96803],[77.73465,12.96776],[77.73414,12.96781],[77.73386,12.96732],[77.73355,12.96612],[77.73329,12.96506],[77.73313,12.96379],[77.73312,12.96374],[77.73312,12.96354]]
+    },
+    "priority": 3,
+    "modelHeightM": 30,
+    "modelFootprintM": { "width": 3680, "depth": 2800 },
+    "sources": [
+      { "title": "Whitefield, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Whitefield,_Bengaluru" },
+      { "title": "Nominatim search: Whitefield, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Whitefield%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relation 19883364 (Whitefield boundary)", "url": "https://api.openstreetmap.org/api/0.6/relation/19883364/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "jayanagar-4th-block",
+    "name": "Jayanagar 4th Block",
+    "category": "Neighbourhood",
+    "subcategory": "Commercial block within a residential locality",
+    "latitude": 12.9266,
+    "longitude": 77.5835,
+    "elevationM": 920,
+    "description": "Jayanagar 4th Block is the principal commercial block of Jayanagar, centred on the Jayanagar Shopping Complex and its surrounding street market. It serves as the shopping district for the whole of south Bengaluru, with clothing, footwear, bags, jewellery and food stalls strung along the main cross. The Green Line Jayanagar metro station serves the 4th and 7th Blocks.",
+    "history": "The block was laid out with the rest of Jayanagar when the neighbourhood was planned in 1948, but became the district's commercial centre with the opening of the Jayanagar BDA Shopping Complex in 1976, which contained the Puttanna Kanagal theatre. A fire in 2008 damaged the complex; redevelopment beginning around 2011-12, at a cost of roughly 193 crore rupees, included demolishing the theatre. The 3rd and 4th Blocks remain the two principally commercial blocks of the locality, while the other blocks are residential.",
+    "facts": [
+      "The Jayanagar BDA Shopping Complex opened in 1976 with the Puttanna Kanagal theatre inside.",
+      "A fire in 2008 damaged the shopping complex, and redevelopment beginning around 2011-12 cost roughly 193 crore rupees and included demolishing the theatre.",
+      "Jayanagar's 3rd and 4th Blocks are the principally commercial ones, with the remaining blocks largely residential.",
+      "The Jayanagar metro station on the elevated Green Line serves the 4th and 7th Blocks.",
+      "The OSM boundary relation for Jayanagar 4th Block encloses about 1000 m by 610 m.",
+      "The block is within walking distance of the Jayanagar BDA complex and forms part of the Jayanagar cluster of ten numbered blocks."
+    ],
+    "architecture": {
+      "style": "1970s low-rise commercial complex with mid-rise market frontage",
+      "yearBuilt": 1976,
+      "architect": null,
+      "materials": "RCC frames with mosaic and tiled cladding, later glass and metal shopfronts",
+      "keyFeatures": [
+        "Low-rise, flat-roofed BDA shopping complex with a long colonnaded facade",
+        "Deep covered walkways running the length of the market street",
+        "Narrow three- to four-storey shophouse blocks with awnings",
+        "Stacks of promotional signage and cloth banners on upper facades",
+        "Open-front clothing stalls under retractable awnings",
+        "Flower and fruit carts at the junctions with the main cross",
+        "Street trees in pits between the shop blocks",
+        "The elevated metro viaduct and station box visible at the block's northern edge"
+      ],
+      "footprintHint": "Approximately 1000 m by 610 m for the mapped 4th Block boundary; the shopping complex itself is roughly 150 m x 60 m",
+      "silhouette": "A low, flat-roofed market wall of 3-4 storey shophouses with one broader shopping-complex mass and the metro viaduct crossing above."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.58081,12.93082],[77.58606,12.93076],[77.58606,12.92878],[77.58614,12.92846],[77.58634,12.92816],[77.58637,12.92747],[77.58619,12.92681],[77.58593,12.92630],[77.58586,12.92187],[77.58093,12.92193],[77.58085,12.92494],[77.58083,12.92794],[77.58081,12.93082]]
+    },
+    "priority": 3,
+    "modelHeightM": 15,
+    "modelFootprintM": { "width": 1000, "depth": 610 },
+    "sources": [
+      { "title": "Jayanagar, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Jayanagar,_Bengaluru" },
+      { "title": "Nominatim search: Jayanagar 4th Block, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Jayanagar+4th+Block%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relation 17252542 (Jayanagar 4th Block boundary)", "url": "https://api.openstreetmap.org/api/0.6/relation/17252542/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "gandhi-bazaar",
+    "name": "Gandhi Bazaar",
+    "category": "Neighbourhood",
+    "subcategory": "Street market",
+    "latitude": 12.9458,
+    "longitude": 77.5707,
+    "elevationM": 920,
+    "description": "Gandhi Bazaar is a traditional street market midway along DVG Road in Basavanagudi, and one of Bengaluru's oldest trading areas. It is known for flower, condiment, fruit, vegetable and cloth stalls and for its old eating houses, and it swells with crowds at festivals when shoppers buy puja items. The Kannada writer Masti Venkatesha Iyengar lived here.",
+    "history": "Gandhi Bazaar sits in the heart of Basavanagudi, the residential quarter laid out in the 1880s by the K. Seshadri Iyer committee alongside Malleswaram. DVG Road, which runs through the bazaar, forms Basavanagudi's commercial centre and contains some of the city's oldest business outlets, several dating back to the 1920s and 1930s. The bazaar's character as a conservative, traditional market quarter was reinforced by the presence of long-standing residents such as Masti Venkatesha Iyengar, and by the century-old vegetarian restaurant Vidyarthi Bhavan, which opened in 1943 nearby.",
+    "facts": [
+      "Gandhi Bazaar lies in Basavanagudi, midway along DVG Road, and is described as one of Bengaluru's oldest areas and a traditional, conservative one.",
+      "The Kannada writer Masti Venkatesha Iyengar lived in the bazaar.",
+      "Stalls sell fresh flowers, condiments, fruit, vegetables and cloth, alongside numerous restaurants.",
+      "The bazaar generally operates from 6 a.m. to 9 p.m., with larger crowds during festivals when shoppers buy puja items.",
+      "DVG Road forms Basavanagudi's commercial centre and contains some of the city's oldest business outlets, several dating to the 1920s and 1930s.",
+      "The Vidyarthi Bhavan restaurant, in the same neighbourhood, was established in 1943."
+    ],
+    "architecture": {
+      "style": "Traditional market lane with colonial-era commercial frontage",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Timber and masonry shophouses, corrugated awnings, later RCC with tiled facades",
+      "keyFeatures": [
+        "Narrow bazaar lane with awninged flower and vegetable stalls on both sides",
+        "Two-storey colonial shop-houses with shuttered upper windows",
+        "Canopied pushcart trading and brass weigh-scales at the stall fronts",
+        "Bundles of flowers, chillies and condiments stacked along the kerb",
+        "Continuous cloth and saree shops with hanging displays",
+        "Temple facades and small shrines at the lane junctions",
+        "Dense two-wheeler and cycle parking in the side lanes",
+        "Restaurant signage, steam and open kitchen fronts at street level"
+      ],
+      "footprintHint": "Approximately 500 m by 380 m for the mapped extent of Gandhi Bazaar Main Road and its adjoining bazaar frontage",
+      "silhouette": "A low, narrow two-storey market street with canopies at every stall, ending in temple gopuras rather than towers."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.56826,12.94762],[77.57128,12.94540],[77.57288,12.94423],[77.57137,12.94534]]
+    },
+    "priority": 3,
+    "modelHeightM": 12,
+    "modelFootprintM": { "width": 500, "depth": 380 },
+    "sources": [
+      { "title": "Gandhi Bazaar - Wikipedia", "url": "https://en.wikipedia.org/wiki/Gandhi_Bazaar" },
+      { "title": "Basavanagudi - Wikipedia", "url": "https://en.wikipedia.org/wiki/Basavanagudi" },
+      { "title": "Nominatim search: Gandhi Bazaar, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Gandhi+Bazaar%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" }
+    ],
+    "images": []
+  },
+  {
+    "id": "russell-market",
+    "name": "Russell Market",
+    "category": "Neighbourhood",
+    "subcategory": "Shopping market",
+    "latitude": 12.985,
+    "longitude": 77.6059,
+    "elevationM": 900,
+    "description": "Russell Market is a shopping market in the Bangalore Cantonment area of central Bengaluru, named after the municipal commissioner of the period. Built by the British and inaugurated in 1933, it is the city's best-known formal market building, with a predecessor market documented in photographs of the 1880s. Its location puts it between the Church Street and Commercial Street retail district and the government quarter around Cubbon Park.",
+    "history": "The market was built in 1927 by the British and inaugurated in 1933 by Ismail Sait, and named for the then municipal commissioner T. B. Russell. An archival photograph shows the predecessor market in the 1880s, with the spire of St. John's Church visible behind it. The market's covered blocks survived into the modern era but burned on 26 February 2012, when a fire gutted 123 shops and caused losses of 89.2 lakh rupees; the initial investigation attributed the blaze to a short circuit.",
+    "facts": [
+      "The market was built in 1927 by the British and inaugurated in 1933 by Ismail Sait.",
+      "It was named for the then municipal commissioner T. B. Russell.",
+      "An 1880s photograph shows the predecessor market with the spire of St. John's Church in the background.",
+      "A fire on 26 February 2012 gutted 123 shops, causing losses of 89.2 lakh rupees; initial investigations attributed it to a short circuit.",
+      "It sits in the Bangalore Cantonment area of the central business district.",
+      "The OpenStreetMap building footprint for Russel Market covers roughly 85 m by 83 m."
+    ],
+    "architecture": {
+      "style": "Early-20th-century colonial market hall, later rebuilt in modern concrete",
+      "yearBuilt": 1927,
+      "architect": null,
+      "materials": "Reinforced concrete frames with masonry infill, later metal sheet roofing",
+      "keyFeatures": [
+        "Rectangular market hall of connected open bays",
+        "Two-storey perimeter block with a colonnaded arcade",
+        "Corrugated-metal pitched roofs over the interior bays",
+        "Shuttered perimeter openings facing AM Road",
+        "Open forecourt used for loading and vendor stalls",
+        "Modern concrete infill blocks and signboards added after the 2012 fire",
+        "Pedestrian traffic spilling out into the surrounding roads",
+        "Neighbouring St. John's Church spire closing the skyline view"
+      ],
+      "footprintHint": "Approximately 85 m by 83 m for the mapped market building footprint",
+      "silhouette": "A low, wide, single- to two-storey market hall with a shallow pitched metal roof, rising only at the perimeter arcade."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.60566,12.98543],[77.60625,12.98527],[77.60607,12.98468],[77.60548,12.98486],[77.60557,12.98513],[77.60566,12.98543]]
+    },
+    "priority": 3,
+    "modelHeightM": 12,
+    "modelFootprintM": { "width": 85, "depth": 83 },
+    "sources": [
+      { "title": "Russell Market - Wikipedia", "url": "https://en.wikipedia.org/wiki/Russell_Market" },
+      { "title": "Photon geocoder: Russell Market, Bengaluru", "url": "https://photon.komoot.io/api/?q=Russell%20Market%2C%20Bengaluru&limit=15" }
+    ],
+    "images": []
+  },
+  {
+    "id": "chickpet",
+    "name": "Chickpet (Chickpete)",
+    "kannadaName": "ಚಿಕ್ಕಪೇಟೆ, ಬೆಂಗಳೂರು",
+    "category": "Neighbourhood",
+    "subcategory": "Wholesale market district",
+    "latitude": 12.9704,
+    "longitude": 77.5783,
+    "elevationM": 900,
+    "description": "Chickpet is one of Bengaluru's oldest commercial districts and the centre of the city's wholesale cloth trade. It occupies the eastern part of the old Pete, where the historic east-west axis of Chikkapet Street meets the north-south axis of Doddapet Street - today Avenue Road - at Doddapete Square. It has one of the smallest arterial roads in the entire city and is noted for the density of its marigold and jasmine garland sellers.",
+    "history": "Chickpet's roots go back to the 16th century. It is said that Shivaji spent his early childhood in Bengaluru with his father Shahaji Raje Bhosale, and that Shivaji's palace stood in the area now known as Chikkapete. Chickpet formed part of the Pete that Kempegowda I founded in 1537 around a mud fort, its principal east-west axis being Chikkapet Street. The district's commercial identity is textile: within the Pete it was historically associated with textiles, and the broader Pete traded in flowers, grain, bangles, oil, paper, stone and copper vessels by quarter. Chickpet retains the second largest Marwadi community in South India after Sowcarpet in Chennai.",
+    "facts": [
+      "Chickpet's roots go back to the 16th century; Shivaji is said to have spent his childhood in Bengaluru with his father Shahaji Raje Bhosale, and his palace stood in the area now called Chikkapete.",
+      "It is one of the city's oldest areas and is famous for its cloth shops and wholesale businesses.",
+      "Chikkapet Street was the Pete's principal east-west axis; its junction with the north-south Doddapet Street became Doddapete Square, associated with today's Avenue Road.",
+      "The locality reportedly contains one of the smallest roads to serve as an arterial road in the entire city.",
+      "Chickpet has the second largest Marwadi community in South India, after Sowcarpet in Chennai.",
+      "PIN code 560053; vehicle registration code KA 05."
+    ],
+    "architecture": {
+      "style": "Old Pete wholesale trading district with narrow shophouses and temple frontages",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Timber-framed and masonry shophouses with tiled roofs, later RCC and corrugated metal",
+      "keyFeatures": [
+        "Narrow 4-6 m lanes packed with cloth and garment shops",
+        "Two-storey shophouses with open timber balconies and shutters",
+        "Marigold and jasmine garland sellers with open fronts onto the street",
+        "Temple gopuras and shrine facades squeezed between shop blocks",
+        "Continuous awnings and cloth banners stretched over the carriageway",
+        "Handcarts and tempo goods vehicles loading in the lanes",
+        "Two-wheeler parking pressed against both kerbs",
+        "Peepul and rain trees breaking up the roofline"
+      ],
+      "footprintHint": "Approximately 1180 m by 870 m for the mapped Chickpete administrative area; individual shophouses are 3-5 m wide",
+      "silhouette": "A dense, low, two-storey shophouse roofscape with occasional temple gopuras and shopfront canopies; no building over about 12 m."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.57260,12.97301],[77.57304,12.97288],[77.57343,12.97276],[77.57351,12.97272],[77.57379,12.97261],[77.57446,12.97235],[77.57510,12.97356],[77.57525,12.97360],[77.57534,12.97379],[77.57540,12.97400],[77.57686,12.97352],[77.57667,12.97303],[77.57662,12.97306],[77.57644,12.97270],[77.57706,12.97249],[77.57726,12.97279],[77.57754,12.97328],[77.57790,12.97375],[77.57822,12.97432],[77.57891,12.97403],[77.57942,12.97379],[77.58012,12.97347],[77.58021,12.97343],[77.58109,12.97307],[77.58149,12.97285],[77.58151,12.97284],[77.58167,12.97275],[77.58184,12.97262],[77.58212,12.97243],[77.58221,12.97236],[77.58231,12.97229],[77.58267,12.97203],[77.58272,12.97199],[77.58287,12.97184],[77.58284,12.97131],[77.58284,12.97083],[77.58284,12.97080],[77.58284,12.97067],[77.58284,12.97039],[77.58279,12.97032],[77.58298,12.97013],[77.58266,12.96928],[77.58260,12.96916],[77.58261,12.96915],[77.58244,12.96871],[77.58243,12.96868],[77.58242,12.96863],[77.58241,12.96860],[77.58237,12.96850],[77.58237,12.96849],[77.58237,12.96848],[77.58236,12.96845],[77.58235,12.96842],[77.58234,12.96851],[77.58234,12.96840],[77.58224,12.96820],[77.58220,12.96812],[77.58209,12.96790],[77.58204,12.96783],[77.58196,12.96771],[77.58196,12.96770],[77.58190,12.96763],[77.58185,12.96752],[77.58182,12.96748],[77.58182,12.96747],[77.58180,12.96744],[77.58135,12.96661],[77.58130,12.96651],[77.58127,12.96652],[77.58106,12.96665],[77.58091,12.96675],[77.57868,12.96798],[77.57868,12.96798],[77.57867,12.96796],[77.57854,12.96771],[77.57847,12.96756],[77.57846,12.96754],[77.57838,12.96736],[77.57821,12.96704],[77.57806,12.96674],[77.57804,12.96674],[77.57802,12.96675],[77.57798,12.96677],[77.57767,12.96691],[77.57738,12.96704],[77.57726,12.96709],[77.57726,12.96709],[77.57707,12.96718],[77.57686,12.96729],[77.57669,12.96738],[77.57651,12.96748],[77.57616,12.96767],[77.57616,12.96767],[77.57616,12.96767],[77.57587,12.96782],[77.57580,12.96786],[77.57564,12.96794],[77.57561,12.96795],[77.57561,12.96795],[77.57544,12.96804],[77.57544,12.96804],[77.57488,12.96835],[77.57488,12.96835],[77.57543,12.96936],[77.57446,12.96974],[77.57452,12.97004],[77.57421,12.97020],[77.57364,12.97043],[77.57351,12.97012],[77.57345,12.97005],[77.57331,12.97010],[77.57342,12.97053],[77.57349,12.97067],[77.57325,12.97075],[77.57288,12.97088],[77.57300,12.97128],[77.57312,12.97148],[77.57320,12.97163],[77.57230,12.97251],[77.57245,12.97274],[77.57258,12.97297],[77.57260,12.97301]]
+    },
+    "priority": 2,
+    "modelHeightM": 18,
+    "modelFootprintM": { "width": 1180, "depth": 870 },
+    "sources": [
+      { "title": "Chickpet - Wikipedia", "url": "https://en.wikipedia.org/wiki/Chickpet" },
+      { "title": "Bengaluru Pete - Wikipedia", "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete" },
+      { "title": "Nominatim search: Chickpet, Bengaluru, Karnataka, India", "url": "https://nominatim.openstreetmap.org/search?q=Chickpet%2C+Bengaluru%2C+Karnataka%2C+India&format=json&limit=10&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relation 19883317 (Chickpete boundary)", "url": "https://api.openstreetmap.org/api/0.6/relation/19883317/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "kr-market",
+    "name": "KR Market (Krishnarajendra Market)",
+    "kannadaName": "ಕೆ. ಆರ್. ಮಾರ್ಕೆಟ್",
+    "category": "Neighbourhood",
+    "subcategory": "Wholesale market",
+    "latitude": 12.9636,
+    "longitude": 77.5775,
+    "elevationM": 900,
+    "description": "Krishnarajendra Market - also called City Market - is the largest wholesale market dealing with commodities in Bengaluru, sitting in the Kalasipalya area beside Tipu Sultan's Summer Palace where Mysore Road meets Krishnarajendra Road. Fruit and vegetable stalls occupy the basement and lower ground floor of the main building, with flowers and dry goods above. It is also known as one of the biggest flower markets in Asia.",
+    "history": "The market was established in 1928 on a site that had earlier been a water tank and an 18th-century battlefield during the Anglo-Mysore Wars, and it was named after Krishnarajendra Wodeyar, a former ruler of the princely state of Mysore. The area is associated with Asia's first electric streetlights: Bengaluru lit them in August 1905, and Wikipedia's article on the market records it as the first locality in the whole of Asia to get electricity. Two British-era buildings survive on the site, one at the front and another at the rear; between them a three-storey concrete structure was built during the 1990s.",
+    "facts": [
+      "The market was established in 1928 and named after Krishnarajendra Wodeyar, a former ruler of the princely state of Mysore.",
+      "Before the market, the site was reportedly a water tank and later an 18th-century battlefield during the Anglo-Mysore Wars.",
+      "It is described as the largest wholesale market dealing with commodities in Bangalore, and as one of the biggest flower markets in Asia.",
+      "Two British-era buildings survive, one at the front and another at the rear, with a three-storey concrete structure built between them in the 1990s.",
+      "The basement holds underground parking; above it are flower and vegetable stalls on the lower ground floor, dry goods on the upper ground floor, and tools and machine-tool accessories on the first floor.",
+      "Wikipedia records the market as the first locality in the whole of Asia to get electricity; Bengaluru lit Asia's first electric streetlights in August 1905."
+    ],
+    "architecture": {
+      "style": "British-era market halls with 1990s concrete multi-storey wholesale block",
+      "yearBuilt": 1928,
+      "architect": null,
+      "materials": "Load-bearing brick and stone, later reinforced concrete with mosaic cladding",
+      "keyFeatures": [
+        "Surviving British-era masonry market buildings at the front and rear of the site",
+        "Three-storey 1990s concrete block with a basement used for parking",
+        "Open colonnaded trading hall on the ground floor",
+        "Rows of shuttered produce stalls under the basement and lower ground floor",
+        "Deep ramped vehicle access to the underground parking",
+        "Stacks of flower crates, baskets and hand-pulled carts on the apron",
+        "Awnings and tarpaulins over the wholesale vegetable bays",
+        "Bus bays and flyover edges on the Krishnarajendra Road frontage"
+      ],
+      "footprintHint": "Approximately 200 m by 150 m for the market complex, bounded by the mapped K.R Market administrative area of roughly 1.5 km by 950 m",
+      "silhouette": "A blocky four-level concrete market building roughly 18-20 m tall, flanked by lower pitched-roof colonial halls."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.56482,12.96241],[77.56520,12.96252],[77.56521,12.96253],[77.56539,12.96258],[77.56557,12.96264],[77.56572,12.96268],[77.56582,12.96272],[77.56598,12.96277],[77.56599,12.96277],[77.56600,12.96277],[77.56610,12.96281],[77.56616,12.96282],[77.56618,12.96283],[77.56654,12.96296],[77.56663,12.96299],[77.56668,12.96301],[77.56670,12.96302],[77.56672,12.96303],[77.56679,12.96305],[77.56683,12.96306],[77.56695,12.96310],[77.56700,12.96312],[77.56713,12.96316],[77.56722,12.96320],[77.56725,12.96321],[77.56735,12.96326],[77.56736,12.96326],[77.56746,12.96330],[77.56746,12.96331],[77.56747,12.96332],[77.56760,12.96348],[77.56765,12.96350],[77.56789,12.96361],[77.56792,12.96362],[77.56793,12.96363],[77.56816,12.96373],[77.56822,12.96378],[77.56823,12.96380],[77.56828,12.96362],[77.56835,12.96364],[77.56848,12.96369],[77.56865,12.96375],[77.56935,12.96401],[77.56939,12.96403],[77.56945,12.96405],[77.56987,12.96416],[77.57003,12.96419],[77.57003,12.96426],[77.57004,12.96441],[77.57005,12.96459],[77.57006,12.96475],[77.57007,12.96489],[77.57007,12.96498],[77.57008,12.96511],[77.57008,12.96512],[77.57008,12.96513],[77.57008,12.96523],[77.57009,12.96539],[77.57010,12.96549],[77.57010,12.96556],[77.57010,12.96557],[77.57010,12.96560],[77.57010,12.96560],[77.57011,12.96578],[77.57012,12.96595],[77.57013,12.96615],[77.57013,12.96616],[77.57013,12.96620],[77.57013,12.96621],[77.57013,12.96625],[77.57014,12.96633],[77.57014,12.96636],[77.57014,12.96639],[77.57014,12.96639],[77.57014,12.96644],[77.57015,12.96646],[77.57015,12.96650],[77.57015,12.96653],[77.57015,12.96656],[77.57015,12.96659],[77.57015,12.96664],[77.57016,12.96671],[77.57016,12.96673],[77.57016,12.96675],[77.57017,12.96701],[77.57018,12.96707],[77.57018,12.96710],[77.57018,12.96719],[77.57018,12.96722],[77.57019,12.96738],[77.57019,12.96740],[77.57020,12.96750],[77.57020,12.96756],[77.57020,12.96759],[77.57021,12.96781],[77.57021,12.96783],[77.57022,12.96793],[77.57022,12.96796],[77.57025,12.96795],[77.57026,12.96795],[77.57027,12.96795],[77.57030,12.96795],[77.57033,12.96795],[77.57036,12.96794],[77.57045,12.96789],[77.57045,12.96789],[77.57052,12.96786],[77.57052,12.96786],[77.57055,12.96785],[77.57068,12.96779],[77.57074,12.96776],[77.57074,12.96776],[77.57097,12.96767],[77.57109,12.96761],[77.57112,12.96760],[77.57115,12.96758],[77.57122,12.96755],[77.57122,12.96755],[77.57128,12.96753],[77.57128,12.96753],[77.57129,12.96752],[77.57141,12.96747],[77.57141,12.96747],[77.57144,12.96746],[77.57144,12.96746],[77.57149,12.96744],[77.57154,12.96741],[77.57154,12.96741],[77.57159,12.96738],[77.57175,12.96729],[77.57179,12.96726],[77.57183,12.96724],[77.57183,12.96724],[77.57196,12.96719],[77.57199,12.96717],[77.57199,12.96717],[77.57210,12.96713],[77.57210,12.96713],[77.57222,12.96707],[77.57247,12.96699],[77.57264,12.96694],[77.57266,12.96693],[77.57270,12.96692],[77.57271,12.96692],[77.57271,12.96692],[77.57275,12.96691],[77.57275,12.96691],[77.57278,12.96690],[77.57289,12.96687],[77.57308,12.96681],[77.57308,12.96681],[77.57318,12.96677],[77.57318,12.96677],[77.57319,12.96677],[77.57319,12.96677],[77.57326,12.96674],[77.57328,12.96673],[77.57330,12.96671],[77.57335,12.96667],[77.57335,12.96667],[77.57336,12.96666],[77.57339,12.96662],[77.57339,12.96662],[77.57341,12.96661],[77.57341,12.96661],[77.57341,12.96661],[77.57345,12.96658],[77.57354,12.96654],[77.57354,12.96654],[77.57357,12.96653],[77.57357,12.96653],[77.57361,12.96652],[77.57367,12.96650],[77.57369,12.96648],[77.57374,12.96644],[77.57374,12.96644],[77.57386,12.96639],[77.57387,12.96639],[77.57387,12.96639],[77.57387,12.96639],[77.57387,12.96639],[77.57387,12.96640],[77.57395,12.96657],[77.57395,12.96657],[77.57396,12.96660],[77.57397,12.96662],[77.57405,12.96681],[77.57405,12.96681],[77.57406,12.96683],[77.57406,12.96683],[77.57410,12.96690],[77.57413,12.96696],[77.57415,12.96700],[77.57416,12.96701],[77.57416,12.96702],[77.57416,12.96702],[77.57419,12.96707],[77.57419,12.96707],[77.57421,12.96711],[77.57421,12.96711],[77.57425,12.96718],[77.57432,12.96731],[77.57438,12.96743],[77.57439,12.96744],[77.57442,12.96750],[77.57442,12.96750],[77.57445,12.96756],[77.57450,12.96764],[77.57458,12.96780],[77.57458,12.96780],[77.57466,12.96794],[77.57466,12.96794],[77.57466,12.96794],[77.57466,12.96795],[77.57467,12.96796],[77.57467,12.96796],[77.57473,12.96808],[77.57473,12.96808],[77.57479,12.96819],[77.57480,12.96821],[77.57485,12.96829],[77.57485,12.96829],[77.57485,12.96830],[77.57485,12.96830],[77.57487,12.96835],[77.57488,12.96835],[77.57488,12.96835],[77.57544,12.96804],[77.57544,12.96804],[77.57561,12.96795],[77.57561,12.96795],[77.57564,12.96794],[77.57580,12.96786],[77.57587,12.96782],[77.57616,12.96767],[77.57616,12.96767],[77.57616,12.96767],[77.57651,12.96748],[77.57669,12.96738],[77.57686,12.96729],[77.57707,12.96718],[77.57726,12.96709],[77.57726,12.96709],[77.57738,12.96704],[77.57767,12.96691],[77.57798,12.96677],[77.57802,12.96675],[77.57804,12.96674],[77.57806,12.96674],[77.57798,12.96658],[77.57782,12.96626],[77.57751,12.96560],[77.57737,12.96525],[77.57737,12.96525],[77.57733,12.96516],[77.57731,12.96514],[77.57709,12.96467],[77.57700,12.96447],[77.57693,12.96433],[77.57685,12.96416],[77.57634,12.96286],[77.57603,12.96226],[77.57565,12.96183],[77.57508,12.96108],[77.57450,12.95974],[77.57451,12.95975],[77.57451,12.95977],[77.57414,12.95988],[77.57329,12.96014],[77.57322,12.96016],[77.57317,12.96018],[77.57293,12.96025],[77.57181,12.96060],[77.57181,12.96059],[77.57174,12.96056],[77.57174,12.96056],[77.57173,12.96056],[77.57135,12.96054],[77.57133,12.96054],[77.57122,12.96054],[77.57111,12.96054],[77.57106,12.96054],[77.57090,12.96054],[77.57075,12.96054],[77.57074,12.96054],[77.57066,12.96054],[77.57061,12.96054],[77.57061,12.96054],[77.57020,12.96053],[77.57013,12.96052],[77.57010,12.96052],[77.57003,12.96052],[77.56961,12.96051],[77.56944,12.96050],[77.56944,12.96050],[77.56944,12.96050],[77.56921,12.96050],[77.56899,12.96049],[77.56859,12.96047],[77.56841,12.96047],[77.56814,12.96046],[77.56784,12.96045],[77.56778,12.96045],[77.56756,12.96045],[77.56727,12.96044],[77.56689,12.96043],[77.56686,12.96043],[77.56644,12.96042],[77.56639,12.96042],[77.56605,12.96041],[77.56583,12.96040],[77.56569,12.96040],[77.56549,12.96039],[77.56529,12.96039],[77.56519,12.96039],[77.56491,12.96039],[77.56491,12.96040],[77.56491,12.96040],[77.56491,12.96042],[77.56491,12.96042],[77.56491,12.96046],[77.56489,12.96075],[77.56488,12.96148],[77.56486,12.96148],[77.56483,12.96223],[77.56482,12.96241]]
+    },
+    "priority": 2,
+    "modelHeightM": 20,
+    "modelFootprintM": { "width": 200, "depth": 150 },
+    "sources": [
+      { "title": "K. R. Market - Wikipedia", "url": "https://en.wikipedia.org/wiki/KR_Market" },
+      { "title": "When Bengaluru lit up in 1905 and made history - Times of India", "url": "https://timesofindia.indiatimes.com/city/bengaluru/when-bengaluru-lit-up-in-1905-and-made-history/articleshow/59933606.cms" },
+      { "title": "Nominatim search: KR Market, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=KR+Market%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" },
+      { "title": "OpenStreetMap API relation 19883415 (K.R Market boundary)", "url": "https://api.openstreetmap.org/api/0.6/relation/19883415/full" }
+    ],
+    "images": []
+  },
+  {
+    "id": "avenue-road",
+    "name": "Avenue Road (Doddaneedu Street)",
+    "category": "Neighbourhood",
+    "subcategory": "Wholesale cloth and textile market",
+    "latitude": 12.9683,
+    "longitude": 77.5788,
+    "elevationM": 900,
+    "description": "Avenue Road is a busy shopping and commercial street in Chickpet, central Bengaluru, linking Mysore Road with K. G. Road near Majestic bus station and Bangalore City railway station. Traditionally associated with used books, garments and textiles, jewellery and pawn brokering, it is the wholesale cloth centre of the old city and the main north-south axis of the Pete, running on toward Krishnarajendra Road.",
+    "history": "The street was earlier known as Doddapete - the name Doddaneedu is the Kannada form of the same word - and its name literally means 'Road Road'. It formed the Pete's principal north-south commercial axis, running from Mysore Road to Krishnarajendra Road and meeting the east-west Chikkapet Street at Doddapete Square; the Pete itself was founded in 1537 by Kempegowda I around a mud fort, with roads laid out to the cardinal directions and gates at their ends. Two illustrated views dated 1890 show the Canarese Chapel and the 'Main Street of the Pettah'. Rice Memorial Church still stands on the road, on the former grounds of the London Mission Canarese Chapel, established in 1834 by William Campbell, and commemorates Rev. Benjamin Holt Rice.",
+    "facts": [
+      "The road was earlier known as Doddapete, and its name literally means 'Road Road'.",
+      "It lies in Chickpet, linking Mysore Road and K. G. Road, near Majestic bus station and Bangalore City railway station.",
+      "It is traditionally associated with used books, garments and textiles, jewellery and pawn brokering, and forms the Pete's principal north-south commercial axis running on to Krishnarajendra Road.",
+      "Rice Memorial Church stands on Avenue Road, on the former grounds of the London Mission Canarese Chapel established in 1834 by William Campbell, and commemorates Rev. Benjamin Holt Rice, a London Missionary Society missionary and Kannada scholar.",
+      "Two illustrated views dated 1890 show the Canarese Chapel and the 'Main Street of the Pettah'.",
+      "A Hanuman temple stands at the road's entrance."
+    ],
+    "architecture": {
+      "style": "Old Pete trading street with colonial-era frontage and wholesale cloth sheds",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Timber and masonry shophouses with tiled roofs, later RCC with corrugated awnings",
+      "keyFeatures": [
+        "Long straight carriageway lined with wholesale cloth and garment shops",
+        "Two- and three-storey shophouses with recessed shop fronts and timber awnings",
+        "Folded cloth bolts stacked and hung along the shop frontages",
+        "Second-hand bookshops with open racks spilling onto the pavement",
+        "Rice Memorial Church with a pitched roof and a classical gabled facade",
+        "A Hanuman temple gopura marking the road entrance",
+        "Loaded handcarts, tempos and lorries loading along the kerb",
+        "Dense overhead signage and electrical wiring above the carriageway"
+      ],
+      "footprintHint": "Approximately 970 m long by 450 m wide for the mapped extent of the two Avenue Road carriageway segments",
+      "silhouette": "A straight canyon of two- to three-storey shophouses with a constant low roofline, broken only by the church gable and the temple gopura at the entrance."
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[77.57696,12.96434],[77.57965,12.96970],[77.58100,12.97248],[77.58103,12.97278],[77.58101,12.97307],[77.57800,12.96674],[77.57779,12.96628],[77.57708,12.96468]]
+    },
+    "priority": 2,
+    "modelHeightM": 18,
+    "modelFootprintM": { "width": 970, "depth": 450 },
+    "sources": [
+      { "title": "Avenue Road, Bengaluru - Wikipedia", "url": "https://en.wikipedia.org/wiki/Avenue_Road,_Bengaluru" },
+      { "title": "Bengaluru Pete - Wikipedia", "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete" },
+      { "title": "Nominatim search: Avenue Road, Bengaluru, India", "url": "https://nominatim.openstreetmap.org/search?q=Avenue+Road%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1" }
+    ],
+    "images": []
+  }
+]

@@ -1,0 +1,597 @@
+[
+  {
+    "id": "lalbagh-botanical-garden",
+    "name": "Lalbagh Botanical Garden",
+    "kannadaName": "ಲಾಲ್‌ಬಾಗ್",
+    "category": "Park",
+    "subcategory": "Botanical garden and public park",
+    "latitude": 12.948857,
+    "longitude": 77.5869093,
+    "elevationM": 920,
+    "description": "Bengaluru's best-known botanical garden, laid out on Mughal lines in the 1760s in the Mavalli area of south Bengaluru and organised around a lake fed by a chain of tanks. Its centrepiece is the 1889 cast-iron Glass House, set among lawns, topiary, rose and lotus gardens, and the 3,000-million-year-old Lalbagh Rock with a Kempe Gowda II watchtower above it.",
+    "history": "Hyder Ali commissioned the garden in 1760 on the lines of the Mughal gardens at Sira, and his son Tipu Sultan completed it; the early gardens were managed by Mohammed Ali and his son Abdul Khader. After the British conquest of Mysore in 1799 the garden passed to Major Gilbert Waugh, then to the Mysore government in 1814, with Nathaniel Wallich supervising from 24 April 1819 and charge moving to the Mysore Commissioner in 1831. Hugh Cleghorn, appointed botanical advisor in 1855, recommended a European superintendent, and in August 1856 Lalbagh was made the Government Botanical Garden. William New arrived from Kew on 10 April 1858, followed by John Cameron, who directed the Glass House works, and after Cameron's retirement in 1908 by Gustav Herman Krumbiegel, after whom Krumbiegal Road is named.\n\nThe site expanded in stages: 45 acres in 1874, 30 acres added on the eastern side in 1889, 13 acres in 1891 including the rock with the Kempegowda tower, and 94 acres more in 1894, bringing the total to 188 acres. The Glass House foundation stone was laid on 30 November 1889 by Prince Albert Victor and the structure was extended in 1935 with steel from the Mysore Iron and Steel Company at Bhadravathi. Lalbagh, together with Cubbon Park, is protected by the Karnataka Government Park (Preservation) Act, 1975.",
+    "facts": [
+      "Founded by Hyder Ali in 1760 on Mughal garden lines and completed by Tipu Sultan; the garden now covers 240 acres (0.97 km2).",
+      "Made the Government Botanical Garden in August 1856 on the advice of Hugh Cleghorn; the first Kew-trained superintendent, William New, arrived on 10 April 1858.",
+      "The Glass House, modelled on London's Crystal Palace, had its foundation stone laid on 30 November 1889 by Prince Albert Victor, was built with cast iron from the Saracen Foundry in Glasgow, and was extended in 1935 with steel from Mysore Iron and Steel Company at Bhadravathi.",
+      "A 15 ft high pigeon house or dovecote for 200 birds was built in 1893 south of the Glass House, and a central bandstand was added in 1890-91.",
+      "The Lalbagh Rock is 3,000-million-year-old peninsular gneiss designated a Geological Survey of India geological monument, with one of the four watchtowers of Kempe Gowda II above it.",
+      "The garden holds over 1,000 plant species with many trees more than a hundred years old, and stages flower shows in the week of 26 January and 15 August; the August 2022 Independence Day show was attended by 8.34 lakh people."
+    ],
+    "architecture": {
+      "style": "Mughal charbagh-derived axial layout with a Victorian cast-iron conservatory",
+      "yearBuilt": "1760 (garden); 1889-1890 (Glass House); extended 1935",
+      "architect": "Hyder Ali (originator); John Cameron (Glass House and botanical works)",
+      "materials": "Dressed stone and brick perimeter walls, cast iron and steel glasshouse framing, paved paths, lawns and mature tropical tree canopy",
+      "keyFeatures": [
+        "Cast-iron Crystal Palace-style Glass House",
+        "Lalbagh Lake with stone bund",
+        "Lalbagh Rock with Kempe Gowda II watchtower",
+        "Topiary, Rose and Lotus gardens",
+        "Dovecote for 200 birds built 1893",
+        "Central bandstand added 1890-91",
+        "Bonsai garden added 2002",
+        "Four gated entrances"
+      ],
+      "footprintHint": "Irregular walled site of about 97 ha (240 acres) in south Bengaluru; the modelled core of lake, Glass House lawn and rock measures roughly 1,420 m east-west by 1,120 m north-south",
+      "silhouette": "Low, flat canopy of mature trees punctuated by the arched glazed roof of the Glass House and the domed Kempe Gowda tower on the rock"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.580131,12.947931],[77.580154,12.946717],[77.58023,12.94672],[77.580231,12.946262],[77.580326,12.946261],[77.580321,12.945915],[77.580189,12.945856],[77.580183,12.943913],[77.580298,12.943811],[77.582378,12.943813],[77.584872,12.943906],[77.585054,12.944051],[77.585141,12.944446],[77.585565,12.945296],[77.586203,12.945766],[77.587714,12.946215],[77.587768,12.94635],[77.587888,12.946405],[77.588053,12.946299],[77.589688,12.946395],[77.590372,12.946981],[77.590821,12.947474],[77.592436,12.948266],[77.593228,12.948985],[77.591548,12.949747],[77.591589,12.95007],[77.590791,12.950322],[77.591028,12.951288],[77.590872,12.951344],[77.590436,12.951211],[77.590294,12.951284],[77.590182,12.951567],[77.590088,12.951635],[77.587115,12.952644],[77.586895,12.952758],[77.585802,12.953731],[77.585037,12.953975],[77.584278,12.953934],[77.584092,12.953841],[77.583331,12.952386],[77.582035,12.949539],[77.580459,12.948729],[77.580341,12.948522],[77.580357,12.948212],[77.580178,12.948056],[77.580131,12.947931]]]
+    },
+    "priority": 1,
+    "modelHeightM": 20,
+    "modelFootprintM": {
+      "width": 1421,
+      "depth": 1124
+    },
+    "sources": [
+      {
+        "title": "Lal Bagh - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Lal_Bagh"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Lalbagh Botanical Gardens, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Lalbagh+Botanical+Gardens%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q200711 (Lalbagh Botanical Garden) - Kannada label",
+        "url": "https://www.wikidata.org/wiki/Q200711"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "cubbon-park",
+    "name": "Cubbon Park (Sri Chamarajendra Park)",
+    "kannadaName": "ಕಬ್ಬನ್ ಪಾರ್ಕ್",
+    "category": "Park",
+    "subcategory": "Central urban park and museum precinct",
+    "latitude": 12.9742535,
+    "longitude": 77.5921906,
+    "elevationM": 920,
+    "description": "The central green lung of the Bengaluru CBD, officially Sri Chamarajendra Park, created in 1870 and now reported at 300 acres (1.2 km2). It weaves lawns and natural rock outcrops together with the Karnataka High Court, the Government Museum, the Seshadri Iyer Memorial Hall and its central library, a bandstand, a lotus pond and avenues of araucaria, ceal and gulmohar.",
+    "history": "The park was created in 1870 and was first named Meade's Park after Sir John Meade, acting commissioner of Mysore; it was renamed Cubbon Park in 1873 after the longest-serving commissioner, Sir Mark Cubbon, and in 1927 renamed Sri Chamarajendra Park to commemorate the Silver Jubilee of Krishnaraja Wodeyar's rule. The original extent was 100 acres and the area is now reported at 300 acres (1.2 km2).\n\nThe buildings on the park's edges were laid out alongside it: the Attara Kacheri (1864), now the Karnataka High Court, the Government Museum (1876) and the Seshadri Iyer Memorial Hall (1915), which houses the central library. The equestrian statue of Sir Mark Cubbon was garlanded for the first time since independence on 23 August 2013, and on 28 June 2020 it was moved from the High Court premises into the park grounds.",
+    "facts": [
+      "Created in 1870 as Meade's Park after Sir John Meade, renamed Cubbon Park in 1873 after Sir Mark Cubbon, and renamed Sri Chamarajendra Park in 1927.",
+      "The original area was 100 acres; the park's area is now reported to be 300 acres (1.2 km2).",
+      "Statues in the park include Queen Victoria (1906), King Edward VII (1919), Sir K. Sheshadri Iyer (1913) and Sri Chamarajendra Wodeyar (1927); the equestrian statue of Sir Mark Cubbon was moved into the park from the Karnataka High Court on 28 June 2020.",
+      "About 6,000 plants and trees of 68 genera and 96 species are recorded in the park.",
+      "The Seshadri Iyer Memorial Hall, built in 1915 in a classic European style with Tuscan and Corinthian columns, houses the central library with about 265,000 books; the library won the Raja Rammohan Roy award in 2000.",
+      "The park hosts the Bengaluru Aquarium, stated to be the second largest in India, and a toy train, the Putani Express, running 0.75 miles (1.2 km); roads around the park are closed to traffic from 5:00 to 8:00 a.m. for morning walkers."
+    ],
+    "architecture": {
+      "style": "English landscape-garden style with classical revival pavilions",
+      "yearBuilt": "1870 (as Meade's Park)",
+      "architect": "Sir John Meade (laid out, 1870)",
+      "materials": "Granite and dressed-stone paths and kerbs, iron railings, clipped lawns, mature native and exotic tree canopy",
+      "keyFeatures": [
+        "Natural granite rock outcrops set among lawns",
+        "Massive bamboo thickets and tree groves",
+        "Lotus pond and bandstand",
+        "Avenues of araucaria, ceal and gulmohar",
+        "Seshadri Iyer Memorial Hall (1915) with Tuscan and Corinthian columns",
+        "Equestrian statue of Sir Mark Cubbon, moved in 2020",
+        "Attara Kacheri and the Government Museum on the park edge",
+        "Ringwood Circle and the 1.2 km toy train circuit"
+      ],
+      "footprintHint": "Irregular elongated park block about 1,190 m east-west by 1,370 m north-south in the middle of the CBD, with the High Court and Government Museum forming its south-western edge",
+      "silhouette": "Broad, low tree canopy over open lawns, punctuated by the red gabled Seshadri Iyer Memorial Hall and the monument group"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.587927,12.972647],[77.588042,12.971441],[77.588846,12.971196],[77.588557,12.970005],[77.588469,12.967962],[77.588736,12.968255],[77.589055,12.968125],[77.591536,12.970212],[77.590834,12.970681],[77.590929,12.970906],[77.591223,12.971098],[77.591503,12.971017],[77.591832,12.970465],[77.593653,12.972048],[77.593721,12.972362],[77.594108,12.972495],[77.595205,12.973714],[77.594571,12.974336],[77.594827,12.974585],[77.593981,12.975032],[77.593474,12.974465],[77.593453,12.9746],[77.59449,12.975912],[77.595442,12.97517],[77.595588,12.975302],[77.594768,12.976081],[77.595208,12.976692],[77.598071,12.976906],[77.598869,12.976607],[77.598438,12.977054],[77.596953,12.980334],[77.595737,12.980267],[77.593849,12.97865],[77.593952,12.978304],[77.592232,12.976525],[77.591871,12.976628],[77.590843,12.977516],[77.589227,12.976736],[77.589847,12.976217],[77.590144,12.975459],[77.58896,12.975536],[77.588866,12.974961],[77.589895,12.974793],[77.589526,12.973581],[77.588072,12.973918],[77.588125,12.973275],[77.587927,12.972647]]]
+    },
+    "priority": 1,
+    "modelHeightM": 18,
+    "modelFootprintM": {
+      "width": 1187,
+      "depth": 1368
+    },
+    "sources": [
+      {
+        "title": "Cubbon Park - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Cubbon_Park"
+      },
+      {
+        "title": "Bengaluru - Wikipedia (Cubbon Park and aquarium reference)",
+        "url": "https://en.wikipedia.org/wiki/Bengaluru"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Cubbon Park, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Cubbon+Park%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q3633776 (Cubbon Park) - Kannada label",
+        "url": "https://www.wikidata.org/wiki/Q3633776"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "ulsoor-lake",
+    "name": "Ulsoor Lake",
+    "kannadaName": "ಹಲಸೂರು ಸರೋವರ",
+    "category": "Lake",
+    "subcategory": "Urban lake with islands and a heritage bell tower",
+    "latitude": 12.9823891,
+    "longitude": 77.6191669,
+    "elevationM": 931,
+    "description": "One of Bengaluru's largest urban lakes, spread over 50 hectares (123.6 acres) east of the MG Road corridor, with four islands and a colonial watch tower that once held a Chinese bell. The shallow, silt-choked water body is shared between the Madras Engineer Group and BBMP and is now the subject of a desilting and sewage-diverting restoration programme.",
+    "history": "The lake is traditionally dated to the time of the Kempe Gowdas, but its present form was created by Lewin Bentham Bowring, then Commissioner of Bangalore. Part of the lake is controlled by the Madras Engineer Group and the rest by BBMP. A study of the lake's ecosystem found a catchment area of 1.5 km2 fed by three drains - from the MEG Centre, from Jeevanahalli and from Doddigunta - the last traversing a chain of gardens and settlements, all within 1 km of the shore.\n\nRestoration has included desilting, silt traps at stormwater inlets, diversion of sewage through 900 mm pipes, chain-link fencing and the reintroduction of fish and aquatic plants, along with improved training facilities for MEG boats. Public access runs from 9 a.m. to 6 p.m. and the lake is closed on Wednesdays. The eastern watch tower once carried a Chinese bell cast in 1741 under the Qianlong Emperor, whose cracked casting was later moved to the Madras Sappers Museum.",
+    "facts": [
+      "Spread over 50 ha (123.6 acres) with four islands, a 1.5 km2 catchment, a shoreline of 3 km, an average depth of 19 ft (5.8 m) and a maximum depth of 58 ft (18 m).",
+      "The surface elevation is 931 m; the present lake was created by Lewin Bentham Bowring, then Commissioner of Bangalore, though the lake is traditionally dated to the Kempe Gowdas' time.",
+      "A part of the lake is controlled by the Madras Engineer Group and the rest by the Bruhat Bengaluru Mahanagara Palike (BBMP).",
+      "Three drains feed the lake - from the MEG Centre, from Jeevanahalli and from Doddigunta - the last passing through a chain of gardens and settlements within 1 km of the shore.",
+      "Restoration measures include desilting, silt traps at stormwater inlets, diverting sewage through 900 mm pipes, chain-link fencing and the reintroduction of fish and aquatic plants; the lake is open to the public from 9 a.m. to 6 p.m. and closed on Wednesdays.",
+      "The eastern watch tower once held a Chinese bell about 4 ft 3 in high and 3 ft 1.5 in in diameter, cast in 1741 under the Qianlong (Ch'ien Lung) Emperor for the San Yuan Kung temple, audible up to 3 miles away; it cracked when struck by a 12 lb shot and was later moved to the Madras Sappers Museum."
+    ],
+    "architecture": {
+      "style": "Naturalistic urban lake with bunded shore, island planting and a colonial-era masonry watch tower",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Earth and stone bunds, mature tree cover, masonry watch tower, silt traps and 900 mm sewer interception works",
+      "keyFeatures": [
+        "Four tree-covered islands",
+        "Eastern watch tower that carried the Chinese bell",
+        "Shallow silted basin with reed margins",
+        "Desilting and silt-trap works at the stormwater inlets",
+        "900 mm sewage diversion pipeline",
+        "Chain-link perimeter fencing",
+        "Open promenade and seating along the Halasuru shore",
+        "Reintroduced fish and aquatic planting"
+      ],
+      "footprintHint": "Irregular oval basin roughly 750 m east-west by 1,110 m north-south, about 50 ha of water with four internal islands",
+      "silhouette": "Flat water plane broken by island tree clusters, with a single slender watch tower rising on the eastern bank"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.615855,12.981768],[77.616391,12.981161],[77.617457,12.980916],[77.618002,12.980513],[77.6193,12.978592],[77.61965,12.97798],[77.619867,12.977439],[77.620046,12.977462],[77.62006,12.977795],[77.620318,12.978359],[77.620235,12.978686],[77.620401,12.9797],[77.620589,12.979898],[77.620822,12.979975],[77.621052,12.980363],[77.621348,12.980477],[77.622399,12.981284],[77.622383,12.981352],[77.622703,12.98159],[77.622748,12.981718],[77.622703,12.98193],[77.622456,12.982107],[77.621997,12.983683],[77.621911,12.983682],[77.621997,12.985623],[77.621101,12.985902],[77.621093,12.985989],[77.621168,12.986023],[77.621284,12.985929],[77.62197,12.98572],[77.622013,12.985761],[77.62215,12.986722],[77.622155,12.987505],[77.621939,12.987484],[77.621919,12.987399],[77.621711,12.98736],[77.620254,12.987183],[77.620009,12.986813],[77.620342,12.986642],[77.620209,12.986318],[77.620453,12.986194],[77.620368,12.986143],[77.619774,12.98635],[77.619687,12.986273],[77.619245,12.985615],[77.61755,12.983754],[77.616992,12.983294],[77.616093,12.982767],[77.615977,12.982509],[77.615855,12.981768]]]
+    },
+    "priority": 1,
+    "modelHeightM": 8,
+    "modelFootprintM": {
+      "width": 748,
+      "depth": 1113
+    },
+    "sources": [
+      {
+        "title": "Ulsoor Lake - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ulsoor_Lake"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Ulsoor Lake, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Ulsoor+Lake%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q30587793 (Ulsoor Lake) - Kannada label",
+        "url": "https://www.wikidata.org/wiki/Q30587793"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "sankey-tank",
+    "name": "Sankey Tank",
+    "category": "Lake",
+    "subcategory": "Historic reservoir converted into a public park",
+    "latitude": 13.0099946,
+    "longitude": 77.5737934,
+    "elevationM": 929.8,
+    "description": "An 1882 drinking-water reservoir built by Colonel Richard Hieram Sankey of the Madras Sappers Regiment, formerly called Gandhadhakotikere, now landscaped as a public park between Malleshwaram, Vyalikaval and Sadashivanagar. The 15-hectare tank holds a single island and a 1.7 km shoreline, and its wooded bund, nursery and paved walks make it one of the most used neighbourhood parks in the city.",
+    "history": "Sankey Tank was constructed in 1882 to meet the water-supply demands of Bangalore. It was linked to the Miller's Tank and the Dharmambudhi Tank and was built as a safeguard against the water shortages experienced during the Great Famine of 1876-78. The quality of the water was poor: when the Governor of Madras visited Bangalore in July 1888 a local wit remarked that the men killed on the spot at Bangalore were the only ones doctors did not allow to die of drinking bad water. Seven sewage inflow points were later identified.\n\nIn the early 2000s the tank was developed into a park by BWSSB and BBMP with Karnataka government funding, with measures including removing encroachments, alum purification, a nursery to the north, paved walkways, landscaped parks, a special idol-immersion tank for Ganesh Chaturthi and restoration of a swimming pool. Development pressure followed: in 2004 a Karnataka Lok Adalat ordered the Forest Department to repossess 0.52 ha (1.3 acres) from developers, the LDA recommended a 100 m no-construction buffer, and an 18-floor apartment proposal was turned down by the Karnataka State Pollution Control Board.",
+    "facts": [
+      "Built in 1882 by Colonel Richard Hieram Sankey (RE) of the Madras Sappers Regiment for Bangalore's water supply; formerly known as Gandhadhakotikere because the Government Sandalwood Depot stood near the lake.",
+      "Linked to the Miller's Tank and the Dharmambudhi Tank and built as a safeguard against the water shortages of the Great Famine of 1876-78.",
+      "Covers about 15 ha (37.1 acres), is 800 m at its widest, has a maximum depth of 9.26 m, a shoreline of 1.7 km, a catchment of 1.254 km2, a surface elevation of 929.8 m and one island.",
+      "Converted into a public park in the early 2000s by BWSSB and BBMP with Karnataka government funding; the works included removing encroachments, alum purification, a nursery to the north, paved walkways, landscaped parks, a special idol-immersion tank for Ganesh Chaturthi and restoration of a swimming pool.",
+      "In 2004 a Karnataka Lok Adalat ordered the Forest Department to repossess 0.52 ha (1.3 acres) from developers, the LDA recommended a 100 m no-construction buffer, and an 18-floor apartment proposal was turned down by the Karnataka State Pollution Control Board.",
+      "Seven sewage inflow points were identified; 2001 tests measured dissolved oxygen of 3.7-8.1 mg/L, BOD of 2-8 mg/L and pH of 7.1-7.5."
+    ],
+    "architecture": {
+      "style": "Colonial-era masonry-bund reservoir landscaped as a formal public park",
+      "yearBuilt": "1882",
+      "architect": "Col. Richard Hieram Sankey (RE), Madras Sappers Regiment",
+      "materials": "Earth and stone bunds, masonry retaining edges, mature tree canopy, paved walkways and planted lawns",
+      "keyFeatures": [
+        "Single tree-covered island in the basin",
+        "800 m wide central water spread",
+        "Perimeter bund promenade",
+        "Paved walkways and landscaped lawns",
+        "Plant nursery on the north side",
+        "Special idol-immersion tank for Ganesh Chaturthi",
+        "Restored swimming pool",
+        "Historic masonry retaining edges around the tank"
+      ],
+      "footprintHint": "Elongated oval tank about 490 m east-west by 530 m north-south with roughly 15 ha (37 acres) of water spread and a 1.7 km shoreline",
+      "silhouette": "Flat, tree-ringed water plane with a low mound island and an even park canopy"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.572613,13.008053],[77.573237,13.007824],[77.573685,13.007766],[77.575744,13.008012],[77.576369,13.007895],[77.576968,13.007602],[77.577112,13.007845],[77.576506,13.0082],[77.57601,13.008659],[77.575762,13.008671],[77.575404,13.009218],[77.575186,13.009873],[77.57506,13.010068],[77.575152,13.010932],[77.575121,13.011608],[77.575053,13.01172],[77.574837,13.011902],[77.574643,13.011785],[77.574579,13.011809],[77.574559,13.01175],[77.574501,13.011783],[77.574328,13.01147],[77.573747,13.011713],[77.573757,13.012259],[77.573492,13.01238],[77.573446,13.011823],[77.573037,13.011972],[77.572934,13.01208],[77.572826,13.011829],[77.572868,13.011699],[77.572772,13.011658],[77.572889,13.011451],[77.572871,13.011119],[77.572979,13.010829],[77.572847,13.010815],[77.572842,13.010613],[77.57302,13.009222],[77.572974,13.009004],[77.572759,13.008617],[77.572613,13.008053]]]
+    },
+    "priority": 2,
+    "modelHeightM": 6,
+    "modelFootprintM": {
+      "width": 488,
+      "depth": 528
+    },
+    "sources": [
+      {
+        "title": "Sankey tank - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Sankey_tank"
+      },
+      {
+        "title": "Lakes in Bengaluru - Wikipedia (lake inventory with coordinates and areas)",
+        "url": "https://en.wikipedia.org/wiki/Lakes_in_Bengaluru"
+      },
+      {
+        "title": "BBMP Lakes (KTCDDA list of lakes in Bengaluru, PDF)",
+        "url": "https://ktcda.karnataka.gov.in/storage/pdf-files/BBMP%20Lakes.pdf"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Sankey Tank, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Sankey+Tank%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q7331115 (Sankey tank)",
+        "url": "https://www.wikidata.org/wiki/Q7331115"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "hebbal-lake",
+    "name": "Hebbal Lake",
+    "kannadaName": "ಹೆಬ್ಬಾಳ ಕೆರೆ",
+    "category": "Lake",
+    "subcategory": "Urban lake and bird habitat at the NH 7 / Outer Ring Road junction",
+    "latitude": 13.0472025,
+    "longitude": 77.5867147,
+    "elevationM": 920,
+    "description": "A shallow, predominantly eutrophic lake at the mouth of NH 7 where Bellary Road meets the Outer Ring Road, formed by bunding natural valley systems and now a magnet for water birds. Excavations and studies around its bund have also surfaced an 8th-century CE inscription recording a grant to a Durga idol, evidence of organised settlement and water management more than 1,200 years ago.",
+    "history": "Hebbal Lake lies at the mouth of National Highway 7, along the junction of Bellary Road and the Outer Ring Road. It was formed by damming natural valley systems with bunds; the spread of the lake was measured at 75 ha in a 2000 study with plans to extend it to 143 ha, against an infobox area of 57 ha, and the article records 77.95 ha in 1974 and 57.75 ha in 1998. The Bhoopasandra inscription of the 8th century CE, found near the lake and studied by the historian and epigraphist Dr. P. V. Krishnamurthy, records a grant to a Durga idol originally located near the lake bund and mentions agrarian and water-management occupations, indicating organised settlement over 1,200 years ago.\n\nThe catchment of 3,750 ha includes Yeshwanthpur, Mathikere, Rajmahal Vilas Extension, BEL and HMT colonies, with an annual catchment of 15.2 million cubic metres and a storage capacity of 2.38 million cubic metres in 2000, raised to 4.07 million after desilting. Management was transferred to the Lake Development Authority in 2002; Indo-Norwegian Environment Programme funding of Rs 27 million from 1998 created two artificial islands from desilted soil as water-bird roosts, with desilting taken up in 2003. In 2004 the lake was leased for 15 years to East India Hotels (the Oberoi Group) at Rs 7,210,000 a year with 1.5% annual escalation, allowing a jetty, a gift centre and an island restaurant and the charging of entry fees.",
+    "facts": [
+      "Formed by damming natural valley systems with bunds; a 2000 study found a 75 ha water spread with plans to extend it to 143 ha, the infobox area is 57 ha, and the recorded areas were 77.95 ha in 1974 and 57.75 ha in 1998.",
+      "An 8th-century CE Bhoopasandra inscription found near the lake records a grant to a Durga idol originally located near the lake bund, indicating organised settlement and water management over 1,200 years ago.",
+      "The catchment is 3,750 ha, the annual catchment is estimated at 15.2 million cubic metres (3.04 in the north-east monsoon, 10.12 in the south-west monsoon, 3.28 in the dry season), and storage capacity was 2.38 million cubic metres in 2000, rising to 4.07 million after desilting.",
+      "Management was transferred to the Lake Development Authority in 2002; Indo-Norwegian Environment Programme funding of Rs 27 million (US$700,000) from 1998 created two artificial islands from desilted soil as water-bird roosts, and desilting was taken up in 2003.",
+      "In 2004 the lake was leased for 15 years to East India Hotels (the Oberoi Group) at an annual lease of Rs 7,210,000 with 1.5% annual escalation, with a jetty, a handicraft and curio gift centre and an island restaurant permitted.",
+      "The lake is predominantly eutrophic with profuse water hyacinth and Typha in the shallow zone; in the late 1990s the weevils Neochetina bruchi and Neochetina eichhorniae were introduced from Argentina for biological control of the hyacinth."
+    ],
+    "architecture": {
+      "style": "Bund-formed natural valley lake with informal parkland and reclaimed bird islands",
+      "yearBuilt": "1537 (as listed in the Wikipedia infobox)",
+      "architect": null,
+      "materials": "Earth bunds, lake silt, reed and hyacinth beds, reclaimed-soil bird islands",
+      "keyFeatures": [
+        "Bund-formed shallow basin",
+        "Two artificial bird islands built from desilted soil",
+        "Water hyacinth and Typha reed beds",
+        "Jetty and island restaurant under the 15-year lease",
+        "Fisheries activity on the lake",
+        "Waterbird colonies - pelican, spoonbill, shoveller, pintail, garganey, little grebe, coot and Indian spot-billed duck",
+        "Shallow-zone waders, egrets, purple and grey herons",
+        "Fish farm and research centre beside the lake"
+      ],
+      "footprintHint": "Irregular oval basin about 1,160 m east-west by 850 m north-south, with a water spread recorded between 57 and 75 ha",
+      "silhouette": "Flat water surface ringed by embankments, reed beds and low tree clusters, with a few raised bird islands"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.580997,13.0508],[77.58148,13.050607],[77.58156,13.050445],[77.581737,13.048752],[77.582215,13.047895],[77.582247,13.047482],[77.582536,13.04709],[77.58267,13.047315],[77.582831,13.048031],[77.582754,13.049013],[77.583065,13.049335],[77.583121,13.049301],[77.583089,13.049217],[77.58285,13.049076],[77.582823,13.048979],[77.582923,13.048321],[77.582893,13.047965],[77.582762,13.047385],[77.58259,13.046952],[77.583218,13.04639],[77.58377,13.045592],[77.583901,13.045368],[77.584051,13.044835],[77.584459,13.044647],[77.584652,13.044647],[77.584663,13.044521],[77.585349,13.044458],[77.585435,13.044344],[77.587109,13.044866],[77.58742,13.044793],[77.587828,13.044448],[77.588396,13.043497],[77.588547,13.043351],[77.58978,13.043382],[77.59021,13.04357],[77.590306,13.04379],[77.590285,13.044229],[77.590435,13.044333],[77.590553,13.044918],[77.590757,13.047416],[77.590928,13.047876],[77.591678,13.047919],[77.591728,13.048042],[77.591694,13.048153],[77.591183,13.048247],[77.590778,13.048211],[77.590328,13.048274],[77.590166,13.048211],[77.589909,13.047845],[77.589705,13.047855],[77.589319,13.048138],[77.587999,13.048441],[77.585789,13.04934],[77.583727,13.05033],[77.581426,13.05103],[77.581147,13.050957],[77.580997,13.0508]]]
+    },
+    "priority": 2,
+    "modelHeightM": 8,
+    "modelFootprintM": {
+      "width": 1164,
+      "depth": 849
+    },
+    "sources": [
+      {
+        "title": "Hebbal Lake, Bengaluru - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Hebbal_Lake,_Bengaluru"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Hebbal Lake, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Hebbal+Lake%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q5695346 (Hebbal lake) - Kannada label",
+        "url": "https://www.wikidata.org/wiki/Q5695346"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "jp-park",
+    "name": "JP Park (Jayaprakash Narayan Biodiversity Park)",
+    "category": "Park",
+    "subcategory": "Biodiversity park with urban lakes",
+    "latitude": 13.0344809,
+    "longitude": 77.5508526,
+    "elevationM": 920,
+    "description": "An 85-acre biodiversity park at Mathikere in north-west Bengaluru, beside Yeshwanthpur railway station, laid out around four lakes with lawns, a musical fountain and paved walkways. It holds more than 250 varieties of trees and shrubs and appears in the BBMP list of Bengaluru lakes under the Mathikere ward.",
+    "history": "JP Park, officially the Jayaprakash Narayan Biodiversity Park, occupies an 85-acre (340,000 m2) site at Mathikere in the north-west area of the city, beside Yeshwanthpur railway station. The park is organised around four lakes, with lawns spreading over about 25 acres (100,000 m2) and more than 250 varieties of trees and shrubs to be found there. Karnataka District Tourism describes the site with a lake, a musical fountain and paved walkways, and the BBMP list of Bengaluru lakes records J.P Park under the Mathikere ward of the Raja Rajeshwari Nagar zone. A running guide to the park describes a marked jogging circuit of about 1.8 to 1.9 km, with the Indian Institute of Science campus roughly 1.5 km to the west.",
+    "facts": [
+      "The Jayaprakash Narayan Biodiversity Park covers an 85-acre (340,000 m2) site at Mathikere in the north-west of Bangalore, beside Yeshwanthpur railway station.",
+      "The park has four lakes, lawns spread over 25 acres (100,000 m2), and more than 250 varieties of trees and shrubs.",
+      "Karnataka District Tourism lists a lake, a musical fountain and paved walkways among the park's features, and a running guide describes a rocks park, a musical path and fountain and a small lake.",
+      "The BBMP list of Bengaluru lakes records 'J.P park' in the Mathikere ward of the Raja Rajeshwari Nagar zone.",
+      "The Mathikere Lake inside the park is listed in Wikipedia's inventory of Bengaluru lakes at 13.0354 N, 77.5508 E with an area of 80 acres.",
+      "A marked jogging circuit runs about 1.8 to 1.9 km through the park, and the Indian Institute of Science campus lies roughly 1.5 km to the west."
+    ],
+    "architecture": {
+      "style": "Landscaped urban biodiversity park with ornamental waterways",
+      "yearBuilt": null,
+      "architect": null,
+      "materials": "Landscaped lawns, paved walkways, lake embankments and ornamental planting",
+      "keyFeatures": [
+        "Four interconnected lakes",
+        "25 acres of open lawns",
+        "Musical fountain and musical path",
+        "Paved walkways through the planting",
+        "250+ varieties of trees and shrubs",
+        "Jogging circuit around the water bodies",
+        "Rocks park",
+        "Adjacent to Yeshwanthpur railway station"
+      ],
+      "footprintHint": "Irregular park enclosure about 650 m east-west by 690 m north-south - the fenced area mapped in OSM - holding a chain of lakes within the wider 85-acre site",
+      "silhouette": "Low, flat parkland broken by several open water bodies, with a low tree canopy and fountain masts"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.547705,13.033766],[77.548596,13.031994],[77.548982,13.031738],[77.55112,13.032246],[77.55174,13.032673],[77.55227,13.032846],[77.552378,13.033429],[77.552686,13.033651],[77.553724,13.033924],[77.553316,13.03622],[77.553107,13.036784],[77.553195,13.037942],[77.551689,13.037741],[77.551646,13.037858],[77.550238,13.037589],[77.549652,13.036307],[77.54844,13.035026],[77.547705,13.033766]]]
+    },
+    "priority": 2,
+    "modelHeightM": 12,
+    "modelFootprintM": {
+      "width": 653,
+      "depth": 686
+    },
+    "sources": [
+      {
+        "title": "List of tourist attractions in Bengaluru - Wikipedia (JP Park entry)",
+        "url": "https://en.wikipedia.org/wiki/List_of_tourist_attractions_in_Bengaluru"
+      },
+      {
+        "title": "Tourism - District Bengaluru Urban, Government of Karnataka",
+        "url": "https://bengaluruurban.nic.in/en/tourism/"
+      },
+      {
+        "title": "JP Park, Bangalore - greatruns.com",
+        "url": "https://greatruns.com/bangalore-india-jp-park/"
+      },
+      {
+        "title": "Lakes in Bengaluru - Wikipedia (Mathikere Lake entry)",
+        "url": "https://en.wikipedia.org/wiki/Lakes_in_Bengaluru"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Jayaprakash Narayan Park, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Jayaprakash+Narayan+Park%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "bannerghatta-national-park",
+    "name": "Bannerghatta National Park",
+    "kannadaName": "ಬನ್ನೇರುಘಟ್ಟ ರಾಷ್ಟ್ರೀಯ ಉದ್ಯಾನವನ",
+    "category": "Park",
+    "subcategory": "National park with zoological garden",
+    "latitude": 12.80083,
+    "longitude": 77.57556,
+    "elevationM": 1245,
+    "description": "A 260.51 km2 national park in the Anekal hills about 22 km south of Bengaluru, declared in 1974, whose northern sector contains the Bannerghatta Biological Park zoo with its lion and tiger safari, snake park and butterfly park. Granite-sheeted ridges of moist deciduous forest valleys and scrubland are threaded by the Suvarnamukhi stream, and the park forms part of an elephant corridor linking the BR Hills to the Sathyamangalam forest.",
+    "history": "The park was founded in 1970 and declared a national park in 1974; in 2002 a small portion of the park became the Bannerghatta Biological Park zoological garden. The 65,127.5-acre (260.51 km2) park lies about 22 km south of the city in the hills of the Anekal range at an elevation of 1,245 to 1,634 m, with hilly terrain of granite sheets under moist deciduous forest valleys and scrubland on the higher areas. Six rural villages sit within the park area in three large enclosures used for sheep and cattle farming, and sixteen villages border the park. Most of the park consists of artificial forest, and some animals have been introduced.\n\nThe park forms part of a wildlife corridor for elephants connecting the BR Hills and the Sathyamangalam forest, and is contiguous with Talli reserve forest in the south-east and Bilikal forest in the south. A guided bus tour runs along 6 km of safari roads made specially for safaris. Between 1995 and 2021 the park's dry deciduous forest shrank by approximately 44% because of uncontrolled diversion of forest land for agriculture and urbanisation, while granite quarries continue to operate inside the 1 km safe zone around the boundary.",
+    "facts": [
+      "Founded in 1970 and declared a national park in 1974; in 2002 a small portion of the park became the Bannerghatta Biological Park zoological garden.",
+      "The park covers 65,127.5 acres (260.51 km2), lies about 22 km south of Bangalore in the hills of the Anekal range, and spans elevations of 1,245 to 1,634 m.",
+      "Six rural villages are enclosed within three large areas for sheep and cattle farming and sixteen villages border the park; a guided bus tour runs along 6 km of safari roads.",
+      "Rainfall is 700 mm per year and the Suvarnamukhi stream runs through the park; four borewells were opened on 15 May 2014 to provide water in dry times.",
+      "One hundred and one species of birds have been recorded, alongside Asian elephants, gaur, Indian boar, Indian leopard, sloth bears, Indian jackal, Bengal fox, dhole, sambar, chital, Indian pangolin, Indian python and king cobra.",
+      "Between 1995 and 2021 the dry deciduous forest shrank by approximately 44%; granite quarries operate within a 1 km safe zone around the boundary, with blast tremors felt across a radius of at least five km."
+    ],
+    "architecture": {
+      "style": "Protected-area landscape of granite hill ridges and dry deciduous forest",
+      "yearBuilt": "1970 (founded); 1974 (declared a national park)",
+      "architect": null,
+      "materials": "Granite sheet rock, laterite and red soil, dry deciduous and moist deciduous forest canopy",
+      "keyFeatures": [
+        "Granite hill ridges of the Anekal range",
+        "Moist deciduous forest valleys",
+        "Scrubland on the higher slopes",
+        "Suvarnamukhi stream corridor",
+        "Bannerghatta Biological Park zoo with lion and tiger safari",
+        "Snake park, butterfly park and children's nature camp",
+        "Six villages inside three pastoral enclosures",
+        "6 km guided safari road"
+      ],
+      "footprintHint": "A very large protected landscape; the OpenStreetMap boundary relation covers roughly 211 km2 in several disjoint blocks extending about 21 km north-south and 11.5 km east-west, with the northern block around the marked entry being the modelled portion",
+      "silhouette": "Rolling granite plateau with forest canopy over undulating ridges, rising to a high ridge line along the northern boundary"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.530603,12.712688],[77.533178,12.702055],[77.538929,12.696215],[77.541869,12.695922],[77.541783,12.692426],[77.548284,12.686785],[77.552276,12.686774],[77.555866,12.688892],[77.55734,12.692761],[77.568326,12.697701],[77.569292,12.694917],[77.575128,12.691944],[77.57118,12.684534],[77.580385,12.679866],[77.584806,12.682503],[77.588711,12.698099],[77.594612,12.697994],[77.598528,12.695806],[77.599455,12.690437],[77.604632,12.690165],[77.601542,12.685015],[77.588636,12.674726],[77.587198,12.671533],[77.588689,12.67011],[77.588861,12.662217],[77.587391,12.65692],[77.585471,12.654324],[77.579495,12.654031],[77.580278,12.645583],[77.576394,12.638433],[77.580213,12.633534],[77.582617,12.633324],[77.585921,12.63657],[77.588453,12.646892],[77.59768,12.646452],[77.596049,12.650011],[77.600062,12.666102],[77.63686,12.675014],[77.6305,12.692729],[77.628665,12.705948],[77.619996,12.713065],[77.613344,12.71296],[77.602787,12.716958],[77.597884,12.708486],[77.593818,12.708737],[77.591742,12.709366],[77.591758,12.717189],[77.583057,12.709119],[77.570944,12.702641],[77.561492,12.70441],[77.559807,12.716707],[77.557554,12.716624],[77.55676,12.719387],[77.556825,12.729894],[77.565942,12.732564],[77.57284,12.74684],[77.583207,12.754224],[77.583106,12.752034],[77.586769,12.748911],[77.586076,12.743382],[77.591403,12.737912],[77.594578,12.737853],[77.595588,12.743519],[77.601272,12.740657],[77.603173,12.747841],[77.605079,12.749118],[77.604109,12.75705],[77.598136,12.756992],[77.595658,12.765729],[77.595921,12.770458],[77.599163,12.772716],[77.6012,12.777519],[77.596015,12.78108],[77.596607,12.788474],[77.594014,12.787119],[77.588934,12.788367],[77.587836,12.802292],[77.576953,12.799032],[77.574751,12.799432],[77.577229,12.80328],[77.573292,12.803197],[77.576948,12.822997],[77.575731,12.821178],[77.571669,12.821888],[77.566651,12.810513],[77.565188,12.813211],[77.558972,12.796645],[77.554105,12.793264],[77.552057,12.788716],[77.549198,12.787945],[77.545597,12.790888],[77.549228,12.797806],[77.545307,12.79944],[77.542689,12.7974],[77.544857,12.784856],[77.548032,12.785128],[77.543795,12.775889],[77.55164,12.773312],[77.550559,12.770872],[77.54645,12.76992],[77.540191,12.752319],[77.543161,12.74871],[77.545513,12.740334],[77.550462,12.739134],[77.551482,12.72621],[77.546954,12.724535],[77.542427,12.727382],[77.53586,12.725226],[77.530603,12.712688]]]
+    },
+    "priority": 2,
+    "modelHeightM": 40,
+    "modelFootprintM": {
+      "width": 11538,
+      "depth": 20973
+    },
+    "sources": [
+      {
+        "title": "Bannerghatta National Park - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Bannerghatta_National_Park"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Bannerghatta National Park, Karnataka, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Bannerghatta+National+Park%2C+Karnataka%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q2588520 (Bannerghatta National Park) - Kannada label",
+        "url": "https://www.wikidata.org/wiki/Q2588520"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "sree-kanteerava-stadium",
+    "name": "Sree Kanteerava Stadium",
+    "kannadaName": "ಶ್ರೀ ಕಂಠೀರವ ಕ್ರೀಡಾಂಗಣ",
+    "category": "Park",
+    "subcategory": "Public sports complex and athletics stadium",
+    "latitude": 12.9697,
+    "longitude": 77.5934,
+    "elevationM": 920,
+    "description": "Bengaluru's largest sports complex, built on the bed of the drained Sampangi Lake and inaugurated in 1946 as Sampangi Stadium before being renamed for Yuvaraja Kanteerava Narasimharaja Wadiyar. Its eight-lane synthetic track and field-event surfaces were rebuilt for the 1997 National Games, and the arena still hosts football, athletics and rock climbing with the Cubbon Park tree line immediately to the south.",
+    "history": "The stadium stands on the bed of the Sampangi Lake, which was perceived as an environmental hazard and was drained in 1937 after it had been neglected once piped water arrived from Hesaraghatta Lake within Bangalore. It was inaugurated in 1946 by Maharaja Jayachamaraja Wadiyar and named Sampangi Stadium after his father, Yuvaraja Kanteerava Narasimharaja Wadiyar, from whom it takes its present name. It originally had a six-lane cinder track; a synthetic running track was laid in the 1990s leading up to the 1997 National Games of India for INR 220 million, and was completed by 31 May 1997.\n\nThe stadium is owned by the Department of Youth Empowerment and Sports of the Government of Karnataka and is the largest sports complex in Bengaluru. The central arena consists of an eight-lane 400-metre synthetic athletic track with synthetic surfaced areas for shot put, discus, javelin, hammer throws, long jump, high jump, triple jump and pole vault; the ground also hosts walkathons, filmmaking, rallies and exhibitions, and contains a volleyball court and two outdoor rock-climbing walls. Four large arched entrances lead on to the inner field and lower stands, with eight ramps taking spectators to the upper stands, giving 12 spectator gates in total.",
+    "facts": [
+      "Built on the bed of the Sampangi Lake, drained in 1937; inaugurated in 1946 by Maharaja Jayachamaraja Wadiyar and named after his father, Yuvaraja Kanteerava Narasimharaja Wadiyar.",
+      "Originally a six-lane cinder track; a synthetic running track was laid in the 1990s leading up to the 1997 National Games of India at a cost of INR 220 million, completed by 31 May 1997.",
+      "The central arena has an eight-lane 400-metre synthetic athletic track with synthetic surfaces for shot put, discus, javelin, hammer, long jump, high jump, triple jump and pole vault, and the stadium also holds a volleyball court and two outdoor rock-climbing walls.",
+      "Owned by the Department of Youth Empowerment and Sports, Government of Karnataka; it is the largest sports complex in Bengaluru and its listed capacity is 25,810.",
+      "Sprinter Milkha Singh trained here in 1952; the stadium hosted the touring Soviet Union national team against a Mysore State XI in an exhibition match won 7-1, and the final of the 1962 Santosh Trophy won by the home Mysore team.",
+      "The ground is entered through four large arched entrances, with eight ramps taking spectators to the upper stands and 12 gates serving the stadium in total."
+    ],
+    "architecture": {
+      "style": "Open-air athletics bowl with a synthetic track, floodlight masts and covered spectator stands",
+      "yearBuilt": "1946 (stadium); 1997 (synthetic track)",
+      "architect": null,
+      "materials": "Reinforced concrete stands and floodlight masts, synthetic running surface, in situ field event surfaces, steel railings",
+      "keyFeatures": [
+        "Eight-lane 400-metre synthetic track",
+        "Synthetic throwing and jumping surfaces",
+        "Four large arched entrances to the inner field",
+        "Eight ramps to the upper stands",
+        "Twelve spectator gates in total",
+        "Floodlight masts around the bowl",
+        "Volleyball court and two outdoor rock-climbing walls",
+        "Built on the reclaimed bed of Sampangi Lake"
+      ],
+      "footprintHint": "Compact oval athletics ground about 470 m east-west by 510 m north-south, immediately south of Cubbon Park and north of Sampangi Rama Nagar",
+      "silhouette": "Low elliptical bowl of covered stands and floodlight masts around a flat running track"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.590544,12.96905],[77.590711,12.967985],[77.591519,12.968209],[77.592662,12.968134],[77.593825,12.967831],[77.594141,12.96765],[77.594643,12.967157],[77.594749,12.967158],[77.594856,12.96731],[77.593946,12.971673],[77.59381,12.97175],[77.593629,12.971719],[77.591801,12.970134],[77.591876,12.969777],[77.591613,12.969649],[77.591489,12.969865],[77.590544,12.96905]]]
+    },
+    "priority": 1,
+    "modelHeightM": 25,
+    "modelFootprintM": {
+      "width": 468,
+      "depth": 508
+    },
+    "sources": [
+      {
+        "title": "Sree Kanteerava Stadium - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Sree_Kanteerava_Stadium"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Sree Kanteerava Stadium, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Sree+Kanteerava+Stadium%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "Wikidata entity Q7585638 (Sree Kanteerava Stadium) - Kannada label",
+        "url": "https://www.wikidata.org/wiki/Q7585638"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "kengeri-lake",
+    "name": "Kengeri Lake (Kengeri Sagara)",
+    "kannadaName": "ಕೆಂಗೇರಿ ಕೆರೆ",
+    "category": "Lake",
+    "subcategory": "Peri-urban tank in the Vrishabhavathi basin",
+    "latitude": 12.915927,
+    "longitude": 77.4872269,
+    "elevationM": 920,
+    "description": "A small peri-urban tank on Mysore Road at Kengeri in far western Bengaluru, developed by the state forest department in 1995 and lying in the headwater reach of the Vrishabhavathi river. The shallow, silted water body sits in largely open scrub a few hundred metres from the Kengeri Bus Terminal metro station and has long been awaiting a second rehabilitation attempt.",
+    "history": "Kengeri Lake, also listed as Kengeri Lake (Doddakere), lies on Mysore Road in western Bengaluru and was developed by the state forest department in 1995. Wikipedia's inventory of Bengaluru lakes places the tank at 12.9163 N, 77.4874 E with an area of 38 acres, and the BBMP custodian list of Bengaluru lakes records it as Kasaba Kengeri Kere in the Kengeri ward. It sits in the headwater reach of the Vrishabhavathi river system, which runs south from this part of the city towards the Arkavathi.\n\nThe surrounding Kengeri locality takes its name from Kannada words for coconut and a place of trees, and carries a Chola inscription of 1050 AD at the Eshwara Temple; Kengeri Fort is associated with Tipu Sultan and was destroyed by the British. As of September 2018 the Deccan Herald reported that Kengeri Lake was still waiting for a second attempt at revival. The Purple Line metro stations Pattanagere, Kengeri Bus Terminal and Kengeri were inaugurated on 29 August 2021, with services starting the following day.",
+    "facts": [
+      "Kengeri Lake, also listed as Kengeri Lake (Doddakere), is on Mysore Road in western Bengaluru and was developed by the state forest department in 1995.",
+      "Wikipedia's inventory of Bengaluru lakes lists it at 12.9163 N, 77.4874 E with an area of 38 acres, and the BBMP list of Bengaluru lakes records it as Kasaba Kengeri Kere in the Kengeri ward.",
+      "It lies in the headwater reach of the Vrishabhavathi river, which flows south from this part of the city and joins the Arkavathi further downstream.",
+      "The Kengeri locality takes its name from Kannada words for coconut and a place of trees and has a Chola inscription of 1050 AD at the Eshwara Temple; Kengeri Fort, where Tipu Sultan sheltered, was destroyed by the British.",
+      "Deccan Herald reported in September 2018 that Kengeri Lake was still waiting for a second attempt at revival.",
+      "The Purple Line metro stations Pattanagere, Kengeri Bus Terminal and Kengeri were inaugurated on 29 August 2021, with operations beginning the next day."
+    ],
+    "architecture": {
+      "style": "Shallow bunded tank in an open, largely undeveloped peri-urban setting",
+      "yearBuilt": "1995 (developed by the state forest department)",
+      "architect": null,
+      "materials": "Earth bunds, exposed silt, scrub and open ground",
+      "keyFeatures": [
+        "Shallow silted tank",
+        "Open scrub and undeveloped shoreline",
+        "Locally recorded as Kasaba Kengeri Kere",
+        "Roadside position on Mysore Road",
+        "Purple Line metro connectivity at Kengeri Bus Terminal",
+        "Headwater position in the Vrishabhavathi catchment"
+      ],
+      "footprintHint": "Small irregular pond about 510 m east-west by 540 m north-south, roughly 38 acres (about 15 ha) of water spread",
+      "silhouette": "Low, flat water body in an open plain with almost no vertical elements"
+    },
+    "area": {
+      "type": "polygon",
+      "coordinates": [[[77.485558,12.913602],[77.485794,12.91361],[77.487366,12.915325],[77.487897,12.915811],[77.488389,12.916042],[77.489736,12.916877],[77.489957,12.917267],[77.490249,12.918091],[77.490204,12.918303],[77.489993,12.91846],[77.489314,12.918452],[77.488926,12.918097],[77.488717,12.917721],[77.488615,12.917663],[77.488042,12.917641],[77.48751,12.917428],[77.487254,12.917139],[77.486792,12.917119],[77.486648,12.916941],[77.485774,12.914069],[77.485558,12.913602]]]
+    },
+    "priority": 3,
+    "modelHeightM": 6,
+    "modelFootprintM": {
+      "width": 509,
+      "depth": 537
+    },
+    "sources": [
+      {
+        "title": "Kengeri - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Kengeri"
+      },
+      {
+        "title": "Lakes in Bengaluru - Wikipedia (Kengeri Lake entry)",
+        "url": "https://en.wikipedia.org/wiki/Lakes_in_Bengaluru"
+      },
+      {
+        "title": "A dive into Bengaluru's lakes - Bengaluru Political Action Committee (BPAC)",
+        "url": "https://bpac.in/a-dive-into-bengalurus-lakes/"
+      },
+      {
+        "title": "BBMP Lakes (KTCDDA list of lakes in Bengaluru, PDF)",
+        "url": "https://ktcda.karnataka.gov.in/storage/pdf-files/BBMP%20Lakes.pdf"
+      },
+      {
+        "title": "Nominatim / OpenStreetMap search: Kengeri Lake, Bengaluru, India (polygon_geojson=1)",
+        "url": "https://nominatim.openstreetmap.org/search?q=Kengeri+Lake%2C+Bengaluru%2C+India&format=json&limit=3&polygon_geojson=1"
+      },
+      {
+        "title": "OpenStreetMap way 395505152 (Kengeri Lake) - Kannada name tag",
+        "url": "https://www.openstreetmap.org/way/395505152"
+      }
+    ],
+    "images": []
+  }
+]

@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Cloudinary credentials. The cloud name, the key and the secret live here
+# and nowhere else.
+.env
+.env.*
+!.env.example
+
+# Raw source downloads. The city is baked from these into public/data, and
+# they can be fetched again with the scripts in scripts/.
+/data/
+/.tmp/
+
+# Research scratch: the scraped pages, the Overpass dumps and the geocoding
+# intermediates. The researched landmark records themselves live in research/
+# and are kept.
+/tmp_research/
+/tmp_shots/
+
+# One-off geocoding output.
+/research/nominatim-coords.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

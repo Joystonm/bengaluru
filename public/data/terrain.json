@@ -1,0 +1,13 @@
+{
+  "grid": 1024,
+  "minLat": 12.82,
+  "maxLat": 13.21,
+  "minLon": 77.44,
+  "maxLon": 77.76,
+  "referenceElevationM": 892.9667358398438,
+  "minElevationM": 715.5718383789062,
+  "maxElevationM": 1009.9136352539062,
+  "source": "AWS Terrain Tiles (Terrarium), Mapzen-derived open elevation data",
+  "sourceUrl": "https://registry.opendata.aws/terrain-tiles/",
+  "zoom": 11
+}

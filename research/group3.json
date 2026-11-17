@@ -1,0 +1,552 @@
+[
+ {
+  "id": "iskcon-temple-bengaluru",
+  "name": "ISKCON Temple, Bengaluru (Sri Sri Radha Krishna Chandra Temple, Hare Krishna Hill)",
+  "kannadaName": "ಇಸ್ಕಾನ್ ದೇವಸ್ಥಾನ ಬೆಂಗಳೂರು",
+  "category": "Temple",
+  "subcategory": "ISKCON temple (Gaudiya Vaishnava)",
+  "latitude": 13.00981,
+  "longitude": 77.55109,
+  "elevationM": 920,
+  "description": "The ISKCON Temple on Hare Krishna Hill in Rajajinagar is described by Wikipedia as one of the largest Krishna-Hindu temples in the world, built by the International Society for Krishna Consciousness on a seven-acre hillock of monolithic rock allotted by the Bangalore Development Authority in 1988. Construction ran from 1990 to 1997 and the complex was inaugurated on 31 May 1997 by the ninth President of India, Dr. Shankar Dayal Sharma. Its six shrines are housed in a hybrid design that the temple's own architects called \"glass and gopuram\" - traditional South Indian gopuram forms executed in carved granite and combined with modern glazing.",
+  "history": "ISKCON was founded in New York City in 1966 by Srila Prabhupada to promote the Bhagavad Gita and bhakti yoga; he was later posthumously honoured with the title Vishwa Guru by the Akhil Bharatiya Akhara Parishad at the Maha Kumbh Mela. The Bengaluru congregation first operated from a rented house in 1987 and petitioned the Bangalore Development Authority for land; on 3 August 1988 the BDA allotted a seven-acre hillock, largely monolithic rock unsuitable for building plots, called \"karaab land\". A temporary shed served as the first temple, and the deities of Sri Sri Krishna Balarama were installed there in September 1988 on Lord Balarama's appearance day. Construction began in 1990 and finished in 1997, when the temple was inaugurated by President Shankar Dayal Sharma; the original Rs. 10 crore plan was replaced by a Rs. 32 crore design. A second and larger complex has since been created on Vaikuntha Hill at Vasanthapura on Kanakapura Road, where the Rajadhiraja Govinda Temple was inaugurated on 14 June 2022 by President Ram Nath Kovind; Wikipedia describes the Vaikuntha Hills site as ISKCON's largest temple complex in the world, spread over 8 acres as a Krishna-lila theme park.",
+  "facts": [
+   "Construction ran from 1990 to 1997 and the temple was inaugurated on 31 May 1997 by Dr. Shankar Dayal Sharma, the ninth President of India.",
+   "The site is a seven-acre hillock of monolithic rock allotted by the Bangalore Development Authority on 3 August 1988; the deities of Sri Sri Krishna Balarama were installed in a temporary shed in September 1988, on Lord Balarama's appearance day.",
+   "The project grew from an original Rs. 10 crore plan to a Rs. 32 crore design, built by some 600 craftsmen contributing more than 10 million man-hours, using 32,000 cubic metres of stone, 131,250 tons of cement and 1,900 tons of steel.",
+   "Six shrines are dedicated: Radha-Krishna; Krishna-Balrama; Nitai Gauranga (Chaitanya Mahaprabhu and Nityananda); Srinivasa Govinda (Venkateswara); Prahlada Narasimha; and Srila Prabhupada.",
+   "The gold-plated kalash shikhara measures 8.5 m (28 ft) and the gold-plated flag post (dhvaja) stands 17 m (56 ft) tall.",
+   "The design was conceived by civil engineer Madhu Pandit Dasa of IIT Mumbai with architect Sri Jagat Chandra Dasa, and is explicitly described by the temple as a fusion of \"glass and gopuram\"."
+  ],
+  "architecture": {
+   "style": "Contemporary Vaishnava temple architecture - a South Indian gopuram vocabulary in carved granite fused with modern glass and steel (the temple's own term: \"glass and gopuram\")",
+   "yearBuilt": "1997",
+   "architect": "Madhu Pandit Dasa (design concept) and Sri Jagat Chandra Dasa (architect), both of IIT Mumbai",
+   "materials": "Carved granite ashlar and masonry, reinforced concrete and steel frame, glass curtain walling, gold-plated kalash shikhara and gold-plated flag post",
+   "keyFeatures": [
+    "Tall gopuram-style entrance tower forming the visual anchor of a stepped granite façade",
+    "Large glazed (glass) surfaces set within traditional carved granite temple forms",
+    "Six sanctums within a single walled complex, reached by covered corridors",
+    "Gold-plated kalash shikhara of 8.5 m crowning the main tower",
+    "Gold-plated dhvaja (flag post) of 17 m, the tallest element on site",
+    "Shrine blocks set at different levels across the hillock to suit the monolithic rock terrain",
+    "Open courtyards and prasadam/canteen halls forming the public face of the complex",
+    "Carved granite column bases and pilasters taken from the Vijayanagara temple idiom"
+   ],
+   "footprintHint": "Main temple block roughly 45 m x 35 m including the entrance tower and porch, set within a walled compound on a 7-acre (about 28,000 m2) hill site; add a separate 17 m flag post element at the main axis",
+   "silhouette": "A stepped, tapering South Indian gopuram tower in pale granite, flanked by lower sanctum blocks with ridged (kuta/shala) roofs, all rising out of a rocky hilltop compound; a slender gold-plated flag staff crowns the composition."
+  },
+  "priority": 1,
+  "modelHeightM": 25,
+  "modelFootprintM": {
+   "width": 45,
+   "depth": 35
+  },
+  "sources": [
+   {
+    "title": "ISKCON Temple, Bengaluru - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/ISKCON_Temple,_Bengaluru"
+   },
+   {
+    "title": "Temple History - ISKCON Temple Bangalore (official site)",
+    "url": "https://www.iskconbangalore.org/temple-history/"
+   },
+   {
+    "title": "Official Website of ISKCON Temple, Bengaluru (address: Hare Krishna Hill, Chord Road, Rajajinagar, Bengaluru 560010)",
+    "url": "https://www.iskconbangalore.org/"
+   },
+   {
+    "title": "Vaikuntha Hill - ISKCON Temple Bangalore (official site)",
+    "url": "https://www.iskconbangalore.org/vaikuntha-hill/"
+   },
+   {
+    "title": "List of tourist attractions in Bengaluru - Wikipedia (ISKCON temple Rajajinagar and ISKCON Vaikunta Hills entries)",
+    "url": "https://en.wikipedia.org/wiki/List_of_tourist_attractions_in_Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "bull-temple",
+  "name": "Bull Temple (Dodda Basavana Gudi / Basavanagudi Nandi Temple)",
+  "kannadaName": "ದೊಡ್ಡ ಬಸವನ ಗುಡಿ",
+  "category": "Temple",
+  "subcategory": "Hindu temple (Shaivite Nandi shrine)",
+  "latitude": 12.9428944,
+  "longitude": 77.5682083,
+  "elevationM": 920,
+  "description": "The Bull Temple, better known as Dodda Basavana Gudi, is a compact Shaivite shrine in the Bugle Rock park at Basavanagudi in southern Bengaluru, whose monolithic granite Nandi bull is among the largest Nandi images in the world. Wikipedia places its construction in 1537 under the Vijayanagara Empire, crediting Kempe Gowda, the founder of Bengaluru, which makes it one of the oldest surviving temples in the city. The building itself is deliberately small - a shrine fronted by a porch, with a stepped vimana tower of the early 20th century carrying Saivite figures and motifs.",
+  "history": "The temple was built in 1537 by Kempe Gowda under the Vijayanagara Empire, in the same decade in which Kempe Gowda established the fortified Pete at Bengaluru, and it is listed among the early temples built or improved in the old city's suburbs. The main image is a large granite Nandi monolith, whose blackened surface is attributed to prolonged rubbing with charcoal and oil by generations of devotees; the image is continuously anointed with butter, called benne in Kannada, and a Ganesha image stands nearby. The temple hosts the Kadalekaayi Parishe, a groundnut fair held on the last Monday and Tuesday of the Hindu month of Karthika Maasa, when groundnuts are offered to the deity. The vimana over the shrine is a later addition dating from the early 20th century.",
+  "facts": [
+   "Built in 1537 by Kempe Gowda under the Vijayanagara Empire; Wikipedia describes it as one of the oldest temples in Bengaluru.",
+   "The principal image is a large granite Nandi monolith approximately 15 ft (4.6 m) high and 20 ft (6.1 m) long, among the world's largest Nandi images.",
+   "The shrine is deliberately small, consisting only of the sanctum fronted by a porch; the vimana (tower) bearing Saivite figures and motifs dates from the early 20th century.",
+   "The blackened surface of the Nandi is attributed to prolonged rubbing with charcoal and oil, and the image is anointed daily with butter (benne).",
+   "The Kadalekaayi Parishe groundnut fair is held on the last Monday and Tuesday of the Hindu month Karthika Maasa, with groundnuts offered to the deity.",
+   "The temple stands on Bull Temple Road inside Bugle Rock Park in Basavanagudi, in southern Bengaluru; a Ganesha image stands in the same compound."
+  ],
+  "architecture": {
+   "style": "Vijayanagara (Dravidian) Shaivite",
+   "yearBuilt": "1537",
+   "architect": "Kempe Gowda (attributed)",
+   "materials": "Large granite monolith for the Nandi image; carved granite and stone masonry for the sanctum, porch and later vimana tower",
+   "keyFeatures": [
+    "Single monolithic seated Nandi bull, roughly 6.1 m long and 4.6 m high, facing the sanctum",
+    "Compact garbhagriha-and-porch shrine with a low pitched roof",
+    "Stepped square Dravidian vimana over the sanctum, with carved Saivite figures and motifs",
+    "Kalasha finial crowning the vimana",
+    "Siting inside the landscaped Bugle Rock park, with the bull visible from Bull Temple Road",
+    "Minimal superstructure - a deliberately small, low-slung composition by comparison with other Dravidian temples"
+   ],
+   "footprintHint": "Shrine and porch together roughly 8 m x 6 m, with the Nandi monolith 6.1 m long, about 2 m wide and 4.6 m high; the whole compound sits within the Bugle Rock park enclosure",
+   "silhouette": "A low, compact granite shrine with a plain porch and a small stepped square Draviana tower over it, fronted in the forecourt by a bulky seated bull - a squat, wide silhouette rather than a towering temple."
+  },
+  "priority": 1,
+  "modelHeightM": 9,
+  "modelFootprintM": {
+   "width": 12,
+   "depth": 10
+  },
+  "sources": [
+   {
+    "title": "Dodda Basavana Gudi - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Dodda_Basavana_Gudi"
+   },
+   {
+    "title": "Bengaluru Pete - Wikipedia (early temples built or improved under Kempegowda, including the Nandi/Bull Temple and Basavanna)",
+    "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete"
+   },
+   {
+    "title": "Places of worship in Bengaluru - Wikipedia (Nandi Temple, Basavanagudi)",
+    "url": "https://en.wikipedia.org/wiki/Places_of_worship_in_Bengaluru"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'Dodda Basavana Gudi Basavanagudi' (Shri Doddabasavanna Temple, Bull Temple Road)",
+    "url": "https://photon.komoot.io/api/?q=Dodda%20Basavana%20Gudi%20Basavanagudi"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "st-marys-basilica",
+  "name": "St. Mary's Basilica, Bengaluru (Basilica of St. Mary, Blackpally)",
+  "kannadaName": "ಸೇಂಟ್ ಮೇರಿಸ್ ಬೆಸಿಲಿಕಾ",
+  "category": "Cultural",
+  "subcategory": "Christian basilica (Roman Catholic minor basilica)",
+  "latitude": 12.984194,
+  "longitude": 77.6038861,
+  "elevationM": 920,
+  "description": "St. Mary's Basilica is the oldest surviving Catholic church of Bengaluru, a Gothic stone church in the Sampangi Rama Nagar / Shivajinagar quarter (historically Blackpally) whose twin spires rise about 49 m above the street. The present building, attributed to the Rev. L. E. Kleiner, was constructed between 1856 and 1882 and consecrated on 8 September 1882 by Bishop Jean-Yves-Marie Coadou. Pope Paul VI elevated it to the rank of Roman Catholic minor basilica in 1973, reportedly the sixth church in India to receive the title and the only one in Karnataka.",
+  "history": "The site began in the 17th century as a thatched shelter raised by Tamil Christian migrants from Gingee, called the Chapel of Kanikkai Madha, in the rice-growing settlement known as Bili Akki Palli or Blackpally. Fr. Jean-Antoine Dubois erected a thatched chapel there in 1803, added a small chapel and clergy residence in 1811, and in 1813 enlarged the building and renamed it the Church of the Purification of Our Lady. Fr. Andreas later expanded it into a cruciform plan, but it was destroyed during the communal riots of 1832. Its successor was built between 1856 and 1882 under the name Church of our Lady of the Presentation, and was consecrated on 8 September 1882 by Bishop Jean-Yves-Marie Coadou with 35 priests and roughly 4,000 Catholics present, at a reported cost of Rs. 29,659. The stained glass was taken out during the Second World War and restored in 1947. The church was elevated to minor-basilica rank by Pope Paul VI in 1973, and its principal feast, celebrating the Nativity of Mary, is held in September with a novena, multilingual Masses, thanksgiving services, Eucharistic observances and a concluding chariot procession that draws about 500,000 people.",
+  "facts": [
+   "The present building was constructed between 1856 and 1882 and consecrated on 8 September 1882 by Bishop Jean-Yves-Marie Coadou, with 35 priests and about 4,000 Catholics present; the reported construction cost was Rs. 29,659.",
+   "The structure is attributed to the Rev. L. E. Kleiner and is Gothic in a cross-shaped plan, roughly 172 ft (52 m) long and 50 ft (15 m) wide, with two spires of nearly 160 ft (about 49 m).",
+   "The exterior is a grey-granite facade decorated with carvings and statues of biblical figures and scenes; the interior has vaulted ceilings on Corinthian pillars with pointed arches and detailed stained-glass windows.",
+   "The stained glass was removed during the Second World War and restored in 1947; a six-foot statue of Mary holding the infant Jesus stands outside and is traditionally dressed in a saree by devotees.",
+   "The church traces its origin to a 17th-century thatched 'Chapel of Kanikkai Madha' built by Tamil Christian migrants from Gingee; the church erected on that site was destroyed in the communal riots of 1832.",
+   "Pope Paul VI elevated it to a minor basilica in 1973, reportedly the sixth church in India to receive the designation; the September feast draws about 500,000 people."
+  ],
+  "architecture": {
+   "style": "Gothic (Gothic Revival) with French and British colonial influence",
+   "yearBuilt": "1856-1882",
+   "architect": "Rev. L. E. Kleiner",
+   "materials": "Grey granite ashlar and rubble masonry, timber roof structure, carved stone tracery and statuary, stained glass, marble and gilt fittings",
+   "keyFeatures": [
+    "Twin slender stone spires, each about 49 m (160 ft) tall, flanking the west front",
+    "Cruciform (cross-shaped) plan with a steeply pitched gabled roof",
+    "Grey-granite facade carved with statues of biblical figures and narrative scenes",
+    "Pointed-arch openings and traceried windows along the long elevation walls",
+    "Vaulted interior resting on Corinthian-capped columns",
+    "Stained-glass window ensemble, removed during the Second World War and restored in 1947",
+    "Six-foot outdoor statue of the Madonna and Child, dressed in a saree by devotees",
+    "Set within a raised compound in the Sampangi Rama Nagar / Shivajinagar quarter"
+   ],
+   "footprintHint": "Approximately 172 ft (52 m) long by 50 ft (15 m) wide for the cruciform church block; spires rise to about 160 ft (49 m) above ground level",
+   "silhouette": "A steep-gabled cruciform church whose most recognisable feature is a pair of tall, slender, needle-like spires rising from the front corners, above a solid grey-granite wall pierced by pointed-arch windows."
+  },
+  "priority": 1,
+  "modelHeightM": 49,
+  "modelFootprintM": {
+   "width": 52,
+   "depth": 15
+  },
+  "sources": [
+   {
+    "title": "St. Mary's Basilica, Bengaluru - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/St._Mary%27s_Basilica,_Bengaluru"
+   },
+   {
+    "title": "St. Mary's Basilica Bengaluru: History, Timings, Architecture & Visitor Guide - Gamana",
+    "url": "https://www.gamana.app/blog/st-mary-s-basilica-bengaluru-history-timings-architecture-visitor-guide/"
+   },
+   {
+    "title": "History - Archdiocese of Bangalore (official)",
+    "url": "https://www.bangalorearchdiocese.org/history"
+   },
+   {
+    "title": "St. Mary's Basilica - Welcome to St. Mary's Basilica Church, Bangalore (official)",
+    "url": "https://shrinebasilicabangalore.org/about"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "gavi-gangadhareshwara-temple",
+  "name": "Gavi Gangadhareshwara Temple (Gavimath Cave Temple)",
+  "kannadaName": "ಗವಿ ಗಂಗಾಧರೇಶ್ವರ ದೇವಾಲಯ, ಬೆಂಗಳೂರು",
+  "category": "Temple",
+  "subcategory": "Hindu temple (Shaivite rock-cut cave temple)",
+  "latitude": 12.948194,
+  "longitude": 77.563,
+  "elevationM": 920,
+  "description": "The Gavi Gangadhareshwara Temple, or Gavimath (cave temple), is a Shaivite rock-cut shrine in Gavipuram, west of central Bengaluru, whose sanctum is hewn from monolithic stone inside a natural cave. The present temple was built or renovated by Kempe Gowda I, founder of Bengaluru, in the 16th century, and Wikipedia describes it as one of Bengaluru's oldest temples. Its defining feature is a solar alignment that allows sunlight to reach the inner lingam through the opening between the horns of the stone Nandi for about an hour around Makara Sankranti.",
+  "history": "The origins of the shrine are traditionally attributed to the Vedic-era sages Gautama Maharishi and Bharadwaja Muni; the present structure was built or renovated by Kempe Gowda I after his release from five years' imprisonment by Rama Raya. The complex was already being enlarged when Thomas and William Daniell painted it on 1 May 1792, and their drawings show subsequent additions including new walls and enclosures around the original cave. Today the alignment produces two annual illumination periods, roughly 13 to 16 January and 26 November to 2 December, when a shaft of sunlight falls through the gap between the Nandi's horns onto the inner lingam for about an hour, drawing large numbers of devotees; older Daniell drawings suggest that before the later additions the shrine was lit at the summer and winter solstices instead. The temple precinct also contains Gosaayi Math, the samadhi of Narayan Maharaj behind the shrine, and the Sri Bande Mahakali Temple. The site is protected under the Karnataka Ancient and Historical Monuments, Archaeological Sites and Remains Act, 1961.",
+  "facts": [
+   "The sanctum is cut from monolithic stone within a natural cave at Gavipuram; the present temple was built or renovated by Kempe Gowda I in the 16th century.",
+   "Sunlight reaches the inner lingam through the opening between the horns of the stone Nandi for roughly an hour around Makara Sankranti; the present alignment produces two illumination windows, about 13-16 January and 26 November-2 December.",
+   "Comparisons with older Daniell drawings indicate that, before the later additions, the shrine was illuminated at the summer and winter solstices.",
+   "The courtyard holds numerous monolithic sculptures, including two granite pillars supporting a large disc representing the sun and moon, pillars carved with Nandi seated on top, and monolithic pillars associated with damaru and trishul imagery.",
+   "The complex includes shrines to Parvati, Ganesha, Murugan, Gautama Maharishi, Bharadwaja Muni, Chandikeswara, Durga, Agni, the Saptamatrikas, Dakshinamurthy, Bhairava, Veerabhadra, Lakshmi, Narayana, Surya, Chandra, the Navagrahas and others; the two-headed, seven-handed, three-legged Agni (Agnimurthi) is worshipped for the cure of eye defects.",
+   "Thomas and William Daniell painted the temple on 1 May 1792, and the site is protected under the Karnataka Ancient and Historical Monuments, Archaeological Sites and Remains Act, 1961."
+  ],
+  "architecture": {
+   "style": "Indian rock-cut architecture (cave temple) with later masonry additions in the Dravidian idiom",
+   "yearBuilt": "16th century",
+   "architect": "Kempe Gowda I (attributed)",
+   "materials": "Monolithic granite; the cave-cut sanctum with later masonry walls, enclosures and monolithic granite sculpture groups",
+   "keyFeatures": [
+    "Sanctum cut directly out of a natural rock cave (gavi) rather than built up from the ground",
+    "Stone Nandi positioned so that sunlight enters through the gap between its horns onto the lingam",
+    "Monolithic sun-and-moon disc carried on two granite pillars in the courtyard",
+    "Free-standing monolithic pillars carved with damaru and trishul motifs",
+    "Pillars carved with seated Nandi figures",
+    "Courtyard crowded with monolithic images of the Saptamatrikas, Navagrahas, Durga, Ganesha and other deities",
+    "Low surrounding compound walls and enclosures added after the 16th-century core",
+    "Adjacent Gosaayi Math and the Sri Bande Mahakali temple forming a clustered precinct"
+   ],
+   "footprintHint": "The rock-cut sanctum is a small cave chamber of roughly 7 m across; the walled sculpture courtyard enclosing it is of the order of 35 m x 25 m, with the tallest monolithic elements (sun-and-moon disc on pillars) around 5 m - all figures are approximations for modelling, as no published dimensions exist",
+   "silhouette": "Not a towered temple at all: a low, irregular rock-cut compound with a flat-roofed cave mouth as its focus, ringed by a courtyard dense with squat monolithic pillars and disc sculptures, reading as a horizontal, low-profile mass."
+  },
+  "priority": 1,
+  "modelHeightM": 8,
+  "modelFootprintM": {
+   "width": 35,
+   "depth": 25
+  },
+  "sources": [
+   {
+    "title": "Gavi Gangadhareshwara Temple - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Gavi_Gangadhareshwara_Temple"
+   },
+   {
+    "title": "Bengaluru Pete - Wikipedia (Gavi Gangadhareshwara Temple listed among Kempegowda-era temples)",
+    "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete"
+   },
+   {
+    "title": "Places of worship in Bengaluru - Wikipedia (Gavi Gangadhareshwara Temple, Gavipura)",
+    "url": "https://en.wikipedia.org/wiki/Places_of_worship_in_Bengaluru"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'Gavi Gangadhareshwara Temple Bengaluru' (Sri Gavigangadhareshwara Swamy Temple)",
+    "url": "https://photon.komoot.io/api/?q=Gavi%20Gangadhareshwara%20Temple%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "hanuman-temple-chickpet",
+  "name": "Anjaneya (Hanuman) Temple, Chickpet - Avenue Road crossing",
+  "category": "Temple",
+  "subcategory": "Hindu temple (Anjaneya / Hanuman shrine)",
+  "latitude": 12.9727188,
+  "longitude": 77.5812128,
+  "elevationM": 920,
+  "description": "At the Avenue (Doddapete) road crossing in the old Pete stands an ancient Anjaneya - Hanuman - temple built by the Kempegowdas, the founders of Bengaluru, on the very square that formed the ceremonial heart of the original city. Wikipedia places it among the early temples built or improved under Kempegowda I (c. 1510-1570), alongside the Gavi Gangadhareshwara Temple, the Nandi (Bull) Temple, Dodda Ganapathi and Ulsoor Someswara. It is a modest neighbourhood shrine hemmed into the Chickpet bazaar frontage rather than a monumental temple, and it should be modelled at marker-plus level rather than with a full interior.",
+  "history": "Kempegowda I established the fortified Bengaluru Pete in 1537 with two main streets laid out in the cardinal directions: Chikkapet Street running east-west and Doddapet Street running north-south. Their intersection formed Doddapete Square - present-day Avenue Road - the heart of the old city, and it is at this crossing that the Anjaneya temple stands. The same Wikipedia account notes that the fort's northern extent ran from this Anjaneya temple, near Mysore Bank, south to Prof. Shivashankar Circle near Fort High School. The temple was among the early temples built or improved during the Kempegowda period, a group that also included the Gavi Gangadhareshwara Temple, Nandi (Basavanna), Dodda Ganapathi, Karanji Anjaneya, Ulsoor Someswara, Koramangala Lakshmi, Mahakali, Veerabhadra, Vinayaka and Kalabhairava. It is documented in photographs of the old Pete captioned \"The ancient Hanuman temple built by Kempegowdas at the Avenue road crossing\", and appears in Wikipedia's list of places of worship in Bengaluru.",
+  "facts": [
+   "The temple stands at the Avenue (Doddapete) road crossing, where Chikkapet Street (east-west) and Doddapet Street (north-south) meet at Doddapete Square - today's Avenue Road, the heart of the old Pete.",
+   "The Bengaluru Pete was laid out by Kempegowda I in 1537, and the fort's northern boundary ran from this Anjaneya temple near Mysore Bank.",
+   "Wikipedia lists the Anjaneya temple among the early temples built or improved in the Kempegowda period, together with the Gavi Gangadhareshwara Temple, Nandi (Basavanna), Dodda Ganapathi, Karanji Anjaneya and Ulsoor Someswara.",
+   "The shrine is documented in photographs of the old Pete captioned 'The ancient Hanuman temple built by Kempegowdas at the Avenue road crossing'.",
+   "It is a distinct, compact roadside shrine within the Chickpet bazaar district, separate from the Karanji Anjaneya and from the 16th-century Ranganathaswamy Temple a few hundred metres away on Chikkapet.",
+   "Its OSM/Photon record in the Bengaluru city dataset places it at approximately 12.9727 N, 77.5812 E, in the Chickpet quarter."
+  ],
+  "architecture": {
+   "style": "Dravidian (Vijayanagara-period) shrine of the Kempegowda type; the specific sub-style is not documented in the sources consulted",
+   "yearBuilt": "16th century (Kempegowda I period; no precise date recorded)",
+   "architect": null,
+   "materials": "Stone masonry with carved granite elements; exact fabric is not documented in the sources consulted",
+   "keyFeatures": [
+    "Sits hard against the Avenue Road frontage at Doddapete Square, opening directly onto the bazaar street",
+    "Compact garbhagriha with a short porch, of the small Kempegowda-period shrine type",
+    "Stepped Dravidian-style tower (shikhara) over the sanctum",
+    "Wrapped by the later commercial structures of the Chickpet bazaar rather than an open compound",
+    "Forms part of the continuous sequence of Kempegowda-era shrines along the Pete's main streets",
+    "Model at marker-plus detail level: the defining quality is its urban position at the crossing rather than monumentality"
+   ],
+   "footprintHint": "Small shrine with porch - allow roughly 8 m x 6 m overall and a tower of about 6-7 m (approximate, for marker-scale modelling; no published dimensions exist)",
+   "silhouette": "A compact roadside shrine: a low square sanctum carrying a small stepped Dravidian tower, fronted by a short pillared porch and pressed into a narrow bazaar street frontage."
+  },
+  "priority": 2,
+  "modelHeightM": 7,
+  "modelFootprintM": {
+   "width": 8,
+   "depth": 6
+  },
+  "sources": [
+   {
+    "title": "Bengaluru Pete - Wikipedia (Anjaneya/Hanuman temple at the Avenue road crossing; Chikkapet and Doddapet streets)",
+    "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete"
+   },
+   {
+    "title": "File: Temple at entrance to Avenue road of the Old Bangalore Pete - Wikimedia Commons ('The ancient Hanuman temple built by Kempegowdas at the Avenue road crossing')",
+    "url": "https://commons.wikimedia.org/wiki/File:A_Hanuman_temple_at_the_entrance_to_the_Avenue_road_in_Bangalore.JPG"
+   },
+   {
+    "title": "Places of worship in Bengaluru - Wikipedia (Hanuman temples of the Pete and Chickpet)",
+    "url": "https://en.wikipedia.org/wiki/Places_of_worship_in_Bengaluru"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'Anjaneya Temple Chickpet Bengaluru' (Sri Anjaneyaswamy Temple)",
+    "url": "https://photon.komoot.io/api/?q=Anjaneya%20Temple%20Chickpet%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "ranganathaswamy-temple",
+  "name": "Ranganathaswamy Temple, Bengaluru (Chikkapet / Chickpet)",
+  "category": "Temple",
+  "subcategory": "Hindu temple (Vaikhanasa Vaishnava shrine)",
+  "latitude": 12.9702611,
+  "longitude": 77.579325,
+  "elevationM": 920,
+  "description": "The Ranganathaswamy Temple stands on Rangaswamy Temple Road in Chikkapet (Chickpet), the old trading heart of Bengaluru, and is a 16th-century Vaikhanasa Vaishnava temple built under the Vijayanagara Empire. It is named for Ranganatha, the reclining form of Vishnu, and the surrounding road took its name from the shrine. The temple follows Vijayanagara architecture with carved granite pillars showing Hoysala influence, and encloses its sanctum within an inner praakaara so that devotees can circle it.",
+  "history": "The temple dates to the 16th century CE, the period when the Vijayanagara Empire dominated the Deccan and Kempe Gowda's new city was being established on the site of the old Pete; it became the spiritual anchor of the Chickpet bazaar, whose streets - Chikkapet Street and Doddapet Street - were laid out in 1537. Wikipedia records the surrounding road as named after the temple, and lists it among the ancient and famous Vaikhanasa temples of the city. Worship follows the Vaikhanasa Agama: the Rathotsavam, the temple's chariot festival, falls on Chaitra Shuddha Pournami and is held on the same day as the Bangalore Karaga festival, when the moolavar and utsavar murtis are taken out; and during Vaikuntha Ekadashi devotees perform pradakshina within the inner enclosure, with special darshan of both the main and processional deities.",
+  "facts": [
+   "Located in Chikkapet (Chickpet) on Rangaswamy Temple Road; the road itself is named after the temple.",
+   "Dated to the 16th century CE and built under the Vijayanagara Empire.",
+   "The architectural style is Vijayanagara, with carved granite pillars showing Hoysala influence.",
+   "The sanctum houses Ranganathaswamy together with his consorts Bhudevi and Neela Devi; the temple follows the Vaikhanasa tradition.",
+   "The complex includes a sanctum sanctorum and an inner praakaara (enclosed precinct) around which devotees perform pradakshina on Vaikuntha Ekadasi, with special darshan of the moolavar and utsavar murtis.",
+   "The Rathotsavam (chariot festival) is held on Chaitra Shuddha Pournami, the same day as the Bangalore Karaga festival."
+  ],
+  "architecture": {
+   "style": "Vijayanagara (Dravidian) with Hoysala-influenced carved granite pillars",
+   "yearBuilt": "16th century CE",
+   "architect": null,
+   "materials": "Carved granite pillars and stone masonry; granite icons for the moolavar, utsavar and the consorts Bhudevi and Neela Devi",
+   "keyFeatures": [
+    "Square sanctum (garbhagriha) topped by a stepped Dravidian vimana",
+    "Open pillared mandapa with Hoysala-influenced carved granite columns",
+    "Three sanctums for Ranganathaswamy, Bhudevi and Neela Devi",
+    "Inner praakaara - a walled enclosure permitting continuous pradakshina around the sanctum",
+    "Ratha (chariot) platform from which the annual Rathotsavam procession departs",
+    "Compact urban siting in the middle of the Chickpet bazaar, on the road named Rangaswamy Temple Road"
+   ],
+   "footprintHint": "Shrine and mandapa roughly 12 m x 10 m, enclosed by an inner praakaara of about 25 m x 20 m within a small walled compound (approximate for modelling; no published dimensions)",
+   "silhouette": "A compact Dravidian shrine: a stepped square vimana over the sanctum fronted by a low pillared mandapa, all wrapped in a low-walled inner enclosure that reads as a small self-contained temple box in the middle of a busy bazaar street."
+  },
+  "priority": 2,
+  "modelHeightM": 12,
+  "modelFootprintM": {
+   "width": 12,
+   "depth": 10
+  },
+  "sources": [
+   {
+    "title": "Ranganathaswamy Temple, Bengaluru - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Ranganathaswamy_Temple,_Bengaluru"
+   },
+   {
+    "title": "List of tourist attractions in Bengaluru - Wikipedia (Ranganathaswamy temple, off Avenue Road: 'a 16th-century temple built by the Vijayanagara empire')",
+    "url": "https://en.wikipedia.org/wiki/List_of_tourist_attractions_in_Bengaluru"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'Ranganathaswamy Temple Chikkapet Bengaluru' (Sri Ranganathaswamy Temple)",
+    "url": "https://photon.komoot.io/api/?q=Ranganathaswamy%20Temple%20Chikkapet%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "st-marys-cathedral",
+  "name": "St. Mary's Jacobite Syriac Orthodox Cathedral, Bengaluru (Queen's Road, Vasanth Nagar)",
+  "photoNote": "No photograph of this church has been published under a licence that allows reuse. Wikimedia Commons carries no image of the building - a coordinate search returns nothing within 250 m of the Queen's Road site, and the church has no Commons category - and the parish's own website, the only other source of pictures, is not licensed for reuse. The panel therefore carries the church's history and coordinates in place of a photograph.",
+  "category": "Cultural",
+  "subcategory": "Christian cathedral (Jacobite Syriac / Syriac Orthodox)",
+  "latitude": 12.9891164,
+  "longitude": 77.5987295,
+  "elevationM": 920,
+  "description": "The only building in Bengaluru that is styled \"St. Mary's Cathedral\" is the St. Mary's Jacobite Syriac Orthodox Church on Queen's Road, Vasanth Nagar, the cathedral church of the Jacobite Syriac Orthodox Church's Bangalore Diocese; it is listed among India's Jacobite Syriac cathedrals in Wikipedia. The congregation was founded in 1975 by Malayali Syriac Christian migrants - Syriac worship in the city dates from 1936 - and the present church grew from a trust formed in 1978 on land leased from the Bangalore city corporation. Important correction to the brief: there is no 1880s Gothic Revival cathedral on MG Road in Bengaluru; MG Road's cathedral is St. Mark's Cathedral (foundation 1808, consecrated 1816, English Baroque) and the Gothic church of 1875-1882 is St. Mary's Basilica in Shivajinagar, recorded separately as st-marys-basilica.",
+  "history": "Syrian Christian worship began in Bengaluru in 1936 with the arrival of Malayali Christians. In 1975, after a church conflict, a congregation on Queen's Road was formed and first gathered with about 200 members, holding its first Mass with the Rev. Fr. P.V. Paolose of Kolancherry, Ernakulam; the Rev. Fr. George Jacob and the Rev. Fr. K.M. Paulose served as vicars through 1976. In June 1976 the Rev. Fr. M.K. Thomas - later identified as H.G. Thomas Mor Themothoes, Metropolitan - became vicar, and Sunday worship moved from the Bangalore Lutheran Church to United Theological College, Bengaluru. To establish a legal body a trust named St. Mary's Jacobite Society was formed in 1978, after which the congregation obtained a leased plot from the Bangalore city corporation and raised the present cathedral church on it. The cathedral's own published history notes no construction or consecration dates, so the building's date should be treated as post-1978 and unconfirmed.",
+  "facts": [
+   "The congregation was founded in 1975 with about 200 members; the first Mass was celebrated by the Rev. Fr. P.V. Paolose of Kolancherry, Ernakulam, and the Rev. Fr. George Jacob and Rev. Fr. K.M. Paulose served as vicars through 1976.",
+   "The Rev. Fr. M.K. Thomas - later H.G. Thomas Mor Themothoes, Metropolitan - became vicar in June 1976, and Sunday worship then moved from the Bangalore Lutheran Church to United Theological College, Bengaluru.",
+   "A trust named St. Mary's Jacobite Society was formed in 1978, and the congregation subsequently obtained a leased plot from the Bangalore city corporation on which the cathedral church was built.",
+   "Syrian Christian worship in Bengaluru dates from 1936 with the arrival of Malayali Christian migrants; the 1975 split and later denominational divisions in the Malankara church produced separate congregations.",
+   "The cathedral's own history page publishes no construction or consecration dates, so the building should be dated as post-1978 only.",
+   "The address is Queen's Road, Vasanth Nagar, Bengaluru; the OpenStreetMap/Photon record places it at 12.9891 N, 77.5987 E."
+  ],
+  "architecture": {
+   "style": "Syriac Orthodox cathedral architecture (cross-in-square basilica with domed sanctuary); specific fabric is not documented in the published sources consulted",
+   "yearBuilt": "post-1978 (no construction or consecration date published)",
+   "architect": null,
+   "materials": "Not documented in the published sources consulted - model as a standard Syriac Orthodox cross-in-square church in plastered masonry with a metal dome and cross",
+   "keyFeatures": [
+    "Cross-in-square sanctuary of the Jacobite Syriac tradition, entered from the Queen's Road frontage",
+    "Central dome over the sanctuary, with a raised entrance block and cross",
+    "Continuous arcading and arched openings typical of Syriac Orthodox church plans",
+    "Compact urban siting within the Queen's Road / Vasanth Nagar residential quarter",
+    "Model at marker-plus detail level: the parish's documented significance (1975 founding, 1978 trust, city-corporation land) is historical rather than monumental"
+   ],
+   "footprintHint": "Small urban cathedral - allow roughly 25 m x 18 m for the church block (approximate; no published dimensions)",
+   "silhouette": "A compact Syriac Orthodox cross-in-square church with a low gabled roof and a single central dome over the sanctuary, fronted by a modest entrance facade on Queen's Road."
+  },
+  "priority": 2,
+  "modelHeightM": 15,
+  "modelFootprintM": {
+   "width": 25,
+   "depth": 18
+  },
+  "sources": [
+   {
+    "title": "Church History - St Mary's Jacobite Syriac Orthodox Cathedral, Bengaluru (official)",
+    "url": "https://www.bsmcathedral.org/Church_history.html"
+   },
+   {
+    "title": "St Mary's Jacobite Syriac Orthodox Cathedral - Bengaluru (official)",
+    "url": "https://www.bsmcathedral.org/"
+   },
+   {
+    "title": "List of cathedrals in India - Wikipedia (St. Mary's Jacobite Syrian Cathedral, Bangalore)",
+    "url": "https://en.wikipedia.org/wiki/List_of_cathedrals_in_India"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'St. Mary's Jacobite Syrian Orthodox Cathedral Bengaluru' (Queen's Road, Vasanth Nagar)",
+    "url": "https://photon.komoot.io/api/?q=St.%20Mary%27s%20Jacobite%20Syrian%20Orthodox%20Cathedral%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "chota-imambara",
+  "name": "Chhota Imambara (Imambara Hussainabad Mubarak)",
+  "city": "Lucknow, Uttar Pradesh (outside Bengaluru)",
+  "category": "Cultural",
+  "subcategory": "Islamic mausoleum and congregation hall (Shia imambara)",
+  "latitude": 26.873784,
+  "longitude": 80.904409,
+  "elevationM": 920,
+  "outsideBengaluru": true,
+  "description": "The Chhota Imambara, formally the Imambara Hussainabad Mubarak, is the 19th-century Shia imambara at Husainabad in Lucknow, roughly 1,700 km north-east of Bengaluru and well outside the Bengaluru metropolitan area. Nawab Muhammad Ali Shah of Awadh built it in 1838 as a mausoleum for himself and his mother - not, as some listings state, for a son of Shah Alam II - and it became known as the \"Palace of Lights\" for its chandeliers and its role in the Muharram observances. No \"Chota Imambara\" could be verified anywhere in the city of Bengaluru: the city's principal Islamic monuments are the Jamia Masjid near the City Market, built in 1940 to a design by Rayyaz Asifuddin of Hyderabad, and the Masjid-e-Askari in Richmond Town.",
+  "history": "Muhammad Ali Shah, Nawab of Awadh, built the Chhota Imambara at Husainabad in 1838; the project took 54 years and thousands of labourers were employed on it as famine relief. Alongside the mausoleum the complex includes the Husainabad Mosque and its gilded gateway, a treasury holding Muhammad Ali Shah's crown and ceremonial tazias, and the Satkhanda - an unfinished watchtower and lunar observatory begun in the Nawab's 1837-42 reign that was stopped at the fourth storey despite its name meaning seven-storeyed. Within the enclosure stand two small Taj Mahal replicas, including the tomb of the Nawab's daughter Princess Asiya Begum and her husband, and water is supplied from the Gomti river. In 2016 The Economist criticised restoration work for using modern cement that damaged the original plasterwork.",
+  "facts": [
+   "Begun in 1838 by Nawab Muhammad Ali Shah of Awadh; the project took 54 years and thousands of labourers were engaged as famine relief.",
+   "It functions as a mausoleum for Muhammad Ali Shah and his mother, rather than for a son of Shah Alam II as sometimes listed.",
+   "The style is classified as Indo-Islamic architecture, with a gilded dome, turrets, minarets, floral decoration and Arabic calligraphic inscriptions.",
+   "The building has two halls and a Shehnasheen containing a replica of Imam Husain's zarih, and five main entrances representing the \"Panjetan\", the holy five.",
+   "Chandeliers imported from Belgium give the building its nickname, the \"Palace of Lights\", particularly during the Muharram celebrations.",
+   "The adjoining Satkhanda, a watchtower and lunar observatory commissioned during the 1837-42 reign, was left unfinished at the fourth storey; two small Taj Mahal replicas include the tomb of Princess Asiya Begum and her husband."
+  ],
+  "architecture": {
+   "style": "Indo-Islamic (Nawabi) architecture",
+   "yearBuilt": "1838",
+   "architect": null,
+   "materials": "Plastered masonry with a gilded dome and gilded gateway; Belgian chandeliers; Arabic calligraphic panels (specific construction materials are not stated in the source consulted)",
+   "keyFeatures": [
+    "Gilded central dome over the main hall, the visual signature of the building",
+    "Slender turrets and minarets at the corners",
+    "Arabic calligraphic inscriptions and floral decoration across the plastered facade",
+    "Five main entrance gateways, representing the Panjetan or holy five",
+    "Two interior halls plus a Shehnasheen holding a replica of Imam Husain's zarih",
+    "Two small Taj Mahal replicas within the enclosure, including the tomb of Princess Asiya Begum",
+    "Adjoining Husainabad Mosque with a gilded gateway, a treasury and the unfinished Satkhanda watchtower"
+   ],
+   "footprintHint": "Compact single-storey imambara hall of roughly 40 m x 30 m, crowned by the gilded dome, set within the walled Husainabad complex (approximate, for modelling)",
+   "silhouette": "A low, single-storey rectangular hall crowned by a gilded bulbous dome and flanked by four slender turrets, fronted by a tall arched gilded gateway and arcaded with calligraphic panels."
+  },
+  "priority": 3,
+  "modelHeightM": 20,
+  "modelFootprintM": {
+   "width": 40,
+   "depth": 30
+  },
+  "sources": [
+   {
+    "title": "Chota Imambara - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Chota_Imambara"
+   },
+   {
+    "title": "Places of worship in Bengaluru - Wikipedia (Bengaluru's mosques, including Jamia Masjid of 1940; no Chota Imambara listed for the city)",
+    "url": "https://en.wikipedia.org/wiki/Places_of_worship_in_Bengaluru"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'Chhota Imambara Bengaluru' (resolves only to the Lucknow monument)",
+    "url": "https://photon.komoot.io/api/?q=Chhota%20Imambara%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "krishna-temple-basavanagudi",
+  "name": "Sri Govardhanagiri Kshetra (Krishna Temple), Basavanagudi",
+  "category": "Temple",
+  "subcategory": "Hindu temple (Krishna shrine, artificial cave temple, Puttige Matha)",
+  "latitude": 12.9423,
+  "longitude": 77.5671,
+  "elevationM": 920,
+  "description": "The one genuine Krishna temple inside the Bengaluru city boundary that can be documented with a full street address is the Sri Govardhanagiri Kshetra at 1/3 Bull Temple Road, opposite BMS Engineering College, Basavanagudi. It is an artificial cave temple carved into and around a pre-existing hill, whose central shrine holds Krishna as Govardhana Giridhari, lifting Govardhana hill on his little finger; it was inaugurated on 4 March 2004 by Sri Sugunendra Teertha Swamiji, the 30th Peetathipati of the Puttige Matha of Udupi, and dedicated by Dr. Nalini Rao. Note on the brief: the famous \"Krishna Temple, Udupi\" (Sri Krishna Matha, Madhvacharya's 13th-century Dvaita matha) lies about 400 km north-west of Bengaluru, outside the metro area, and is not modelled here; this entry instead uses the in-city Krishna shrine, which is administered by that same Udupi matha tradition.",
+  "history": "The temple was inaugurated on 4 March 2004 by Sri Sugunendra Teertha Swamiji, the 30th Peetathipati of the Puttige Matha, Udupi, and was dedicated by Dr. Nalini Rao in memory of her parents and brother. The design is a unique artificial cave temple built around a pre-existing hill, so that the exterior imitates Govardhanagiri itself: the entrance leads through a dim tunnel with stone shoe racks and wheelchair access into the sanctum, and the wall friezes depict episodes from Krishna Leela. The precinct includes gardens, a goshala with two cows offering Go-Seva, a Prashadalaya, a Puthige Mutt branch and function halls, and the site is affiliated to the Puttige Matha, Udupi, following the Madhwa tradition. A separate smaller Ganesha shrine is listed at the site alongside the central Krishna shrine.",
+  "facts": [
+   "Inaugurated on 4 March 2004 by Sri Sugunendra Teertha Swamiji, the 30th Peetathipati of the Puttige Matha, Udupi; dedicated by Dr. Nalini Rao in memory of her parents and brother.",
+   "The central shrine holds Krishna as Govardhana Giridhari, lifting Govardhana hill on his little finger; a Ganesha shrine is also listed at the site.",
+   "It is built as an artificial cave temple around a pre-existing hill, its exterior imitating Govardhanagiri, and is executed in carved granite.",
+   "The entrance passes through a dim tunnel with stone shoe racks and wheelchair access, and the wall friezes depict episodes from Krishna Leela.",
+   "The precinct includes gardens, a goshala with two cows offering Go-Seva, a Prashadalaya, a Puthige Mutt branch and function halls; it is affiliated to the Puttige Matha, Udupi, in the Madhwa tradition.",
+   "The address is 1/3, Bull Temple Road, opposite BMS Engineering College, N.R. Colony, Basavanagudi, Bengaluru 560004; the coordinate given here is an address-derived approximation (OSM places BMS College of Engineering at 12.9416 N, 77.5660 E and the Bull Temple at 12.9429 N, 77.5682 E)."
+  ],
+  "architecture": {
+   "style": "Contemporary artificial cave / rock-cut temple architecture in the Madhwa (Dvaita) tradition",
+   "yearBuilt": "2004",
+   "architect": null,
+   "materials": "Carved granite and artificial rock-work built around a natural hill; details not published in the sources consulted",
+   "keyFeatures": [
+    "Artificial cave temple formed around a pre-existing hill, so the mass reads as a rock outcrop rather than a built structure",
+    "Dim tunnel entrance with stone shoe racks leading into the sanctum",
+    "Central shrine with Krishna as Govardhana Giridhari holding up Govardhana hill",
+    "Frieze panels depicting Krishna Leela episodes lining the cave walls",
+    "Auxiliary Ganesha shrine",
+    "Landscaped gardens, goshala, Prashadalaya and Puthige Mutt branch buildings around the cave",
+    "Siting in a dense Basavanagudi bazaar street, a few hundred metres from the Bull Temple"
+   ],
+   "footprintHint": "Cave complex roughly 25 m x 20 m within the hill, with an open forecourt and gardens of about 35 m x 30 m (approximate for modelling; no published dimensions)",
+   "silhouette": "A pseudo-rock, grotto-like mass with a low dark tunnel mouth cut into a landscaped hill, reading as a cave rather than a temple tower - the opposite of the gopuram silhouette of the neighbouring Bull Temple."
+  },
+  "priority": 2,
+  "modelHeightM": 9,
+  "modelFootprintM": {
+   "width": 25,
+   "depth": 20
+  },
+  "sources": [
+   {
+    "title": "Sri Govardhanagiri Kshetra, Basavanagudi, Bengaluru - Electronic City travel guide (inauguration date, dedicator, deity, artificial cave architecture, address)",
+    "url": "https://www.electronic-city.in/travel/bengaluru/govardhana-kshetra.php"
+   },
+   {
+    "title": "Sri Govardhana Kshetra, Basavanagudi, Bengaluru - mytemplemypride.com (Govardhana Giridhari deity, Puttige Matha affiliation, map location opposite BMS College near Bull Temple)",
+    "url": "https://mytemplemypride.com/temples/sri-govardhana-kshetra-basavanagudi-bengaluru-cf9c0411-670c-4074-ba1c-cd34cd0a85c0"
+   },
+   {
+    "title": "Udupi Sri Krishna Matha - Wikipedia (the famous Udupi Krishna Temple, outside the Bengaluru metro area)",
+    "url": "https://en.wikipedia.org/wiki/Udupi_Sri_Krishna_Matha"
+   },
+   {
+    "title": "Photon/OpenStreetMap geocoder - 'BMS Engineering College Basavanagudi' (reference point for the address-derived coordinate)",
+    "url": "https://photon.komoot.io/api/?q=BMS%20Engineering%20College%20Basavanagudi"
+   }
+  ],
+  "images": []
+ }
+]

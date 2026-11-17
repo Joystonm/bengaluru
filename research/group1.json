@@ -1,0 +1,625 @@
+[
+  {
+    "id": "vidhana-soudha",
+    "name": "Vidhana Soudha",
+    "kannadaName": "ವಿಧಾನಸೌಧ",
+    "category": "Heritage",
+    "subcategory": "Neo-Dravidian state legislature building",
+    "latitude": 12.9796,
+    "longitude": 77.5906,
+    "elevationM": 920,
+    "description": "The Vidhana Soudha, standing on Ambedkar Veedhi on the High Grounds, is the seat of the Karnataka Legislative Assembly and Legislative Council. Its granite massing blends Dravidian and Indo-Saracenic elements, with Mysore Palace-inspired columns and a central dome carrying the Lion Capital of Ashoka. The building is among the largest granite structures in the world and Jawaharlal Nehru famously called it a 'temple dedicated to the nation'.",
+    "history": "The foundation stone was laid on 13 July 1951 and construction began in 1952, with the building completed and inaugurated in 1956. The design was by B. R. Manickam, who served as architect alongside chief engineer Muniappa, under principal supervisor Sir Arcot Narayanaswamy; the Karnataka Public Works Department was the main contractor. Granite was sourced from Magadi, Turuvekere, Mallasandra and Hesaraghatta, while door and window frames used principally Mysore teak. The central dome was sculpted by Siddalinga Swami and completed by his son Nagendra Stapati, with the Lion Capital emblem carved by Shilpi Shamachar. Interior wall paintings were executed by A. P. Rao in 1956. Reported costs differ between sources, from an original two-storey estimate of ₹33 lakh to a final cost of ₹1.8 crore for the redesigned building. In 2025 Karnataka introduced structured guided tours and opened designated interior areas to the public.",
+    "facts": [
+      "The building measures approximately 700 feet north-south and 350 feet east-west, with a reported height of 46 m (150 ft) in the infobox and 53.34 m (175 ft) in the article body.",
+      "The east-facing entrance portico has 12 granite columns, each 12 m (40 ft) tall, approached by a flight of 45 steps that is 204 ft wide and 70 ft deep.",
+      "The central dome is 60 ft (18 m) in diameter, supported by 8 pillars and crowned with the Lion Capital of Ashoka; six smaller domes sit four in front and two behind.",
+      "The complex has 4 floors plus a basement, 172 rooms, and a total floor area reported as 550,505 sq ft (51,144 m²), with a plinth area of 132,600 sq ft.",
+      "The Legislative Assembly chamber measures 125 ft by 132 ft and is about 40 ft high, seating 254 with provision for 100 more; the Council chamber measures 100 ft by 78 ft and seats 88.",
+      "Two inner open quadrangles flank the central wing, which contains the Banquet Hall at ground level and the Assembly chamber above."
+    ],
+    "architecture": {
+      "style": "Neo-Dravidian with Indo-Saracenic elements",
+      "yearBuilt": "1952-1956",
+      "architect": "B. R. Manickam (chief engineers B. R. Manickam and Muniappa; principal supervisor Sir Arcot Narayanaswamy)",
+      "materials": "Granite (Magadi, Turuvekere, Mallasandra, Hesaraghatta), Mysore teak for doors and windows, sandalwood and betel wood in selected interiors",
+      "keyFeatures": [
+        "Central dome 60 ft in diameter on 8 pillars, crowned with the Lion Capital of Ashoka",
+        "Six subsidiary domes (four front, two rear) stepping down from the main dome",
+        "East portico of 12 granite columns 40 ft tall with a 45-step ceremonial staircase",
+        "Grand entrance entablature bearing the 'Government Work is God's Work' motto",
+        "Two open quadrangles flanking the central assembly wing",
+        "Chunam-finished gneiss and brick masonry with Grecian-style roof detailing",
+        "Mysore Palace-derived column capitals and Dravidian/vedika cornice profiles",
+        "Interior lotus (phala pushpa) and hooballi floral wall paintings by A. P. Rao"
+      ],
+      "footprintHint": "Approximately 213 m (700 ft) north-south by 107 m (350 ft) east-west",
+      "silhouette": "A long, low, symmetrical granite slab block of four storeys on a raised plinth, dominated by a single large ribbed central dome on an eight-pillar drum, with six smaller domes cascading forward and back along the ridge. The east end reads as a monumental classical temple front with a deep colonnaded portico and a broad flight of steps."
+    },
+    "priority": 1,
+    "modelHeightM": 46,
+    "modelFootprintM": {
+      "width": 107,
+      "depth": 213
+    },
+    "sources": [
+      {
+        "title": "Vidhana Soudha",
+        "url": "https://en.wikipedia.org/wiki/Vidhana_Soudha"
+      },
+      {
+        "title": "Vidhana Soudha (full wikitext)",
+        "url": "https://en.wikipedia.org/wiki/Special:Export/Vidhana_Soudha"
+      },
+      {
+        "title": "Vidhana Soudha - ECity Bangalore",
+        "url": "https://www.electronic-city.in/travel/bengaluru/vidhana-soudha.php"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "bangalore-palace",
+    "name": "Bangalore Palace",
+    "kannadaName": "ಬೆಂಗಳೂರು ಅರಮನೆ",
+    "category": "Heritage",
+    "subcategory": "Tudor Revival royal palace",
+    "latitude": 12.9987,
+    "longitude": 77.592,
+    "elevationM": 920,
+    "description": "Bangalore Palace, set on 454 acres in the Jayamahal area, is the seat of the Wodeyar dynasty and the most photographed building in the city. Its Tudor Revival design is explicitly modelled on Windsor Castle in England, giving the palace a fortified silhouette of towers, battlements and turreted parapets. The interior retains elaborate woodwork, a Durbar Hall with stained glass and carved ornament, and a ballroom with Victorian chandeliers and frescoes.",
+    "history": "The palace was commissioned by the Maharaja of Mysore for Chamarajendra Wadiyar X, with construction starting in 1873. Sources differ on completion: the infobox and history section give 1878, while the introduction states 1874. The site was formerly owned by John Garrett, a linguist and principal of Central High School, on whose land the palace was raised; the reported construction cost was ₹1 million. The Wodeyar family retained the palace as a residence and continues to use it for religious purposes, with the grounds and central courtyard now serving as a venue for concerts, exhibitions and weddings. The grounds also contain an amusement park and have been used as a film location.",
+    "facts": [
+      "Construction began in 1873; the Wikipedia infobox lists 1878 as the completion year while the article introduction says 1874.",
+      "The palace stands on a plot of 454 acres (184 ha) formerly owned by John Garrett, a linguist and principal of Central High School.",
+      "The built-up area is listed as 45,000 sq ft (4,200 m²), with 34 rooms and a swimming pool.",
+      "Architectural style is Tudor Revival with the design based on Windsor Castle in England; sources describe a blend of Scottish and Gothic influences.",
+      "The Durbar Hall features intricate carvings, massive chandeliers and stained glass windows, and an elephant head adorns one wall; the Royal Gallery holds a collection of photographs documenting the Wodeyar dynasty.",
+      "Reported construction cost was ₹1 million, given a 2026 equivalent of ₹520 million (US$5.6 million)."
+    ],
+    "architecture": {
+      "style": "Tudor Revival (Gothic/Scottish influences)",
+      "yearBuilt": "c. 1873-1878",
+      "architect": "British engineers (Wikipedia does not name an architect; Karnataka Tourism credits Reverend J. Garrett with the original 1878 build)",
+      "materials": "Brick and mortar construction with intricate interior woodwork",
+      "keyFeatures": [
+        "Large fortified towers with turreted parapets and battlements",
+        "Gothic-style arched and mullioned windows",
+        "Castle-like silhouette modelled on Windsor Castle",
+        "Durbar Hall with stained glass windows, carved ornament and a mounted elephant head",
+        "Ballroom with Victorian chandeliers and frescoed ceilings",
+        "Intricate teak woodwork, motifs and period art pieces in the interiors",
+        "Royal Gallery of Wodeyar dynasty photographs",
+        "Expansive landscaped grounds with granite seats set with blue ceramic tiles"
+      ],
+      "footprintHint": "Built-up area approximately 4,200 sq m (45,000 sq ft) within a 184 ha (454 acre) estate",
+      "silhouette": "A symmetrical castellated mass of two to three storeys with a tall central block, flanked by large square corner towers capped with crenellated battlements and corner turrets. Reads from a distance as a small English castle transplanted to the Deccan."
+    },
+    "priority": 1,
+    "modelHeightM": 24,
+    "modelFootprintM": {
+      "width": 60,
+      "depth": 55
+    },
+    "sources": [
+      {
+        "title": "Bangalore Palace",
+        "url": "https://en.wikipedia.org/wiki/Bangalore_Palace"
+      },
+      {
+        "title": "Bengaluru Palace",
+        "url": "https://en.wikipedia.org/wiki/Bengaluru_Palace"
+      },
+      {
+        "title": "Bangalore Palace | Palace Museum - Karnataka Tourism",
+        "url": "https://karnatakatourism.org/attractions/bangalore-palace/"
+      },
+      {
+        "title": "Experience Bangalore Palace - Karnataka Tourism",
+        "url": "https://karnatakatourism.org/en/experiences/experience-bangalore-palace/"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "tipu-sultan-summer-palace",
+    "name": "Tipu Sultan's Summer Palace",
+    "kannadaName": "ಟಿಪ್ಪು ಸುಲ್ತಾನನ ಅರಮನೆ",
+    "category": "Heritage",
+    "subcategory": "Indo-Islamic teak summer palace",
+    "latitude": 12.9594944,
+    "longitude": 77.5735722,
+    "elevationM": 920,
+    "description": "Tipu Sultan's Summer Palace is a two-storey Indo-Islamic residence built entirely of teak inside the walls of Bangalore Fort, in the old quarters of Chamarajpet. Tall carved teak pillars on stone plinths carry heavy beams and support scalloped arches, bracketed balconies and durbar balconies on which Tipu Sultan held court. The structure stands on a raised rectangular stone base, and floral motifs adorn the ceilings and walls throughout.",
+    "history": "Hyder Ali began construction in 1781 within the fort walls, and his son Tipu Sultan completed the palace in 1791. Persian inscriptions on the building record the Hijri years 1196 (1781 AD) and 1206 (1791 AD). After Tipu Sultan's death in the Fourth Anglo-Mysore War, the British used the palace as their secretariat until 1868, when administration moved to Attara Kacheri. Tipu Sultan held durbar from the eastern and western upper-floor balconies, and four first-floor corner rooms served as Zenana quarters reserved for royal women. The building is listed as ASI monument N-KA-B2, \"Tipu Sultan's Palace\", in the Bangalore circle of centrally protected monuments. The Archaeological Survey of India now maintains the building, with the ground floor converted into a small museum.",
+    "facts": [
+      "Construction ran 1781-1791, begun by Hyder Ali and completed by Tipu Sultan, with Persian inscriptions giving the years 1196 (1781 AD) and 1206 (1791 AD).",
+      "The palace is built entirely of teak and is described as an example of Indo-Islamic architecture.",
+      "It is a two-storey structure raised on a rectangular stone base inside the Bangalore Fort walls.",
+      "Four first-floor corner rooms served as Zenana quarters for royal women, and Tipu Sultan held durbar from the eastern and western upper-floor balconies.",
+      "After Tipu Sultan's death the British used the palace as their secretariat until 1868, when administration shifted to Attara Kacheri.",
+      "The ASI maintains the palace and the ground-floor rooms house a small museum of Tipu's achievements, portraits, clothing, crown and silver vessels, plus a replica of his Tiger (the original is said to be in the Victoria and Albert Museum in London)."
+    ],
+    "architecture": {
+      "style": "Indo-Islamic",
+      "yearBuilt": "1781-1791",
+      "architect": null,
+      "materials": "Entirely teak wood with lime plastering, on a rectangular stone base",
+      "keyFeatures": [
+        "Two-storey structure entirely of teak, raised on a rectangular stone plinth",
+        "Tall carved teak pillars set on stone plinths carrying heavy timber beams",
+        "Scalloped arches with ornate carved brackets supporting the beams",
+        "Cantilevered carved wooden balconies on the eastern and western faces",
+        "Floral motifs across ceilings and wall surfaces",
+        "Raised stone steps leading to the upper floor and Zenana quarters",
+        "Durbar balconies overlooking the formal garden and lawn",
+        "Persian inscriptions dated 1781 and 1791 on the wall"
+      ],
+      "footprintHint": "Approximately 25 m by 25 m for the two-storey teak block on its raised stone platform",
+      "silhouette": "A compact, low, cubic two-storey teak pavilion on a tall stone base, ringed by an open colonnade of heavy timber pillars with bracketed capitals, and wrapped by projecting carved balconies at first-floor level. Reads as a heavy timber pavilion set inside a formal garden."
+    },
+    "priority": 1,
+    "modelHeightM": 12,
+    "modelFootprintM": {
+      "width": 25,
+      "depth": 25
+    },
+    "sources": [
+      {
+        "title": "Tipu Sultan's Summer Palace",
+        "url": "https://en.wikipedia.org/wiki/Tipu_Sultan%27s_Summer_Palace"
+      },
+      {
+        "title": "Tipu Sultan's Summer Palace - Cultural Heritage Online",
+        "url": "https://culturalheritageonline.com/places/tipu-sultans-summer-palace/"
+      },
+      {
+        "title": "Tipu Sultan S summer Palace - Thrillophilia",
+        "url": "https://www.thrillophilia.com/attractions/tipu-sultan-s-summer-palace"
+      },
+      {
+        "title": "Tipu Sultan's Summer Palace - AroundUs",
+        "url": "https://aroundus.com/p/7810750-tipu-sultan-s-summer-palace"
+      },
+      {
+        "title": "List of Monuments of National Importance in Bangalore circle (ASI N-KA-B2)",
+        "url": "https://en.wikipedia.org/wiki/List_of_Monuments_of_National_Importance_in_Bangalore_circle"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "bangalore-fort",
+    "name": "Bangalore Fort",
+    "kannadaName": "ಬೆಂಗಳೂರು ಕೋಟೆ",
+    "category": "Heritage",
+    "subcategory": "Fortification and bastion ruins",
+    "latitude": 12.962875,
+    "longitude": 77.575956,
+    "elevationM": 920,
+    "description": "Bangalore Fort was the fortified nucleus from which Kempe Gowda I created Bengaluru Pete in 1537, and it remains the anchor of the city's oldest quarter around Chamarajpet and Kalasipalya. A stone fortification with 26 towers and a broad ditch replaced the original earthwork in the eighteenth century, and the fort was Tipu Sultan's principal strongpoint before its fall to Lord Cornwallis in 1791. Almost nothing survives above ground but the Delhi Gate, two bastion remnants, and a marble plaque marking the British breach.",
+    "history": "Kempe Gowda I, a Vijayanagara chieftain, began construction of a mud fort in 1537 with nine large gates and a surrounding moat, and it was enlarged under Chikkadeva Raya Wodeyar during the seventeenth century. Hyder Ali replaced the old mud walls with stone; the Wikipedia infobox dates this stone phase to 1751 while the body text gives 1761. Tipu Sultan subsequently strengthened and repaired the defences and used the fort as a major stronghold. During the Third Mysore War in March 1791, the East India Company army under Lord Cornwallis besieged the fort, stormed the Pettah Gate on 7 March and breached the walls near the Delhi Gate, capturing the fort on 21 March 1791 after Mysore resistance that reportedly cost over 2,000 soldiers their lives. In November 2012 Metro construction workers uncovered two Tipu-era iron cannons, each weighing roughly one ton. The fort is listed as ASI monument N-KA-B1, \"Old Dungeon Fort & Gates\". The British then dismantled the defences, a process that continued into the 1930s, replacing ramparts with roads and barracks with hospitals, schools and colleges.",
+    "facts": [
+      "Kempe Gowda I, a Vijayanagara vassal, began the mud fort in 1537 as the centre of Bengaluru Pete, with a moat and nine large gates.",
+      "Hyder Ali rebuilt it in stone - the Wikipedia infobox gives 1751 CE while the body text gives 1761.",
+      "A military description from around 1791 gives a stone fort perimeter of about one mile with 26 towers placed at intervals along the ramparts and a broad surrounding ditch.",
+      "Lord Cornwallis besieged the fort in March 1791 during the Third Mysore War; the Pettah Gate was stormed on 7 March 1791 and the fort was captured on 21 March 1791.",
+      "The British dismantling of the walls and ramparts continued until the 1930s; the fort area is now roughly one kilometre long, extending from the surviving gate toward the present KIMS campus.",
+      "All that remains above ground is the Delhi Gate and remnants of two bastions; a marble plaque marks the location of the wall breach."
+    ],
+    "architecture": {
+      "style": "Mysore-Mughal military fortification (mud and later stone)",
+      "yearBuilt": "1537 (mud fort); stone rebuild mid-18th century",
+      "architect": null,
+      "materials": "Earth (mud) walls originally, replaced by stone masonry for the eighteenth-century fortification",
+      "keyFeatures": [
+        "Delhi Gate as the single surviving principal entrance",
+        "Two surviving bastion remnants along the former rampart line",
+        "Broad surrounding ditch defining the fort's former perimeter",
+        "Stone rampart and wall stubs surviving to varying heights",
+        "Marble plaque marking the 1791 British breach point",
+        "Trace of a nine-gate fortified enceinte around the Pete quarter",
+        "Stone gateways leading to the fort's former pettah (fortified town)"
+      ],
+      "footprintHint": "Former stone fort perimeter approximately one mile (about 1.6 km); the surviving fort area today is roughly 1 km long; the Delhi Gate structure itself spans roughly 20-25 m",
+      "silhouette": "Little survives to model: a low stone gateway arch with flanking bastion stubs, interrupted by a breached wall line with a commemorative plaque. Model the surviving fragments rather than an intact fort."
+    },
+    "priority": 2,
+    "modelHeightM": 9,
+    "modelFootprintM": {
+      "width": 22,
+      "depth": 12
+    },
+    "sources": [
+      {
+        "title": "Bangalore Fort",
+        "url": "https://en.wikipedia.org/wiki/Bangalore_Fort"
+      },
+      {
+        "title": "Bangalore Fort: Birthplace of India's Silicon Valley - Live History India",
+        "url": "https://livehistoryindia.com/story/history-daily/bangalore-fort"
+      },
+      {
+        "title": "Bangalore Fort - A Glimpse of History - Rugged Anay",
+        "url": "https://ruggedanay.wordpress.com/2014/08/01/bangalore-fort-a-glimpse-of-history/"
+      },
+      {
+        "title": "List of Monuments of National Importance in Bangalore circle (ASI N-KA-B1)",
+        "url": "https://en.wikipedia.org/wiki/List_of_Monuments_of_National_Importance_in_Bangalore_circle"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "attara-kacheri",
+    "name": "Attara Kacheri",
+    "kannadaName": "ಅತ್ತರ ಕಚೇರಿ",
+    "category": "Heritage",
+    "subcategory": "Neoclassical secretariat / High Court building",
+    "latitude": 12.9778852,
+    "longitude": 77.5926731,
+    "elevationM": 920,
+    "description": "Attara Kacheri is the red-ochre neoclassical building opposite the Vidhana Soudha on Ambedkar Veedhi, and since 1956 it has housed the principal bench of the Karnataka High Court. Its name means 'eighteen offices', recalling the reorganisation of Mysore's administration into eighteen departments in 1699. The building is a symmetrical two-storey block whose Ionic porticoes and arcaded linking wings form a distinctly European civic silhouette in an Indian setting.",
+    "history": "After Mysore's administration passed to a British Commission in 1831, ten secretariat departments operated out of Tipu Sultan's summer palace. Commissioner Lewin Bentham Bowring then conceived a dedicated secretariat building, and construction by Chief Engineer Richard Hieram Sankey ran from October 1864 to April 1868 at a total cost of Rs. 4,27,980, of which Rs. 3,68,981 covered construction and the balance acquiring and levelling the land. The building was known as the Old Public Offices Building and housed the secretariat, the Chief Court of Mysore and the Commissioner's office. Mysore administration returned to the Wadiyars in 1881 and the Legislative Council met on its third floor from 1907; an annex was added in 1917 and a major matching extension was completed in 1995 spanning 2,40,508 square feet. It was renamed the High Court of Mysore in 1929 and became the High Court of Karnataka in 1973. Demolition was approved by the Karnataka government on 24 March 1982 but was dropped in 1985 after the case reached the Supreme Court in B. V. Narayan Reddy v. State of Karnataka.",
+    "facts": [
+      "Construction began in October 1864 and finished in April 1868; total cost was Rs. 4,27,980, of which Rs. 3,68,981 was construction.",
+      "Richard Hieram Sankey was the architect and Chief Engineer of Mysore State; the main contractor was Arcot Narainswamy Mudaliar; the building was conceived by Commissioner Lewin Bentham Bowring.",
+      "The name means 'eighteen offices', from the 1699 reorganisation of Mysore's administration into eighteen departments.",
+      "Each of the porticoes flanking the central wing has 12 Ionic columns; the main structure is enclosed on every side by porticoes and verandahs, with arcaded sections joining the wings.",
+      "Lower-storey walls are gneiss in chunam and upper-storey walls brick in chunam; the building is plastered and painted red ochre, with Grecian-style roof tiles. The foundation was 14 feet deep, built over former nullahs, and some of the stone slabs used were approximately 6-9 feet long.",
+      "An annex was added in 1917 and a major extension in 1995 spanning 2,40,508 sq ft, designed to match the original architectural style."
+    ],
+    "architecture": {
+      "style": "Neo-Classical",
+      "yearBuilt": "1864-1868",
+      "architect": "Richard Hieram Sankey (Chief Engineer, Mysore State)",
+      "materials": "Gneiss stone in chunam at lower level, brick in chunam at upper level, plaster and red ochre paint, Grecian-style roof tiles",
+      "keyFeatures": [
+        "Twin Ionic porticoes of 12 columns each flanking the central wing",
+        "Arcaded linking sections between the wings",
+        "Verandahs and porticoes on all four sides of the block",
+        "Two-storey symmetrical massing under a pitched Grecian-tile roof",
+        "Red ochre painted plaster over gneiss and brick masonry",
+        "Deep window and door reveals with classical surrounds",
+        "Plinth on a 14-foot deep foundation over former nullahs",
+        "1995 extension in matching original style"
+      ],
+      "footprintHint": "Main building block roughly 100 m by 60 m for the original structure, with the 1995 extension adding a comparable volume",
+      "silhouette": "A long two-storey red-ochre neoclassical block with a strongly projecting central portico framed by paired colonnades, flanked by lower arcaded wings, and topped by a hipped Grecian-tile roof with a shallow central pediment."
+    },
+    "priority": 1,
+    "modelHeightM": 22,
+    "modelFootprintM": {
+      "width": 60,
+      "depth": 100
+    },
+    "sources": [
+      {
+        "title": "Attara Kacheri",
+        "url": "https://en.wikipedia.org/wiki/Attara_Kacheri"
+      },
+      {
+        "title": "Attara Kacheri (full wikitext)",
+        "url": "https://en.wikipedia.org/wiki/Special:Export/Attara_Kacheri"
+      },
+      {
+        "title": "History HCK Bengaluru - High Court of Karnataka e-Committee",
+        "url": "https://ecommitteesci.gov.in/project/history-hck-bengaluru/"
+      },
+      {
+        "title": "Reminder of a bygone era - Citizen Matters (Attara Kacheri)",
+        "url": "https://citizenmatters.in/596-high-court-attara-kacheri/"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "mayo-hall",
+    "name": "Mayo Hall",
+    "category": "Heritage",
+    "subcategory": "Greco-Roman memorial hall / municipal offices",
+    "latitude": 12.974079,
+    "longitude": 77.610632,
+    "elevationM": 920,
+    "description": "Mayo Hall is a two-storey memorial building on Mahatma Gandhi Road overlooking the Parade Grounds and Ulsoor Lake, raised in 1883 in memory of Richard Bourke, 6th Earl of Mayo, the fourth Viceroy of India. Its architecture mixes Greek cornices, Tuscan columns and keystoned arches with Italian chandeliers and ornate furniture, and it was the first public meeting and exhibition hall in the cantonment. The building now houses several departments of the Bengaluru Mahanagara Palike, with the Kempegowda Museum on the upper floor.",
+    "history": "Mayo Hall was inaugurated by the British Resident on 6 June 1883 at a cost of approximately Rs. 45,000, financed largely through public donations. It commemorates Richard Bourke, 6th Earl of Mayo, who served as Viceroy from 1869 to 1872, argued that Britain should retain control of India 'as long as the sun shines in heaven', and was killed by Sher Ali at the prison in Port Blair - the only Viceroy of India to be murdered while in office. The surrounding cantonment developed after the defeat of Tipu Sultan moved the British garrison from Seringapatam to Bengaluru in 1809. The ground floor was designed to accommodate the Cantonment Municipal Office, public offices and law courts, while the upper floor was intended for public meetings and exhibitions. A 2015 renovation changed the exterior from red-and-white to entirely red, and the Kempegowda Museum was established on the upper floor in 2011.",
+    "facts": [
+      "Inaugurated by the British Resident on 6 June 1883 at a cost of approximately Rs. 45,000, funded largely by public donations.",
+      "Commemorates Richard Bourke, 6th Earl of Mayo, the 4th Viceroy of India, who was killed by Sher Ali at Port Blair and was the only Viceroy murdered in office.",
+      "It is a two-storey structure with Greek cornices, Tuscan columns, stone arches, wooden floors, Italian chandeliers, architrave and pedimented windows, keystoned arches, balustraded ledges and consoles.",
+      "Erected on South Parade on level ground with trees, flowering bushes, a low southern wall and terraced lawns, overlooking the Parade Grounds and Ulsoor Lake on one side and the Bangalore Race Course and Brigade Grounds to the south.",
+      "The ground floor originally housed the Cantonment Municipal Office, public offices and law courts; the upper floor was intended for public meetings and exhibitions.",
+      "It now houses several departments of the Bangalore Mahanagara Palike; the Kempegowda Museum, established in 2011, occupies the upper floor."
+    ],
+    "architecture": {
+      "style": "Neo-Classical / Greco-Roman",
+      "yearBuilt": "1883",
+      "architect": "Richard Hieram Sankey (attributed via Wikipedia category)",
+      "materials": "Brick and mortar construction with plaster, stone arches and wooden floors",
+      "keyFeatures": [
+        "Symmetrical two-storey composition with a central block and lower wings",
+        "Tuscan-columned verandah/portico on the principal facade",
+        "Greek cornice running the full perimeter",
+        "Arches with pronounced keystones over ground-floor openings",
+        "Architrave and pediment window heads on the upper floor",
+        "Balustraded ledges and decorative consoles",
+        "Italian chandeliers and ornate period furniture inside",
+        "All-red painted rendered exterior following the 2015 renovation"
+      ],
+      "footprintHint": "Two-storey block, approximately 50 m by 35 m, on a raised terrace above South Parade",
+      "silhouette": "A compact, upright two-storey red villa-like block with a low hipped roof, a deep colonnaded verandah across the front, a strong horizontal Greek cornice, and pedimented windows - reading as a small Italianate memorial pavilion on a green rise above the parade ground."
+    },
+    "priority": 2,
+    "modelHeightM": 15,
+    "modelFootprintM": {
+      "width": 35,
+      "depth": 50
+    },
+    "sources": [
+      {
+        "title": "Mayo Hall (Bengaluru)",
+        "url": "https://en.wikipedia.org/wiki/Mayo_Hall_(Bangalore)"
+      },
+      {
+        "title": "Mayo Hall (Bengaluru) - full wikitext",
+        "url": "https://en.wikipedia.org/wiki/Special:Export/Mayo_Hall_(Bengaluru)"
+      },
+      {
+        "title": "Mayo Hall - Bangalore Monuments - Rajasthantourplanner",
+        "url": "https://www.rajasthantourplanner.com/Monuments-Citywise/mayo-hall-bangalore.html"
+      },
+      {
+        "title": "Nominatim geocoding results for Mayo Hall, Bangalore",
+        "url": "https://nominatim.openstreetmap.org/search?q=Mayo+Hall,+Bangalore,+Karnataka,+India&format=json&limit=5"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "karnataka-chitrakala-parishat",
+    "name": "Karnataka Chitrakala Parishath",
+    "kannadaName": "ಕರ್ನಾಟಕ ಚಿತ್ರಕಲಾ ಪರಿಷತ್ತು",
+    "category": "Heritage",
+    "subcategory": "Fine arts academy and gallery complex",
+    "latitude": 12.98918,
+    "longitude": 77.58053,
+    "elevationM": 920,
+    "description": "The Karnataka Chitrakala Parishath is the state's premier fine arts academy, occupying a three-acre wooded compound on Kumara Krupa Road beside the Chief Minister's residence. Founded in 1960 by artists including S. S. Kukke, M. Arya Murthy and M. S. Nanjunda Rao, it now runs the College of Fine Arts and 18 galleries of permanent painting, sculpture and folk art collections. The surrounding neighbourhood hosts the annual Chitra Santhe open-air art fair.",
+    "history": "The organisation began in 1960 as the Mysore Chitrakala Parishath, founded by S. S. Kukke, M. Arya Murthy and M. S. Nanjunda Rao, starting in Aryamurthy's garage in Shantinagar in 1960 and moving to the upper floor of Gandhi Sahitya Sangha, Malleswaram, from 1964. In 1964 it also became the arts college Chitrakala Vidyalaya, later the College of Fine Arts, with diploma courses taught by M. S. Nanjunda Rao, M. Gopal and S. S. Kukke, gaining state and Lalit Kala Akademi recognition in 1966. The institution relocated to its present Kumara Krupa Road site in the mid-1970s, on three acres of thicket leased from the Karnataka government next to the Chief Minister's bungalow. It presents the Chitrakala Samman award to four senior artists, and its collection includes 36 Nicholas Roerich paintings donated by Svetoslav Roerich.",
+    "facts": [
+      "Founded in 1960 by S. S. Kukke, M. Arya Murthy and M. S. Nanjunda Rao, initially in Aryamurthy's garage in Shantinagar.",
+      "The present site on Kumara Krupa Road is a three-acre wooded compound leased from the Karnataka government next to the Chief Minister's bungalow; occupied since the mid-1970s.",
+      "The College of Fine Arts, originally the Chitrakala Vidyalaya, was founded in 1964 and received state and Lalit Kala Akademi recognition in 1966.",
+      "Wikipedia counts 18 galleries in total - 13 holding permanent collections of painting, sculpture and folk art, and 5 available for artists to exhibit - while the official Chitra Santhe site lists 19 galleries, 14 of them permanent museums; the official address is Kumara Krupa Road, Bengaluru 560001.",
+      "The folk-art display includes Mysore paintings and leather puppets, and the collection holds 36 Nicholas Roerich paintings donated by Svetoslav Roerich.",
+      "The Chitra Santhe art fair has been held annually since 2004 on the last Sunday of January, turning the road from Shivananda Circle to Windsor Manor into an open gallery from 8 am to 8 pm."
+    ],
+    "architecture": {
+      "style": "Contemporary low-rise institutional, with traditional Indian temple element",
+      "yearBuilt": "1960 (institution); Kumara Krupa Road campus from the mid-1970s",
+      "architect": null,
+      "materials": "Not documented in the sources consulted; the campus includes a stone temple",
+      "keyFeatures": [
+        "Low-rise gallery and classroom pavilions dispersed within a three-acre wooded compound",
+        "Traditional stone temple structure within the campus",
+        "Series of connected gallery halls around a landscaped interior",
+        "Deep-set verandahs and shaded circulation suited to the tropical climate",
+        "Boundary wall and dense tree canopy screening the site from Kumara Krupa Road",
+        "Open-air exhibition spaces used for Chitra Santhe",
+        "Approach through a narrow gated lane off Kumara Krupa Road"
+      ],
+      "footprintHint": "Three-acre site, roughly 12,000 sq m (130,000 sq ft) in total, with individual building footprints of roughly 30-50 m",
+      "silhouette": "Not a single iconic mass: a loose cluster of low, tile-roofed pavilions and gallery halls set in dense trees, punctuated by a small traditional stone temple. Model as a campus of scattered low blocks plus a temple spire."
+    },
+    "priority": 3,
+    "modelHeightM": 10,
+    "modelFootprintM": {
+      "width": 45,
+      "depth": 35
+    },
+    "sources": [
+      {
+        "title": "Karnataka Chitrakala Parishath",
+        "url": "https://en.wikipedia.org/wiki/Karnataka_Chitrakala_Parishath"
+      },
+      {
+        "title": "Visit Us - Karnataka Chitrakala Parishath (official)",
+        "url": "https://chitrakalaparishath.org/visit-us/"
+      },
+      {
+        "title": "Chitrakala Parishath - Chitra Santhe official festival site",
+        "url": "https://www.chitrasanthe.in/"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "bangalore-university",
+    "name": "Bangalore University",
+    "kannadaName": "ಬೆಂಗಳೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ",
+    "category": "Heritage",
+    "subcategory": "Public university campus and central administration building",
+    "latitude": 12.938775,
+    "longitude": 77.503181,
+    "elevationM": 920,
+    "description": "Bangalore University is the public state university of Bengaluru, founded in 1964 as an offshoot of the University of Mysore and now based on the sprawling 1,100-acre Jnana Bharathi campus west of the city. Its administrative headquarters stands on Central College Avenue in the historic Central College building, formerly the Central High School founded by Rev. John Garrett in 1858. The institution retains 43 postgraduate departments and affiliates some 665 colleges across the region.",
+    "history": "The university was established in July 1964 as an offshoot of the University of Mysore covering the Bangalore, Kolar and Tumkur districts, with the nucleus formed by the Central College and the University Visvesvaraya College of Engineering. Honours courses were introduced in 1965-66. It operated from the Central College campus until moving to the new Jnana Bharathi campus in 1973, on about 1,100 acres; the University Law College (started 1948) and the College of Physical Education (started 1959) are both located there, along with the offices of the Vice-Chancellor and Registrar. The older Central College building, started as Central High School by Rev. John Garrett in 1858 and converted into a degree-awarding college in 1886, remains the university's city campus and houses offices, postgraduate departments, an auditorium and a cricket pavilion. Notable alumni include Kiran Mazumdar-Shaw, C. N. R. Rao, Anil Kumble, Rahul Dravid and Sir M. Visvesvaraya. The university was awarded NAAC A++ accreditation in 2023, having earlier held Five Star status in 2001 and Grade A on reaccreditation in 2016.",
+    "facts": [
+      "Established in July 1964 as an offshoot of the University of Mysore; the motto is 'Gyanam, Vignana Sahitam' (Knowledge along with Wisdom).",
+      "The nucleus was the Central College - begun as Central High School by Rev. John Garrett in 1858 and converted to a degree-awarding college in 1886 - together with the University Visvesvaraya College of Engineering, affiliated from 1964 to 2021.",
+      "The university moved into the Jnana Bharathi campus in 1973 on about 1,100 acres of land; a separate source gives the campus as 4.5 sq km.",
+      "It comprises six faculties - Arts, Science, Commerce & Management, Education, Law and Engineering - with 43 postgraduate departments and a postgraduate centre at Kolar begun in 1994-95.",
+      "It affiliates 665 colleges, of which 115 offer postgraduate courses; academic staff number 755 against a student body of 8,535.",
+      "NAAC accredited A++ in 2023, following Five Star status in 2001 and Grade A in 2016; ranked 551-600 in the QS Asian University Rankings 2023. A Karnataka government order of 1 July 2017 trifurcated the university into Bengaluru City University and Bengaluru North University."
+    ],
+    "architecture": {
+      "style": "Colonial-era institutional (Central College) with mid-20th-century campus modernism",
+      "yearBuilt": "1858 (Central College building); university founded 1964; Jnana Bharathi campus from 1973",
+      "architect": "Not identified in the sources consulted for the Central College building",
+      "materials": "Not documented in the sources consulted",
+      "keyFeatures": [
+        "Historic two-storey Central College building on Central College Avenue with a colonnaded institutional facade",
+        "Long wings organised around an open quadrangle",
+        "Deep arched verandahs and tall shuttered openings suited to the climate",
+        "Separate 1,100-acre Jnana Bharathi campus of low-rise department blocks set in landscaped grounds",
+        "University Law College and College of Physical Education pavilions on the Jnana Bharathi campus",
+        "NSS Bhavan, outdoor stadium and university library among the campus facilities",
+        "Auditorium and cricket pavilion retained at the Central College city campus",
+        "Crest of the university displayed on the Central Building"
+      ],
+      "footprintHint": "The Central College building on Central College Avenue is roughly 60 m by 30 m per wing; the Jnana Bharathi campus spans about 1,100 acres (4.5 sq km) in total",
+      "silhouette": "Two distinct silhouettes: a solid colonial two-storey institutional block with arched verandahs and a symmetrical central pediment on Central College Avenue, and a scattered low-rise modern campus spread across 1,100 acres at Jnana Bharathi."
+    },
+    "priority": 2,
+    "modelHeightM": 16,
+    "modelFootprintM": {
+      "width": 30,
+      "depth": 60
+    },
+    "sources": [
+      {
+        "title": "Bangalore University",
+        "url": "https://en.wikipedia.org/wiki/Bangalore_University"
+      },
+      {
+        "title": "Central College, Bengaluru",
+        "url": "https://en.wikipedia.org/wiki/Central_College,_Bengaluru"
+      },
+      {
+        "title": "Bangalore University, Bengaluru - Overview (official)",
+        "url": "https://bangaloreuniversity.karnataka.gov.in/27/overview/en"
+      },
+      {
+        "title": "Bangalore University | Jnana Bharathi Campus - Karnataka.com",
+        "url": "https://www.karnataka.com/education/bangalore-university/"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "government-museum-bengaluru",
+    "name": "Government Museum, Bengaluru",
+    "kannadaName": "ಕರ್ನಾಟಕ ಸರ್ಕಾರಿ ವಸ್ತುಸಂಗ್ರಹಾಲಯ (ಬೆಂಗಳೂರು)",
+    "category": "Heritage",
+    "subcategory": "Neoclassical archaeological museum",
+    "latitude": 12.9747,
+    "longitude": 77.5958,
+    "elevationM": 920,
+    "description": "The Government Museum on Kasturba Road, beside Cubbon Park, is among the country's oldest museums and the second oldest archaeological museum in South India. Its red neoclassical building, designed by Col. Richard Hieram Sankey in 1877, has two porticos with Corinthian columns, round arches and prominent sloping parapet walls, and was popularly known as the tamasha house. Its 18 galleries on two exhibition floors hold the Halmidi inscription of 450 CE alongside Hoysala, Gandhara and Nolamba sculpture and excavated material from Mohenjodaro, Halebid and Vijayanagar.",
+    "history": "The museum was established on 18 August 1865 during Mysore State administration, following a Gazette notice on 17 April 1866, and was founded by Chief Commissioner L. B. Bowring under the guidance of Edward Green Berlephore. It first operated from a rented building, then in the Cantonment's jail building for 13 years until 1878. The purpose-built structure on what was then Sydney Road was planned and built in 1877, occupied in 1879, and the museum began functioning in it from 1880; the official Karnataka Archaeology Department gives 1877 as the year it was named the Mysore Government Museum and opened to the public. The building was designed by Col. Richard Hieram Sankey, then Chief Engineer of Mysore State. The museum closed temporarily for renovation for about a year as of a January 2024 report, with conservation carried out by KTIL at a cost of Rs. 540 lakhs.",
+    "facts": [
+      "Established 18 August 1865, with the official Gazette notice following on 17 April 1866; founded by Chief Commissioner L. B. Bowring under the guidance of Edward Green Berlephore.",
+      "The present neoclassical building was designed by Col. Richard Hieram Sankey, Chief Engineer of Mysore State, and built in 1877 on what was then Sydney Road; it was occupied in 1879 and the museum functioned there from 1880.",
+      "Before this, the museum was first in a rented building and then in the Cantonment's jail building for 13 years until 1878.",
+      "Two exhibition floors are divided into 18 galleries covering sculpture, natural history, geology, art, music and numismatics.",
+      "The collection includes the Halmidi inscription of 450 CE, the Begur inscription of 890 CE and the Atakur slabs of 949 CE.",
+      "Holdings include sculpture from the Hoysala, Gandhara and Nolamba periods, and excavated artifacts from Mohenjodaro, Halebid and Vijayanagar - approximately 70 paintings and 84 sculptures. Average attendance was 280,000 in the 1870s and exceeded 400,000 in the early 20th century, against about 90,000 a year in more recent times."
+    ],
+    "architecture": {
+      "style": "Neo-Classical",
+      "yearBuilt": "1877",
+      "architect": "Col. Richard Hieram Sankey, Chief Engineer of Mysore State",
+      "materials": "Not explicitly stated in the sources consulted; the building is described as brick and lime mortar with a deep red rendered exterior",
+      "keyFeatures": [
+        "Twin front porticos with Corinthian colonnades",
+        "Round-arched openings across the principal facades",
+        "Prominent sloping parapet walls giving a heavy cornice line",
+        "Sloping eaves over the verandahed perimeter",
+        "Deep red rendered exterior - the locally distinctive 'Bangalore red'",
+        "Two internal exhibition floors of galleries",
+        "Symmetrical two-storey massing on a raised plinth",
+        "Positioned directly on Kasturba Road against the Cubbon Park boundary wall"
+      ],
+      "footprintHint": "Two-storey block roughly 55 m by 30 m, with the gallery floors spanning about 1,800 sq m per floor",
+      "silhouette": "A squat two-storey red classical block with a strong symmetrical front - twin Corinthian porticos flanking a central bay, a heavy band of sloping parapet crowning the walls, and a shallow hipped roof. Reads as a solid red civic warehouse with a formal temple-front entrance."
+    },
+    "priority": 2,
+    "modelHeightM": 16,
+    "modelFootprintM": {
+      "width": 30,
+      "depth": 55
+    },
+    "sources": [
+      {
+        "title": "Government Museum, Bengaluru",
+        "url": "https://en.wikipedia.org/wiki/Government_Museum,_Bengaluru"
+      },
+      {
+        "title": "The Government Museum Bangalore - Karnataka State Archaeology Department",
+        "url": "https://archaeology.karnataka.gov.in/69/the-government-museum-bangalore/en"
+      },
+      {
+        "title": "Government Museum - District Bengaluru Urban",
+        "url": "https://bengaluruurban.nic.in/en/tourism/government-museum-bangalore/"
+      },
+      {
+        "title": "Nominatim geocoding results for Government Museum, Kasturba Road",
+        "url": "https://nominatim.openstreetmap.org/search?q=Government+Museum,+Kasturba+Road,+Bengaluru,+Karnataka&format=json&limit=3"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "visvesvaraya-museum",
+    "name": "Visvesvaraya Industrial and Technological Museum",
+    "kannadaName": "ವಿಶ್ವೇಶ್ವರಯ್ಯ ಕೈಗಾರಿಕಾ ಮತ್ತು ತಾಂತ್ರಿಕ ವಸ್ತುಸಂಗ್ರಹಾಲಯ",
+    "category": "Heritage",
+    "subcategory": "Mid-century modernist science museum",
+    "latitude": 12.9751,
+    "longitude": 77.5964,
+    "elevationM": 920,
+    "description": "The Visvesvaraya Industrial and Technological Museum, founded in memory of Sir M. Visvesvaraya, is a modest modernist pavilion of 4,000 sq m on the edge of Cubbon Park on Kasturba Road. It was inaugurated by Jawaharlal Nehru on 14 July 1962 and houses an unusually broad set of working exhibits - engines, electronics, space technology, biotechnology, a dinosaur enclave and the Wright Brothers' aeroplane - rather than static cases. A 1979 extension raised its total area to 6,900 sq m.",
+    "history": "The All India Manufacturers Organization and the Mysore State Board decided to create a science and technology museum in Bangalore in memory of Sir M. Visvesvaraya, and Shri B. D. Jatti, then Chief Minister of Mysore, laid the foundation stone on 15 September 1958. The museum opened on 14 July 1962, inaugurated by Prime Minister Jawaharlal Nehru. The museum treats 27 July 1965 - when the ElectroTechnic gallery was opened to the public by Indira Gandhi - as its foundation day. A mobile exhibition began in 1970 with 24 participatory exhibits, and NCSM was registered on 4 April 1978. A 1979 extension brought the total floor area to 6,900 sq m. The museum is a unit of the National Council of Science Museums under India's Ministry of Culture; the adjoining Jawaharlal Nehru Planetarium, established in 1989 on Sri T. Choudaiah Road, High Grounds with its own outdoor Science Park, is a separate institution. The Fun Science Gallery opened on 27 July 2025, and a mirror maze in the Science for Kids gallery was inaugurated on 19 April 2019.",
+    "facts": [
+      "Opened on 14 July 1962 and inaugurated by Prime Minister Jawaharlal Nehru; the foundation stone was laid by Shri B. D. Jatti, then Chief Minister of Mysore, on 15 September 1958.",
+      "The original Cubbon Park building had a built-up area of 4,000 sq m (43,000 sq ft); a 1979 extension raised the total to 6,900 sq m (74,000 sq ft).",
+      "Galleries include the Engine Hall, ElectroTechnic, Fun Science, Space Technology, Biotechnology, BEL Hall of Electronics, Dinosaur Enclave, Wright Brothers' Aeroplane, Science on a Sphere, 3D Show, Science Park, Seed of Culture and Mars Rover Opportunity.",
+      "The museum displays industrial products, scientific models and engines, and also hosts science demonstrations, sky observation and popular-science lectures.",
+      "A mirror maze in the Science for Kids gallery was inaugurated on 19 April 2019; the Fun Science Gallery opened on 27 July 2025.",
+      "A Collaborative Multi-Layer 3D Display System was launched in the BEL Hall of Electronics, third floor, on 13 March 2026. The museum's own site reports more than 10.5 million visitors in total."
+    ],
+    "architecture": {
+      "style": "Modernist",
+      "yearBuilt": "1962 (extension 1979)",
+      "architect": null,
+      "materials": "Not documented in the sources consulted",
+      "keyFeatures": [
+        "Low, horizontal modernist pavilion with a flat roof",
+        "Rectangular plan with regular bays for gallery halls",
+        "Simple rendered exterior in pale cream and white",
+        "Broad entrance porch on the Kasturba Road side",
+        "1979 extension continuing the same simple rectilinear volume",
+        "Internal galleries opening around large double-height exhibit halls",
+        "Open-air Science Park with interactive models adjacent to the building",
+        "Positioned on the Cubbon Park edge opposite the Government Museum"
+      ],
+      "footprintHint": "About 6,900 sq m (74,000 sq ft) of floor area across two levels, implying a footprint of roughly 60 m by 55 m",
+      "silhouette": "A plain rectangular low-rise block, roughly three storeys but with a flat roof and no ornament, sitting lightly against the trees of Cubbon Park. Deliberately unremarkable - a mid-century modernist civic box with a projecting entrance porch."
+    },
+    "priority": 2,
+    "modelHeightM": 14,
+    "modelFootprintM": {
+      "width": 55,
+      "depth": 60
+    },
+    "sources": [
+      {
+        "title": "Visvesvaraya Museum",
+        "url": "https://en.wikipedia.org/wiki/Visvesvaraya_Museum"
+      },
+      {
+        "title": "Visvesvaraya Industrial and Technological Museum",
+        "url": "https://en.wikipedia.org/wiki/Visvesvaraya_Industrial_and_Technological_Museum"
+      },
+      {
+        "title": "Visvesvaraya Museum (official site)",
+        "url": "https://vismuseum.gov.in/"
+      },
+      {
+        "title": "Jawaharlal Nehru Planetarium Bangalore - Karnataka Tourism",
+        "url": "https://karnatakatourism.org/attractions/jawaharlal-nehru-planetarium-bangalore/"
+      }
+    ],
+    "images": []
+  }
+]

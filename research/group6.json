@@ -1,0 +1,310 @@
+[
+ {
+  "id": "bengaluru-metro",
+  "name": "Namma Metro - Nadaprabhu Kempegowda Station, Majestic",
+  "kannadaName": "ನಮ್ಮ ಮೆಟ್ರೋ",
+  "category": "Modern",
+  "subcategory": "Rapid transit interchange (Purple and Green lines)",
+  "latitude": 12.9757079,
+  "longitude": 77.5728757,
+  "elevationM": 920,
+  "description": "Namma Metro is Bengaluru's rapid transit system, run by the Bangalore Metro Rail Corporation Limited. The first section, between Baiyappanahalli and Peenya Industry, opened to the public on 20 October 2011, and the network is built around two corridors: the east-west Purple Line and the north-south Green Line. The two cross at Nadaprabhu Kempegowda Station, Majestic, an underground interchange within walking distance of the KSRTC Kempegowda Bus Station and the city's main railway station. Majestic is the busiest interchange in the city and the meeting point of the old bus-and-rail centre of gravity with the new one.",
+  "history": "Majestic station opened on 30 April 2016 as part of Phase 1. The contract to build it was awarded to Coastal-GTY JV at a cost of Rs 272 crore; construction began in January 2012 and was expected to finish by 2014, but the rock was hard to excavate, deadlines slipped and the cost escalated to about Rs 500 crore. KSRTC provided 20 acres of land for the works, slightly more than half of which was handed back afterwards, and BMRCL paid KSRTC Rs 4.6 crore a year in rent while construction went on. KSRTC lost about Rs 100 crore in the same period because bus services had to be suspended around the site. BMRCL employed 2,240 engineers, construction workers and others, and the underground stations of Phase 1 were built by cut-and-cover rather than tunnelling.",
+  "facts": [
+   "Namma Metro's first section, Baiyappanahalli to Peenya Industry, opened on 20 October 2011; the Purple Line runs east to west and the Green Line north to south.",
+   "Nadaprabhu Kempegowda Station, Majestic, is the interchange between the two lines and sits beside the KSRTC Kempegowda Bus Station and the main railway station.",
+   "Majestic station opened on 30 April 2016 as part of Phase 1, and was built cut-and-cover rather than by tunnelling.",
+   "The original construction contract was Rs 272 crore; after delays caused by hard rock, the cost rose to roughly Rs 500 crore.",
+   "KSRTC leased 20 acres of land to BMRCL for the station works and was paid Rs 4.6 crore a year in rent during construction.",
+   "BMRCL employed 2,240 engineers, construction workers and others to build the station.",
+   "The elevated stations were built by Punj Lloyd, which also built Trinity and Mahatma Gandhi Road stations."
+  ],
+  "architecture": {
+   "style": "Contemporary transit architecture: reinforced-concrete underground boxes and elevated viaducts",
+   "yearBuilt": "2011 (first section); 2016 (Majestic interchange)",
+   "architect": null,
+   "materials": "Reinforced concrete, precast segments and steel roofing over the underground concourse",
+   "keyFeatures": [
+    "Two-level underground concourse at Majestic with a transfer passage between the Purple and Green Line platforms",
+    "Elevated viaduct stations along the older Purple Line with steel-and-concrete canopies",
+    "Pedestrian subways and skywalks linking the interchange to the bus and railway terminals"
+   ],
+   "footprintHint": "Surface entrance structures only; the platform boxes are underground and are not modelled in the city massing",
+   "silhouette": "A low, wide glazed entrance pavilion and canopy structures over the elevated viaduct, with the metro running on a concrete viaduct above the street."
+  },
+  "priority": 2,
+  "modelHeightM": 9,
+  "modelFootprintM": {
+   "width": 70,
+   "depth": 34
+  },
+  "sources": [
+   {
+    "title": "Nadaprabhu Kempegowda station, Majestic - Wikipedia (opening date, line roles, interchange, construction contract, cost, land lease, headcount, cut-and-cover method)",
+    "url": "https://en.wikipedia.org/wiki/Nadaprabhu_Kempegowda_station,_Majestic"
+   },
+   {
+    "title": "Trinity metro station - Wikipedia (Namma Metro opened 20 October 2011; Punj Lloyd built the early elevated stations)",
+    "url": "https://en.wikipedia.org/wiki/Trinity_metro_station"
+   },
+   {
+    "title": "OpenStreetMap - Nadaprabhu Kempegowda Station, Majestic (node coordinates)",
+    "url": "https://www.openstreetmap.org/node/3191710432"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "mg-road-metro-station",
+  "name": "Mahatma Gandhi Road (MG Road) Metro Station",
+  "kannadaName": null,
+  "category": "Modern",
+  "subcategory": "Elevated metro station (Purple Line)",
+  "latitude": 12.9755264,
+  "longitude": 77.6067902,
+  "elevationM": 915,
+  "description": "Mahatma Gandhi Road station - MG Road to everyone who uses it - is an elevated station on the east-west Purple Line of Namma Metro, standing on the boulevard at the western end of what was once the city's main shopping street. It opened with the first section of the network on 20 October 2011. Building the metro meant taking up the road entirely: the old MG Road boulevard was demolished and rebuilt, and the reconstruction was contracted to the Rajiv Gandhi Rural Housing Corporation and the Karnataka Land Army Corporation, with parts of it reopened in September 2012. The rebuilt boulevard spreads over about 850 square metres and is planned as a two-tier walkway whose ground floor carries a museum, an art gallery, an amphitheatre and a children's play area, with the first floor linking up to the station concourse.",
+  "history": "The old MG Road boulevard was demolished to make way for Namma Metro. Reconstruction was contracted to the Rajiv Gandhi Rural Housing Corporation and the Karnataka Land Army Corporation with a March 2012 deadline, but the ground was found to be unstable and had to be reinforced, so the work ran late. The new boulevard cost Rs 50 million, and portions of it were inaugurated on 5 September 2012. The station itself was constructed by Punj Lloyd.",
+  "facts": [
+   "MG Road is an elevated station on the Purple Line and opened to the public on 20 October 2011 with the first section of Namma Metro.",
+   "The station was constructed by Punj Lloyd.",
+   "The old MG Road boulevard was demolished and rebuilt for the metro at a cost of Rs 50 million, with parts reopened on 5 September 2012.",
+   "The rebuilt boulevard covers about 850 square metres and is planned as a two-tier walkway with a museum, art gallery, amphitheatre and children's play area below the station concourse.",
+   "A bicycle stand beside the Urban Square lets commuters rent cycles.",
+   "MG Road is the Purple Line's second interchange station after Majestic, for the Pink Line under construction."
+  ],
+  "architecture": {
+   "style": "Contemporary elevated transit station with a landscaped boulevard",
+   "yearBuilt": "2011 (station); 2012 (rebuilt boulevard)",
+   "architect": null,
+   "materials": "Steel and reinforced-concrete viaduct with a lightweight station canopy",
+   "keyFeatures": [
+    "Elevated platform and concourse above the roadway",
+    "Two-tier pedestrian walkway with a museum, art gallery, amphitheatre and play area at ground level",
+    "Rebuilt boulevard with street lighting, seating and cycle parking at the Urban Square"
+   ],
+   "footprintHint": "A viaduct about 90 m long by 14 m wide over the centre of the boulevard",
+   "silhouette": "A slim elevated deck on paired piers, with a shallow canopy and a landscaped deck below it"
+  },
+  "priority": 3,
+  "modelHeightM": 14,
+  "modelFootprintM": {
+   "width": 90,
+   "depth": 16
+  },
+  "sources": [
+   {
+    "title": "Mahatma Gandhi Road metro station (Bengaluru) - Wikipedia (opening date, contractor, boulevard demolition and reconstruction, cost, area, two-tier walkway, cycle stand, Pink Line interchange)",
+    "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi_Road_metro_station_(Bengaluru)"
+   },
+   {
+    "title": "OpenStreetMap - Mahatma Gandhi Road metro station (node coordinates)",
+    "url": "https://www.openstreetmap.org/search?query=Mahatma%20Gandhi%20Road%20metro%20station%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "trinity-metro-station",
+  "name": "Trinity Metro Station",
+  "kannadaName": null,
+  "category": "Modern",
+  "subcategory": "Elevated metro station (Purple Line)",
+  "latitude": 12.972953,
+  "longitude": 77.617044,
+  "elevationM": 915,
+  "description": "Trinity is an elevated station on the east-west Purple Line of Namma Metro, a short walk from the Holy Trinity Church whose name it borrows, and the reason it is also called the Trinity Circle stop. It opened to the public on 20 October 2011 and was constructed by Punj Lloyd. What makes it unusual is the basement: in early 2016 BMRCL built a 4,000 square foot underground hall under the station, originally intended as storage, then reconsidered and let out to cultural groups. It has eighteen lights and a floor painted to form a stage, and can be rented by the hour through the metro office at MG Road.",
+  "history": "Trinity opened on 20 October 2011, built by Punj Lloyd. On 9 July 2014 BMRCL issued a tender to co-brand the station with a large corporation, the winner earning signage and a kiosk and having its name announced when the stop is called on board the trains. In early 2016 BMRCL constructed a 4,000 square foot basement beneath the station; it was first planned for storage, then rented out for cultural use, with eighteen lights installed and the floor painted to form a stage.",
+  "facts": [
+   "Trinity is an elevated station on the east-west Purple Line and opened on 20 October 2011; it was built by Punj Lloyd.",
+   "A 4,000 square foot basement was built under the station in early 2016, originally for storage and then rented out to cultural groups.",
+   "The basement has eighteen lights and a floor painted to form a stage, and is rented at Rs 400 an hour through the metro office at MG Road.",
+   "In 2014 BMRCL tendered the station's co-branding to a large corporation, with signage, a kiosk and the name called on board the trains."
+  ],
+  "architecture": {
+   "style": "Contemporary elevated transit station",
+   "yearBuilt": "2011",
+   "architect": null,
+   "materials": "Steel and reinforced-concrete viaduct with a lightweight canopy",
+   "keyFeatures": [
+    "Elevated platform and concourse above the road",
+    "A 4,000 square ft cultural basement beneath the station, lit for stage use",
+    "Pedestrian links toward the Trinity Circle and the Holy Trinity Church"
+   ],
+   "footprintHint": "A viaduct about 80 m long by 14 m wide over the roadway",
+   "silhouette": "A slim elevated deck on paired piers with a shallow canopy over the platform"
+  },
+  "priority": 3,
+  "modelHeightM": 13,
+  "modelFootprintM": {
+   "width": 80,
+   "depth": 16
+  },
+  "sources": [
+   {
+    "title": "Trinity metro station - Wikipedia (opening date, contractor, co-branding tender, basement area, stage and hire rate)",
+    "url": "https://en.wikipedia.org/wiki/Trinity_metro_station"
+   },
+   {
+    "title": "Wikidata - Trinity metro station (coordinate location, Q5539214)",
+    "url": "https://www.wikidata.org/wiki/Q5539214"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "jamia-masjid",
+  "name": "Jamia Masjid, Bengaluru (City Market)",
+  "kannadaName": "ಜಾಮಿಯಾ ಮಸ್ಜಿದ್",
+  "category": "Cultural",
+  "subcategory": "Mosque (Sunni)",
+  "latitude": 12.9640397,
+  "longitude": 77.5785728,
+  "elevationM": 915,
+  "description": "The Jamia Masjid near the City Market is the most impressive mosque in Bengaluru. Designed by Rayyaz Asifuddin of Hyderabad, it was built in 1940 with white marble from Rajasthan and is dedicated to Tipu Sultan. The building has bulbous domes, twin towers standing on exquisitely carved granite pillars, and jali work in the balcony. It is a five-storeyed structure with space for up to 10,000 devotees, and an ablution pool at its centre. It stands in the heart of the Pete, the old market city that has been the centre of Bengaluru's Muslim trading community for centuries.",
+  "history": "The earliest recorded history of Islamic influence in Bengaluru goes back to 1638, when the old Pete was taken by the Bijapur Sultanate, who ruled for the next fifty years. The Mughal general Khasim Khan captured the town in 1687, and in 1690 leased it and the surrounding areas to Chikkadeva Raya Wodeyar of the Kingdom of Mysore. Hyder Ali became Sarvadhikari of Bangalore in 1761, and the Mysore Sultanate that followed - from 1761 until Tipu Sultan was killed in 1799 - saw many mosques and dargahs built. Over the 370 years from the Bijapur conquest, more than 400 Muslim shrines were established in the city. The Jamia Masjid itself was completed in 1940, in the final years of British rule.",
+  "facts": [
+   "The Jamia Masjid near the City Market is described as the most impressive mosque in Bengaluru.",
+   "It was designed by Rayyaz Asifuddin of Hyderabad and built in 1940 with white marble from Rajasthan.",
+   "The mosque is dedicated to Tipu Sultan.",
+   "It has bulbous domes, twin towers on carved granite pillars and jali work in the balcony.",
+   "The building is five storeys high and holds up to 10,000 devotees, with an ablution pool in the centre.",
+   "Bengaluru has more than 400 mosques and dargahs, built over 370 years from the Bijapur Sultanate's conquest of the Pete in 1638."
+  ],
+  "architecture": {
+   "style": "Indo-Islamic with bulbous domes and minarets, on Indo-Saracenic lines",
+   "yearBuilt": "1940",
+   "architect": "Rayyaz Asifuddin of Hyderabad",
+   "materials": "Rajasthani white marble with carved granite pillars and marble jali screens",
+   "keyFeatures": [
+    "Bulbous domes over a five-storey prayer hall",
+    "Twin towers rising from carved granite pillars",
+    "Jali work in the balcony",
+    "Central ablution pool"
+   ],
+   "footprintHint": "Approximately 40 m by 30 m at ground level, with the towers rising above it",
+   "silhouette": "A blocky multi-storey mass under large bulbous domes, flanked by two slender towers"
+  },
+  "priority": 3,
+  "modelHeightM": 24,
+  "modelFootprintM": {
+   "width": 40,
+   "depth": 30
+  },
+  "sources": [
+   {
+    "title": "Places of worship in Bengaluru - Wikipedia (Jamia Masjid: location near the City Market, architect, 1940 construction, marble, dedication to Tipu Sultan, domes, towers, jali, five storeys, capacity, ablution pool; and the history of Islamic building in the city from 1638)",
+    "url": "https://en.wikipedia.org/wiki/Places_of_worship_in_Bengaluru"
+   },
+   {
+    "title": "OpenStreetMap - Jamia Masjid, BGS Flyover, Dharmaraya Swamy Temple Ward (node coordinates)",
+    "url": "https://www.openstreetmap.org/search?query=Jamia%20Masjid%20Bengaluru"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "leela-palace",
+  "name": "The Leela Palace, Bengaluru",
+  "kannadaName": null,
+  "category": "Modern",
+  "subcategory": "Luxury hotel in Indo-Saracenic style",
+  "latitude": 12.96055556,
+  "longitude": 77.64861111,
+  "elevationM": 920,
+  "description": "The Leela Palace is a 357-room luxury hotel on HAL Old Airport Road in the Kodihalli area of Bengaluru, part of The Leela Palaces, Hotels and Resorts chain. It draws on Indo-Saracenic architecture inspired by the Mysore Palace: it is built in pink sandstone and has copper domes, marble columns and large windows, and sits in about nine acres of landscaped gardens whose sculptures include the Yali, the mythical creature common in South Indian temple architecture. It opened in 2001 and in 2019 became part of the portfolio acquired by Brookfield Asset Management from Hotel Leelaventure Limited.",
+  "history": "The hotel was developed by Hotel Leelaventure Limited and opened on Old Airport Road in 2001, the group's third hotel after The Leela Mumbai and The Leela Goa. It began with a soft launch on 16 August 2001 with 71 rooms, then opened in phases to its full capacity. In 2019 The Leela Palace Bengaluru was among the hotels acquired by Brookfield Asset Management from Hotel Leelaventure Limited, and ownership was consolidated under Schloss Bangalore Limited. It is a member of the Global Hotel Alliance and Preferred Hotels & Resorts.",
+  "facts": [
+   "The Leela Palace has 357 rooms and opened in 2001 on Old Airport Road, in the Kodihalli area.",
+   "It was developed by Hotel Leelaventure Limited and soft-launched on 16 August 2001 with 71 rooms before opening in phases.",
+   "In 2019 it joined the portfolio acquired by Brookfield Asset Management, with ownership consolidated under Schloss Bangalore Limited.",
+   "The architecture is Indo-Saracenic, inspired by the Mysore Palace, in pink sandstone with copper domes, marble columns and large windows.",
+   "The hotel sits within about nine acres of landscaped gardens decorated with Yali sculptures.",
+   "It is a member of the Global Hotel Alliance and Preferred Hotels & Resorts."
+  ],
+  "architecture": {
+   "style": "Indo-Saracenic, inspired by the Mysore Palace",
+   "yearBuilt": "2001",
+   "architect": null,
+   "materials": "Pink sandstone with copper domes, marble columns and large windows",
+   "keyFeatures": [
+    "A symmetrical multi-storey block with a central domed pavilion and flanking wings",
+    "Copper-clad domes and chhatri-style roof elements",
+    "Marble colonnades and arched openings on the lower levels",
+    "Nine acres of landscaped grounds with Yali sculptures"
+   ],
+   "footprintHint": "A hotel block of roughly 150 m by 90 m within nine acres of grounds",
+   "silhouette": "A long, low hotel frontage crowned by a group of copper domes, reading as a palace from the approach road"
+  },
+  "priority": 4,
+  "modelHeightM": 34,
+  "modelFootprintM": {
+   "width": 150,
+   "depth": 90
+  },
+  "sources": [
+   {
+    "title": "The Leela Palace Bengaluru - Wikipedia (room count, location, development and opening dates, Brookfield acquisition, Indo-Saracenic design, materials, nine acres of gardens, Yali sculptures)",
+    "url": "https://en.wikipedia.org/wiki/The_Leela_Palace_Bengaluru"
+   },
+   {
+    "title": "Wikidata - The Leela Palace Bengaluru (coordinate location, Q111402715)",
+    "url": "https://www.wikidata.org/wiki/Q111402715"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "kempegowda-circle",
+  "name": "Kempegowda Circle (Gavigangadeshwara Temple and the Pete)",
+  "kannadaName": "ಕೆಂಪೇಗೌಡ ವೃತ",
+  "category": "Heritage",
+  "subcategory": "Historic city junction and 16th-century shrine",
+  "latitude": 12.9490985,
+  "longitude": 77.5629132,
+  "elevationM": 912,
+  "description": "Kempegowda Circle is the crowded junction at the heart of the old Pete, and the place where Bengaluru's founder is commemorated: a statue of Kempegowda stands at the centre of the circle, with the Gavigangadeshwara Temple beside it and the Kempegowda Tower on the circle's edge. Kempegowda I, a governor of the Vijayanagara Empire, laid out the Pete here in 1537 with roads running in the cardinal directions and entrance gates at the end of each road, and called it his 'gandu bhoomi', the land of heroes. The market city that grew around that plan - Tharagupete for grain, Balepete for bangles and musical instruments, Chikkapete and Nagarthpete for textiles, Ballapurpete and Ganigarapete for oil, Tigalarapete for flowers, Cubbonpete for cloth made by the Devanga community - is still the commercial heart of the city.",
+  "history": "The Pete was established by Kempe Gowda I in 1537 around the mud fort he built as its nucleus, with roads laid out in the cardinal directions and entrance gates at the end of each road. He also termed it his 'gandu bhoomi', or land of heroes. The area covered about 2.24 square kilometres and has since been absorbed into a metropolis of roughly 741 square kilometres. Kempegowda, born in 1510, was venerated as Nadaprabhu Kempe Gowda and left Kannada inscriptions across the region; the circle that carries his name grew around the Gavigangadeshwara Temple, the rock-cut shrine on Gavipuram hill that he is said to have built or renewed.",
+  "facts": [
+   "Kempegowda I established the Bengaluru Pete in 1537 with roads in the cardinal directions and gates at the end of each road, calling it his 'gandu bhoomi', the land of heroes.",
+   "The junction is named for Kempegowda: a statue of him stands at the centre of the circle.",
+   "The Gavigangadeshwara Temple, a Shaivite rock-cut shrine in Gavipuram, is associated with Kempegowda I, who is said to have built or renovated it.",
+   "The Pete's trading quarters took their names from the trades practised in them, from grain at Tharagupete to flowers at Tigalarapete.",
+   "The old Pete covered about 2.24 square kilometres around the mud fort Kempegowda built as its nucleus."
+  ],
+  "architecture": {
+   "style": "Vijayanagara-era shrine within a modern traffic junction; no single built form",
+   "yearBuilt": "16th century (shrine); the circle is modern",
+   "architect": null,
+   "materials": "Rock-cut granite for the shrine; modern road engineering for the circle",
+   "keyFeatures": [
+    "Traffic circle at the meeting of the cardinal roads of the Pete",
+    "Kempegowda statue at the centre of the circle",
+    "Gavigangadeshwara Temple and the Kempegowda Tower nearby"
+   ],
+   "footprintHint": "A junction roughly 120 m across, with the statue island at its centre",
+   "silhouette": "Not a single building: an open roundabout with a statue island and a low shrine on the western approach"
+  },
+  "priority": 3,
+  "modelHeightM": 12,
+  "modelFootprintM": {
+   "width": 30,
+   "depth": 30
+  },
+  "sources": [
+   {
+    "title": "Bengaluru Pete - Wikipedia (Kempegowda I's 1537 plan, cardinal roads and gates, 'gandu bhoomi', the named trade quarters of the Pete, the 2.24 square kilometre original extent)",
+    "url": "https://en.wikipedia.org/wiki/Bengaluru_Pete"
+   },
+   {
+    "title": "Places of worship in Bengaluru - Wikipedia (Gavi Gangadhareshwara, the rock-cut cave temple associated with Kempegowda I)",
+    "url": "https://en.wikipedia.org/wiki/Places_of_worship_in_Bengaluru"
+   },
+   {
+    "title": "OpenStreetMap - Kempegowda Circle (junction coordinates, with the statue, tower and temple bus stop mapped in place)",
+    "url": "https://www.openstreetmap.org/search?query=Kempegowda%20Circle%20Bengaluru"
+   }
+  ],
+  "images": []
+ }
+]

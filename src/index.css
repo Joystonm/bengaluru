@@ -1,0 +1,447 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink-950: #07090c;
+  --color-ink-900: #0c1015;
+  --color-ink-800: #121820;
+  --color-ink-700: #1a222c;
+  --color-ink-600: #273240;
+  --color-ink-500: #3d4a5c;
+  --color-mist-400: #7d8b9e;
+  --color-mist-300: #a4b0c0;
+  --color-mist-200: #ccd4de;
+  --color-mist-100: #e8edf3;
+  --color-saffron: #e8a33d;
+  --color-saffron-dim: #b8792a;
+  --color-terracotta: #c4553b;
+  --color-lagoon: #3d8b8b;
+  --color-dusk: #5b6b8c;
+
+  --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    background: var(--color-ink-950);
+    color: var(--color-mist-100);
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+  body {
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  canvas {
+    display: block;
+    touch-action: none;
+  }
+}
+
+@layer components {
+  .nb-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-mist-400);
+  }
+  .nb-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+  /* Type that sits directly on the city needs its own separation from the
+     concrete behind it, rather than a slab of black over the whole frame. */
+  .nb-over-city {
+    text-shadow:
+      0 1px 2px rgb(0 0 0 / 0.65),
+      0 2px 14px rgb(0 0 0 / 0.7),
+      0 10px 44px rgb(0 0 0 / 0.55);
+  }
+  .nb-panel {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-ink-900) 92%, transparent),
+      color-mix(in srgb, var(--color-ink-950) 96%, transparent)
+    );
+    backdrop-filter: blur(24px) saturate(1.2);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
+    border: 1px solid rgb(255 255 255 / 0.07);
+  }
+  /* On a phone the panel covers the whole screen, so there is no city to see
+     through it — and a translucent one just ghosts the HUD wordmark and the
+     markers behind the text. Below the tablet breakpoint it goes solid. */
+  @media (max-width: 639px) {
+    .nb-panel-solid {
+      background: var(--color-ink-950);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+  /* The Play-mode captions sit on whatever the camera happens to be flying
+     over — a pale midday roof or a night street — so they carry their own
+     gradient. It is a soft wash rather than a panel, so the city still
+     reads behind the type. The wash has to hold its density down to the
+     third line of the title block: the small credits line is the last thing
+     in the block, and it falls over the middle of the frame where the city
+     is brightest. */
+  .nb-cine-top {
+    background: linear-gradient(
+      180deg,
+      rgb(3 5 8 / 0.84) 0%,
+      rgb(3 5 8 / 0.74) 38%,
+      rgb(3 5 8 / 0.44) 66%,
+      rgb(3 5 8 / 0.16) 85%,
+      transparent 100%
+    );
+  }
+  .nb-cine-bottom {
+    background: linear-gradient(
+      0deg,
+      rgb(3 5 8 / 0.86) 0%,
+      rgb(3 5 8 / 0.66) 30%,
+      rgb(3 5 8 / 0.26) 62%,
+      transparent 100%
+    );
+  }
+  .nb-focus-ring:focus-visible {
+    outline: 2px solid var(--color-saffron);
+    outline-offset: 2px;
+  }
+}
+
+.nb-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.16) transparent;
+}
+.nb-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.nb-scroll::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 0.16);
+  border-radius: 3px;
+}
+.nb-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes nb-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nb-fade-up {
+  animation: nb-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes nb-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.nb-fade {
+  animation: nb-fade 0.9s ease both;
+}
+
+@keyframes nb-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.nb-drift {
+  animation: nb-drift 5.5s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------- markers */
+
+.nb-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+.nb-marker-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-top: -28px;
+  border-radius: 999px;
+  /* A frosted disc rather than a dark one: the city behind it is bright
+     concrete, and a black pin would read as a hole punched in the frame. */
+  color: var(--color-ink-900);
+  background: color-mix(in srgb, #fff 74%, transparent);
+  border: 1px solid rgb(232 163 61 / 0.85);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--color-saffron) 14%, transparent),
+    0 4px 14px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+  /* Distant markers shrink, so a crowded skyline does not turn into a field
+     of identical black discs. */
+  transform: scale(var(--nb-marker-scale, 1));
+  transition:
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+
+.nb-marker-dot::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  box-shadow: 0 0 14px 1px color-mix(in srgb, var(--color-saffron) 45%, transparent);
+  opacity: 0.7;
+  animation: nb-pulse 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.nb-marker:hover .nb-marker-dot,
+.nb-marker-dot:hover,
+.nb-marker-dot:focus-visible {
+  transform: scale(calc(var(--nb-marker-scale, 1) * 1.18));
+  color: var(--color-ink-950);
+  background: color-mix(in srgb, var(--color-saffron) 88%, #fff);
+  border-color: var(--color-saffron);
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--color-saffron) 20%, transparent),
+    0 8px 22px rgb(0 0 0 / 0.45);
+  outline: none;
+}
+
+.nb-marker-label {
+  max-width: 190px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-mist-200);
+  background: color-mix(in srgb, var(--color-ink-950) 62%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.05);
+  opacity: 0;
+  transform: translateY(-3px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+  pointer-events: none;
+}
+
+.nb-marker:hover .nb-marker-label,
+.nb-marker:focus-within .nb-marker-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes nb-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.18);
+  }
+}
+
+/* ------------------------------------------------------------- controls */
+
+.nb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--color-ink-950);
+  background: var(--color-mist-100);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nb-btn:hover {
+  transform: translateY(-1px);
+}
+.nb-btn:active {
+  transform: translateY(0);
+}
+
+.nb-btn-primary {
+  height: 54px;
+  padding: 0 30px;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-950);
+  background: linear-gradient(180deg, #f3d7a4 0%, var(--color-saffron) 58%, var(--color-saffron-dim) 100%);
+  box-shadow:
+    0 10px 30px -8px color-mix(in srgb, var(--color-saffron) 60%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.4);
+}
+.nb-btn-primary:hover {
+  box-shadow:
+    0 16px 40px -10px color-mix(in srgb, var(--color-saffron) 70%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.5);
+}
+
+.nb-btn-ghost {
+  color: var(--color-mist-200);
+  background: color-mix(in srgb, var(--color-ink-900) 55%, transparent);
+  border-color: rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nb-btn-ghost:hover {
+  color: var(--color-mist-100);
+  border-color: rgb(255 255 255 / 0.24);
+  background: color-mix(in srgb, var(--color-ink-800) 70%, transparent);
+}
+
+.nb-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  color: var(--color-mist-200);
+  background: color-mix(in srgb, var(--color-ink-900) 55%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+.nb-icon-btn:hover {
+  color: var(--color-mist-100);
+  border-color: rgb(255 255 255 / 0.24);
+}
+
+.nb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-mist-300);
+  background: color-mix(in srgb, var(--color-ink-800) 70%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.07);
+}
+
+.nb-hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.12) 18%,
+    rgb(255 255 255 / 0.12) 82%,
+    transparent
+  );
+}
+
+/* A very soft vertical gradient used to lift text off the 3D scene. It has to
+   stay light: the sky is the thing that makes the opening frame read as an
+   open city, and a heavy scrim across the top of the frame kills it.
+
+   `background-image`, not the `background` shorthand: this rule lives outside
+   any cascade layer, so it outranks every Tailwind utility, and the shorthand
+   would reset the element's own background colour to transparent — which left
+   the loading screen showing the city through its progress text. */
+.nb-sheen {
+  background-image:
+    radial-gradient(120% 70% at 50% 0%, rgb(0 0 0 / 0.14) 0%, transparent 58%),
+    linear-gradient(180deg, rgb(7 9 12 / 0.22) 0%, transparent 18%);
+}
+
+/* The foot of the frame carries the title, so it needs a scrim — but the
+   city itself is the picture, and an opaque one hides the foreground. The
+   extra layer pools the darkness under the title on the left and lets the
+   bottom right stay open. */
+.nb-sheen-bottom {
+  background:
+    radial-gradient(115% 100% at 0% 100%, rgb(4 6 9 / 0.72) 0%, rgb(4 6 9 / 0.42) 36%, transparent 70%),
+    linear-gradient(
+      0deg,
+      rgb(4 6 9 / 0.6) 0%,
+      rgb(4 6 9 / 0.34) 30%,
+      rgb(4 6 9 / 0.14) 66%,
+      transparent 100%
+    );
+}
+
+.nb-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nb-fade-up,
+  .nb-fade,
+  .nb-drift {
+    animation: none !important;
+  }
+  .nb-marker-dot::after {
+    animation: none !important;
+  }
+}

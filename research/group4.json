@@ -1,0 +1,625 @@
+[
+ {
+  "id": "ub-city",
+  "name": "UB City",
+  "kannadaName": "ಯುಬಿ ಸಿಟಿ",
+  "category": "Modern",
+  "subcategory": "Mixed-use high-rise complex / luxury shopping mall",
+  "latitude": 12.97175,
+  "longitude": 77.59583,
+  "elevationM": 920,
+  "description": "UB City is a mixed-use high-rise complex on a 13-acre site at the corner of Kasturba Road and Vittal Mallya Road in the central business district, directly opposite Cubbon Park and 1.8 km from the MG Road-Brigade Road junction. It comprises six buildings with over 1.6 million sq ft of built-up area, combining the luxury retail mall 'The Collection', corporate offices (including United Breweries' own UB Tower) and service apartments. Its four towers are named Concorde (the UB Tower, 20 floors, 123 m to roof), Canberra, Comet and a fourth slab, giving the complex a stepped, clustered skyline.",
+  "history": "The development was established by the UB Group in a joint venture with the Prestige Group, with Prestige as main contractor, and construction began in 2004 with completion in 2008. The Times of India reported the project as 'finally here' in June 2006 while it was still being fitted out, and in June 2009 the Financial Express reported UB City winning an Asia-Pacific property award as a joint development venture between the two groups. The complex opened as India's first luxury shopping destination under the 'The Collection' banner, and UB Tower later gained an elevated rooftop helipad advertised as giving a five-minute aerial commute to Kempegowda International Airport.",
+  "facts": [
+   "Six buildings on 13 acres, with a total built-up area of over 1.6 million sq ft (Wikipedia infobox lists 950,000 sq ft / 88,000 m2 of floor area).",
+   "The tallest tower, UB Tower / Concorde, has 20 floors and a roof height of 123 m (404 ft).",
+   "Roughly 1,000,000 sq ft (93,000 m2) of high-end commercial, retail and service-apartment space is hosted on the site.",
+   "UB Tower carries an elevated rooftop helipad offering a five-minute aerial commute to Kempegowda International Airport.",
+   "OpenStreetMap records the mall land-use polygon at 24 Vittal Mallya Road, 560001, with four tower blocks: Concorde (20 levels), Canberra (18 levels), Comet (11 levels) and an unnamed 19-level block of 50 m.",
+   "The site is bounded by Vittal Mallya Road to the east, Kasturba Road to the west and Cubbon Park opposite; the Bowring Institute stands just south along Vittal Mallya Road."
+  ],
+  "architecture": {
+   "style": "Contemporary high-rise / International Style mixed-use complex",
+   "yearBuilt": "2008",
+   "architect": "Thomas Associates, Bengaluru",
+   "materials": "Not documented in the sources consulted - model as a concrete-and-steel frame with glazed curtain-wall facades on the towers and a stone-clad retail podium",
+   "keyFeatures": [
+    "Four towers of stepped heights - Concorde/UB Tower at 20 storeys and 123 m, Canberra at 18 storeys, Comet at 11 storeys, plus a 19-storey block",
+    "Elevated rooftop helipad on UB Tower",
+    "Luxury retail podium 'The Collection' with luxury-brand stores",
+    "Tower-slab geometry: three towers set along the Vittal Mallya Road frontage over a common retail base",
+    "Overall mall land-use footprint of roughly 220 m by 240 m per OpenStreetMap",
+    "Corner site at Kasturba Road x Vittal Mallya Road with Cubbon Park opposite",
+    "Service-apartment volumes forming the rear edge of the complex",
+    "Vertical hotel/mall signage bands on the tower faces"
+   ],
+   "footprintHint": "Mall and tower cluster occupies roughly 220 m (east-west) x 240 m (north-south) per OpenStreetMap; tallest tower 123 m to roof",
+   "silhouette": "A cluster of slender glass towers of stepped heights - a 20-storey slab and an 18-storey slab rising above a lower 11-storey retail block - reading as one asymmetric skyline cluster rather than a single slab."
+  },
+  "priority": 1,
+  "modelHeightM": 123,
+  "modelFootprintM": {
+   "width": 220,
+   "depth": 240
+  },
+  "sources": [
+   {
+    "title": "UB City - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/UB_City"
+   },
+   {
+    "title": "Nominatim geocode search for UB City, Bengaluru (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=UB+City+Bengaluru,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the UB City block, Vittal Mallya Road",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.5925,12.9695,77.5995,12.9750"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "world-trade-center-bangalore",
+  "name": "World Trade Center Bengaluru",
+  "category": "Modern",
+  "subcategory": "Commercial office tower",
+  "latitude": 13.0123,
+  "longitude": 77.5562,
+  "elevationM": 920,
+  "description": "The World Trade Center Bengaluru (WTCB) is a 32-storey, 128 m commercial tower in Malleshwaram West, near the ISKCON temple, Indian Institute of Science and Yeshvantpur Junction. Built by the Brigade Group under a World Trade Centers Association licence, it was the second World Trade Center in India after Mumbai and remains the tallest commercial building in Bengaluru. The tower sits inside the integrated Brigade Gateway enclave alongside Orion Mall, Manipal Hospital, the Sheraton hotel, a school and apartment blocks, with a skywalk bridge linking it to the Sheraton Grand Bangalore Hotel.",
+  "history": "The tower was opened for operation in 2010, reported by The Hindu in August 2010, having been built by Brigade Group after obtaining the World Trade Centers Association construction licence. At 128 m it was the tallest commercial building in South India from 2010 until 2015 and the tallest building in the city between 2010 and 2013. The surrounding Brigade Gateway development, which also contains Orion Mall, Manipal Hospital, the Sheraton hotel and the Brigade Gateway Apartments, received recognition in The Hindu's property review in January 2011.",
+  "facts": [
+   "32 floors with a roof height of 128 m (420 ft).",
+   "Completed and opened in 2010.",
+   "Built by Brigade Group under a World Trade Centers Association (WTCA) licence - the second World Trade Center in India after Mumbai.",
+   "Tallest commercial building in South India from 2010 to 2015, and tallest building in Bengaluru between 2010 and 2013.",
+   "Part of the integrated 'Brigade Gateway' enclave with Orion Mall, Manipal Hospital, the Sheraton hotel, Brigade School and Brigade Gateway Apartments.",
+   "OpenStreetMap records the tower as a 32-level, 128 m commercial building of about 95 m x 80 m footprint, with a 9-level multi-level car park (MLCP) immediately north, an 11-level 'WTC Annexe' office building and two 9-level apartment blocks (A and B Block).",
+   "A skywalk bridge connects the tower to the Sheraton Grand Bangalore Hotel."
+  ],
+  "architecture": {
+   "style": "International Style / contemporary glass-and-steel office tower",
+   "yearBuilt": "2010",
+   "architect": null,
+   "materials": "Not documented in the sources consulted - model as a concrete-and-steel frame with a glazed curtain wall",
+   "keyFeatures": [
+    "Single slender rectangular tower, 32 storeys, 128 m to flat roof",
+    "Vertical fenestration banding typical of a curtain-wall office slab",
+    "Adjoining 9-storey multi-level car park pod directly north of the tower",
+    "11-storey WTC Annexe office block on the west side of the plot",
+    "Two 9-storey apartment blocks (A and B Block) completing the Brigade Gateway enclave",
+    "Skywalk bridge to the Sheraton Grand Bangalore Hotel",
+    "Corner position on Dr Rajkumar Road near the ISKCON temple and IISc campus"
+   ],
+   "footprintHint": "Tower footprint approximately 95 m (east-west) x 80 m (north-south) per OpenStreetMap, 128 m to roof",
+   "silhouette": "A single slim rectangular slab tower with a flat roof and strong vertical banding, rising directly behind a low, wide multi-storey car-park podium."
+  },
+  "priority": 1,
+  "modelHeightM": 128,
+  "modelFootprintM": {
+   "width": 95,
+   "depth": 80
+  },
+  "sources": [
+   {
+    "title": "World Trade Center Bengaluru - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/World_Trade_Center,_Bangalore"
+   },
+   {
+    "title": "Nominatim geocode search for World Trade Center Bangalore (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=World+Trade+Center+Bangalore,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the Brigade Gateway / WTCB block, Malleshwaram",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.5495,13.006,77.5625,13.018"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "biec-bangalore",
+  "name": "Bangalore International Exhibition Centre",
+  "category": "Modern",
+  "subcategory": "Exhibition centre",
+  "latitude": 13.0559,
+  "longitude": 77.4754,
+  "elevationM": 920,
+  "description": "BIEC is a large exhibition and convention complex on the 10th Mile of Tumkur Road, developed and managed by the Indian Machine Tool Manufacturers' Association (IMTMA). Wikipedia describes it as India's first LEED-certified green facility for exhibitions, conferences and B2B events, and it hosts everything from IMTEX and IIJS jewellery fairs to the Bengaluru Tech Summit and Excon. The official site lists a 77,200 sq m large exhibition facility with columnless halls spanning up to 75 metres and a 5,600 sq m large conference facility, with parking for 10,000 vehicles.",
+  "history": "The centre was built and opened in 2007 as the permanent exhibition venue of IMTMA, replacing the association's earlier annual fairground model. It is sited beside the NICE corridor and the Bangalore-Nelamangala Expressway in north Bengaluru, with the Madavara metro station and bus stop on its doorstep on Namma Metro Reach 3. Since opening it has hosted more than 400 events, including many national and international exhibitions.",
+  "facts": [
+   "Opened in 2007; owner and operator is the Indian Machine Tool Manufacturers' Association (IMTMA).",
+   "Official site lists a large exhibition facility of 77,200 sq m and a large conference facility of 5,600 sq m.",
+   "Columnless exhibition halls span up to 75 metres.",
+   "Parking capacity of 10,000 vehicles.",
+   "Wikipedia records it as India's first LEED-certified green facility for exhibitions, conferences and B2B events, with an 'oval' field shape.",
+   "More than 400 events hosted since opening, including IMTEX/Tooltech, IIJS Tritiya, Bengaluru Tech Summit, Excon and India Manufacturing Show.",
+   "OpenStreetMap tags five halls - Hall 1 (about 76 x 179 m), Hall 2 (about 127 x 180 m), Hall 3 (about 137 x 280 m) and Halls 4 and 5 (about 256 x 160 m each) - whose combined extent is roughly 590 m x 300 m, plus a food court.",
+   "Address: 10th Mile, Tumkur Road, Bengaluru 562162; Madavara metro station and bus stop are the nearest transit."
+  ],
+  "architecture": {
+   "style": "Contemporary modular steel exhibition architecture",
+   "yearBuilt": "2007",
+   "architect": null,
+   "materials": "Not documented in the sources consulted - model as long-span steel portal frames with low-pitched metal roofs and concrete aprons",
+   "keyFeatures": [
+    "Five large columnless flat-roofed exhibition halls, the largest about 280 m long",
+    "Clear interior spans of up to 75 m with no internal columns",
+    "Overall site laid out on an oval loop road",
+    "Separate conference-centre pavilion and food court with fountain (Wikipedia gallery)",
+    "Multi-storey parking for 10,000 vehicles",
+    "Adjacent to the NICE elevated corridor and the Bangalore-Nelamangala Expressway, with Madavara metro station nearby"
+   ],
+   "footprintHint": "Exhibition halls alone cover roughly 590 m x 300 m per OpenStreetMap; total exhibition capacity 77,200 sq m plus 5,600 sq m of conference space",
+   "silhouette": "A cluster of very long, low, flat-roofed rectangular halls arranged around an oval loop road, with a smaller conference pavilion and a food court at the centre."
+  },
+  "priority": 2,
+  "modelHeightM": 15,
+  "modelFootprintM": {
+   "width": 590,
+   "depth": 300
+  },
+  "sources": [
+   {
+    "title": "Bangalore International Exhibition Centre - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Bangalore_International_Exhibition_Centre"
+   },
+   {
+    "title": "Bangalore International Exhibition Centre - official site (IMTMA)",
+    "url": "https://biec.in/"
+   },
+   {
+    "title": "Nominatim geocode search for Bangalore International Exhibition Centre (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Bangalore+International+Exhibition+Centre,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the BIEC site, Tumkur Road",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.4715,13.0565,77.4795,13.0645"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "manyata-tech-park",
+  "name": "Manyata Tech Park",
+  "kannadaName": "ಮಾನ್ಯತ ಟೆಕ್ ಪಾರ್ಕ್",
+  "category": "Modern",
+  "subcategory": "IT campus / business park",
+  "latitude": 13.0483,
+  "longitude": 77.6211,
+  "elevationM": 920,
+  "description": "Manyata Tech Park is a roughly 300-acre IT and business park on the Outer Ring Road at Nagawara, close to Hebbal, developed by the Embassy Group under Embassy Office Parks. It holds about 9.8 million sq ft of building space and more than 150,000 professionals (as of November 2017), with major tenant campuses including IBM, Target, Nvidia, Rolls-Royce, Fidelity Investments, Philips and Continental. The park is laid out as a business district with corporate campuses, an employee garden, an 85-acre residential enclave (Manyata Residency) behind it and, in OpenStreetMap, 30-41 storey towers under construction alongside 34-storey residential slabs.",
+  "history": "Manyata Tech Park was founded in 2001 and is operated by Embassy Office Parks, the listed real-estate arm of the Embassy Group. It quickly became one of Bengaluru's largest employer clusters and won the NDTV Property Awards' Best IT Park Award in 2013. Development has continued with the adjacent Karle SEZ and Karle Zenith residences, and OpenStreetMap currently records towers G, H, J, K, L and M under construction within the park.",
+  "facts": [
+   "Founded in 2001; approximately 300 acres (1.2 km2) in extent.",
+   "About 9.8 million sq ft of building space.",
+   "More than 150,000 professionals working on site as of November 2017.",
+   "Tenant campuses include Cognizant, IBM, Target, Nvidia, Rolls-Royce, Fidelity Investments, Philips, Continental, Harman, NXP Semiconductors, L Brands and GlobalFoundries.",
+   "A 15-acre employee food-growing garden and a 13,000 sq ft rooftop football arena.",
+   "The 85-acre Manyata Residency residential enclave lies behind the park.",
+   "Won the NDTV Property Awards' Best IT Park Award in 2013.",
+   "OpenStreetMap records towers G, H, J, K, L and M (30-41 storeys) under construction and 34-storey residential blocks of about 115 m height within the park, beside the MEBP Park 1 green."
+  ],
+  "architecture": {
+   "style": "Contemporary corporate campus architecture (IT business park)",
+   "yearBuilt": "2001",
+   "architect": null,
+   "materials": "Not documented in the sources consulted - model as concrete-and-steel frames with glazed curtain walls",
+   "keyFeatures": [
+    "Perimeter of mid-rise glass office blocks and slab blocks along the Outer Ring Road frontage",
+    "30-41 storey towers under construction within the park",
+    "34-storey residential slabs of about 115 m height behind the office belt",
+    "Internal spine road with numbered cross roads (2nd, 4th, 5th, 6th, 8th, 9th, 10th Cross Roads)",
+    "MEBP Park 1 landscaped green within the campus",
+    "Rooftop football arena and employee garden as amenity features",
+    "Direct adjacency to the Karle SEZ and Karle Zenith residency development"
+   ],
+   "footprintHint": "Campus of roughly 1,000 m x 1,200 m (300 acres); individual tower footprints about 30-45 m square, 90-115 m tall",
+   "silhouette": "A low-rise carpet of mid-rise office slabs punctuated by a handful of 30-41 storey towers, with taller residential slabs rising behind them."
+  },
+  "priority": 2,
+  "modelHeightM": 115,
+  "modelFootprintM": {
+   "width": 1000,
+   "depth": 1200
+  },
+  "sources": [
+   {
+    "title": "Manyata Tech Park - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Manyata_Tech_Park"
+   },
+   {
+    "title": "Nominatim geocode search for Manyata Tech Park (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Manyata+Tech+Park,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the Manyata Tech Park block",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.6150,13.0440,77.6250,13.0510"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "electronic-city-phase-1",
+  "name": "Electronic City Phase 1",
+  "kannadaName": "ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸಿಟಿ ಫೇಸ್ 1",
+  "category": "Modern",
+  "subcategory": "IT industrial township district",
+  "latitude": 12.84968,
+  "longitude": 77.66497,
+  "elevationM": 919,
+  "description": "Electronic City Phase 1 is the first and original phase of the KEONICS industrial township on the western side of Hosur Road in south Bengaluru, and today forms the 'Electronic City West' half of the estate. It is the campus district for the IT majors - OpenStreetMap tags the Infosys blocks by number (B25/26, B30/31, B32/33, B34/35/36/37, B38/39/40/41), alongside BHEL, Hewlett Packard GlobalSoft, NTTF, Fanuc and a Terminal Food Court. The township as a whole houses around 200 IT and ITES company campuses, with main campuses of Infosys, Wipro, TCS, HCL, Tech Mahindra and Biocon, and is served by the Yellow Line metro.",
+  "history": "Electronic City was the brainchild of R. K. Baliga (1929-1988), the first Chairman and Managing Director of KEONICS, Karnataka's electronics development corporation, who wanted to make Bengaluru the 'Silicon Valley of India'. KEONICS established the township in 1978 on 332 acres of land in the Konappana Agrahara and Doddathogur villages of Begur Hobli. Maintenance and upkeep passed to ELCITA, the Electronic City Township Industries Association, in 1997, and a notification of 18 March 2013 brought Phases I, II and III under the E-City Industrial Township Area. The estate grew to 903 acres and 11 guntas, with a further 122 acres acquired in 2003 to form Phase III, while Phase II covers about 340 acres.",
+  "facts": [
+   "Phase 1 lies entirely on the western side of Hosur Road and forms 'Electronic City West'; the official township site places the estate at 12.85 N, 77.67 E on the Hosur Road (NH 7) corridor, about 9 km from Silk Board and 18 km from Vidhana Soudha.",
+   "Founded in 1978 on 332 acres in Konappana Agrahara and Doddathogur villages; the estate now covers 903 acres and 11 guntas over three phases.",
+   "Phase II covers about 340 acres and lies on both sides of Hosur Road; a further 122 acres acquired in 2003 formed Phase III.",
+   "Around 200 IT and ITES company campuses operate in Electronic City, including main campuses of Infosys, Wipro, TCS, HCL, Tech Mahindra and Biocon; major employers listed by Wikipedia include BHEL, Hewlett-Packard, Siemens, Continental, Genpact and Bosch.",
+   "A 9.985 km four-lane elevated expressway from Silk Board junction to Electronic City opened on 22 January 2010.",
+   "The 19.15 km elevated Yellow Line of Namma Metro (R.V. Road to Bommasandra, 16 stations) was inaugurated on 10 August 2025, with an Electronic City metro station, plus Konappana Agrahara station funded by the Infosys Foundation.",
+   "ELCITA, the township industries association, took over upkeep in 1997 and has deployed about 500 security officials with CCTV on strategic locations.",
+   "OpenStreetMap maps the Phase 1 Infosys campus in numbered blocks - B25/26, B30/31, B32/33, B34/35/36/37 and B38/39/40/41 - together with an Infosys fountain park, an Infosys skywalk, Hewlett Packard Avenue, the BHEL campus, NTTF and a Terminal Food Court."
+  ],
+  "architecture": {
+   "style": "Contemporary corporate campus architecture (IT park)",
+   "yearBuilt": "1978 (township established; Phase 1 built out through the 1980s-1990s)",
+   "architect": null,
+   "materials": "Not documented in the sources consulted - model as concrete-and-steel office frames with glazed curtain walls",
+   "keyFeatures": [
+    "Block-numbered office buildings (B25/26 through B38/39/40/41) of 3-5 storeys, 60-190 m across",
+    "Straight spine road (1st Main Road) running parallel to Hosur Road",
+    "Infosys fountain park and skywalk as the campus landmark",
+    "Terminal Food Court pavilion at the Infosys entrance",
+    "Hewlett Packard Avenue and the BHEL, NTTF and Fanac campuses as separate walled plots",
+    "Elevated expressway and the Yellow Line metro viaduct overhead",
+    "Wide landscaped setbacks between the corporate plots"
+   ],
+   "footprintHint": "Phase 1 occupies the western half of the 903-acre estate; representative office blocks are 60-190 m across and 3-5 storeys (12-20 m)",
+   "silhouette": "A low, spread-out carpet of 3-5 storey office pavilions set back behind a straight spine road, with an elevated expressway and metro viaduct cutting across above."
+  },
+  "priority": 2,
+  "modelHeightM": 25,
+  "modelFootprintM": {
+   "width": 700,
+   "depth": 500
+  },
+  "sources": [
+   {
+    "title": "Electronic City - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Electronic_City"
+   },
+   {
+    "title": "Electronic City, Bangalore - official township site, About ECity (Introduction)",
+    "url": "https://www.electronic-city.in/about/introduction"
+   },
+   {
+    "title": "Electronic City, Bangalore - official township site, History of ECity",
+    "url": "https://www.electronic-city.in/about/history"
+   },
+   {
+    "title": "Electronic City, Bangalore - official township site, Geography of ECity",
+    "url": "https://www.electronic-city.in/about/geography"
+   },
+   {
+    "title": "Nominatim geocode search for Electronic City Phase 1 (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Electronic+City+Phase+1,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the Infosys / Wipro blocks of Electronic City Phase 1",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.6600,12.8460,77.6690,12.8530"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "kempegowda-international-airport",
+  "name": "Kempegowda International Airport",
+  "kannadaName": "ಕೆಂಪೇಗೌಡ ಅಂತರರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲದ್ದ",
+  "category": "Modern",
+  "subcategory": "International airport",
+  "latitude": 13.19889,
+  "longitude": 77.70556,
+  "elevationM": 915,
+  "description": "Kempegowda International Airport (KIA) is the airport serving Bengaluru, located at Devanahalli about 35 km north of the city centre at an elevation of 915 m. It has two passenger terminals: a domestic-only Terminal 1 and the much larger Terminal 2, which was designed as a tribute to the city's 'Garden City' identity by Skidmore, Owings & Merrill and built by Larsen & Toubro. Two parallel 4,000 m x 45 m asphalt runways (09L/27R and 09R/27L) carry CAT IIIB instrument approaches, and the airport is described as Karnataka's first fully solar-powered airport.",
+  "history": "The airport opened on 24 May 2008, its first commercial arrival being Air India flight AI609 from Mumbai on 23 May, having been developed at an initial estimated cost of about 1,930 crore rupees. It was originally named Bengaluru International Airport; Karnataka proposed the Kempe Gowda name in February 2009, the Union accepted it in 2012, formal approval came in July 2013 and the official renaming took effect on 14 December 2013, when the expanded terminal was inaugurated. Terminal 2, designed by Skidmore, Owings & Merrill and constructed by Larsen & Toubro at a cost of about 5,000 crore rupees, was inaugurated on 11 November 2022, began operations in January 2023 and took over all international flights on 12 September 2023.",
+  "facts": [
+   "Opened 24 May 2008; first commercial arrival was Air India flight AI609 from Mumbai on 23 May 2008. Renamed Kempegowda International Airport on 14 December 2013, honouring the city's founder Kempe Gowda I.",
+   "Site elevation of 915 m, about 35 km north of central Bengaluru.",
+   "Terminal 1 has been domestic-only since September 2023, with a listed capacity of 35 million passengers a year, and was enlarged to 150,556 sq m.",
+   "Terminal 2 Phase 1 covers 255,000 sq m and adds 25 million passengers of annual capacity; a second phase is planned to add another 20 million.",
+   "Stated combined capacity of 55-60 million passengers a year after Terminal 2.",
+   "Two parallel asphalt runways, 09L/27R and 09R/27L, each 4,000 m long and 45 m wide, both with CAT IIIB instrument landing systems; the northern runway achieved full CAT IIIB capability in May 2025.",
+   "Costs: initial airport build about 1,930 crore rupees; first terminal expansion about 1,500 crore; broader second expansion about 4,000 crore; Terminal 2 Phase 1 about 5,000 crore rupees.",
+   "Karnataka's first fully solar-powered airport; the cargo village has space for nearly 80 trucks.",
+   "OpenStreetMap records Terminal 1 as a transportation building of roughly 714 m x 210 m and an air traffic control tower 65 m tall."
+  ],
+  "architecture": {
+   "style": "Contemporary / International Style with a 'Garden City' regional theme",
+   "yearBuilt": "2008 (Terminal 2: 2022)",
+   "architect": "Skidmore, Owings & Merrill (Terminal 2); the Terminal 1 architect is not stated in the sources consulted",
+   "materials": "Not documented in the sources consulted - model as steel and glass terminal construction with landscaped terraces",
+   "keyFeatures": [
+    "Long low terminal pier, Terminal 1 at roughly 714 m x 210 m per OpenStreetMap",
+    "Terminal 2 as a multi-level terminal with landscaped terraces and indoor gardens reflecting the Garden City theme",
+    "65 m air traffic control tower (OpenStreetMap height tag) standing beside the terminals",
+    "Two parallel 4,000 m asphalt runways with 45 m width and CAT IIIB approach lighting",
+    "Grade-separated road approach with separate KIAL Entry and KIAL Exit roads, an airport bus station and a Taj Bangalore hotel",
+    "Airport City development and the 'The Quad' commercial cluster beyond the perimeter"
+   ],
+   "footprintHint": "Terminal 1 building about 714 m x 210 m (OpenStreetMap); Terminal 2 Phase 1 floor area 255,000 sq m; ATC tower about 65 m tall",
+   "silhouette": "A long horizontal terminal pier running parallel to the runways, fronted by a slender 65 m control tower, with a lower multi-level concourse mass set behind."
+  },
+  "priority": 1,
+  "modelHeightM": 65,
+  "modelFootprintM": {
+   "width": 714,
+   "depth": 210
+  },
+  "sources": [
+   {
+    "title": "Kempegowda International Airport - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Kempegowda_International_Airport"
+   },
+   {
+    "title": "Nominatim geocode search for Kempegowda International Airport (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Kempegowda+International+Airport,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the KIA terminal area, Devanahalli",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.7020,13.1950,77.7130,13.2010"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "iim-bangalore",
+  "name": "Indian Institute of Management Bangalore",
+  "kannadaName": "ಐಐಎಂ ಬೆಂಗಳೂರು",
+  "category": "Modern",
+  "subcategory": "Institutional campus / business school",
+  "latitude": 12.89528,
+  "longitude": 77.60139,
+  "elevationM": 920,
+  "description": "IIM Bangalore is the third Indian Institute of Management, established in 1973 and now an Institute of National Importance under the IIM Act 2017, with its 105-acre Bannerghatta Road campus in Bilekahalli. The campus was designed by B. V. Doshi as a 'poly-nuclear' plan of low blocks, passageways, pergolas and open quadrangles inspired by Fatehpur Sikri and the Meenakshi Temple, and its planting - 62 acres of green cover, about 30,000 trees and more than 50 groundwater recharge wells - was the founding director's way of expressing Bengaluru as 'green and alive'. The library occupies four levels and 55,000 sq ft, and the campus also hosts the 18,000 sq ft NSRCEL entrepreneurship centre.",
+  "history": "Design work began in 1977 with B. V. Doshi through his practice Stein, Doshi & Bhalla, assisted by Kanvinde & Rai, and original construction concluded in 1983. The poly-nuclear design combined Indian traditional planning with Team 10 modernist principles and was later placed among T magazine's 25 significant postwar works. The institute has since added a new classroom complex of about 6,500 sq m designed by Sanjay Mohe's Mindspace Architects, a 110-acre second campus near Jigani in Anekal Taluka about 20 km from the main campus, and a Management Development Centre at Jigani that opened on 1 March 2023; an IIMB station on the Namma Metro Pink Line was planned for March 2026.",
+  "facts": [
+   "Established in 1973; the third IIM in the country, and an Institute of National Importance under the IIM Act 2017.",
+   "Main campus of about 105 acres (42 hectares) on Bannerghatta Road, with a second 110-acre campus near Jigani in Anekal Taluka about 20 km away.",
+   "Original academic complex of about 54,000 sq m; green cover of 62 acres with roughly 30,000 trees and more than 50 groundwater-recharge wells.",
+   "Central library of four levels and 55,000 sq ft, holding more than 163,000 printed books, 9,000 journals, over 42,000 periodical issues and access to more than 110 electronic databases; renovated 2016-19.",
+   "New Classroom Complex of about 6,500 sq m designed by Sanjay Mohe of Mindspace Architects; the NSRCEL building is 18,000 sq ft.",
+   "109 academic staff; the 2016 IIM Management Review is published quarterly through Elsevier; the IIMBx Open edX platform was launched in 2014.",
+   "Accredited by EFMD EQUIS since 2010; ranked second among Indian management institutes by NIRF in 2024 and 57th globally by the Financial Times for its MBA in 2025.",
+   "The campus also includes an academic block, a central pergola, an amphitheatre, a computer centre, hostel block L-Square and the library."
+  ],
+  "architecture": {
+   "style": "Postcolonial modernism - poly-nuclear campus planning with traditional Indian courtyard and Fatehpur Sikri references",
+   "yearBuilt": "1983",
+   "architect": "B. V. Doshi (Stein, Doshi & Bhalla), with Kanvinde & Rai",
+   "materials": "Exposed concrete, hand-worked granite masonry, Kota-stone flooring, rough-textured surfaces",
+   "keyFeatures": [
+    "Poly-nuclear layout of separate low blocks grouped around open quadrangles rather than one monumental mass",
+    "High passageways, trellises and pergolas linking the blocks",
+    "Semi-open corridors and covered walkways that double as circulation and shaded gathering space",
+    "Geometric flat and shed roofs over low volumes",
+    "Kota-stone floors and hand-worked granite masonry giving a heavy, tactile texture",
+    "Open-air amphitheatre and open-air theatre as landscape elements",
+    "Dense planting woven between the blocks for shade and light control",
+    "Hostel block L-Square and the new classroom block as later additions"
+   ],
+   "footprintHint": "Original academic complex about 54,000 sq m within a 105-acre campus; buildings are low-rise (2-3 storeys) linked by pergolas and corridors",
+   "silhouette": "A cluster of low, flat-roofed masonry blocks scattered through a garden and linked by long shaded pergolas and open corridors rather than a single monumental mass."
+  },
+  "priority": 2,
+  "modelHeightM": 15,
+  "modelFootprintM": {
+   "width": 250,
+   "depth": 180
+  },
+  "sources": [
+   {
+    "title": "Indian Institute of Management Bangalore - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Indian_Institute_of_Management_Bangalore"
+   },
+   {
+    "title": "Nominatim geocode search for Indian Institute of Management Bangalore (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Indian+Institute+of+Management+Bangalore,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the IIMB campus core, Bannerghatta Road",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.5990,12.8930,77.6060,12.8990"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "christ-university",
+  "name": "Christ University",
+  "kannadaName": "ಕ್ರಿಸ್ಟ್ ವಿಶ್ವವಿದ್ಯಾಲಯ",
+  "category": "Modern",
+  "subcategory": "Institutional campus / university",
+  "latitude": 12.93563,
+  "longitude": 77.60591,
+  "elevationM": 920,
+  "description": "Christ University is a private deemed university in Bengaluru founded in 1969 as Christ College by the Carmelites of Mary Immaculate (CMI) congregation, granted UGC autonomy in 2004 and declared a deemed university in 2008. The flagship and main campus selected for this entry is the Bangalore Central Campus on Hosur Road, standing on 25 acres within the larger 100-acre Dharmaram Campus; the Bannerghatta Road campus at Hulimavu (opened May 2016) is a second, separate campus. The university runs a wide portfolio of UG, PG and doctoral programmes with 30,777 students, including about 700 international students from 58 nationalities.",
+  "history": "The institution traces its educational vision to St. Kuriakose Elias Chavara, who founded the CMI congregation in 1831, and was founded by the congregation in 1969 as Christ College on the Dharmaram campus. It received UGC autonomy in 2004 and deemed-university status in 2008; the chancellor is Rev. Dr. Saju Chackalackal. The Bannerghatta Road campus at Hulimavu was inaugurated in May 2016, and the university has since expanded to Kengeri (90 acres), Yeshwanthpur (1.6 million sq ft), Pune Lavasa (28 acres) and a Delhi NCR-Ghaziabad site (5 acres).",
+  "facts": [
+   "Founded in 1969 as Christ College by the Carmelites of Mary Immaculate (CMI) congregation; deemed university since 2008.",
+   "Flagship is the Bangalore Central Campus on Hosur Road within the 100-acre Dharmaram Campus, occupying 25 acres - this is the campus recorded for this entry, not the Bannerghatta Road campus (OpenStreetMap place node 'Christ University Audi Block, Hosur Road').",
+   "The Bannerghatta Road campus at Hulimavu was inaugurated in May 2016 (OpenStreetMap location 12.87787, 77.59610).",
+   "30,777 students: 23,311 undergraduates, 7,466 postgraduates and 1,266 doctoral students, plus about 700 international students from 58 nationalities.",
+   "Wikipedia infobox gives 148.17 acres in total across campuses: 25 acres Central/Hosur Road, 90 acres Kengeri, 28 acres Pune Lavasa, 5 acres Delhi NCR and 1.6 million sq ft at Yeshwanthpur.",
+   "Campus buildings on the central campus include the Audi Block and a Theology Block; perimeter blocks include 11-12 storey hostel and office blocks.",
+   "13 km from Majestic/KSR City/Cantt railway stations and 44 km from Kempegowda International Airport; an IIMB station on the Pink Line was planned for March 2026."
+  ],
+  "architecture": {
+   "style": "Contemporary institutional campus blocks - architectural attribution is not documented in the sources consulted",
+   "yearBuilt": "1969 (institution founded; the Hosur Road central campus buildings date from the late 1960s onward)",
+   "architect": null,
+   "materials": "Not documented in the sources consulted",
+   "keyFeatures": [
+    "Auditorium block and a set of named academic blocks (for example the Theology Block) around internal courtyards",
+    "Mix of 5-7 storey academic blocks and 11-12 storey hostel and office slabs on the campus perimeter",
+    "Single main entrance on Hosur Road opposite the Nexus Koramangala mall",
+    "Dense tree cover and mature gardens within the campus walls",
+    "Separate Bannerghatta Road campus at Hulimavu with its own gate and blocks",
+    "Campus frontage broken by planted setbacks rather than a continuous street wall"
+   ],
+   "footprintHint": "Central campus occupies about 25 acres (roughly 300 m x 300 m of built campus) within the 100-acre Dharmaram Campus",
+   "silhouette": "A dense, low-rise campus of interlocking blocks and courtyards with a few taller hostel slabs on the perimeter, entered from a single gate on Hosur Road."
+  },
+  "priority": 2,
+  "modelHeightM": 25,
+  "modelFootprintM": {
+   "width": 300,
+   "depth": 250
+  },
+  "sources": [
+   {
+    "title": "Christ University - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Christ_University"
+   },
+   {
+    "title": "Nominatim geocode search for Christ University Hosur Road / Bannerghatta Road campuses (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Christ+University+Bannerghatta+Road,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the Christ University central campus, Hosur Road",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.6035,12.9330,77.6090,12.9385"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "magrath-road",
+  "name": "Magrath Road",
+  "kannadaName": "ಮ್ಯಾಗ್ರಾಥ್ ರಸ್ತೆ",
+  "category": "Landmark",
+  "subcategory": "Commercial street",
+  "latitude": 12.9702,
+  "longitude": 77.6102,
+  "elevationM": 920,
+  "description": "Magrath Road is a short commercial street in central Bengaluru, in the Sampangi Rama Nagar and Ashok Nagar block immediately behind Mayo Hall, and is part of the nineteenth-century Cantonment street grid. It is named after Colonel John Richard Magrath of the Royal Madras Artillery, and historically served as 'the stomping ground of the British military elite'; today it is a busy retail and services street known for the traffic jams at the Garuda Mall approach. OpenStreetMap records roughly 930 metres of named carriageway here, with the Mallya Hospital and the District Court complex close by.",
+  "history": "The street formed part of the ordered Cantonment grid laid out when the British military and its families settled in Bangalore after 1809, and it was named for Colonel John Richard Magrath of the Royal Madras Artillery, who later became an Assistant to the Director-General of Telegraphs; after retiring from Bangalore to Ireland he reputedly owned the only car then in Ireland, a 3.5 hp Benz Dogcart registered MI 1. Its western end is anchored by Mayo Hall, the two-storey memorial to Viceroy Richard Bourke, built in 1878-79 and inaugurated by the British Resident on 6 June 1883 at a cost of about 45,000 rupees raised largely through public donations. In more recent times the street has been the subject of a municipal facelift: The Times of India reported a 'new look' with wider footpaths and better drains across a 350-metre stretch.",
+  "facts": [
+   "OpenStreetMap records about 930 metres of named carriageway for Magrath Road within the central block: a 488 m primary segment plus secondary and tertiary segments of 65 m, 55 m, 64 m and 12 m.",
+   "Named after Colonel John Richard Magrath of the Royal Madras Artillery, who later served as an Assistant to the Director-General of Telegraphs.",
+   "Magrath reputedly owned the only car in Ireland after retiring to that country - a 3.5 hp Benz Dogcart with registration MI 1.",
+   "The street was part of the Cantonment grid and was historically the 'stomping ground of the British military elite'; more recently it has been described as the gateway to Garuda Mall's traffic jams.",
+   "Mayo Hall, the two-storey memorial to Viceroy Richard Bourke, was inaugurated on 6 June 1883, cost about 45,000 rupees largely raised by public subscription, and stands at the western end of the street; the Bangalore District Gazetteer praised its 'architrave and pedimented windows, varied with key-storied arches' and 'typical Greek cornice'.",
+   "Mayo Hall now houses the municipal offices of the Bruhat Bangalore Mahanagara Palike and the Kempegowda Museum, established in 2011 on the upper floor.",
+   "The Times of India reported a 2025 facelift of the street with wider footpaths and improved drains across a 350-metre stretch."
+  ],
+  "architecture": {
+   "style": "Colonial-era Cantonment street fabric with modern commercial frontage",
+   "yearBuilt": "Nineteenth-century street alignment; surrounding buildings largely twentieth-century",
+   "architect": null,
+   "materials": "Not documented in the sources consulted - model as rendered masonry shopfront blocks with glazed ground-floor retail",
+   "keyFeatures": [
+    "Narrow carriageway with kerbside parking and continuous retail frontage",
+    "Three- to four-storey commercial blocks of mixed age and material",
+    "Mayo Hall's arched, colonnaded rear elevation closing the western end of the street",
+    "Hospital and court frontage (Mallya Hospital and the District Court complex) within the same block",
+    "Continuous overhead utility and signage clutter typical of the CBD",
+    "Junction pressure where the street meets the Garuda Mall / Brigade Road approach"
+   ],
+   "footprintHint": "Street segment approximately 930 m long (OpenStreetMap named carriageway) and 12-15 m wide",
+   "silhouette": "A short north-south canyon of three- to four-storey shopfront blocks, capped at the western end by the arched rear of Mayo Hall."
+  },
+  "priority": 3,
+  "modelHeightM": 12,
+  "modelFootprintM": {
+   "width": 930,
+   "depth": 15
+  },
+  "sources": [
+   {
+    "title": "The Bengaluru Roadies Nine: Magrath Road",
+    "url": "https://blrroadies.substack.com/p/the-bengaluru-roadies-nine-magrath"
+   },
+   {
+    "title": "Mayo Hall (Bengaluru) - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Mayo_Hall_(Bengaluru)"
+   },
+   {
+    "title": "Nominatim geocode search for Magrath Road, Bengaluru (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Magrath+Road,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the Magrath Road block (street geometry and lengths)",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.6040,12.9640,77.6160,12.9760"
+   },
+   {
+    "title": "Wider footpaths, better drains. Bengaluru's Magrath Road unveils its new look - The Times of India",
+    "url": "https://timesofindia.indiatimes.com/city/bengaluru/wider-footpaths-better-drains-bengalurus-magrath-road-unveils-its-new-look/articleshow/131688370.cms"
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "bannerghatta-road",
+  "name": "Bannerghatta Road (Karnataka State Highway 87)",
+  "kannadaName": "ಬನ್ನರ್ಗಹಟ್ಟ ರಸ್ತೆ",
+  "category": "Landmark",
+  "subcategory": "Arterial road / state highway corridor",
+  "latitude": 12.9175,
+  "longitude": 77.618,
+  "elevationM": 920,
+  "description": "Bannerghatta Road is Karnataka State Highway 87, the main arterial running south from the Hosur Road junction at Adugodi through Bilekahalli, Arekere, Hulimavu and Gottigere to Jigani and Anekal at the Tamil Nadu border. It is the spine of south Bengaluru, carrying the IIM Bangalore campus and Christ University's Hulimavu campus, the Jayadeva, Apollo, Fortis and Narayana hospitals, and the Vega City, Royal Meenakshi, Shoppers Stop and Gopalan mall cluster, with the Namma Metro Pink Line running along it to IIMB. The corridor carries the elevated NICE expressway interchange near Gottigere and the Bangalore-Mysore Infrastructure Corridor crossing.",
+  "history": "The highway was originally laid as the road from Bangalore to Bannerghatta, then extended through Jigani to Anekal and on to Samanduru at the Tamil Nadu state boundary, where it continues as a Major District Road and merges with National Highway 948 A. In 2011 the Bruhat Bangalore Mahanagara Palike announced selective widening of the road from 20-25 metres to 45 metres together with underpasses and flyovers at major junctions, at an estimated cost of 137 crore rupees. Grade separation followed with the Dairy Circle and Jayadeva underpasses, and for about five kilometres south of the Jayadeva Underpass the road was widened to four lanes by Mantri Developers in one of Bengaluru's earliest public-private partnership infrastructure projects. The Pink Line of the Namma Metro was then routed along the corridor, from Kalena Agrahara to Nagawara via IIMB, to take traffic off the road.",
+  "facts": [
+   "Designated Karnataka State Highway 87, also called the Jigani-Anekal Road and the Anekal-Hosur Road; it links Bengaluru with Bannerghatta, Jigani and Anekal.",
+   "Length given as 45 km in the article text and 49 km in the infobox.",
+   "Northern terminus at Adugodi, where it branches from Hosur Road near the Adugodi Christian Cemetery; southern terminus at Samanduru in Anekal taluk at the Tamil Nadu border, continuing in Tamil Nadu as an MDR merging with NH 948 A.",
+   "2011 upgrade plan: widening from 20-25 m to 45 m with underpasses and flyovers, at an estimated cost of 137 crore rupees.",
+   "Two grade-separated underpasses exist on the corridor: the Dairy Circle Underpass and the Jayadeva Underpass; a flyover sits at Dairy Circle.",
+   "About five kilometres south of the Jayadeva Underpass the road was widened to four lanes by Mantri Developers under one of Bengaluru's earliest public-private partnerships.",
+   "Major intersections: Hosur Road at Adugodi, Marigowda Road at Dairy Circle, Marenahalli Road and the Outer Ring Road at the Jayadeva Hospital interchange, and the NICE corridor near Gottigere.",
+   "The Outer Ring Road runs concurrently with Bannerghatta Road from the Jayadeva Hospital Interchange to JD Mara Junction in front of Vega City Mall before diverging towards Electronic City.",
+   "Institutions on the corridor include IIM Bangalore (between Bilekahalli and Arekere) and Christ University's Dairy Circle and Hulimavu campuses; hospitals include Sri Jayadeva Institute, Apollo, Fortis and Narayana Health; malls include Gopalan Innovation Mall, Shoppers Stop, Vega City and Royal Meenakshi Mall.",
+   "The Namma Metro Pink Line runs from Kalena Agrahara to Nagawara along the corridor via IIMB.",
+   "Note for modellers: the current National Highway 12 runs entirely within West Bengal and does not include this corridor - Bannerghatta Road is a state highway, not an NH 12 route."
+  ],
+  "architecture": {
+   "style": "Modern arterial road with grade-separated junctions and an elevated metro viaduct",
+   "yearBuilt": "Widening and grade-separation programme from 2011",
+   "architect": null,
+   "materials": "Not documented in the sources consulted - model as asphalt carriageway with concrete kerbs, flyover decks and a viaduct",
+   "keyFeatures": [
+    "Four-lane widened section running south of the Jayadeva Underpass",
+    "Two grade-separated underpasses (Dairy Circle and Jayadeva) plus the Dairy Circle flyover",
+    "Elevated Pink Line metro viaduct running along the corridor's median",
+    "Continuous six- to eight-storey commercial frontage near Dairy Circle and Hulimavu",
+    "Interchange with the NICE elevated corridor near Gottigere",
+    "Institutional frontage of IIM Bangalore and Christ University's Hulimavu campus",
+    "Signalised junctions and traffic hotspots at Swagath Cross and Gurappanapalya"
+   ],
+   "footprintHint": "Corridor length 45 km (infobox 49 km) with a 20-25 m right of way, widened to 45 m and four lanes on the Jayadeva-Hulimavu stretch",
+   "silhouette": "A long, straight four-lane boulevard lined with continuous mid-rise commercial frontage, crossed by grade-separated underpasses and carrying an elevated metro viaduct above the median."
+  },
+  "priority": 3,
+  "modelHeightM": 10,
+  "modelFootprintM": {
+   "width": 45000,
+   "depth": 24
+  },
+  "sources": [
+   {
+    "title": "State Highway 87 (Karnataka) - Wikipedia (Bannerghatta Road)",
+    "url": "https://en.wikipedia.org/wiki/State_Highway_87_(Karnataka)"
+   },
+   {
+    "title": "National Highway 12 (India) - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/National_Highway_12_(India)"
+   },
+   {
+    "title": "Nominatim geocode search for Bannerghatta Road, Bengaluru (OpenStreetMap)",
+    "url": "https://nominatim.openstreetmap.org/search?q=Bannerghatta+Road,+Bengaluru,+India&format=json&limit=3"
+   },
+   {
+    "title": "OpenStreetMap API map download for the Bannerghatta Road / IIMB stretch",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=77.5990,12.8930,77.6060,12.8990"
+   }
+  ],
+  "images": []
+ }
+]
