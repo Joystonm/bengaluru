@@ -29,6 +29,14 @@ export interface LightboxPhoto {
   publicId: string;
   /** The path relative to /assets/landmarks/, used as the local fallback. */
   src: string;
+  /**
+   * The original photograph on this server.
+   *
+   * The viewer asks the cloud for the photograph; this is what it shows if
+   * the cloud cannot answer. Without it a failed delivery leaves the viewer
+   * with nothing at all — an empty frame and no way back to the picture.
+   */
+  localFallback?: string;
   /** The Commons title, for the caption. */
   title: string;
   /** The credit line, shown under the photograph. */
@@ -114,6 +122,8 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
   const [loadedUrl, setLoadedUrl] = useState('');
   const [dragging, setDragging] = useState(false);
   const [shownIndex, setShownIndex] = useState(index);
+  const [fallbackSrc, setFallbackSrc] = useState<string | null>(null);
+  const [failed, setFailed] = useState(false);
   const dragRef = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
 
   // A new photograph starts over, unzoomed.
@@ -122,6 +132,8 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
     setZoom(1);
     setPan({ x: 0, y: 0 });
     setRegion(null);
+    setFallbackSrc(null);
+    setFailed(false);
   }
 
   // Measure the viewport.
@@ -153,10 +165,10 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
   const sourceUrl = useMemo(() => {
     if (!photo) return '';
     if (zoom <= 1.01 || !activeRegion) {
-      return publicFull(photo.publicId, 1600);
+      return publicFull(photo.publicId, 1600, photo.localFallback);
     }
     const displayed = Math.min(2400, Math.max(600, Math.round(view.w * zoom)));
-    return publicRegion(photo.publicId, activeRegion, displayed);
+    return publicRegion(photo.publicId, activeRegion, displayed, photo.localFallback);
   }, [photo, zoom, activeRegion, view.w]);
 
   // Ask for the region a moment after the view settles, so a drag does not
@@ -169,8 +181,57 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
     return () => window.clearTimeout(timer);
   }, [photo, zoom, pan, view, original]);
 
+  /**
+   * The photograph on screen.
+   *
+   * Normally the cloud's copy; the original on this server if the cloud
+   * could not deliver it.
+   */
+  const displayedUrl = fallbackSrc ?? sourceUrl;
+
+  /**
+   * The URL of what has arrived, in the same form as `displayedUrl`.
+   *
+   * The browser reports the resolved address of a loaded image, so a local
+   * path has to be resolved the same way before the two can be compared —
+   * otherwise the viewer would go on waiting for a photograph that has
+   * already arrived.
+   */
+  const absoluteUrl = (u: string) => {
+    try {
+      return new URL(u, window.location.href).href;
+    } catch {
+      return u;
+    }
+  };
+
   /** The rendition on screen has not arrived yet. */
-  const loading = sourceUrl !== loadedUrl;
+  const loading = !failed && absoluteUrl(displayedUrl) !== loadedUrl;
+
+  /**
+   * There is nothing to show at all.
+   *
+   * A photograph that is neither in the cloud nor on this server has no URL
+   * to ask for, so the viewer says so instead of waiting for ever.
+   */
+  const missing = !displayedUrl;
+
+  /**
+   * The cloud could not deliver the photograph.
+   *
+   * The original is on this server as well, so the viewer shows that rather
+   * than an empty frame — and says so, instead of pretending the photograph
+   * is on its way for ever.
+   */
+  const onImageError = () => {
+    const local = photo?.localFallback;
+    if (local && absoluteUrl(displayedUrl) !== absoluteUrl(local)) {
+      setFallbackSrc(local);
+      setLoadedUrl('');
+      return;
+    }
+    setFailed(true);
+  };
 
   const zoomIn = useCallback(() => {
     setZoom((z) => {
@@ -288,10 +349,11 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
         style={{ cursor: zoom > 1.01 ? (dragging ? 'grabbing' : 'grab') : 'default' }}
       >
         <img
-          src={sourceUrl}
+          src={displayedUrl || undefined}
           alt={photo.title}
           draggable={false}
           onLoad={(e) => setLoadedUrl(e.currentTarget.src)}
+          onError={onImageError}
           className="max-h-full max-w-full select-none object-contain shadow-2xl transition-opacity duration-200"
           style={{
             width: view.w ? fitW * zoom : undefined,
@@ -302,6 +364,34 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
             transform: `translate(${pan.x}px, ${pan.y}px)`,
           }}
         />
+
+        {/* Something to look at while the photograph is on its way, and
+            something honest to read if it never arrives. */}
+        {(loading || failed || missing) && (
+          <div className="pointer-events-none absolute inset-0 grid place-items-center">
+            {failed || missing ? (
+              <div className="max-w-sm px-6 text-center">
+                <p className="text-[13px] text-mist-200">This photograph could not be loaded.</p>
+                <p className="mt-1 text-[11px] text-mist-400">
+                  The cloud could not deliver it, and the copy on this server did not load either.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFailed(false);
+                    setFallbackSrc(null);
+                    setLoadedUrl('');
+                  }}
+                  className="nb-btn nb-btn-ghost pointer-events-auto mt-4"
+                >
+                  Try again
+                </button>
+              </div>
+            ) : (
+              <span className="nb-chip">Loading the photograph…</span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Close */}

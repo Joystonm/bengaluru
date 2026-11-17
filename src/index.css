@@ -161,6 +161,24 @@
   animation: nb-fade 0.9s ease both;
 }
 
+/*
+ * The Enlarge button on the landmark panel's photograph.
+ *
+ * A mouse gives the visitor the hint of a hover, so there the button stays
+ * out of the way until the photograph is pointed at. A touch screen has no
+ * hover at all, so there the button is simply always there — a control that
+ * only appears for a mouse is a control that does not exist on a phone.
+ */
+@media (pointer: fine) {
+  .nb-hover-reveal {
+    opacity: 0;
+  }
+  .group:hover .nb-hover-reveal,
+  .nb-hover-reveal:focus-visible {
+    opacity: 1;
+  }
+}
+
 @keyframes nb-drift {
   0% {
     transform: translate3d(0, 0, 0);

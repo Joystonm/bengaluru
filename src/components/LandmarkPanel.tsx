@@ -4,6 +4,7 @@ import { photoCredit } from '../data/landmarks';
 import { useApp } from '../state/store';
 import {
   landmarkHeroResponsive,
+  landmarkOriginal,
   landmarkPublicId,
   landmarkThumbResponsive,
   photoFallback,
@@ -73,6 +74,9 @@ export function LandmarkPanel({ landmark }: { landmark: Landmark }) {
       photos.map((p) => ({
         publicId: p.publicId ?? landmarkPublicId(landmark.id, p.src),
         src: p.src,
+        // The original is on this server too, and the viewer falls back to
+        // it if the cloud cannot deliver the photograph.
+        localFallback: p.publicId ? undefined : landmarkOriginal(landmark.id, p.src),
         title: p.commonsTitle?.replace(/^File:/, '').replace(/\.\w+$/, '') ?? landmark.name,
         credit: photoCredit(p),
         width: p.width,
@@ -134,7 +138,7 @@ export function LandmarkPanel({ landmark }: { landmark: Landmark }) {
             <button
               type="button"
               onClick={() => setLightboxOpen(true)}
-              className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 rounded-sm bg-ink-950/70 px-2.5 py-1.5 text-[11px] text-mist-200 opacity-0 backdrop-blur transition-opacity hover:text-mist-100 focus-visible:opacity-100 group-hover:opacity-100"
+              className="nb-hover-reveal absolute bottom-3 right-3 z-10 flex items-center gap-1.5 rounded-sm bg-ink-950/70 px-2.5 py-1.5 text-[11px] text-mist-200 backdrop-blur transition-opacity hover:text-mist-100 focus-visible:opacity-100"
               aria-label={`Open ${current.commonsTitle?.replace(/^File:/, '') ?? landmark.name} full screen`}
             >
               <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
