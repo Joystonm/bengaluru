@@ -17,7 +17,6 @@ export function Hud() {
   const timeOfDay = useApp((s) => s.timeOfDay);
   const setTimeOfDay = useApp((s) => s.setTimeOfDay);
   const setSearchOpen = useApp((s) => s.setSearchOpen);
-  const setCreditsOpen = useApp((s) => s.setCreditsOpen);
   const setMode = useApp((s) => s.setMode);
   const selectedId = useApp((s) => s.selectedId);
   const [coords, setCoords] = useState({ lat: 12.9716, lon: 77.5946, alt: 0 });
@@ -161,13 +160,26 @@ export function Hud() {
         <div className="nb-over-city hidden text-[11px] leading-relaxed text-mist-400 sm:block">
           <p>Drag to orbit · shift-drag to pan · scroll to zoom</p>
           <p>Click a marker for its story · press S to search</p>
-          <button
-            type="button"
-            onClick={() => setCreditsOpen(true)}
-            className="mt-1.5 text-mist-400 underline decoration-white/25 underline-offset-2 transition-colors hover:text-saffron"
-          >
-            Sources &amp; credits
-          </button>
+          <p className="mt-1.5 text-mist-500">
+            Voice by{' '}
+            <a
+              href="https://inworld.ai"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-mist-400 underline decoration-white/25 underline-offset-2 transition-colors hover:text-saffron"
+            >
+              Inworld AI
+            </a>
+            {` · models by `}
+            <a
+              href="https://gmicloud.ai"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-mist-400 underline decoration-white/25 underline-offset-2 transition-colors hover:text-saffron"
+            >
+              GMI Cloud
+            </a>
+          </p>
         </div>
 
         <div className="nb-over-city ml-auto text-right font-mono text-[10.5px] tabular-nums text-mist-400">

@@ -18,7 +18,6 @@
  * attribution line in the UI is always accurate.
  */
 
-import { config } from './config';
 import { landmarkHero, landmarkImage, landmarkThumb } from './imageDelivery';
 import { modelSourceUrl, modelPublicId } from './modelDelivery';
 import { videoUrl } from './videoDelivery';
@@ -136,16 +135,4 @@ export function registeredModelUrl(slug: string, file: string): string | null {
 /** Delivery URL for a video asset. */
 export function registeredVideoUrl(slug: string, file: string): string {
   return videoUrl(slug, file, { localFallback: `assets/video/${slug}/${file}` });
-}
-
-/**
- * A short summary of the delivery layer, shown in the credits panel.
- * Uses the real cloud name when one is configured.
- */
-export function deliverySummary(): { enabled: boolean; cloudName: string; root: string } {
-  return {
-    enabled: config.enabled,
-    cloudName: config.cloudName || 'not configured',
-    root: config.root,
-  };
 }

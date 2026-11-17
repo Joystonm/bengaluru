@@ -11,7 +11,6 @@ import { CinemaOverlay } from './components/CinemaOverlay';
 import { Inspector } from './components/Inspector';
 import { Hud } from './components/Hud';
 import { MarkerLayer } from './components/MarkerLayer';
-import { Credits } from './components/Credits';
 import { SceneErrorBoundary } from './components/SceneErrorBoundary';
 import { useBootstrap } from './hooks/useBootstrap';
 import { useApp } from './state/store';
@@ -95,7 +94,6 @@ export default function App() {
 
       <SearchPanel />
       {selected && mode === 'explore' && <LandmarkPanel landmark={selected} />}
-      <Credits />
 
       {!ready && mode === 'loading' && <LoadingScreen tasks={tasks} ratio={ratio} />}
     </div>

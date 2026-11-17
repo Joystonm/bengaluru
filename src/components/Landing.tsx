@@ -88,13 +88,33 @@ export function Landing() {
             Commons. Drag to orbit · scroll to zoom · click a marker to read a story.
           </p>
 
-          <button
-            type="button"
-            onClick={() => useApp.getState().setCreditsOpen(true)}
-            className="nb-over-city pointer-events-auto w-fit text-[11px] text-mist-400 underline decoration-white/25 underline-offset-2 transition-colors hover:text-saffron"
-          >
-            Sources &amp; credits
-          </button>
+          <div className="nb-over-city max-w-xl text-[11px] leading-relaxed text-mist-400">
+            <p>
+              The voice that narrates the journey is Inworld&rsquo;s, and the model behind it
+              is served by GMI Cloud. The city itself is built from open data and real
+              photographs.
+            </p>
+            <p className="mt-1.5">
+              <a
+                href="https://inworld.ai"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-mist-300 underline decoration-white/25 underline-offset-2 transition-colors hover:text-saffron"
+              >
+                Inworld AI
+              </a>
+              <span className="text-mist-500">{` · voice`}</span>
+              <a
+                href="https://gmicloud.ai"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-mist-300 underline decoration-white/25 underline-offset-2 transition-colors hover:text-saffron"
+              >
+                GMI Cloud
+              </a>
+              <span className="text-mist-500">{` · models`}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

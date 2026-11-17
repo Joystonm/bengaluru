@@ -37,7 +37,6 @@ interface AppState {
   hoveredId: string | null;
   searchOpen: boolean;
   searchQuery: string;
-  creditsOpen: boolean;
   inspectId: string | null;
   cinema: CinemaState;
   focus: CameraFocus;
@@ -53,7 +52,6 @@ interface AppState {
   hover: (id: string | null) => void;
   setSearchOpen: (open: boolean) => void;
   setSearchQuery: (q: string) => void;
-  setCreditsOpen: (open: boolean) => void;
   setInspect: (id: string | null) => void;
   setCinema: (c: Partial<CinemaState>) => void;
   setFocus: (f: Partial<CameraFocus>) => void;
@@ -72,7 +70,6 @@ export const useApp = create<AppState>((set) => ({
   hoveredId: null,
   searchOpen: false,
   searchQuery: '',
-  creditsOpen: false,
   inspectId: null,
   cinema: {
     playing: false,
@@ -96,7 +93,6 @@ export const useApp = create<AppState>((set) => ({
   hover: (hoveredId) => set({ hoveredId }),
   setSearchOpen: (searchOpen) => set({ searchOpen }),
   setSearchQuery: (searchQuery) => set({ searchQuery }),
-  setCreditsOpen: (creditsOpen) => set({ creditsOpen }),
   setInspect: (inspectId) => set({ inspectId }),
   setCinema: (c) => set((s) => ({ cinema: { ...s.cinema, ...c } })),
   setFocus: (f) => set((s) => ({ focus: { ...s.focus, ...f } })),

@@ -10,8 +10,6 @@
  *   - the filmstrip thumbnails are responsive too;
  *   - the photograph viewer opens, and zooming it asks the cloud for a
  *     cropped region of the original rather than magnifying a small copy;
- *   - the credits panel asks the edge for every rendition the app uses and
- *     reports what came back;
  *   - a visitor can offer a photograph, and it lands in the cloud and in the
  *     filmstrip.
  *
@@ -365,49 +363,8 @@ async function main() {
   );
   check('the viewer closes', closed === 'closed', String(closed));
 
-  // 8. The credits panel asks the edge for every rendition.
-  await evaluate(
-    `(() => {
-      const b = Array.from(document.querySelectorAll('button')).find((x) =>
-        /credits|sources/i.test(x.getAttribute('aria-label') || x.textContent || ''));
-      if (b) { b.click(); return true; }
-      return false;
-    })()`,
-  );
-  await sleep(1500);
-  const creditsOpen = await evaluate(
-    `document.querySelector('[role="dialog"][aria-label="Sources and credits"]') ? true : null`,
-  );
-  check('the credits panel opens', creditsOpen === true);
 
-  const table = await until(
-    `(() => {
-      const dlg = document.querySelector('[role="dialog"][aria-label="Sources and credits"]');
-      if (!dlg) return null;
-      const rows = Array.from(dlg.querySelectorAll('table tbody tr'));
-      if (!rows.length) return null;
-      const cells = rows.map((r) => Array.from(r.querySelectorAll('td')).map((c) => c.textContent.trim()));
-      return { cells, summary: (dlg.querySelector('p.mt-2.font-mono') || {}).textContent || '' };
-    })()`,
-    'the rendition table',
-  );
-  check(
-    'the credits panel reports every rendition live',
-    !!(table && table.cells.length >= 6),
-    table ? `${table.cells.length} rows` : 'no table',
-  );
-  if (table) {
-    const served = table.cells.filter((c) => /^200/.test(c[2] || '')).length;
-    check(
-      'every rendition was served from the edge',
-      served === table.cells.length,
-      `${served}/${table.cells.length} returned 200`,
-    );
-    for (const c of table.cells) console.log(`        ${c[0]} — ${c[2]} — ${c[3]}`);
-  }
-  await shot('04-credits');
-
-  // 9. A visitor can offer a photograph.
+  // 8. A visitor can offer a photograph.
   const offerButton = await evaluate(
     `(() => {
       const b = Array.from(document.querySelectorAll('button')).find((x) =>
@@ -508,7 +465,7 @@ async function main() {
     await shot('05-contributed');
   }
 
-  // 10. Nothing threw.
+  // 9. Nothing threw.
   const errors = cdp.console.filter((e) => e.level === 'error');
   check('no console errors', errors.length === 0, errors.map((e) => e.text).slice(0, 3).join(' | '));
 
