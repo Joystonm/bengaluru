@@ -3,7 +3,7 @@ import { useThree } from '@react-three/fiber';
 import { useFilm } from '../state/filmStore';
 import { rig, normaliseRig } from './rig';
 import { uploadFilm } from '../cloudinary/videoDelivery';
-import { uploadsEnabled } from '../cloudinary/config';
+import { configurationRemedy, uploadsEnabled } from '../cloudinary/config';
 
 /**
  * The film recorder.
@@ -218,7 +218,7 @@ export function FilmRecorder() {
       if (!uploadsEnabled) {
         finish(
           { localUrl, publicId: null, duration: seconds, bytes: blob.size, uploaded: false },
-          'This build has no upload preset, so the film was kept on this machine.',
+          `This build has no Cloudinary upload preset, so the film was kept on this machine rather than sent to the cloud. ${configurationRemedy}`,
         );
         return;
       }

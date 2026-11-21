@@ -16,7 +16,13 @@
  * the cloud holds the picture, this holds the list.
  */
 
-import { config, uploadPreset, uploadsEnabled } from './config';
+import {
+  config,
+  configurationProblem,
+  configurationRemedy,
+  uploadPreset,
+  uploadsEnabled,
+} from './config';
 
 /** A photograph a visitor has offered. */
 export interface Contribution {
@@ -87,7 +93,9 @@ export async function uploadContribution(
   options: { slug: string; title: string; author: string; license: string },
 ): Promise<UploadResult> {
   if (!uploadsEnabled) {
-    throw new Error('Uploading is not configured for this cloud.');
+    throw new Error(
+      `${configurationProblem ?? 'Uploading is not configured for this cloud.'} ${configurationRemedy}`,
+    );
   }
 
   const body = new FormData();

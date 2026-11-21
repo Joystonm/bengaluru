@@ -3,6 +3,7 @@ import { usePostcard } from '../state/postcardStore';
 import { useApp } from '../state/store';
 import { postcardCardUrl } from '../cloudinary/postcard';
 import { shareCardUrl } from '../cloudinary/shareCard';
+import { uploadsEnabled } from '../cloudinary/config';
 
 /**
  * The postcard panel.
@@ -33,6 +34,7 @@ export function PostcardPanel() {
   const status = usePostcard((s) => s.status);
   const caption = usePostcard((s) => s.caption);
   const message = usePostcard((s) => s.message);
+  const failure = usePostcard((s) => s.failure);
   const publicId = usePostcard((s) => s.publicId);
   const localUrl = usePostcard((s) => s.localUrl);
   const autoTags = usePostcard((s) => s.autoTags);
@@ -113,6 +115,25 @@ export function PostcardPanel() {
   const shown = publicId ? card : (localUrl ?? '');
 
   const busy = status === 'capturing' || status === 'uploading';
+
+  /**
+   * What to call the failure.
+   *
+   * "No postcard" is a description of the visitor's situation and not of the
+   * reason, and the reason is the part somebody can do something about. A
+   * picture that was never taken wants the browser; a build that was never
+   * given a preset wants a setting; a cloud that turned the picture away
+   * wants the cloud's own words; a request that never arrived wants the
+   * network.
+   */
+  const failureChip =
+    failure === 'capture'
+      ? 'Not taken — the browser would not give up the picture'
+      : failure === 'not-configured'
+        ? 'Not sent — this build is not set up'
+        : failure === 'network'
+          ? 'Not sent — the cloud could not be reached'
+          : 'Not sent — the cloud turned it away';
 
   /**
    * The picture could not be fetched.
@@ -208,6 +229,21 @@ export function PostcardPanel() {
             not by this page.
           </p>
 
+          {/*
+            Said before the visitor tries, rather than after they have.
+
+            A build without an upload preset still takes the picture; it just
+            cannot send it. Saying so up front turns a failure into a
+            sentence of explanation, and it saves the visitor the trouble of
+            pressing the button to find out.
+          */}
+          {!uploadsEnabled && (
+            <p className="mt-3 rounded-sm border border-saffron/25 bg-saffron/10 px-2.5 py-2 text-[10.5px] leading-relaxed text-mist-300">
+              This build has no Cloudinary upload preset, so the postcard is taken and
+              kept on this machine but cannot be sent to the cloud.
+            </p>
+          )}
+
           {/* What is happening */}
           {status === 'capturing' && (
             <div className="mt-4 flex items-center gap-2.5">
@@ -299,8 +335,15 @@ export function PostcardPanel() {
           {/* What went wrong */}
           {status === 'failed' && message && (
             <div className="mt-4 rounded-sm border border-white/10 bg-white/3 p-3">
-              <span className="nb-chip">No postcard</span>
+              <span className="nb-chip">{failureChip}</span>
               <p className="mt-2 text-[11.5px] leading-relaxed text-mist-300">{message}</p>
+              {failure === 'not-configured' && (
+                <p className="mt-2 text-[10.5px] leading-relaxed text-mist-400">
+                  The name of the preset <em>is</em> the permission — it is public by
+                  design, and no API secret is needed here and none is shipped. Once it
+                  is set, restart the dev server or rebuild, and take the postcard again.
+                </p>
+              )}
               {localUrl && (
                 <p className="mt-2 text-[10.5px] leading-relaxed text-mist-400">
                   The picture itself was taken, and it is still on this machine — it is

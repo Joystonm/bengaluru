@@ -12,6 +12,7 @@ import { LandmarkModels } from './LandmarkModels';
 import { PostcardCapture } from './PostcardCapture';
 import { Weather } from './Weather';
 import { Festivals } from './Festivals';
+import { Firecrackers } from './Firecrackers';
 import { rig, normaliseRig } from './rig';
 import { world } from '../core/world';
 import { quality, FOG_RANGES } from '../core/quality';
@@ -197,6 +198,7 @@ export function CityScene() {
       <LandmarkModels landmarks={landmarks} terrain={terrain} />
       <Weather weather={weather} terrain={terrain} />
       <Festivals festival={festival} landmarks={landmarks} terrain={terrain} />
+      <Firecrackers />
       <CameraRig />
       <IdleCamera />
       <CameraBridge />

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import type { PostcardFailure } from '../cloudinary/postcard';
 
 /**
  * The postcard.
@@ -45,6 +46,15 @@ export interface PostcardState {
   caption: string;
   /** A note for the visitor — why something did not work, or what happened. */
   message: string | null;
+  /**
+   * Why it did not work, when it did not work.
+   *
+   * The three failures want different words: a build that was never
+   * configured needs a setting changed, a request the cloud turned away
+   * needs the cloud's own words, and a request that never arrived needs the
+   * network.
+   */
+  failure: PostcardFailure | null;
 
   setCaption: (caption: string) => void;
   setOpen: (open: boolean) => void;
@@ -55,7 +65,7 @@ export interface PostcardState {
   /** The card is ready. */
   ready: (publicId: string | null, localUrl: string | null, autoTags?: string[]) => void;
   /** It did not work. */
-  fail: (message: string) => void;
+  fail: (message: string, failure?: PostcardFailure) => void;
   /** Put the postcard away. */
   close: () => void;
 }
@@ -68,6 +78,7 @@ export const usePostcard = create<PostcardState>((set) => ({
   autoTags: [],
   caption: '',
   message: null,
+  failure: null,
 
   setCaption: (caption) => set({ caption }),
   setOpen: (open) => set({ open }),
@@ -79,6 +90,7 @@ export const usePostcard = create<PostcardState>((set) => ({
       localUrl: null,
       autoTags: [],
       message: null,
+      failure: null,
     }),
 
   uploading: () => set({ status: 'uploading' }),
@@ -86,7 +98,8 @@ export const usePostcard = create<PostcardState>((set) => ({
   ready: (publicId, localUrl, autoTags) =>
     set({ status: 'ready', publicId, localUrl, autoTags: autoTags ?? [] }),
 
-  fail: (message) => set({ status: 'failed', message }),
+  fail: (message, failure) =>
+    set({ status: 'failed', message, failure: failure ?? 'refused' }),
 
   close: () =>
     set({
@@ -96,5 +109,6 @@ export const usePostcard = create<PostcardState>((set) => ({
       localUrl: null,
       autoTags: [],
       message: null,
+      failure: null,
     }),
 }));

@@ -86,7 +86,7 @@ export function TileLayers({
   const tier = useApp((s) => s.quality);
 
   /** The glow each surface sits at before a festival is added on top of it. */
-  const base = useRef({ road: 0, surface: 0, weight: 1 });
+  const base = useRef({ road: 0, surface: 0, building: 0, weight: 1 });
 
   const materials = useMemo(() => {
     // The city's own light. Multiplying the emissive by the vertex colour
@@ -170,6 +170,7 @@ export function TileLayers({
     // the whole city turns the same shade of sepia.
     base.current.road = roadGlow;
     base.current.surface = surfaceGlow;
+    base.current.building = glow;
     base.current.weight = night ? 1 : dusk ? 0.55 : 0.4;
 
     // The facades follow the same clock: glass by day, lamplight by night.
@@ -189,11 +190,21 @@ export function TileLayers({
    *
    * It is added on top of the clock's own glow, in step with the lamps, so
    * that the ground and the lights over it come up together.
+   *
+   * And the firecrackers are added on top of that: a burst is a light that
+   * was not there a moment ago, and the whole city under it is lit for as
+   * long as it lasts — the roofs, the streets and the grass alike.
    */
   useFrame(() => {
     const w = base.current.weight;
-    materials.road.emissiveIntensity = base.current.road + festivalGlow.lamps * 0.3 * w;
-    materials.surface.emissiveIntensity = base.current.surface + festivalGlow.dasara * 0.12 * w;
+    const flash = festivalGlow.flash;
+    materials.road.emissiveIntensity =
+      base.current.road + festivalGlow.lamps * 0.3 * w + flash * 0.55 * w;
+    materials.surface.emissiveIntensity =
+      base.current.surface + festivalGlow.dasara * 0.12 * w + flash * 0.3 * w;
+    for (const m of [materials.detail, materials.mid, materials.far]) {
+      m.emissiveIntensity = base.current.building + flash * 0.4;
+    }
   });
 
   useEffect(

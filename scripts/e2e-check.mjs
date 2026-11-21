@@ -467,6 +467,30 @@ async function main() {
     `warm pixels ${plainNight ? plainNight.warm : '?'} -> ${dressedNight ? dressedNight.warm : '?'}`,
   );
 
+  // 9. The firecrackers.
+  //
+  // A shell takes a second and a half to go up and a second and a half to
+  // come apart, so the first burst is five or six seconds after the festival
+  // is put on. The wait is for the burst, not for the launch.
+  await sleep(7000);
+  const fireworks = await evaluate(`(() => {
+    const f = window.__nbFireworks;
+    if (!f) return null;
+    return f();
+  })()`);
+  if (!fireworks) {
+    // The diagnostics handle is only written in a development build, so a
+    // built app is counted here by eye — the screenshot is the evidence.
+    console.log('SKIP  the firecrackers — no diagnostics handle in this build');
+  } else {
+    check(
+      'the firecrackers go up and burst',
+      fireworks.bursts > 0 && fireworks.live > 0,
+      JSON.stringify(fireworks),
+    );
+  }
+  await shot('09-fireworks');
+
   const errors = cdp.events
     .filter(
       (e) =>

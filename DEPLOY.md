@@ -34,7 +34,12 @@ The last two are public by design — the preset name *is* the permission — so
 they can be repository variables rather than secrets. The build works without
 them: the photographs then come from `public/assets/landmarks/` on the
 server, and the visitor's own uploads are refused with a sentence explaining
-why.
+why — which names the setting that is missing and where to put it.
+
+A build that is missing the preset says so while it is still building: the
+`nb-cloudinary-upload-guard` plugin in `vite.config.ts` warns in the build
+log, so the mistake is caught on the machine that made the build rather than
+by a visitor who presses the button.
 
 **The API secret is never in this workflow.** `CLOUDINARY_API_SECRET` is
 server-side only and is used by `scripts/upload-cloudinary.mjs`,

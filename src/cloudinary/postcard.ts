@@ -16,8 +16,36 @@
  * tagged so that it can be told apart in the Media Library.
  */
 
-import { config, uploadPreset, uploadsEnabled } from './config';
+import {
+  config,
+  configurationProblem,
+  configurationRemedy,
+  uploadPreset,
+  uploadsEnabled,
+} from './config';
 import { shareCardUrl } from './shareCard';
+
+/**
+ * Why a postcard did not reach the cloud.
+ *
+ * Four different things can go wrong, and they are worth telling apart:
+ * the picture was never taken, the build was never configured to upload at
+ * all, the cloud was asked and said no, and the request never got there. A
+ * visitor who is told "the cloud refused it" when the truth is "this build
+ * was never set up" has been told something that sends them looking in the
+ * wrong place.
+ */
+export type PostcardFailure = 'capture' | 'not-configured' | 'refused' | 'network';
+
+/** An upload that failed, and why. */
+export class PostcardError extends Error {
+  readonly failure: PostcardFailure;
+  constructor(failure: PostcardFailure, message: string) {
+    super(message);
+    this.name = 'PostcardError';
+    this.failure = failure;
+  }
+}
 
 /** What the cloud said about a postcard it has taken. */
 export interface PostcardUpload {
@@ -91,8 +119,9 @@ export async function uploadPostcard(
   },
 ): Promise<PostcardUpload> {
   if (!uploadsEnabled) {
-    throw new Error(
-      'This build has no Cloudinary upload preset, so the postcard cannot be sent to the cloud.',
+    throw new PostcardError(
+      'not-configured',
+      `${configurationProblem ?? 'This build was never given an upload preset.'} ${configurationRemedy}`,
     );
   }
 
@@ -139,25 +168,43 @@ export async function uploadPostcard(
     return body;
   };
 
-  /** Send the body and read the answer. */
+  /**
+   * Send the body and read the answer.
+   *
+   * The three failures are kept apart on the way out. A request that never
+   * arrived is not the same as a request that arrived and was turned away,
+   * and the cloud's own words — "Upload preset not found", say — are worth
+   * passing on untouched, because they name the thing that is wrong.
+   */
   const send = async (body: FormData): Promise<Record<string, unknown>> => {
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${config.cloudName}/image/upload`,
-      { method: 'POST', body },
-    );
+    let res: Response;
+    try {
+      res = await fetch(
+        `https://api.cloudinary.com/v1_1/${config.cloudName}/image/upload`,
+        { method: 'POST', body },
+      );
+    } catch {
+      throw new PostcardError('network', 'The cloud could not be reached from this browser.');
+    }
 
     const text = await res.text();
     let json: Record<string, unknown>;
     try {
       json = JSON.parse(text);
     } catch {
-      throw new Error(`The upload could not be read (${res.status}).`);
+      throw new PostcardError(
+        'refused',
+        `The cloud's answer could not be read (${res.status}).`,
+      );
     }
 
     if (!res.ok) {
       const detail =
         (json.error as { message?: string } | undefined)?.message ?? text.slice(0, 200);
-      throw new Error(detail || `The upload was refused (${res.status}).`);
+      throw new PostcardError(
+        'refused',
+        detail || `The cloud refused the upload (${res.status}).`,
+      );
     }
 
     return json;
@@ -166,11 +213,14 @@ export async function uploadPostcard(
   let json: Record<string, unknown>;
   try {
     json = await send(buildBody(true));
-  } catch {
-    // The account may not have the auto-tagging add-on, and the cloud
-    // refuses the whole request when it is asked for something it cannot
-    // do. The picture is worth more than the names for it, so the frame is
-    // sent again without them.
+  } catch (err) {
+    // A request that never reached the cloud will not do better on a second
+    // attempt, so it is not tried again. The auto-tagging is the one thing
+    // the cloud may refuse the whole request for — the account may not have
+    // the add-on, and it turns the request away rather than doing without
+    // the names — so that is the one thing worth trying again without. The
+    // picture is worth more than the names for it.
+    if (err instanceof PostcardError && err.failure === 'network') throw err;
     json = await send(buildBody(false));
   }
 

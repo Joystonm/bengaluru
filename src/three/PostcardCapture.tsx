@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useThree } from '@react-three/fiber';
 import { usePostcard } from '../state/postcardStore';
 import { useApp } from '../state/store';
-import { uploadPostcard } from '../cloudinary/postcard';
+import { uploadPostcard, PostcardError } from '../cloudinary/postcard';
 
 /**
  * The postcard capture.
@@ -115,6 +115,7 @@ export function PostcardCapture() {
           .getState()
           .fail(
             'This browser would not hand over the picture of the city, so there is no postcard to send.',
+            'capture',
           );
         return;
       }
@@ -140,7 +141,11 @@ export function PostcardCapture() {
       } catch (err) {
         const reason =
           err instanceof Error ? err.message : 'the cloud would not say why';
-        usePostcard.getState().fail(`The postcard did not reach the cloud: ${reason}.`);
+        // The reason is kept whole rather than wrapped in a sentence of our
+        // own: the cloud's own words name the thing that is wrong, and a
+        // message that has been dressed up cannot be acted on.
+        const failure = err instanceof PostcardError ? err.failure : 'refused';
+        usePostcard.getState().fail(reason, failure);
         // The frame itself was taken, and it is still here — the failure is
         // about the cloud, not about the picture.
         usePostcard.setState({ localUrl });

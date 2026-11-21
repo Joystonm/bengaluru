@@ -12,7 +12,14 @@
  * in the browser is given its ID when it is uploaded.
  */
 
-import { config, uploadPreset, uploadsEnabled, videoDeliveryBase } from './config';
+import {
+  config,
+  configurationProblem,
+  configurationRemedy,
+  uploadPreset,
+  uploadsEnabled,
+  videoDeliveryBase,
+} from './config';
 
 export interface VideoTransform {
   width?: number;
@@ -173,7 +180,9 @@ export async function uploadFilm(
   options: { publicId: string; tags?: string },
 ): Promise<FilmUpload> {
   if (!uploadsEnabled) {
-    throw new Error('Uploading is not configured for this cloud.');
+    throw new Error(
+      `${configurationProblem ?? 'Uploading is not configured for this cloud.'} ${configurationRemedy}`,
+    );
   }
 
   const body = new FormData();

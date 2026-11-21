@@ -27,4 +27,13 @@ export const festivalGlow = {
    * procession is drawn up, and Deepavali is lit along the roads.
    */
   dasara: 0,
+
+  /**
+   * How bright the last firecracker burst is, from 0 to 1.
+   *
+   * A burst is a light that was not there a moment ago, and the city
+   * underneath it is lit by it for as long as it lasts. The firecrackers
+   * write this as they burst and it goes out again on its own.
+   */
+  flash: 0,
 };
