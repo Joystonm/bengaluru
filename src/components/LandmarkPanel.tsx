@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { Landmark, LandmarkPhoto } from '../data/landmarks';
 import { photoCredit } from '../data/landmarks';
 import { useApp } from '../state/store';
@@ -9,6 +9,7 @@ import {
   landmarkThumbResponsive,
   photoFallback,
 } from '../cloudinary/imageDelivery';
+import { supportsNamed } from '../cloudinary/capabilities';
 import { contributionsFor } from '../cloudinary/contributions';
 import { PhotoLightbox } from './PhotoLightbox';
 import type { LightboxPhoto } from './PhotoLightbox';
@@ -63,9 +64,41 @@ export function LandmarkPanel({ landmark }: { landmark: Landmark }) {
   );
   const current = photos[photoIndex] ?? null;
 
+  /**
+   * The names of the transformations that shape a panel hero and a panel
+   * thumbnail, when the account has them.
+   *
+   * A named transformation is written down once in the account — the crop,
+   * the gravity, the quality — and then used by name in the delivery URL, so
+   * the policy for a picture lives in one place rather than in every
+   * picture's URL. The cloud is asked once whether it has one; until it says
+   * yes, the panel uses the same inline transformation as before.
+   */
+  const [namedHero, setNamedHero] = useState<string | undefined>(undefined);
+  const [namedThumb, setNamedThumb] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (!current) return;
+    const probeId = current.publicId ?? landmarkPublicId(landmark.id, current.src);
+    if (!probeId) return;
+    let live = true;
+    void supportsNamed('bengaluru_hero', probeId).then((ok) => {
+      if (live && ok) setNamedHero('bengaluru_hero');
+    });
+    void supportsNamed('bengaluru_thumb', probeId).then((ok) => {
+      if (live && ok) setNamedThumb('bengaluru_thumb');
+    });
+    return () => {
+      live = false;
+    };
+  }, [current, landmark.id]);
+
   const hero = useMemo(
-    () => (current ? landmarkHeroResponsive(landmark.id, current.src, current.publicId) : null),
-    [landmark.id, current],
+    () =>
+      current
+        ? landmarkHeroResponsive(landmark.id, current.src, current.publicId, namedHero)
+        : null,
+    [landmark.id, current, namedHero],
   );
 
   /** The photographs, in the shape the viewer wants them. */
@@ -81,8 +114,12 @@ export function LandmarkPanel({ landmark }: { landmark: Landmark }) {
         credit: photoCredit(p),
         width: p.width,
         height: p.height,
+        // The share card is about the place, not the file, so it carries the
+        // landmark's own name and kind.
+        landmarkName: landmark.name,
+        landmarkCategory: landmark.category,
       })),
-    [photos, landmark.id, landmark.name],
+    [photos, landmark.id, landmark.name, landmark.category],
   );
 
   const distanceLabel = useMemo(() => {
@@ -314,7 +351,13 @@ export function LandmarkPanel({ landmark }: { landmark: Landmark }) {
             <h3 className="nb-label mb-2.5">Photographs</h3>
             <div className="flex gap-2 overflow-x-auto pb-2">
               {photos.map((p, i) => {
-                const thumb = landmarkThumbResponsive(landmark.id, p.src, '92px', p.publicId);
+                const thumb = landmarkThumbResponsive(
+                  landmark.id,
+                  p.src,
+                  '92px',
+                  p.publicId,
+                  namedThumb,
+                );
                 return (
                   <button
                     key={p.publicId ?? p.src}

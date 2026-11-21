@@ -12,6 +12,7 @@ import { Inspector } from './components/Inspector';
 import { Hud } from './components/Hud';
 import { MarkerLayer } from './components/MarkerLayer';
 import { SceneErrorBoundary } from './components/SceneErrorBoundary';
+import { FilmStudio } from './components/FilmStudio';
 import { useBootstrap } from './hooks/useBootstrap';
 import { useApp } from './state/store';
 import { world } from './core/world';
@@ -94,6 +95,7 @@ export default function App() {
 
       <SearchPanel />
       {selected && mode === 'explore' && <LandmarkPanel landmark={selected} />}
+      <FilmStudio />
 
       {!ready && mode === 'loading' && <LoadingScreen tasks={tasks} ratio={ratio} />}
     </div>

@@ -42,6 +42,15 @@ export interface ImageOptions extends ImageTransform {
   /** Local path used when Cloudinary is not configured. */
   localFallback?: string;
   /**
+   * A named transformation to use instead of an inline one.
+   *
+   * A named transformation is written down once in the account — by the
+   * script that sets the account up — and then used by name here, so the
+   * policy for this kind of picture lives in one place rather than being
+   * repeated in every delivery URL.
+   */
+  named?: string;
+  /**
    * Further transformation components, chained after the first with `/`.
    *
    * A component is a set of comma-separated parameters — `c_crop,x_10,y_20,w_30,h_40`
@@ -160,6 +169,28 @@ export function imageUrl(publicId: string, options: ImageOptions = {}): string {
     }
     return '';
   }
+  // A named transformation carries the crop, the gravity and the quality of
+  // this kind of picture — decided once, in the account — so only the size
+  // is said here. And the size is said as a scaling step *after* the crop,
+  // so the shape the account chose is kept at every width, and the crop
+  // itself is only ever done once by the cloud.
+  if (options.named) {
+    const size: string[] = [];
+    const both = options.width !== undefined && options.height !== undefined;
+    if (options.width !== undefined) size.push(`w_${options.width}`);
+    if (options.height !== undefined) size.push(`h_${options.height}`);
+    if (size.length) size.unshift(both ? 'c_fill' : 'c_scale');
+    if (options.quality !== undefined) size.push(`q_${options.quality}`);
+    if (options.format !== undefined) size.push(`f_${options.format}`);
+    const [effect] = effectList(options);
+    if (effect) size.push(`e_${effect}`);
+
+    const chain = [`t_${options.named}`];
+    if (size.length) chain.push(size.join(','));
+    chain.push(...(options.components ?? []));
+    return `${deliveryBase()}/${chain.join('/')}/${publicId}`;
+  }
+
   // The first effect rides in the first component; the rest are chained after
   // it, one component each.
   const extraEffects = effectList(options).slice(1).map((e) => `e_${e}`);
@@ -343,7 +374,11 @@ export function responsiveImage(
  * A 3:2 crop of the whole picture, offered at the widths a panel that is
  * 416 pixels wide on a desktop and the full width of a phone could need.
  */
-export function heroResponsive(publicId: string, localFallback: string): ResponsiveImage {
+export function heroResponsive(
+  publicId: string,
+  localFallback: string,
+  named?: string,
+): ResponsiveImage {
   return responsiveImage(publicId, {
     widths: [320, 480, 640, 768, 1024, 1280, 1600],
     width: 1280,
@@ -354,6 +389,7 @@ export function heroResponsive(publicId: string, localFallback: string): Respons
     format: 'auto',
     sizes: '(min-width: 640px) 416px, 100vw',
     localFallback,
+    named,
   });
 }
 
@@ -367,6 +403,7 @@ export function thumbResponsive(
   publicId: string,
   localFallback: string,
   sizes = '92px',
+  named?: string,
 ): ResponsiveImage {
   return responsiveImage(publicId, {
     widths: [64, 96, 128, 192, 256],
@@ -378,6 +415,7 @@ export function thumbResponsive(
     format: 'auto',
     sizes,
     localFallback,
+    named,
   });
 }
 
@@ -386,16 +424,22 @@ export function thumbResponsive(
  *
  * `publicId` overrides the derived one, which is what a photograph that does
  * not live in the landmark namespace — a visitor's contribution — needs.
+ *
+ * `named` asks for a transformation defined in the account by name, so the
+ * shape and the quality of a panel hero are decided once, in the account,
+ * rather than in every delivery URL.
  */
 export function landmarkHeroResponsive(
   slug: string,
   file: string,
   publicId?: string | null,
+  named?: string,
 ): ResponsiveImage {
   const { dir, name } = splitPhotoPath(slug, file);
   return heroResponsive(
     publicId ?? landmarkPublicId(slug, file),
     `${import.meta.env.BASE_URL}assets/landmarks/${dir}/${name}`,
+    named,
   );
 }
 
@@ -407,12 +451,14 @@ export function landmarkThumbResponsive(
   file: string,
   sizes = '92px',
   publicId?: string | null,
+  named?: string,
 ): ResponsiveImage {
   const { dir, name } = splitPhotoPath(slug, file);
   return thumbResponsive(
     publicId ?? landmarkPublicId(slug, file),
     `${import.meta.env.BASE_URL}assets/landmarks-thumb/${dir}/${name}`,
     sizes,
+    named,
   );
 }
 
@@ -421,19 +467,56 @@ export function landmarkThumbResponsive(
  *
  * `c_limit` keeps the whole picture — the lightbox shows the photograph as
  * it was taken, not a crop of it — and the width caps how much is fetched.
+ *
+ * An effect, when one is asked for, rides in the same component as the
+ * resize: Cloudinary applies the crop and the size first and the effect to
+ * the result, which is what "the photograph, painted in this style" means.
  */
 export function publicFull(
   publicId: string,
   width = 1600,
   localFallback?: string,
+  effect?: string,
 ): string {
   return imageUrl(publicId, {
     width,
     crop: 'limit',
     quality: 'auto:best',
     format: 'auto',
+    effect,
     localFallback,
   });
+}
+
+/**
+ * The photograph widened, with the new part invented by the cloud.
+ *
+ * `b_gen_fill` is generative fill: the picture is padded out to a new shape
+ * and the cloud paints what should have been there — more sky, more street,
+ * more of whatever the photograph is of. The prompt says what the new area
+ * should be.
+ *
+ * The parameter order here is the one Cloudinary documents for this
+ * transformation — the aspect ratio, then the generative fill, then the pad
+ * that gives the fill somewhere to go.
+ *
+ * This is an add-on, so it is asked for only when the account has it; see
+ * `capabilities.ts`.
+ */
+export function publicGenerated(
+  publicId: string,
+  prompt: string,
+  width = 1600,
+  localFallback?: string,
+): string {
+  if (!config.enabled) {
+    if (localFallback) {
+      return `${import.meta.env.BASE_URL}${localFallback.replace(/^\/+/, '')}`;
+    }
+    return '';
+  }
+  const t = `ar_16:9,b_gen_fill:prompt_${encodeURIComponent(prompt)},c_pad,w_${width},q_auto:best,f_auto`;
+  return `${deliveryBase()}/${t}/${publicId}`;
 }
 
 /**
@@ -452,10 +535,14 @@ export function publicRegion(
   region: { x: number; y: number; width: number; height: number },
   displayWidth = 1200,
   localFallback?: string,
+  effect?: string,
 ): string {
   return imageUrl(publicId, {
     quality: 'auto:best',
     format: 'auto',
+    // The style is applied before the region is cut out, so a zoomed-in view
+    // is the same painting as the whole photograph, seen more closely.
+    effect,
     components: [cropRegionComponent(region), `w_${displayWidth},c_fill`],
     localFallback,
   });

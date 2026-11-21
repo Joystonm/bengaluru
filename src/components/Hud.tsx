@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useApp } from '../state/store';
+import { useFilm } from '../state/filmStore';
 import { rig } from '../three/rig';
 import { setFocusGoal } from '../three/focus';
 import { localToLonLat } from '../core/terrain';
@@ -139,6 +140,42 @@ export function Hud() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
+            </svg>
+          </button>
+
+          {/*
+            Film the city.
+
+            The recorder lives inside the canvas, so this button only has to
+            ask it to start; what it records, and where the film is
+            delivered afterwards, are the recorder's business.
+          */}
+          <button
+            type="button"
+            className="nb-icon-btn"
+            onClick={() => useFilm.getState().begin()}
+            aria-label="Record a film of the city"
+            title="Record a film of the city"
+          >
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+              <rect
+                x="2.5"
+                y="6.5"
+                width="13"
+                height="11"
+                rx="2"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                fill="none"
+              />
+              <path
+                d="M15.5 11l6-3.2v8.4l-6-3.2z"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                fill="none"
+                strokeLinejoin="round"
+              />
+              <circle cx="9" cy="12" r="2.6" fill="currentColor" />
             </svg>
           </button>
 

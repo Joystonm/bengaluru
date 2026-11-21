@@ -7,6 +7,7 @@ import { TileLayers, WorldStreamer } from './TileLayers';
 import { CameraRig } from './CameraRig';
 import { CameraBridge } from './CameraBridge';
 import { AdaptiveQuality } from './AdaptiveQuality';
+import { FilmRecorder } from './FilmRecorder';
 import { LandmarkModels } from './LandmarkModels';
 import { rig, normaliseRig } from './rig';
 import { world } from '../core/world';
@@ -182,6 +183,7 @@ export function CityScene() {
       <CameraBridge />
       <AdaptiveQuality />
       <WorldStreamer />
+      <FilmRecorder />
     </>
   );
 }

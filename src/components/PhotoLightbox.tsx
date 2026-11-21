@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { publicFull, publicRegion } from '../cloudinary/imageDelivery';
+import {
+  publicFull,
+  publicGenerated,
+  publicRegion,
+} from '../cloudinary/imageDelivery';
+import { PHOTO_STYLES, styleById } from '../cloudinary/effects';
+import { supports, supportsNamed } from '../cloudinary/capabilities';
+import { shareCardUrl } from '../cloudinary/shareCard';
 
 /**
  * The photograph viewer.
@@ -44,6 +51,10 @@ export interface LightboxPhoto {
   /** The size of the original photograph, in pixels. */
   width: number | null;
   height: number | null;
+  /** The landmark the photograph belongs to, for the share card. */
+  landmarkName?: string;
+  /** The kind of landmark, for the share card's kicker line. */
+  landmarkCategory?: string;
 }
 
 export interface PhotoLightboxProps {
@@ -124,6 +135,31 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
   const [shownIndex, setShownIndex] = useState(index);
   const [fallbackSrc, setFallbackSrc] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
+  /**
+   * The style the visitor has chosen.
+   *
+   * The style is applied by the cloud, not in the browser: choosing one
+   * changes the URL the photograph is asked for, and what comes back has
+   * been painted in that style. The original is never altered — asking for
+   * it again simply asks for it again.
+   */
+  const [styleId, setStyleId] = useState('original');
+  /** Whether the cloud has widened the frame with generative fill. */
+  const [widened, setWidened] = useState(false);
+  /** What this account can do: null until the cloud has been asked. */
+  const [canPaint, setCanPaint] = useState<boolean | null>(null);
+  const [canWiden, setCanWiden] = useState<boolean | null>(null);
+  /** Whether the share card is on screen. */
+  const [shareOpen, setShareOpen] = useState(false);
+  /**
+   * The name of the transformation that shapes a share card, when the
+   * account has one written down in it.
+   */
+  const [namedCard, setNamedCard] = useState<string | undefined>(undefined);
+  /** Whether the card has failed to arrive, so the inline one can stand in. */
+  const [cardBroken, setCardBroken] = useState(false);
+  /** What to say when the cloud cannot do what was asked of it. */
+  const [widenNote, setWidenNote] = useState<string | null>(null);
   const dragRef = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
 
   // A new photograph starts over, unzoomed.
@@ -134,7 +170,52 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
     setRegion(null);
     setFallbackSrc(null);
     setFailed(false);
+    setStyleId('original');
+    setWidened(false);
+    setShareOpen(false);
+    setCardBroken(false);
   }
+
+  /**
+   * What the account can do.
+   *
+   * The AI effects are add-ons. Rather than offering a button that fails,
+   * the viewer asks the cloud once — the answer is cached for the session —
+   * and only offers what the cloud says it can do.
+   *
+   * The painting styles are asked about as soon as the viewer opens: they
+   * are ordinary transformations and cost nothing. Generative fill is asked
+   * about only when somebody asks for a wider frame, because the cloud
+   * charges for that one.
+   */
+  useEffect(() => {
+    if (!photo) return;
+    let live = true;
+    void supports('art', photo.publicId).then((ok) => {
+      if (live) setCanPaint(ok);
+    });
+    return () => {
+      live = false;
+    };
+  }, [photo]);
+
+  /**
+   * Whether the account has a share card written down in it.
+   *
+   * A named transformation says how a card is shaped once, in the account,
+   * rather than in every URL that asks for one. The cloud is asked once; if
+   * it has no such transformation, the card is built inline as before.
+   */
+  useEffect(() => {
+    if (!photo) return;
+    let live = true;
+    void supportsNamed('bengaluru_card', photo.publicId).then((ok) => {
+      if (live && ok) setNamedCard('bengaluru_card');
+    });
+    return () => {
+      live = false;
+    };
+  }, [photo]);
 
   // Measure the viewport.
   useEffect(() => {
@@ -153,7 +234,10 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
   );
 
   /** The region being asked for — none at all until the photograph is zoomed. */
-  const activeRegion = zoom > 1.01 ? region : null;
+  const activeRegion = zoom > 1.01 && !widened ? region : null;
+
+  /** The style currently being asked for. */
+  const style = styleById(styleId);
 
   /**
    * The URL of what is on screen.
@@ -161,15 +245,33 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
    * Unzoomed, that is the whole photograph. Zoomed in, it is the visible
    * rectangle of the original, delivered at the size it is displayed — so
    * the file that arrives is the one the screen can use.
+   *
+   * The style, when one is chosen, is a component of the same URL: the cloud
+   * applies it to the photograph on the way out.
    */
   const sourceUrl = useMemo(() => {
     if (!photo) return '';
+    if (widened) {
+      return publicGenerated(
+        photo.publicId,
+        `continue the scene of ${photo.landmarkName ?? photo.title} naturally`,
+        1600,
+        photo.localFallback,
+      );
+    }
+    const effect = style.effect || undefined;
     if (zoom <= 1.01 || !activeRegion) {
-      return publicFull(photo.publicId, 1600, photo.localFallback);
+      return publicFull(photo.publicId, 1600, photo.localFallback, effect);
     }
     const displayed = Math.min(2400, Math.max(600, Math.round(view.w * zoom)));
-    return publicRegion(photo.publicId, activeRegion, displayed, photo.localFallback);
-  }, [photo, zoom, activeRegion, view.w]);
+    return publicRegion(
+      photo.publicId,
+      activeRegion,
+      displayed,
+      photo.localFallback,
+      effect,
+    );
+  }, [photo, zoom, activeRegion, view.w, style.effect, widened]);
 
   // Ask for the region a moment after the view settles, so a drag does not
   // queue a request for every intermediate position.
@@ -253,6 +355,44 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
     setPan({ x: 0, y: 0 });
   }, []);
 
+  /**
+   * Widen the frame — if this cloud can.
+   *
+   * Generative fill is an add-on, and the cloud charges for it, so the
+   * question is put to it the first time somebody asks for a wider frame
+   * rather than on every visit. The answer is kept for the session.
+   */
+  const toggleWiden = useCallback(async () => {
+    if (widened) {
+      setWidened(false);
+      setWidenNote(null);
+      setFallbackSrc(null);
+      setFailed(false);
+      setLoadedUrl('');
+      return;
+    }
+
+    let ok = canWiden;
+    if (ok === null) {
+      ok = await supports('generative-fill', photo?.publicId ?? '');
+      setCanWiden(ok);
+    }
+    if (!ok) {
+      setWidenNote(
+        'This cloud cannot widen a frame — generative fill is not enabled on this account.',
+      );
+      return;
+    }
+
+    setWidenNote(null);
+    setWidened(true);
+    setFallbackSrc(null);
+    setFailed(false);
+    setLoadedUrl('');
+    setZoom(1);
+    setRegion(null);
+  }, [widened, canWiden, photo]);
+
   const step = useCallback(
     (delta: number) => {
       if (photos.length < 2) return;
@@ -309,9 +449,38 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
 
   if (!photo) return null;
 
-  const aspect = original.w / original.h;
+  // A widened photograph comes back in a new shape, so the frame it is drawn
+  // in is the shape of that new picture rather than the shape of the original.
+  const aspect = widened ? 16 / 9 : original.w / original.h;
   const fitW = Math.min(view.w || 1, (view.h || 1) * aspect);
   const fitH = fitW / aspect;
+
+  /**
+   * The styles on offer.
+   *
+   * The ones that need an AI add-on are only shown once the cloud has said
+   * it has it; the plain filters are always available.
+   */
+  const styles = PHOTO_STYLES.filter((s) => !s.ai || canPaint === true);
+
+  /** The share card, built by the cloud with the caption burned into it. */
+  const cardOptions = {
+    title: photo.landmarkName ?? photo.title,
+    credit: photo.credit,
+    kicker: photo.landmarkCategory,
+  };
+
+  /**
+   * The card to show.
+   *
+   * When the account has a card transformation written down in it, that name
+   * is used; otherwise the crop and the quality are written out here. If the
+   * named card fails to arrive, the inline one stands in for it rather than
+   * the card simply not appearing.
+   */
+  const inlineCard = shareCardUrl(photo.publicId, cardOptions);
+  const namedCardSrc = shareCardUrl(photo.publicId, cardOptions, 'bengaluru_card');
+  const card = namedCard && !cardBroken ? namedCardSrc : inlineCard;
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (zoom <= 1.01) return;
@@ -434,8 +603,8 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
         </button>
       )}
 
-      {/* Zoom controls */}
-      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1">
+      {/* Zoom controls, kept at the top so they never sit on the caption. */}
+      <div className="absolute left-1/2 top-5 z-10 flex -translate-x-1/2 items-center gap-1">
         <button type="button" onClick={zoomOut} className="nb-icon-btn" aria-label="Zoom out" disabled={zoom <= 1.01}>
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
             <path d="M6 12h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -458,8 +627,108 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
         )}
       </div>
 
+      {/* Share card, and the cloud's own way of widening a frame. */}
+      <div className="absolute left-5 top-5 z-10 flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setShareOpen((s) => !s)}
+          className="nb-btn nb-btn-ghost h-[38px] px-3 text-[11px]"
+          aria-expanded={shareOpen}
+        >
+          <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+            <path
+              d="M12 16V4m0 0L8 8m4-4 4 4M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Share card
+        </button>
+      </div>
+
+      {shareOpen && card && (
+        <div className="absolute left-5 top-16 z-10 w-[min(22rem,80vw)]">
+          <div className="overflow-hidden rounded-sm border border-white/12 bg-ink-900/90 shadow-2xl backdrop-blur">
+            <img
+              src={card}
+              alt={`${photo.landmarkName ?? photo.title} — share card`}
+              className="block w-full"
+              onError={() => {
+                // A named card that will not arrive falls back to the inline
+                // one; an inline card that will not arrive is closed.
+                if (namedCard && !cardBroken) setCardBroken(true);
+                else setShareOpen(false);
+              }}
+            />
+          </div>
+          <p className="mt-2 text-[10.5px] leading-relaxed text-mist-400">
+            The caption and the photographer&rsquo;s credit are written into the picture by
+            Cloudinary, as a text overlay — the card is delivered, not composed here.
+          </p>
+          <a
+            href={card}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-1 inline-block text-[10.5px] text-saffron underline decoration-saffron/40 underline-offset-2"
+          >
+            Open the card on its own
+          </a>
+        </div>
+      )}
+
       {/* Caption and credit */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink-950/95 to-transparent px-6 pb-4 pt-14">
+        {/* The styles, and the cloud's way of widening the frame. */}
+        <div className="mx-auto mb-3 flex max-w-4xl items-center gap-1.5 overflow-x-auto pb-1 pointer-events-auto">
+          {styles.map((s) => {
+            const active = styleId === s.id && !widened;
+            return (
+              <button
+                key={s.id}
+                type="button"
+                title={s.note}
+                onClick={() => {
+                  setStyleId(s.id);
+                  setWidened(false);
+                  setFallbackSrc(null);
+                  setFailed(false);
+                  setLoadedUrl('');
+                }}
+                className={`shrink-0 rounded-full border px-3 py-1 text-[11px] transition-colors ${
+                  active
+                    ? 'border-saffron/70 bg-saffron/15 text-saffron'
+                    : 'border-white/12 text-mist-300 hover:border-white/30 hover:text-mist-100'
+                }`}
+              >
+                {s.label}
+              </button>
+            );
+          })}
+          {canWiden !== false && (
+            <button
+              type="button"
+              title="Cloudinary invents the rest of the frame, in the manner of the photograph"
+              onClick={() => void toggleWiden()}
+              className={`shrink-0 rounded-full border px-3 py-1 text-[11px] transition-colors ${
+                widened
+                  ? 'border-saffron/70 bg-saffron/15 text-saffron'
+                  : 'border-white/12 text-mist-300 hover:border-white/30 hover:text-mist-100'
+              }`}
+            >
+              {widened ? 'Original frame' : 'Widen the frame'}
+            </button>
+          )}
+        </div>
+
+        {widenNote && (
+          <p className="mx-auto mb-2 max-w-4xl text-center text-[10.5px] text-mist-400">
+            {widenNote}
+          </p>
+        )}
+
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-1 text-center">
           <p className="text-[13px] font-medium text-mist-100">{photo.title}</p>
           <p className="max-w-2xl text-[11px] leading-relaxed text-mist-400">{photo.credit}</p>
@@ -471,6 +740,11 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
           {zoom > 1.01 && activeRegion && (
             <p className="mt-1 font-mono text-[10px] tabular-nums text-saffron/70">
               {Math.round(activeRegion.width)}×{Math.round(activeRegion.height)} of {original.w}×{original.h}
+            </p>
+          )}
+          {widened && (
+            <p className="mt-1 text-[10.5px] text-saffron/70">
+              The cloud painted the rest of the frame.
             </p>
           )}
         </div>
