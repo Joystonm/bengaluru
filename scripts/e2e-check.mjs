@@ -201,6 +201,46 @@ async function main() {
       return 'clicked';
     })()`);
 
+  /**
+   * How much warm light is in the frame.
+   *
+   * A festival is lit: the lamps are a warm colour and the city underneath
+   * them goes warm too. Counting the warm pixels in the framebuffer is the
+   * only honest way to ask whether a festival actually put light into the
+   * city, and it is what caught a festival that had been drawn for months
+   * and could not be seen from the overview.
+   *
+   * The frame is read the same way the screenshots are: the renderer draws
+   * it once more and the pixels are read straight out of the buffer.
+   */
+  const warmPixels = async () =>
+    evaluate(`(() => {
+      const gl = window.__nbGL;
+      const scene = window.__nbScene;
+      const cam = window.__nbCamera;
+      if (!gl || !scene || !cam) return null;
+      gl.render(scene, cam);
+      const ctx = gl.getContext();
+      const w = ctx.drawingBufferWidth;
+      const h = ctx.drawingBufferHeight;
+      if (!w || !h) return null;
+      const buf = new Uint8Array(w * h * 4);
+      ctx.readPixels(0, 0, w, h, ctx.RGBA, ctx.UNSIGNED_BYTE, buf);
+      let warm = 0;
+      let lit = 0;
+      for (let i = 0; i < buf.length; i += 4) {
+        const r = buf[i];
+        const g = buf[i + 1];
+        const b = buf[i + 2];
+        // Bright and warm. The threshold is deliberately high: the streets
+        // already carry a warm glow at night, and a festival has to be
+        // measured as the light that is added on top of that.
+        if (r > 120 && r > g + 24 && g > b) warm++;
+        if (r + g + b > 150) lit++;
+      }
+      return { warm, lit };
+    })()`);
+
   const results = [];
   const check = (name, ok, detail = '') => {
     results.push({ name, ok, detail });
@@ -369,6 +409,63 @@ async function main() {
     JSON.stringify(hits),
   );
   await shot('06-search');
+
+  // 8. A festival lights the city.
+  //
+  // The same night is measured twice: once with the city as it is, and once
+  // with the festival put on. The clock is held at night across both, so
+  // that the only thing that changed between the two frames is the festival
+  // itself.
+  await evaluate(`(() => {
+    const a = window.__nbApp;
+    if (a) {
+      a.getState().setMode('explore');
+      a.getState().setFestival('none');
+      a.getState().setTimeOfDay('night');
+    }
+    return true;
+  })()`);
+  await sleep(3000);
+  const plainNight = await warmPixels();
+  await shot('07-night');
+
+  // The festival is chosen from the conditions panel, the way a visitor
+  // chooses it: open the panel, press the button.
+  await click('button[aria-label^="Conditions:"]');
+  await sleep(700);
+  const festivalClicked = await evaluate(`(() => {
+    const panel = document.querySelector('[aria-label="Weather and festival"]');
+    if (!panel) return 'no panel';
+    const btn = Array.from(panel.querySelectorAll('button')).find((b) => b.textContent.trim() === 'Deepavali');
+    if (!btn) return 'no button';
+    btn.click();
+    return 'clicked';
+  })()`);
+  check('the festival can be chosen from the panel', festivalClicked === 'clicked', String(festivalClicked));
+  await sleep(4000);
+
+  const festivalState = await evaluate(`(() => {
+    const a = window.__nbApp;
+    const label = document.querySelector('button[aria-label^="Conditions:"]');
+    return {
+      festival: a ? a.getState().festival : null,
+      label: label ? label.getAttribute('aria-label') : '',
+    };
+  })()`);
+  check(
+    'the festival is applied',
+    festivalState.festival === 'deepavali' || /Deepavali/.test(festivalState.label),
+    JSON.stringify(festivalState),
+  );
+
+  const dressedNight = await warmPixels();
+  await shot('08-festival');
+  await grab('08-festival-gl');
+  check(
+    'the city lights up for the festival',
+    !!plainNight && !!dressedNight && dressedNight.warm > plainNight.warm + 400,
+    `warm pixels ${plainNight ? plainNight.warm : '?'} -> ${dressedNight ? dressedNight.warm : '?'}`,
+  );
 
   const errors = cdp.events
     .filter(

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { world } from '../core/world';
 import type { TileKind } from '../core/tileWorker';
@@ -6,6 +7,7 @@ import { quality } from '../core/quality';
 import { useApp } from '../state/store';
 import { applyFacadeShader, setFacadeLook } from './facade';
 import { applyVegetationShader } from './vegetation';
+import { festivalGlow } from './festivalGlow';
 
 /** Subscribe to the world manager and re-render when tiles change. */
 export function useWorldVersion(): number {
@@ -82,6 +84,10 @@ export function TileLayers({
   weather?: 'clear' | 'monsoon';
 }) {
   const tier = useApp((s) => s.quality);
+
+  /** The glow each surface sits at before a festival is added on top of it. */
+  const base = useRef({ road: 0, surface: 0, weight: 1 });
+
   const materials = useMemo(() => {
     // The city's own light. Multiplying the emissive by the vertex colour
     // means a pale concrete roof glows warm-white and a red-tiled one glows
@@ -145,18 +151,50 @@ export function TileLayers({
     // A road that has been rained on is a mirror: it is darker than a dry
     // one and it takes the colour of the sky back. The monsoon sky is a
     // flat, pale grey, and that is what a wet road reflects.
-    materials.road.emissiveIntensity = night ? 0.42 : dusk ? 0.04 : wet ? 0.11 : 0;
+    const roadGlow = night ? 0.42 : dusk ? 0.04 : wet ? 0.11 : 0;
+    materials.road.emissiveIntensity = roadGlow;
     materials.road.emissive.set(wet && !night && !dusk ? '#8e9bab' : '#ffb45c');
     materials.road.color.setScalar((night ? 0.9 : dusk ? 0.84 : 1) * (wet ? 0.62 : 1));
 
-    materials.surface.emissiveIntensity = night ? 0.07 : 0;
+    const surfaceGlow = night ? 0.07 : 0;
+    materials.surface.emissiveIntensity = surfaceGlow;
     materials.surface.color.setScalar((night ? 0.3 : dusk ? 0.84 : 1) * (wet ? 0.72 : 1));
+
+    // The base each surface sits at, before a festival is added on top of
+    // it. The festival's own contribution is added every frame, because it
+    // arrives as a fade and not as a step.
+    //
+    // The weight is how much of the festival the ground takes. At night the
+    // lamps are the only light there is, and the ground takes all of it; at
+    // dusk the sun is still up and the ground only picks up a little, or
+    // the whole city turns the same shade of sepia.
+    base.current.road = roadGlow;
+    base.current.surface = surfaceGlow;
+    base.current.weight = night ? 1 : dusk ? 0.55 : 0.4;
 
     // The facades follow the same clock: glass by day, lamplight by night.
     // The lowest tier turns the pass off — the machine that needs it is the
     // one least able to afford it.
     setFacadeLook(timeOfDay, tier !== 'low');
   }, [timeOfDay, weather, materials, tier]);
+
+  /**
+   * The festival's light on the ground.
+   *
+   * The strings are slung over the roads and the lamps stand in the
+   * doorways, so the street network is what carries the light of a
+   * festival — and a street network that carries light reads from the air
+   * in a way that a few thousand points in the sky does not. Dasara is lit
+   * over the grass instead, where the procession is drawn up.
+   *
+   * It is added on top of the clock's own glow, in step with the lamps, so
+   * that the ground and the lights over it come up together.
+   */
+  useFrame(() => {
+    const w = base.current.weight;
+    materials.road.emissiveIntensity = base.current.road + festivalGlow.lamps * 0.3 * w;
+    materials.surface.emissiveIntensity = base.current.surface + festivalGlow.dasara * 0.12 * w;
+  });
 
   useEffect(
     () => () => {

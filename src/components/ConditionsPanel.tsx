@@ -122,17 +122,21 @@ export function ConditionsPanel() {
         title={`${weather === 'monsoon' ? 'Monsoon' : 'Clear weather'} · ${
           FESTIVALS.find((f) => f.id === festival)?.label ?? 'Everyday'
         }`}
-        className={`nb-icon-btn h-9 w-9 sm:w-auto sm:px-3 ${
+        className={`nb-icon-btn inline-flex h-9 w-9 items-center justify-center gap-1.5 whitespace-nowrap px-0 md:w-auto md:px-3 ${
           weather !== 'clear' || festival !== 'none'
             ? 'border-saffron/45 text-saffron'
             : ''
         }`}
       >
-        <span className="flex items-center gap-1.5">
+        <span className="flex items-center gap-1">
           {weather === 'monsoon' ? <WeatherIcon weather="monsoon" /> : <WeatherIcon weather="clear" />}
-          {festival !== 'none' && <LampIcon />}
+          {festival !== 'none' && (
+            <span className="nb-lamp-lit flex">
+              <LampIcon />
+            </span>
+          )}
         </span>
-        <span className="hidden text-[12px] sm:inline">
+        <span className="hidden text-[12px] md:inline">
           {festival !== 'none'
             ? (FESTIVALS.find((f) => f.id === festival)?.label ?? '')
             : weather === 'monsoon'
@@ -143,7 +147,7 @@ export function ConditionsPanel() {
 
       {open && (
         <div
-          className="nb-panel nb-fade-up absolute right-0 top-full z-50 mt-2 w-[19rem] rounded-lg p-4"
+          className="nb-panel nb-fade-up absolute right-0 top-full z-50 mt-2 w-[21rem] rounded-lg p-4"
           role="group"
           aria-label="Weather and festival"
         >

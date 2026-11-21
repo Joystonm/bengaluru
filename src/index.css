@@ -303,87 +303,98 @@
 
 /* ------------------------------------------------------------- controls */
 
-.nb-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 42px;
-  padding: 0 20px;
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: var(--color-ink-950);
-  background: var(--color-mist-100);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition:
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
+/*
+  The buttons live in the components layer rather than outside it, so that a
+  utility class on the element is still able to size it.
 
-.nb-btn:hover {
-  transform: translateY(-1px);
-}
-.nb-btn:active {
-  transform: translateY(0);
-}
+  A rule written outside any layer beats every layered rule in the cascade,
+  whatever its specificity, so an unlayered `.nb-icon-btn` kept its 38-pixel
+  width even where the markup said `sm:w-auto` — and the label, which had
+  nowhere to go, spilled out over the buttons either side of it.
+*/
+@layer components {
+  .nb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--color-ink-950);
+    background: var(--color-mist-100);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+      transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
 
-.nb-btn-primary {
-  height: 54px;
-  padding: 0 30px;
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ink-950);
-  background: linear-gradient(180deg, #f3d7a4 0%, var(--color-saffron) 58%, var(--color-saffron-dim) 100%);
-  box-shadow:
-    0 10px 30px -8px color-mix(in srgb, var(--color-saffron) 60%, transparent),
-    inset 0 1px 0 rgb(255 255 255 / 0.4);
-}
-.nb-btn-primary:hover {
-  box-shadow:
-    0 16px 40px -10px color-mix(in srgb, var(--color-saffron) 70%, transparent),
-    inset 0 1px 0 rgb(255 255 255 / 0.5);
-}
+  .nb-btn:hover {
+    transform: translateY(-1px);
+  }
+  .nb-btn:active {
+    transform: translateY(0);
+  }
 
-.nb-btn-ghost {
-  color: var(--color-mist-200);
-  background: color-mix(in srgb, var(--color-ink-900) 55%, transparent);
-  border-color: rgb(255 255 255 / 0.1);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-.nb-btn-ghost:hover {
-  color: var(--color-mist-100);
-  border-color: rgb(255 255 255 / 0.24);
-  background: color-mix(in srgb, var(--color-ink-800) 70%, transparent);
-}
+  .nb-btn-primary {
+    height: 54px;
+    padding: 0 30px;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-950);
+    background: linear-gradient(180deg, #f3d7a4 0%, var(--color-saffron) 58%, var(--color-saffron-dim) 100%);
+    box-shadow:
+      0 10px 30px -8px color-mix(in srgb, var(--color-saffron) 60%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.4);
+  }
+  .nb-btn-primary:hover {
+    box-shadow:
+      0 16px 40px -10px color-mix(in srgb, var(--color-saffron) 70%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.5);
+  }
 
-.nb-icon-btn {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  color: var(--color-mist-200);
-  background: color-mix(in srgb, var(--color-ink-900) 55%, transparent);
-  border: 1px solid rgb(255 255 255 / 0.1);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  cursor: pointer;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-.nb-icon-btn:hover {
-  color: var(--color-mist-100);
-  border-color: rgb(255 255 255 / 0.24);
+  .nb-btn-ghost {
+    color: var(--color-mist-200);
+    background: color-mix(in srgb, var(--color-ink-900) 55%, transparent);
+    border-color: rgb(255 255 255 / 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .nb-btn-ghost:hover {
+    color: var(--color-mist-100);
+    border-color: rgb(255 255 255 / 0.24);
+    background: color-mix(in srgb, var(--color-ink-800) 70%, transparent);
+  }
+
+  .nb-icon-btn {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    color: var(--color-mist-200);
+    background: color-mix(in srgb, var(--color-ink-900) 55%, transparent);
+    border: 1px solid rgb(255 255 255 / 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .nb-icon-btn:hover {
+    color: var(--color-mist-100);
+    border-color: rgb(255 255 255 / 0.24);
+  }
 }
 
 .nb-chip {
@@ -456,10 +467,34 @@
 @media (prefers-reduced-motion: reduce) {
   .nb-fade-up,
   .nb-fade,
-  .nb-drift {
+  .nb-drift,
+  .nb-lamp-lit {
     animation: none !important;
   }
   .nb-marker-dot::after {
     animation: none !important;
   }
+}
+
+/*
+ * The lamp on the conditions button burns when a festival is on.
+ *
+ * It is the only part of the interface that says, without being asked, that
+ * the city is currently dressed for something — the scene itself is several
+ * kilometres away, and a visitor who has just clicked "Deepavali" needs to
+ * be able to see that the click took.
+ */
+@keyframes nb-lamp-lit {
+  0%,
+  100% {
+    opacity: 0.62;
+    filter: drop-shadow(0 0 2px rgb(232 163 61 / 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgb(232 163 61 / 0.95));
+  }
+}
+.nb-lamp-lit {
+  animation: nb-lamp-lit 2.4s ease-in-out infinite;
 }

@@ -88,7 +88,7 @@ export function Hud() {
           className="nb-over-city min-w-0 text-left transition-opacity hover:opacity-80"
           aria-label="Return to the city overview"
         >
-          <span className="nb-display block whitespace-nowrap text-[15px] leading-none text-mist-100 sm:text-lg">
+          <span className="nb-display block truncate text-[15px] leading-none text-mist-100 sm:text-lg">
             Namma Bengaluru
           </span>
           <span className="nb-label mt-1 hidden text-mist-300 sm:block">
