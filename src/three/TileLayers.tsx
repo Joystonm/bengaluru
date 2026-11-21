@@ -74,7 +74,13 @@ export type TimeOfDayName = 'dawn' | 'day' | 'dusk' | 'night';
  * a street in the shade of a tower is darker than the road beside it, and
  * the shadow of a tower falls across both.
  */
-export function TileLayers({ timeOfDay }: { timeOfDay: TimeOfDayName }) {
+export function TileLayers({
+  timeOfDay,
+  weather = 'clear',
+}: {
+  timeOfDay: TimeOfDayName;
+  weather?: 'clear' | 'monsoon';
+}) {
   const tier = useApp((s) => s.quality);
   const materials = useMemo(() => {
     // The city's own light. Multiplying the emissive by the vertex colour
@@ -117,6 +123,10 @@ export function TileLayers({ timeOfDay }: { timeOfDay: TimeOfDayName }) {
   useEffect(() => {
     const night = timeOfDay === 'night';
     const dusk = timeOfDay === 'dusk';
+    // A wet city is a darker city. Everything that has been rained on loses
+    // light, and the roads lose the most of it — they are the surface that
+    // was actually standing in the water.
+    const wet = weather === 'monsoon';
 
     // At night the glow is a dim warm wash — a suggestion of lit windows,
     // not a light source. At dusk it has to stay a whisper: any stronger
@@ -124,7 +134,7 @@ export function TileLayers({ timeOfDay }: { timeOfDay: TimeOfDayName }) {
     // whole city turns the same shade of sepia.
     const glow = night ? 0.13 : dusk ? 0.03 : 0.05;
     const warm = night ? '#ffb45c' : dusk ? '#ffa050' : '#3a3020';
-    const dim = night ? 0.34 : dusk ? 0.94 : 1;
+    const dim = (night ? 0.34 : dusk ? 0.94 : 1) * (wet ? 0.76 : 1);
 
     for (const m of [materials.detail, materials.mid, materials.far]) {
       m.emissiveIntensity = glow;
@@ -132,16 +142,21 @@ export function TileLayers({ timeOfDay }: { timeOfDay: TimeOfDayName }) {
       m.color.setScalar(dim);
     }
 
-    materials.road.emissiveIntensity = night ? 0.42 : dusk ? 0.04 : 0;
-    materials.road.color.setScalar(night ? 0.9 : dusk ? 0.84 : 1);
+    // A road that has been rained on is a mirror: it is darker than a dry
+    // one and it takes the colour of the sky back. The monsoon sky is a
+    // flat, pale grey, and that is what a wet road reflects.
+    materials.road.emissiveIntensity = night ? 0.42 : dusk ? 0.04 : wet ? 0.11 : 0;
+    materials.road.emissive.set(wet && !night && !dusk ? '#8e9bab' : '#ffb45c');
+    materials.road.color.setScalar((night ? 0.9 : dusk ? 0.84 : 1) * (wet ? 0.62 : 1));
+
     materials.surface.emissiveIntensity = night ? 0.07 : 0;
-    materials.surface.color.setScalar(night ? 0.3 : dusk ? 0.84 : 1);
+    materials.surface.color.setScalar((night ? 0.3 : dusk ? 0.84 : 1) * (wet ? 0.72 : 1));
 
     // The facades follow the same clock: glass by day, lamplight by night.
     // The lowest tier turns the pass off — the machine that needs it is the
     // one least able to afford it.
     setFacadeLook(timeOfDay, tier !== 'low');
-  }, [timeOfDay, materials, tier]);
+  }, [timeOfDay, weather, materials, tier]);
 
   useEffect(
     () => () => {

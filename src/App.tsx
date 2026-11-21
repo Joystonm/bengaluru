@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import { CityScene } from './three/CityScene';
@@ -13,10 +13,13 @@ import { Hud } from './components/Hud';
 import { MarkerLayer } from './components/MarkerLayer';
 import { SceneErrorBoundary } from './components/SceneErrorBoundary';
 import { FilmStudio } from './components/FilmStudio';
+import { PostcardPanel } from './components/PostcardPanel';
 import { useBootstrap } from './hooks/useBootstrap';
 import { useApp } from './state/store';
 import { world } from './core/world';
 import { landmarkExclusionZones } from './three/LandmarkModels';
+import { focusLandmark } from './three/focus';
+import { readSceneLink, writeSceneLink } from './core/urlState';
 
 export default function App() {
   const { tasks, ratio, ready, landmarks, terrain } = useBootstrap();
@@ -25,6 +28,12 @@ export default function App() {
   const select = useApp((s) => s.select);
   const setSearchOpen = useApp((s) => s.setSearchOpen);
   const setMode = useApp((s) => s.setMode);
+  const timeOfDay = useApp((s) => s.timeOfDay);
+  const weather = useApp((s) => s.weather);
+  const festival = useApp((s) => s.festival);
+  const setTimeOfDay = useApp((s) => s.setTimeOfDay);
+  const setWeather = useApp((s) => s.setWeather);
+  const setFestival = useApp((s) => s.setFestival);
 
   // Tell the streaming workers where the detailed models sit, so the massing
   // geometry leaves those footprints clear.
@@ -32,6 +41,49 @@ export default function App() {
     if (!landmarks.length) return;
     world.setExclusions(landmarkExclusionZones(landmarks));
   }, [landmarks]);
+
+  /**
+   * A link somebody was sent opens the city, not the title screen.
+   *
+   * `?at=vidhana-soudha` means the visitor already knows which building they
+   * came for, so the camera goes there and the panel opens on it. The hour
+   * and the weather travel in the same link, so "the city in the rain at
+   * dusk" is a thing that can be handed to somebody else.
+   *
+   * The link is applied once the city is built, not when the page arrives:
+   * the first frame the visitor sees should already be the one they were
+   * sent.
+   */
+  const linkApplied = useRef(false);
+
+  useEffect(() => {
+    if (linkApplied.current || !ready || !landmarks.length) return;
+    linkApplied.current = true;
+
+    const link = readSceneLink();
+    if (link.timeOfDay) setTimeOfDay(link.timeOfDay);
+    if (link.weather) setWeather(link.weather);
+    if (link.festival) setFestival(link.festival);
+
+    if (!link.landmark) return;
+    const landmark = landmarks.find((l) => l.id === link.landmark);
+    if (!landmark) return;
+    select(landmark.id);
+    setMode('explore');
+    if (landmark.x !== null && landmark.y !== null) focusLandmark(landmark, 2.4);
+  }, [ready, landmarks, select, setMode, setTimeOfDay, setWeather, setFestival]);
+
+  /**
+   * The address bar follows the city.
+   *
+   * Whoever is looking at the Vidhana Soudha can copy the link out of the
+   * bar and send it to somebody, and that somebody will arrive at the same
+   * building under the same sky.
+   */
+  useEffect(() => {
+    if (!linkApplied.current) return;
+    writeSceneLink({ landmark: selectedId, timeOfDay, weather, festival });
+  }, [selectedId, timeOfDay, weather, festival]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -96,6 +148,7 @@ export default function App() {
       <SearchPanel />
       {selected && mode === 'explore' && <LandmarkPanel landmark={selected} />}
       <FilmStudio />
+      <PostcardPanel />
 
       {!ready && mode === 'loading' && <LoadingScreen tasks={tasks} ratio={ratio} />}
     </div>

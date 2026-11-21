@@ -9,11 +9,11 @@ This is what is used, and where.
 
 | Feature | Used for | Where |
 | --- | --- | --- |
-| **Uploads** | a visitor's photograph, and a film of the city, uploaded unsigned | `contributions.ts`, `videoDelivery.ts` |
+| **Uploads** | a visitor's photograph, a film of the city, and a visitor's own postcard — all uploaded unsigned | `contributions.ts`, `videoDelivery.ts`, `postcard.ts` |
 | **Transformations** | responsive `srcset`, `q_auto`, `f_auto`, `c_fill,g_auto`, blur placeholders, region zoom | `imageDelivery.ts` |
-| **AI** | `e_art` styles, `e_colorize`, `e_shadow`, `b_gen_fill` generative fill | `effects.ts`, `capabilities.ts`, `PhotoLightbox.tsx` |
+| **AI** | `e_art` styles, `e_colorize`, `e_shadow`, `b_gen_fill` generative fill, and `auto_tagging` on every postcard | `effects.ts`, `capabilities.ts`, `PhotoLightbox.tsx`, `postcard.ts` |
 | **Video** | record → upload → deliver with `f_auto,q_auto`, `so_` poster, `sp_animated` sprite, `m3u8` HLS | `FilmRecorder.tsx`, `FilmStudio.tsx`, `videoDelivery.ts` |
-| **Text overlays** | the share card, with the caption and credit burned in by the cloud | `shareCard.ts` |
+| **Text overlays** | the share card and the postcard, with the caption and credit burned in by the cloud | `shareCard.ts`, `postcard.ts` |
 | **Named transformations** | `t_bengaluru_hero`, `t_bengaluru_thumb`, `t_bengaluru_card` — decided in the account, used by name | `imageDelivery.ts`, `shareCard.ts` |
 | **Structured metadata** | typed, validated fields on every photograph — landmark, category, photographer, licence, source | `scripts/cloudinary-admin-setup.mjs` |
 | **Admin API** | creates the named transformations and the metadata fields, and writes the metadata onto the photographs already in the cloud | `scripts/cloudinary-admin-setup.mjs` |
@@ -22,31 +22,66 @@ This is what is used, and where.
 
 ## Uploads
 
-**Where:** `src/cloudinary/contributions.ts`, `src/cloudinary/videoDelivery.ts`
+**Where:** `src/cloudinary/contributions.ts`, `src/cloudinary/videoDelivery.ts`,
+`src/cloudinary/postcard.ts`
 
-Two kinds of media are uploaded from the browser, and neither of them passes
+Three kinds of media are uploaded from the browser, and none of them passes
 through this server:
 
 | What | Endpoint | How |
 | --- | --- | --- |
 | A visitor's photograph of a landmark | `POST /v1_1/<cloud>/image/upload` | unsigned preset |
+| A visitor's postcard of the city | `POST /v1_1/<cloud>/image/upload` | unsigned preset |
 | A film of the city, recorded in the browser | `POST /v1_1/<cloud>/video/upload` | unsigned preset |
 
 The uploads are **unsigned**: the preset name is the permission, so the browser
 never holds an API key and the API secret never comes near the client. Each
 upload carries
 
-- `folder` — `bengaluru/contributions/<landmark>` and `bengaluru/films`, so a
-  visitor's photograph is never mistaken for a Wikimedia Commons one;
+- `folder` — `bengaluru/contributions/<landmark>`, `bengaluru/postcards` and
+  `bengaluru/films`, so a visitor's own picture is never mistaken for a
+  Wikimedia Commons one;
 - `public_id` — a timestamp and a few random characters, so two visitors
   offering a photograph at the same moment cannot collide;
-- `tags` — `contribution,landmark:<id>` and `film,bengaluru,recorded`;
+- `tags` — `contribution,landmark:<id>`, `postcard,bengaluru` and
+  `film,bengaluru,recorded`;
 - `context` — the author, the licence, the source and the title, as structured
   metadata attached to the asset.
 
 A photograph a visitor uploads appears in that landmark's panel and in its
 viewer within seconds, delivered by the same pipeline as every other
 photograph.
+
+### The postcard
+
+**Where:** `src/cloudinary/postcard.ts`, `src/three/PostcardCapture.tsx`,
+`src/components/PostcardPanel.tsx`
+
+A postcard is the visitor's own picture of the city — the frame they were
+looking at when they pressed the button. It is read out of the WebGL canvas
+(the scene is drawn again and the drawing buffer is read back), sent to the
+cloud with the same unsigned preset, and kept on the visitor's own machine as
+well, so that the picture is theirs even if the cloud turns it away.
+
+It carries three things the other uploads do not:
+
+- `auto_tagging` — the cloud is asked to **read the picture and name what is in
+  it**. A skyline, a street, a building: these are the cloud's own words for
+  the frame, and they are attached to the asset rather than drawn onto it, so
+  a postcard can be found in the Media Library by what it shows and not only by
+  what it was called. Where the account has the auto-tagging add-on, the names
+  come back with the upload; where it has not, the cloud refuses the request
+  and the picture is sent again without them, because the picture is worth
+  more than the names for it.
+- `context` — the caption, the landmark, the hour, the weather and the
+  festival, all of which the visitor chose, attached to the asset as
+  structured metadata.
+- a **card** — the picture delivered at 1200 by 630 with the caption, the
+  credit and the landmark's name written onto it by the cloud as text
+  overlays, exactly as the share card is made.
+
+Changing the caption rewrites the *address* of the card and nothing else: the
+caption was never in the picture, so nothing is uploaded a second time.
 
 ## Transformations
 
@@ -103,12 +138,21 @@ casts a shadow under it.
 new area in the manner of the scene — more sky, more street, more of whatever
 the picture is of. The prompt is sent with the request.
 
+**Auto-tagging.** Every postcard the visitor takes is read by the cloud and
+named by it: `auto_tagging` asks the cloud to look at the frame and say what
+is in it, and the names it gives — *skyline*, *street*, *building* — are
+attached to the asset. Nothing in this app writes those names; they are the
+cloud's own opinion of the picture, which is why they are worth having.
+
 **The account is asked, not assumed.** These are add-ons, and an add-on that
 is not enabled fails rather than degrades. So the viewer asks the cloud once —
 with a very small rendition — and caches the answer for the session. Styles
 that the account cannot deliver are not offered; generative fill, which the
 cloud charges for, is only asked about when somebody asks for a wider frame,
-and if the cloud will not do it, the viewer says so plainly.
+and if the cloud will not do it, the viewer says so plainly. The one place
+this could not be done is the postcard upload, which cannot ask first: it is
+a single request made without a key, so it asks for the auto-tagging and, if
+the cloud refuses, sends the picture again without it.
 
 ## Video
 

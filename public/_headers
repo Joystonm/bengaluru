@@ -1,0 +1,18 @@
+# The baked city never changes under the same name: a tile of buildings, a
+# chunk of road, a photograph. They can be kept in the browser for a year.
+#
+# The application shell has to be re-fetched, or a fix would never reach
+# anybody who had the city open already.
+/data/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()

@@ -1,0 +1,6 @@
+# Every path that is not a file on disk is the application itself.
+#
+# The city is a single page with no router, so this matters less than it
+# would for a routed site — but a deep link such as /?at=vidhana-soudha
+# still has to arrive at index.html rather than at a 404.
+/*    /index.html   200

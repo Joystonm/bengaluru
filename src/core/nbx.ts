@@ -4,7 +4,7 @@
  * Layout:
  *   "NBT1"            magic
  *   uint32le         header length
- *   header JSON      { kind, tx, ty, ox, oy, count, s: { <section>: {off,len} } }
+ *   header JSON      { kind, tx, ty, ox, oy, count, roadClasses?, s: {...} }
  *   section payloads concatenated in the order given by the header
  *
  * Position sections store Int16 pairs in decimetres relative to the tile
@@ -24,6 +24,16 @@ export interface NbxHeader {
   ox: number;
   oy: number;
   count: number;
+  /**
+   * The names of the road classes, in the order the tile numbers them.
+   *
+   * A road tile carries a number for the class of each segment, and the
+   * number means nothing without the list it belongs to. The list is written
+   * into the header so that the two cannot drift apart: a tile always says
+   * what its own numbers mean. Tiles baked before this was added fall back
+   * to `ROAD_CLASSES` below.
+   */
+  roadClasses?: string[];
   s: Record<string, NbxSection>;
 }
 
@@ -68,10 +78,17 @@ export interface RoadTile {
   count: number;
   pos: Int16Array;
   off: Uint32Array;
-  /** Road class index, see ROAD_CLASSES. */
+  /** Road class index, see `classes`. */
   cl: Uint8Array;
   /** Width in metres per segment. */
   wd: Float32Array;
+  /**
+   * The name of each class, by index.
+   *
+   * The classes are looked up by name rather than by number, so that a
+   * segment drawn as a railway is a railway because the data says so.
+   */
+  classes: string[];
 }
 
 export const ARCHETYPES = [
@@ -116,17 +133,46 @@ export const SURFACE_KINDS = [
 ] as const;
 export type SurfaceKind = (typeof SURFACE_KINDS)[number];
 
+/**
+ * The road classes, in the order the writer numbers them.
+ *
+ * This is the same list, in the same order, as the keys of `ROAD_WIDTH` in
+ * `scripts/lib/world.mjs`, and it has to be: a road tile carries a number for
+ * each segment's class and the number is an index into this list. Get the
+ * order wrong and a tertiary road is drawn as a railway.
+ *
+ * The list is now also written into the header of every road tile, so a
+ * tile always carries its own key. This table is what the tiles baked
+ * before that are read with.
+ */
 export const ROAD_CLASSES = [
   'motorway',
+  'motorway_link',
   'trunk',
+  'trunk_link',
   'primary',
+  'primary_link',
   'secondary',
+  'secondary_link',
   'tertiary',
+  'tertiary_link',
   'minor',
   'service',
   'path',
+  'footway',
+  'track',
+  'cycleway',
+  'pedestrian',
+  'steps',
   'rail',
-  'aeroway',
+  'light_rail',
+  'subway',
+  'tram',
+  'construction',
+  'raceway',
+  'ferry',
+  'living_street',
+  'busway',
 ] as const;
 export type RoadClass = (typeof ROAD_CLASSES)[number];
 
@@ -222,5 +268,9 @@ export function decodeRoadTile(buf: ArrayBuffer): RoadTile {
     off: u32(section(buf, h, 'off')),
     cl: u8(section(buf, h, 'cl')),
     wd: f32(section(buf, h, 'wd')),
+    // The tile carries the key to its own numbers. A tile baked before the
+    // key was written into the header is read with the list the writer
+    // uses, which is the list the numbers were taken from.
+    classes: h.roadClasses ?? [...ROAD_CLASSES],
   };
 }

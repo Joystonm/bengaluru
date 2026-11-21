@@ -1,0 +1,71 @@
+# Builds the city and puts it online.
+#
+# The whole point of the pipeline being static is that there is no server to
+# keep alive: every push to main becomes a build, and the build becomes the
+# city at a public address.
+#
+# Two secrets have to be set in the repository settings for the deployment to
+# carry the cloud name and the upload preset:
+#
+#   CLOUDFLARE_API_TOKEN         a token with Cloudflare Pages: edit rights
+#   CLOUDFLARE_ACCOUNT_ID        the account the pages project lives in
+#   VITE_CLOUDINARY_CLOUD_NAME   the public cloud name
+#   VITE_CLOUDINARY_UPLOAD_PRESET the public unsigned upload preset
+#
+# The build works without the last two — the city falls back to the
+# photographs and models stored in the repository — but the photographs then
+# come from the local disk rather than from Cloudinary.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build the city
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_CLOUDINARY_CLOUD_NAME: ${{ secrets.VITE_CLOUDINARY_CLOUD_NAME }}
+          VITE_CLOUDINARY_UPLOAD_PRESET: ${{ secrets.VITE_CLOUDINARY_UPLOAD_PRESET }}
+
+      - name: Prune what the application never reads
+        run: node scripts/prune-dist.mjs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Put it online
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=namma-bengaluru --branch=main
+
+      - name: Say where it went
+        run: echo "Namma Bengaluru is at ${{ steps.deploy.outputs.deployment-url }}"

@@ -10,6 +10,44 @@ the live 3D city. Leave the journey and the city is yours to orbit, pan, zoom
 and walk. Click a landmark to read its history, see photographs of it, and
 inspect a detailed 3D model of it in place.
 
+The city also changes: the hour of the day, the monsoon, the festivals it is
+dressed for. And any frame of it can be taken away as a postcard.
+
+---
+
+## What else it does
+
+**The hour of the day.** Dawn, day, dusk and night, and the whole city is
+relit for each: the sun moves to where the sun actually is, the sky is redrawn
+from a shader rather than swapped for a photograph of a sky, the haze thickens
+or thins with it, and every window in the city lights up after dark.
+
+**The monsoon.** The one piece of weather worth building. The sky closes down
+to a flat grey lid, the sun drops to a third of itself, the roads turn into
+mirrors and the lightning comes — a jagged channel drawn from the cloud to the
+ground, with the light it throws onto the city and the sky behind the cloud
+lit up by it. The rain is a GPU particle system: a column of falling streaks
+around the camera, its width and its density worked out every frame from how
+high up the visitor is.
+
+**The festivals.** Bengaluru is dressed for them, and the city knows it.
+**Dasara** floods the Vidhana Soudha, the Attara Kacheri and Mayo Hall with
+light and strings the procession route across Cubbon Park. **Deepavali** puts
+thousands of lamps on the roofs and the doorsteps of the houses, and draws the
+strings of bulbs across the streets.
+
+**Postcards.** Any frame of the city can be taken away. The picture is read
+out of the canvas, sent straight to Cloudinary, and given back with the
+visitor's own caption written onto it by the cloud — as a text overlay in the
+delivery URL, so changing the caption changes the address and nothing else is
+uploaded twice. The cloud is also asked to read the picture and name what is
+in it, and the names are attached to the asset.
+
+**Links into the city.** The address bar follows the visitor. `?at=` the
+landmark, `?t=` the hour, `?w=` the weather, `?f=` the festival — so "the
+Vidhana Soudha in the rain at dusk" is a thing that can be sent to somebody
+else, and it arrives exactly as it was sent.
+
 ---
 
 ## Running it
@@ -47,7 +85,23 @@ draw call.
 node scripts/fetch-ofm.mjs        # OpenFreeMap vector tiles
 node scripts/extract-overture.py  # Overture buildings
 node scripts/build-tiles.mjs      # bake into public/data/
+node scripts/audit-city.mjs       # what actually got baked
 ```
+
+The bake is the slow part — it resolves a height for all 1.4 million
+buildings — and it is worth running it and then running the audit, because
+the audit says plainly how varied the heights turned out and what the roads
+are. A city whose buildings are all the same height is a model of a city
+rather than the city.
+
+Heights come from three places, in this order: a height tagged in OSM and
+matched onto the Overture footprint, the height or the number of floors in
+the Overture record itself, and — for the great majority, which neither
+source says anything about — a prior worked out from the neighbourhood:
+the median height of the buildings measured around it, smoothed over
+expanding radii and blended with the density of the block it stands in. So
+the towers stand in the middle of the city and the low houses around them,
+because that is where they are.
 
 ## Media delivery
 
@@ -60,6 +114,12 @@ automatic format and quality (`f_auto`, `q_auto`) and responsive widths
 - `videoDelivery.ts` — video delivery and HLS manifests
 - `modelDelivery.ts` — GLB/glTF/USDZ through the image pipeline, OBJ through raw
 - `assetRegistry.ts` — one place that knows every asset, its public ID and its credit
+- `shareCard.ts` — the card, with the caption and the credit written on by the cloud
+- `contributions.ts` — a visitor's own photograph, uploaded unsigned
+- `postcard.ts` — a visitor's own frame of the city, uploaded unsigned and named by the cloud
+- `effects.ts`, `capabilities.ts` — the AI styles, and the account's answer about them
+
+`CLOUDINARY.md` sets out exactly which Cloudinary features are used where.
 
 ### Setting it up
 
@@ -82,12 +142,51 @@ With no cloud name configured the app still works — the photographs are served
 from `public/assets/landmarks/` through the same delivery layer. The Credits
 panel says which of the two is in force.
 
+## Links into the city
+
+The address bar follows the visitor, so any view of the city can be sent to
+somebody else:
+
+| Parameter | What it opens |
+|---|---|
+| `?at=<landmark>` | that landmark, with its panel open and the camera on it |
+| `?t=dawn\|day\|dusk\|night` | that hour |
+| `?w=clear\|monsoon` | that weather |
+| `?f=none\|dasara\|deepavali` | that festival |
+
+```
+https://example.pages.dev/?at=vidhana-soudha&t=dusk&w=monsoon
+```
+
+The link is applied once the city has finished building, not when the page
+arrives, so the first frame a visitor sees is already the one they were sent.
+
+## Deploying
+
+The app is static: `npm run build` writes `dist/`, and `dist/` is the whole
+deployment. It is configured for [Cloudflare Pages](https://pages.cloudflare.com).
+
+| File | What it is for |
+|---|---|
+| `wrangler.toml` | the Pages project and its build command |
+| `public/_headers` | the caching and security headers |
+| `public/_redirects` | the single-page-app rewrite |
+| `.github/workflows/deploy.yml` | build and publish on every push to `main` |
+| `scripts/prune-dist.mjs` | keeps the oldest build artefacts out of the way |
+
+The workflow needs two secrets — the Cloudflare account id and the API token —
+and it deliberately does **not** get the Cloudinary API secret: a build
+running on somebody else's machine has no business holding it.
+
+`DEPLOY.md` has the step-by-step.
+
 ## Layout
 
 ```
 src/
   components/   the panels, the HUD, the landing screen
-  three/        the scene, the ground, the landmark models, the camera rig
+  three/        the scene, the ground, the landmark models, the camera rig,
+                the sky, the weather, the festivals
   core/         tile streaming, baking, terrain, the geospatial helpers
   cloudinary/   the media delivery layer
   state/        the application store
@@ -108,6 +207,8 @@ node scripts/e2e-check.mjs          # the whole journey, 16 checks
 node scripts/cloudinary-check.mjs    # are the photographs really from Cloudinary
 node scripts/fallback-check.mjs      # the city with every worker blocked
 node scripts/smoke-check.mjs         # the built bundle
+node scripts/audit-city.mjs          # the baked city: heights, roads, surfaces
+node scripts/browser-check.mjs       # a screenshot of anything, on demand
 ```
 
 ## Attribution

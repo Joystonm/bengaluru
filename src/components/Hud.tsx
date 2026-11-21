@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useApp } from '../state/store';
 import { useFilm } from '../state/filmStore';
+import { usePostcard } from '../state/postcardStore';
 import { rig } from '../three/rig';
 import { setFocusGoal } from '../three/focus';
 import { localToLonLat } from '../core/terrain';
+import { ConditionsPanel } from './ConditionsPanel';
 
 const TIMES: Array<'dawn' | 'day' | 'dusk' | 'night'> = ['dawn', 'day', 'dusk', 'night'];
 
@@ -50,6 +52,19 @@ export function Hud() {
     ambience.setScene(0);
     useApp.getState().setCinema({ playing: true, sceneIndex: 0, elapsed: 0, duration: 24 });
     setMode('cinematic');
+  };
+
+  /**
+   * Take a postcard of the view.
+   *
+   * The frame is taken from inside the canvas, so all this has to do is ask
+   * for it; the capture, the upload and the caption are the postcard's own
+   * business.
+   */
+  const postcard = () => {
+    const card = usePostcard.getState();
+    card.setOpen(true);
+    card.begin();
   };
 
   return (
@@ -129,6 +144,48 @@ export function Hud() {
               </button>
             ))}
           </div>
+
+          {/*
+            The weather and the festival. One button, because a visitor
+            changes both rarely and both need a sentence of explanation.
+          */}
+          <ConditionsPanel />
+
+          {/*
+            A postcard of this exact view.
+
+            The picture is taken from inside the canvas and sent to the cloud,
+            which writes the caption onto it and hands it back.
+          */}
+          <button
+            type="button"
+            className="nb-icon-btn"
+            onClick={postcard}
+            aria-label="Take a postcard of this view"
+            title="Take a postcard of this view"
+          >
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+              <rect
+                x="2.5"
+                y="5.5"
+                width="19"
+                height="13"
+                rx="2"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                fill="none"
+              />
+              <path
+                d="M5 16l4.2-4.2a1.6 1.6 0 0 1 2.3 0L16 16"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                fill="none"
+                strokeLinecap="round"
+              />
+              <circle cx="9" cy="9.5" r="1.5" fill="currentColor" />
+              <path d="M17.5 9.5h2.5M17.5 12h2.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+          </button>
 
           <button type="button" className="nb-icon-btn" onClick={overview} aria-label="City overview">
             <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">

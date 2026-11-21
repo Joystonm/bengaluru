@@ -1,0 +1,23 @@
+# Cloudflare Pages configuration.
+#
+# The city is a static site: three.js draws it in the browser, the baked
+# tiles and the elevation raster are served as files, and there is no server
+# behind it at all. That is what makes it cheap to run and impossible to
+# take down.
+#
+# Deploy with:
+#   npx wrangler pages deploy dist --project-name=namma-bengaluru
+#
+# or let the GitHub workflow in .github/workflows/deploy.yml do it on every
+# push to main.
+
+name = "namma-bengaluru"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "dist"
+
+# The city is one page with no routing of its own, so every path that is not
+# a file on disk has to fall back to the application.
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

@@ -641,7 +641,11 @@ for (const [key, b] of roadBuckets) {
     wids.push(seg.w);
   }
   if (!cls.length) continue;
-  writeNbx(path.join(OUT, 'roads', `${key}.nbx`), { kind: 'roads', tx, ty, ox, oy, count: cls.length }, {
+  // The tile carries the key to its own class numbers, so that the reader
+  // never has to guess which list the numbers belong to.
+  writeNbx(path.join(OUT, 'roads', `${key}.nbx`), {
+    kind: 'roads', tx, ty, ox, oy, count: cls.length, roadClasses: ROAD_CLASSES,
+  }, {
     pos: i16(pos), off: u32(off), cl: u8(cls), wd: f32(wids),
   });
 }

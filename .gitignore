@@ -32,6 +32,11 @@ dist-ssr
 # One-off geocoding output.
 /research/nominatim-coords.json
 
+# The browser profile the verification drivers run Chrome with. It is a
+# Chrome user data directory — caches, extension downloads, a few hundred
+# megabytes of nothing — and it is rebuilt on every run.
+.chrome-verify/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

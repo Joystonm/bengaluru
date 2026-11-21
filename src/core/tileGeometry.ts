@@ -612,22 +612,69 @@ export function buildSurfaceGeometry(
 // --------------------------------------------------------------------------
 // Roads: flat ribbons
 // --------------------------------------------------------------------------
-const ROAD_COLOR: Record<number, [number, number, number]> = {
-  0: [0.115, 0.115, 0.118], // motorway
-  1: [0.11, 0.11, 0.113], // trunk
-  2: [0.105, 0.105, 0.108], // primary
-  3: [0.1, 0.1, 0.103], // secondary
-  4: [0.096, 0.096, 0.098], // tertiary
-  5: [0.09, 0.089, 0.091], // minor
-  6: [0.083, 0.082, 0.084], // service
-  7: [0.115, 0.108, 0.094], // path
-  8: [0.1, 0.098, 0.096], // rail
-  9: [0.2, 0.198, 0.192], // aeroway
+/**
+ * The colour of each kind of road.
+ *
+ * A road tile carries a number for the class of each segment, and the tile
+ * carries the key to its own numbers, so the colour is looked up by the
+ * class's *name*. That is the whole point of the key: a segment drawn as a
+ * railway is a railway because the data says so, and not because two lists
+ * of numbers happened to be in step.
+ *
+ * The city is a concrete plain, so the carriageways are all very nearly the
+ * same dark grey — the larger the road, the fractionally lighter it is,
+ * which is how a road map reads at a glance. The paths are the exception:
+ * they are earth, and they are the only warm thing in the ground.
+ */
+const ROAD_COLOR: Record<string, [number, number, number]> = {
+  motorway: [0.115, 0.115, 0.118],
+  motorway_link: [0.113, 0.113, 0.116],
+  trunk: [0.11, 0.11, 0.113],
+  trunk_link: [0.108, 0.108, 0.111],
+  primary: [0.105, 0.105, 0.108],
+  primary_link: [0.103, 0.103, 0.106],
+  secondary: [0.1, 0.1, 0.103],
+  secondary_link: [0.098, 0.098, 0.101],
+  tertiary: [0.096, 0.096, 0.098],
+  tertiary_link: [0.094, 0.094, 0.096],
+  minor: [0.09, 0.089, 0.091],
+  service: [0.083, 0.082, 0.084],
+  living_street: [0.093, 0.091, 0.089],
+  busway: [0.098, 0.096, 0.094],
+  construction: [0.088, 0.086, 0.084],
+  raceway: [0.088, 0.086, 0.084],
+  ferry: [0.09, 0.09, 0.092],
+  path: [0.115, 0.108, 0.094],
+  footway: [0.112, 0.105, 0.09],
+  pedestrian: [0.113, 0.107, 0.094],
+  steps: [0.113, 0.107, 0.094],
+  track: [0.106, 0.099, 0.086],
+  cycleway: [0.1, 0.096, 0.086],
+  rail: [0.1, 0.098, 0.096],
+  light_rail: [0.1, 0.098, 0.096],
+  subway: [0.095, 0.093, 0.091],
+  tram: [0.105, 0.1, 0.095],
+  aeroway: [0.2, 0.198, 0.192],
+};
+
+/**
+ * How far above the ground a road is drawn, in metres.
+ *
+ * Almost everything sits at the same height, because a road is the ground
+ * with a different colour on it. The railways are lifted a little higher:
+ * they are on their own bed, and the step reads as a bank.
+ */
+const ROAD_LIFT: Record<string, number> = {
+  rail: 0.95,
+  light_rail: 0.95,
+  subway: 0.95,
+  tram: 0.95,
+  aeroway: 0.9,
 };
 
 export function buildRoadGeometry(tile: RoadTile, terrain: Terrain | null): TileGeometry {
   const mesh = new Mesh();
-  const { pos, off, cl, wd } = tile;
+  const { pos, off, cl, wd, classes } = tile;
 
   let minX = Infinity;
   let minZ = Infinity;
@@ -639,10 +686,13 @@ export function buildRoadGeometry(tile: RoadTile, terrain: Terrain | null): Tile
     const end = off[i + 1] * 2;
     const n = (end - base) / 2;
     if (n < 2) continue;
-    const cls = cl[i] || 5;
-    const col = ROAD_COLOR[cls] ?? ROAD_COLOR[5];
+    // The name of the class this segment belongs to. A number the tile does
+    // not have a name for is a minor road, which is the safest thing to
+    // assume about a road.
+    const name = classes[cl[i]] ?? 'minor';
+    const col = ROAD_COLOR[name] ?? ROAD_COLOR.minor;
     const half = Math.max(0.8, (wd[i] || 4) / 2);
-    const lift = cls === 8 ? 0.95 : cls === 9 ? 0.9 : 0.72;
+    const lift = ROAD_LIFT[name] ?? 0.72;
 
     for (let k = 0; k < n - 1; k++) {
       const ax = tile.ox + pos[base + k * 2] / 10;

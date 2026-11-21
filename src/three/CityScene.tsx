@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { SKY_PRESETS, SkyDome } from './SkyDome';
+import { SkyDome, skyFor } from './SkyDome';
 import { Ground, Horizon, useTerrain } from './Ground';
 import { TileLayers, WorldStreamer } from './TileLayers';
 import { CameraRig } from './CameraRig';
@@ -9,6 +9,9 @@ import { CameraBridge } from './CameraBridge';
 import { AdaptiveQuality } from './AdaptiveQuality';
 import { FilmRecorder } from './FilmRecorder';
 import { LandmarkModels } from './LandmarkModels';
+import { PostcardCapture } from './PostcardCapture';
+import { Weather } from './Weather';
+import { Festivals } from './Festivals';
 import { rig, normaliseRig } from './rig';
 import { world } from '../core/world';
 import { quality, FOG_RANGES } from '../core/quality';
@@ -65,12 +68,15 @@ function SceneFog({ color }: { color: string }) {
   return null;
 }
 
-function Lighting({ timeOfDay }: { timeOfDay: keyof typeof SKY_PRESETS }) {
-  const preset = SKY_PRESETS[timeOfDay];
+function Lighting({ preset }: { preset: ReturnType<typeof skyFor> }) {
   const sunRef = useRef<THREE.DirectionalLight>(null);
   const { scene, gl } = useThree();
   const focus = useApp((s) => s.focus);
   const tier = useApp((s) => s.quality);
+  // The sun's direction is worked out once and kept, rather than built again
+  // on every frame: this runs sixty times a second for the whole life of
+  // the page.
+  const dir = useRef(new THREE.Vector3(...preset.sunPosition).normalize());
 
   useEffect(() => {
     const l = sunRef.current;
@@ -101,18 +107,25 @@ function Lighting({ timeOfDay }: { timeOfDay: keyof typeof SKY_PRESETS }) {
     };
   }, [preset, scene, focus.x, focus.z, tier]);
 
-  // Each time of day carries its own exposure.
+  // Each hour of the day carries its own exposure.
   useEffect(() => {
     gl.toneMappingExposure = preset.exposure;
   }, [gl, preset]);
+
+  // The sun's direction is worked out once and kept, rather than built again
+  // on every frame: this runs sixty times a second for the whole life of the
+  // page. It is worked out again when the hour or the weather changes.
+  useEffect(() => {
+    dir.current.set(...preset.sunPosition).normalize();
+  }, [preset]);
 
   // Keep the sun overhead of whatever the camera is centred on.
   useFrame(() => {
     const l = sunRef.current;
     if (!l) return;
-    const dir = new THREE.Vector3(...preset.sunPosition).normalize();
+    const d = dir.current;
     l.target.position.set(focus.x, 0, focus.z);
-    l.position.set(focus.x + dir.x * 2200, dir.y * 2200, focus.z + dir.z * 2200);
+    l.position.set(focus.x + d.x * 2200, d.y * 2200, focus.z + d.z * 2200);
     l.target.updateMatrixWorld();
   });
 
@@ -165,25 +178,32 @@ function IdleCamera() {
  */
 export function CityScene() {
   const timeOfDay = useApp((s) => s.timeOfDay);
+  const weather = useApp((s) => s.weather);
+  const festival = useApp((s) => s.festival);
   const landmarks = useApp((s) => s.landmarks);
   const terrain = useTerrain();
-  const preset = SKY_PRESETS[timeOfDay];
+  // The sky, the light and the haze all come out of one place: the hour and
+  // the weather together decide what the city is lit like.
+  const preset = skyFor(timeOfDay, weather);
 
   return (
     <>
       <SceneFog color={preset.fog} />
       <SkyDome preset={preset} />
-      <Lighting timeOfDay={timeOfDay} />
+      <Lighting preset={preset} />
       <Horizon />
-      <Ground terrain={terrain} />
-      <TileLayers timeOfDay={timeOfDay} />
+      <Ground terrain={terrain} weather={weather} />
+      <TileLayers timeOfDay={timeOfDay} weather={weather} />
       <LandmarkModels landmarks={landmarks} terrain={terrain} />
+      <Weather weather={weather} terrain={terrain} />
+      <Festivals festival={festival} landmarks={landmarks} terrain={terrain} />
       <CameraRig />
       <IdleCamera />
       <CameraBridge />
       <AdaptiveQuality />
       <WorldStreamer />
       <FilmRecorder />
+      <PostcardCapture />
     </>
   );
 }

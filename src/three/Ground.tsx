@@ -151,7 +151,13 @@ function groundAxis(min: number, max: number): number[] {
  * tinted as dry Deccan scrub so the built-up areas of the city read against
  * it.
  */
-export function Ground({ terrain }: { terrain: Terrain | null }) {
+export function Ground({
+  terrain,
+  weather = 'clear',
+}: {
+  terrain: Terrain | null;
+  weather?: 'clear' | 'monsoon';
+}) {
   const geo = useMemo(() => {
     const xs = groundAxis(WORLD_BOUNDS.minX, WORLD_BOUNDS.maxX);
     // The north-south axis, in the same local metres.
@@ -259,9 +265,15 @@ export function Ground({ terrain }: { terrain: Terrain | null }) {
 
   const grain = useMemo(() => groundGrain(), []);
 
+  // Wet ground is darker and cooler than dry ground — the Deccan dust holds
+  // water and stops throwing so much light back. The tint is applied to the
+  // material rather than to the vertex colours, because the mesh is built
+  // once and the weather changes under it.
+  const tint = weather === 'monsoon' ? '#8f959b' : '#ffffff';
+
   return (
     <mesh geometry={geo} receiveShadow frustumCulled={false}>
-      <meshLambertMaterial vertexColors map={grain} />
+      <meshLambertMaterial vertexColors map={grain} color={tint} />
     </mesh>
   );
 }
