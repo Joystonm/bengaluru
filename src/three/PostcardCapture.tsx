@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useThree } from '@react-three/fiber';
 import { usePostcard } from '../state/postcardStore';
 import { useApp } from '../state/store';
-import { uploadPostcard, PostcardError } from '../cloudinary/postcard';
+import { uploadPostcard, rememberSentPostcard, PostcardError } from '../cloudinary/postcard';
 
 /**
  * The postcard capture.
@@ -138,6 +138,14 @@ export function PostcardCapture() {
           festival: city.festival,
         });
         usePostcard.getState().ready(upload.publicId, localUrl, upload.autoTags);
+        // The postcard is remembered here as well as in the cloud, so that
+        // the wall can show it even when the account does not let the cloud
+        // list what it holds.
+        rememberSentPostcard(upload.publicId, {
+          caption: postcard.caption.trim() || DEFAULT_CAPTION,
+          landmark: city.selectedId,
+          autoTags: upload.autoTags,
+        });
       } catch (err) {
         const reason =
           err instanceof Error ? err.message : 'the cloud would not say why';

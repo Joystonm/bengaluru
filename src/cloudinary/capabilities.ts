@@ -89,6 +89,67 @@ export function knownSupport(capability: Capability): boolean | null {
   return answers.get(capability) ?? null;
 }
 
+/** What each feature is called, and what it needs. */
+export const CAPABILITIES: Record<
+  Capability,
+  { label: string; note: string; addOn: boolean }
+> = {
+  art: {
+    label: 'Neural style transfer',
+    note: 'e_art — the photograph painted in the manner of a named style.',
+    addOn: true,
+  },
+  'generative-fill': {
+    label: 'Generative fill',
+    note: 'b_gen_fill — the frame widened and the new part invented.',
+    addOn: true,
+  },
+  'background-removal': {
+    label: 'Background removal',
+    note: 'e_background_removal — the subject cut out, with the transparency kept.',
+    addOn: true,
+  },
+  upscale: {
+    label: 'Upscaling',
+    note: 'e_upscale — the photograph enlarged by the cloud.',
+    addOn: true,
+  },
+  colourise: {
+    label: 'Colourisation',
+    note: 'e_colorize — a black and white photograph given colour.',
+    addOn: true,
+  },
+};
+
+/** Every capability, in the order they are worth asking about. */
+export const ALL_CAPABILITIES: Capability[] = [
+  'art',
+  'generative-fill',
+  'background-removal',
+  'upscale',
+  'colourise',
+];
+
+/**
+ * Ask the cloud about a set of add-ons at once.
+ *
+ * The answers are cached, so this is asked once for the session however many
+ * times the panel is opened.
+ *
+ * Generative fill is deliberately not in this list: it is charged for, and
+ * the app only asks about it when somebody actually wants a wider frame.
+ */
+export async function probeCapabilities(
+  capabilities: Capability[],
+  publicId: string,
+): Promise<Record<string, boolean>> {
+  const results: Record<string, boolean> = {};
+  for (const capability of capabilities) {
+    results[capability] = await supports(capability, publicId);
+  }
+  return results;
+}
+
 /* -------------------------------------------------------- named transforms -- */
 
 /**

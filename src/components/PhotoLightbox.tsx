@@ -5,8 +5,9 @@ import {
   publicGenerated,
   publicRegion,
 } from '../cloudinary/imageDelivery';
-import { PHOTO_STYLES, styleById } from '../cloudinary/effects';
-import { supports, supportsNamed } from '../cloudinary/capabilities';
+import { availableStyles, styleById } from '../cloudinary/effects';
+import { supports, supportsNamed, probeCapabilities } from '../cloudinary/capabilities';
+import type { Capability } from '../cloudinary/capabilities';
 import { shareCardUrl } from '../cloudinary/shareCard';
 
 /**
@@ -147,7 +148,7 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
   /** Whether the cloud has widened the frame with generative fill. */
   const [widened, setWidened] = useState(false);
   /** What this account can do: null until the cloud has been asked. */
-  const [canPaint, setCanPaint] = useState<boolean | null>(null);
+  const [canDo, setCanDo] = useState<Partial<Record<Capability, boolean>>>({});
   const [canWiden, setCanWiden] = useState<boolean | null>(null);
   /** Whether the share card is on screen. */
   const [shareOpen, setShareOpen] = useState(false);
@@ -183,16 +184,20 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
    * the viewer asks the cloud once — the answer is cached for the session —
    * and only offers what the cloud says it can do.
    *
-   * The painting styles are asked about as soon as the viewer opens: they
-   * are ordinary transformations and cost nothing. Generative fill is asked
-   * about only when somebody asks for a wider frame, because the cloud
-   * charges for that one.
+   * Each style is asked about on its own terms: painting the picture is a
+   * different add-on from cutting it out, and an account can have one
+   * without the other. Generative fill is not asked about here at all: the
+   * cloud charges for that one, so it is asked about only when somebody
+   * asks for a wider frame.
    */
   useEffect(() => {
     if (!photo) return;
     let live = true;
-    void supports('art', photo.publicId).then((ok) => {
-      if (live) setCanPaint(ok);
+    void probeCapabilities(
+      ['art', 'background-removal', 'upscale', 'colourise'],
+      photo.publicId,
+    ).then((answers) => {
+      if (live) setCanDo(answers as Partial<Record<Capability, boolean>>);
     });
     return () => {
       live = false;
@@ -240,6 +245,24 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
   const style = styleById(styleId);
 
   /**
+   * Whether the chosen style can still be asked for.
+   *
+   * The cloud's answer can change under the visitor's feet — an add-on can
+   * be turned off between two photographs. A style the cloud cannot do is
+   * not asked for, so the photograph falls back to the one it was taken as
+   * rather than failing to arrive.
+   */
+  const styleUsable = style.capability ? canDo[style.capability] === true : true;
+
+  /**
+   * Whether the picture on screen has had its background taken out.
+   *
+   * It arrives as a PNG with the transparency intact, and it is drawn over
+   * a chequerboard so that the cut can be seen.
+   */
+  const cutOut = styleUsable && style.format === 'png';
+
+  /**
    * The URL of what is on screen.
    *
    * Unzoomed, that is the whole photograph. Zoomed in, it is the visible
@@ -259,9 +282,14 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
         photo.localFallback,
       );
     }
-    const effect = style.effect || undefined;
+    const effect = styleUsable && style.effect ? style.effect : undefined;
+    // A style that enlarges the photograph asks the cloud for more than the
+    // original holds; a style that cuts the subject out asks for PNG, or the
+    // transparency would be thrown away on the way out.
+    const width = style.widen ? 2000 : 1600;
+    const format = style.format ?? 'auto';
     if (zoom <= 1.01 || !activeRegion) {
-      return publicFull(photo.publicId, 1600, photo.localFallback, effect);
+      return publicFull(photo.publicId, width, photo.localFallback, effect, format);
     }
     const displayed = Math.min(2400, Math.max(600, Math.round(view.w * zoom)));
     return publicRegion(
@@ -270,8 +298,9 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
       displayed,
       photo.localFallback,
       effect,
+      format,
     );
-  }, [photo, zoom, activeRegion, view.w, style.effect, widened]);
+  }, [photo, zoom, activeRegion, view.w, style, styleUsable, widened]);
 
   // Ask for the region a moment after the view settles, so a drag does not
   // queue a request for every intermediate position.
@@ -461,7 +490,7 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
    * The ones that need an AI add-on are only shown once the cloud has said
    * it has it; the plain filters are always available.
    */
-  const styles = PHOTO_STYLES.filter((s) => !s.ai || canPaint === true);
+  const styles = availableStyles(canDo);
 
   /** The share card, built by the cloud with the caption burned into it. */
   const cardOptions = {
@@ -517,22 +546,32 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
         className="absolute inset-0 flex items-center justify-center overflow-hidden"
         style={{ cursor: zoom > 1.01 ? (dragging ? 'grabbing' : 'grab') : 'default' }}
       >
-        <img
-          src={displayedUrl || undefined}
-          alt={photo.title}
-          draggable={false}
-          onLoad={(e) => setLoadedUrl(e.currentTarget.src)}
-          onError={onImageError}
-          className="max-h-full max-w-full select-none object-contain shadow-2xl transition-opacity duration-200"
-          style={{
-            width: view.w ? fitW * zoom : undefined,
-            height: view.w ? fitH * zoom : undefined,
-            maxWidth: 'none',
-            maxHeight: 'none',
-            opacity: loading ? 0.55 : 1,
-            transform: `translate(${pan.x}px, ${pan.y}px)`,
-          }}
-        />
+        {/*
+          A cut-out photograph is shown over a chequerboard, because the
+          transparency the cloud gave it is invisible against a plain dark
+          ground — and the cut is the whole point of asking for it.
+        */}
+        <div
+          className={cutOut ? 'nb-checker inline-block' : 'inline-block'}
+          style={{ lineHeight: 0 }}
+        >
+          <img
+            src={displayedUrl || undefined}
+            alt={photo.title}
+            draggable={false}
+            onLoad={(e) => setLoadedUrl(e.currentTarget.src)}
+            onError={onImageError}
+            className="max-h-full max-w-full select-none object-contain shadow-2xl transition-opacity duration-200"
+            style={{
+              width: view.w ? fitW * zoom : undefined,
+              height: view.w ? fitH * zoom : undefined,
+              maxWidth: 'none',
+              maxHeight: 'none',
+              opacity: loading ? 0.55 : 1,
+              transform: `translate(${pan.x}px, ${pan.y}px)`,
+            }}
+          />
+        </div>
 
         {/* Something to look at while the photograph is on its way, and
             something honest to read if it never arrives. */}
@@ -745,6 +784,11 @@ export function PhotoLightbox({ photos, index, onIndexChange, onClose }: PhotoLi
           {widened && (
             <p className="mt-1 text-[10.5px] text-saffron/70">
               The cloud painted the rest of the frame.
+            </p>
+          )}
+          {cutOut && (
+            <p className="mt-1 text-[10.5px] text-saffron/70">
+              The cloud cut the subject out of its background, and kept the transparency.
             </p>
           )}
         </div>

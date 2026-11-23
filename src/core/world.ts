@@ -111,6 +111,11 @@ function tileKey(kind: TileKind, tx: number, ty: number, lod: BuildingLod): stri
   return `${kind}:${tx}_${ty}:${lod}`;
 }
 
+/** The key a building tile's level of detail is remembered under. */
+function buildingKey(tx: number, ty: number): string {
+  return `${tx}_${ty}`;
+}
+
 /**
  * Distance from a point to a tile's footprint.
  *
@@ -206,6 +211,25 @@ export class WorldManager {
     /** The most recent chunk timings, newest last. */
     recent: [] as { kind: string; tile: string; fetchMs: number; buildMs: number; verts: number }[],
   };
+  /**
+   * The level of detail each building chunk is built at, by tile.
+   *
+   * The working set is worked out again on every camera tick, and for every
+   * tile in the grid it needs to know what is already there. Finding that
+   * out by walking the list of loaded chunks costs a scan of the whole city
+   * for every tile in the grid; a map answers it in one step.
+   */
+  private buildingLods = new Map<string, BuildingLod>();
+  /**
+   * The place the camera is on its way to.
+   *
+   * Its chunks are wanted before the camera arrives: the camera takes a
+   * second or two to fly to a landmark, and the detailed chunks for where it
+   * is going are not the ones under the camera at the moment. Asking for
+   * them at the start of the move means they are built by the time it gets
+   * there, instead of the city sharpening up underneath the visitor.
+   */
+  private primed: { x: number; z: number; radius: number } | null = null;
   private phase = 'explore';
   /**
    * The radius, in metres, of the city that is currently built.
@@ -480,6 +504,11 @@ export class WorldManager {
       centerX: res.tx * TILE + TILE / 2,
       centerZ: -(res.ty * TILE + TILE / 2),
     });
+    // A building tile exists at one level of detail, so the tile it
+    // replaced is no longer the one this tile index holds.
+    if (res.kind === 'buildings') {
+      this.buildingLods.set(buildingKey(res.tx, res.ty), res.lod);
+    }
     this.bytes += res.positions.byteLength + (res.indices?.byteLength ?? 0);
     this.emit();
     this.emitStats(this.phase);
@@ -577,6 +606,7 @@ export class WorldManager {
         tile.geometry.dispose();
         this.tiles.delete(k);
         this.settled.delete(k);
+        this.buildingLods.delete(buildingKey(tile.tx, tile.ty));
       }
     }
     this.emit();
@@ -612,31 +642,88 @@ export class WorldManager {
 
     const tx0 = Math.floor((focusX - farR) / TILE);
     const tx1 = Math.floor((focusX + farR) / TILE);
-    // Scene z runs south, so tile ty covers z from -(ty + 1) * TILE to
-    // -ty * TILE and ty = floor(-z / TILE).
-    const ty0 = Math.floor((focusZ - farR) / TILE);
-    const ty1 = Math.floor((focusZ + farR) / TILE);
+    /*
+      The tiles are indexed by northward distance: tile ty covers north from
+      ty * TILE to (ty + 1) * TILE, and the scene's z is the negative of
+      northward distance. So the range of tiles wanted is worked out in the
+      northward frame.
+
+      Working it out in the scene's own frame instead would ask for the
+      mirror image of the city — the tiles to the south when the camera is
+      to the north. Near the origin the two agree, which is why the mistake
+      stayed hidden: the opening view sits over Cubbon Park, and the two
+      ranges are the same there. Away from it they are not, and a flight to a
+      landmark on the far side of the city arrives at bare ground, because
+      the chunks that belong there were never asked for.
+    */
+    const north = -focusZ;
+    const ty0 = Math.floor((north - farR) / TILE);
+    const ty1 = Math.floor((north + farR) / TILE);
+
+    /*
+      The place the camera is flying to.
+
+      Its chunks join the working set now, at the finest level of detail, and
+      they are asked for before the chunks under the camera — they are the
+      ones the camera is about to arrive at, and so they have the longest to
+      be built. Without them the city sharpens up underneath the visitor as
+      they arrive, which is the one thing a flight to a landmark must not do.
+    */
+    const place = this.primed;
+    let destination: { x: number; z: number; radius: number } | null = null;
+    if (place) {
+      if (Math.hypot(focusX - place.x, focusZ - place.z) < place.radius) {
+        // The camera has arrived. The place is part of the ordinary working
+        // set now, and does not need to be kept alive on its own.
+        this.primed = null;
+      } else {
+        destination = place;
+      }
+    }
+
+    /**
+     * Whether a tile belongs to the place the camera is flying to.
+     *
+     * The test is on the tile's centre, so the place is a disc rather than a
+     * square: a square would take in the corners as well, and every corner
+     * is a whole chunk of the finest detail.
+     */
+    const isDestination = (tx: number, ty: number): boolean => {
+      if (!destination) return false;
+      const cx = tx * TILE + TILE / 2;
+      const cz = -(ty * TILE + TILE / 2);
+      return Math.hypot(cx - destination.x, cz - destination.z) <= destination.radius + TILE / 2;
+    };
 
     for (let tx = tx0; tx <= tx1; tx++) {
       for (let ty = ty0; ty <= ty1; ty++) {
         const dist = tileDistance(focusX, focusZ, tx, ty);
         if (dist > farR) continue;
 
-        // What is already built for this tile, so a level change is not
-        // mistaken for a fresh request.
-        const existingLod = this.existingBuildingLod(tx, ty);
-        const lod = desiredLod(dist, radii, existingLod);
-        if (lod !== null) {
-          const key = tileKey('buildings', tx, ty, lod);
-          wanted.add(key);
-          wantedLods.add(key);
-          lodCounts[lod]++;
-          if (!this.tiles.has(key)) {
-            requests.push({
-              key,
-              dist,
-              req: { id: this.nextId++, kind: 'buildings', tx, ty, lod },
-            });
+        /*
+          The buildings of the place the camera is flying to are asked for
+          below, at the finest level of detail, and only there. Asking for
+          them here as well would put two chunks of the same tile in the
+          queue — one fine and one coarse — and whichever arrived last would
+          win, so the destination would sometimes arrive coarse.
+        */
+        if (!isDestination(tx, ty)) {
+          // What is already built for this tile, so a level change is not
+          // mistaken for a fresh request.
+          const existingLod = this.existingBuildingLod(tx, ty);
+          const lod = desiredLod(dist, radii, existingLod);
+          if (lod !== null) {
+            const key = tileKey('buildings', tx, ty, lod);
+            wanted.add(key);
+            wantedLods.add(key);
+            lodCounts[lod]++;
+            if (!this.tiles.has(key)) {
+              requests.push({
+                key,
+                dist,
+                req: { id: this.nextId++, kind: 'buildings', tx, ty, lod },
+              });
+            }
           }
         }
 
@@ -659,6 +746,47 @@ export class WorldManager {
       }
     }
 
+    /*
+      The place the camera is flying to, asked for at the finest level of
+      detail and asked for first.
+    */
+    const primedKeys = new Set<string>();
+    const primedRequests: WorkerRequest[] = [];
+    if (destination) {
+      const r = destination.radius + TILE / 2;
+      const gx0 = Math.floor((destination.x - r) / TILE);
+      const gx1 = Math.floor((destination.x + r) / TILE);
+      const gNorth = -destination.z;
+      const gy0 = Math.floor((gNorth - r) / TILE);
+      const gy1 = Math.floor((gNorth + r) / TILE);
+      for (let tx = gx0; tx <= gx1; tx++) {
+        for (let ty = gy0; ty <= gy1; ty++) {
+          if (!isDestination(tx, ty)) continue;
+          const key = tileKey('buildings', tx, ty, 0);
+          primedKeys.add(key);
+          wanted.add(key);
+          wantedLods.add(key);
+          lodCounts[0]++;
+          if (!this.tiles.has(key)) {
+            primedRequests.push({ id: this.nextId++, kind: 'buildings', tx, ty, lod: 0 });
+          }
+          /*
+            The streets and the ground under the place as well, so that the
+            visitor arrives at a city and not at a block of buildings standing
+            on bare earth.
+          */
+          for (const kind of ['roads', 'surface'] as TileKind[]) {
+            const gkey = tileKey(kind, tx, ty, 0);
+            primedKeys.add(gkey);
+            wanted.add(gkey);
+            if (!this.tiles.has(gkey)) {
+              primedRequests.push({ id: this.nextId++, kind, tx, ty, lod: 0 });
+            }
+          }
+        }
+      }
+    }
+
     this.wantedKeys = wanted;
     this.wantedLods = wantedLods;
     this.wantedLodCounts = lodCounts;
@@ -671,18 +799,32 @@ export class WorldManager {
       ),
     );
     requests.sort((a, b) => a.dist - b.dist);
-    this.queue = requests
-      .filter((r) => !inFlightKeys.has(r.key) && !this.tiles.has(r.key))
-      .map((r) => r.req);
+    this.queue = [
+      ...primedRequests.filter(
+        (r) => !inFlightKeys.has(tileKey(r.kind, r.tx, r.ty, r.lod)),
+      ),
+      ...requests
+        .filter((r) => !primedKeys.has(r.key))
+        .filter((r) => !inFlightKeys.has(r.key) && !this.tiles.has(r.key))
+        .map((r) => r.req),
+    ];
 
     // Evict chunks that fell out of range.
     const keepR = farR + TILE * 1.5;
     for (const [key, tile] of this.tiles) {
       const d = tileDistance(focusX, focusZ, tile.tx, tile.ty);
       if (d > keepR) {
+        // The chunks for the place the camera is flying to are kept, even
+        // though they are out of range: they are the ones it is about to
+        // arrive at, and building them a second time would cost more than
+        // holding on to them.
+        if (this.inPrimed(tile.tx, tile.ty)) continue;
         tile.geometry.dispose();
         this.tiles.delete(key);
         this.settled.delete(key);
+        if (tile.kind === 'buildings') {
+          this.buildingLods.delete(buildingKey(tile.tx, tile.ty));
+        }
       }
     }
 
@@ -692,10 +834,32 @@ export class WorldManager {
 
   /** The level of detail a building tile is currently built at, if any. */
   private existingBuildingLod(tx: number, ty: number): BuildingLod | null {
-    for (const tile of this.tiles.values()) {
-      if (tile.kind === 'buildings' && tile.tx === tx && tile.ty === ty) return tile.lod;
-    }
-    return null;
+    return this.buildingLods.get(buildingKey(tx, ty)) ?? null;
+  }
+
+  /**
+   * Say that the camera is on its way to a place.
+   *
+   * `z` is the scene's z — the negative of northward distance, as the scene
+   * maps local metres onto (x, height, -y).
+   *
+   * Nothing is fetched here: the chunks are asked for on the next working
+   * set, which is where every other chunk is asked for. This only marks the
+   * place, so that the working set knows to include it.
+   */
+  prime(x: number, z: number, radius = 1200): void {
+    if (this.disposed) return;
+    if (!Number.isFinite(x) || !Number.isFinite(z)) return;
+    this.primed = { x, z, radius };
+  }
+
+  /** Whether a tile lies inside the primed place. */
+  private inPrimed(tx: number, ty: number): boolean {
+    const p = this.primed;
+    if (!p) return false;
+    const cx = tx * TILE + TILE / 2;
+    const cz = -(ty * TILE + TILE / 2);
+    return Math.hypot(cx - p.x, cz - p.z) <= p.radius + TILE / 2;
   }
 
   getStats(phase = 'explore'): WorldStats {
@@ -728,6 +892,7 @@ export class WorldManager {
     for (const w of this.workers) w.terminate();
     for (const t of this.tiles.values()) t.geometry.dispose();
     this.tiles.clear();
+    this.buildingLods.clear();
   }
 }
 

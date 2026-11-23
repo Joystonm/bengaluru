@@ -9,6 +9,16 @@ import { useApp } from '../state/store';
 const SLOW = 0.055;
 /** Frame time below which the machine is clearly keeping up. */
 const FAST = 0.024;
+/**
+ * Seconds during which the frame clock is not believed after a tier change.
+ *
+ * Changing the tier is itself expensive: the shadow map may be switched on
+ * or off, every material is recompiled, and the new radius caps ask for a
+ * fresh set of chunks. All of that lands on the frames right after the
+ * change, and a controller that measures its own handiwork steps down again
+ * — and again — and the city is seen re-forming several times over.
+ */
+const GRACE = 2.5;
 
 /**
  * A tier pinned with `?quality=low|medium|high` in the address bar.
@@ -38,10 +48,30 @@ export function AdaptiveQuality() {
   // Start conservatively and let the frame clock earn the extra effects.
   const [tier, setTier] = useState<QualityTier>(pinned.current ?? START_TIER);
   const meter = useRef({ time: 0, frames: 0, slow: 0, fast: 0 });
+  /** Seconds left of the pause in which the frame clock is not believed. */
+  const grace = useRef(0);
+  /** The device pixel ratio last asked for. */
+  const lastDpr = useRef(0);
 
   useFrame((_, delta) => {
     if (pinned.current) return;
     const m = meter.current;
+
+    /*
+      The clock is not believed for a moment after the tier has changed.
+      The stall that the change itself caused would otherwise be read as the
+      machine struggling, and the controller would step down once more — and
+      the city would be seen re-forming a second time for no reason.
+    */
+    if (grace.current > 0) {
+      grace.current -= Math.min(delta, 0.5);
+      m.time = 0;
+      m.frames = 0;
+      m.slow = 0;
+      m.fast = 0;
+      return;
+    }
+
     m.time += Math.min(delta, 0.5);
     m.frames += 1;
     if (m.time < 1) return;
@@ -111,17 +141,41 @@ export function AdaptiveQuality() {
     const settings = applyTier(tier);
     useApp.getState().setQuality(tier);
 
-    setDpr(Math.min(window.devicePixelRatio || 1, settings.maxDpr));
-    gl.shadowMap.enabled = settings.shadows;
+    /*
+      `setDpr` re-creates the frame buffer, so it is only called when the
+      number actually changes.
+    */
+    const dpr = Math.min(window.devicePixelRatio || 1, settings.maxDpr);
+    if (Math.abs(dpr - lastDpr.current) > 0.01) {
+      lastDpr.current = dpr;
+      setDpr(dpr);
+    }
 
-    // Toggling the shadow map changes the shader programs, so every material
-    // has to be recompiled once.
-    scene.traverse((obj) => {
-      const mesh = obj as THREE.Mesh;
-      if (!mesh.isMesh) return;
-      const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-      for (const m of materials) if (m) m.needsUpdate = true;
-    });
+    /*
+      Toggling the shadow map changes the shader programs, so every material
+      has to be recompiled once — and the recompile is a stall of its own.
+      It is only worth paying for when the shadow map really is being turned
+      on or off: the middle tier and the low tier both have it off, and
+      stepping from one to the other changes nothing about the shaders.
+    */
+    const shadowsChanged = gl.shadowMap.enabled !== settings.shadows;
+    gl.shadowMap.enabled = settings.shadows;
+    if (shadowsChanged) {
+      scene.traverse((obj) => {
+        const mesh = obj as THREE.Mesh;
+        if (!mesh.isMesh) return;
+        const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        for (const m of materials) if (m) m.needsUpdate = true;
+      });
+    }
+
+    /*
+      The tier has just changed, so the frame clock is not to be believed for
+      a moment: the recompile above and the chunks the new radius caps ask
+      for both land on the frames right after this, and measuring them would
+      make the controller step down again on the strength of its own work.
+    */
+    grace.current = GRACE;
   }, [tier, gl, scene, setDpr]);
 
   return null;

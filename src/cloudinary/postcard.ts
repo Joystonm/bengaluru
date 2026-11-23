@@ -24,6 +24,7 @@ import {
   uploadsEnabled,
 } from './config';
 import { shareCardUrl } from './shareCard';
+import { noteUse } from './usage';
 
 /**
  * Why a postcard did not reach the cloud.
@@ -149,6 +150,8 @@ export async function uploadPostcard(
         ? `postcard,bengaluru,landmark:${clean(options.landmark)}`
         : 'postcard,bengaluru',
     );
+    noteUse('upload');
+    noteUse('context');
 
     body.append(
       'context',
@@ -163,7 +166,10 @@ export async function uploadPostcard(
     );
 
     // The cloud reads the picture and names what is in it.
-    if (withAutoTagging) body.append('auto_tagging', String(AUTO_TAGGING));
+    if (withAutoTagging) {
+      body.append('auto_tagging', String(AUTO_TAGGING));
+      noteUse('auto-tagging');
+    }
 
     return body;
   };
@@ -254,6 +260,24 @@ export async function uploadPostcard(
 }
 
 /**
+ * Remember the postcard, so that the wall can show it even when the account
+ * does not let the cloud list what it holds.
+ */
+export function rememberSentPostcard(
+  publicId: string,
+  options: { caption: string; landmark: string | null; autoTags: string[] },
+): void {
+  if (!publicId) return;
+  rememberPostcard({
+    publicId,
+    caption: options.caption,
+    landmark: options.landmark,
+    sentAt: new Date().toISOString(),
+    autoTags: options.autoTags,
+  });
+}
+
+/**
  * The address of the postcard as the cloud will deliver it.
  *
  * This is the same card the landmark photographs are made with: the crop
@@ -266,11 +290,64 @@ export async function uploadPostcard(
  * name is used. The account may not have it yet, in which case the cloud
  * answers the named address with an error and the inline card stands in for
  * it — which is the same arrangement the photograph viewer makes.
+ *
+ * A postcard carries no credit line. It is the visitor's own picture of the
+ * city, so there is nothing to credit, and the line that used to say so was
+ * the one the caption was written over.
  */
 export function postcardCardUrl(
   publicId: string,
-  options: { title: string; credit: string; kicker?: string },
+  options: { title: string; credit?: string; kicker?: string },
   named: string = 'bengaluru_card',
 ): string {
   return shareCardUrl(publicId, options, named);
+}
+
+/* ------------------------------------------------------- the sent ones -- */
+
+/**
+ * A postcard this browser sent.
+ *
+ * The cloud holds the picture; this holds the words that went with it. It is
+ * the fallback for the wall: when the account does not allow the cloud to
+ * list what it holds, the visitor can still see what they sent.
+ */
+export interface SentPostcard {
+  /** The Cloudinary public ID the frame was given. */
+  publicId: string;
+  /** The caption written onto the card. */
+  caption: string;
+  /** The landmark it was taken of, when there was one. */
+  landmark: string | null;
+  /** When it was sent, as an ISO date. */
+  sentAt: string;
+  /** The words the cloud found in the picture. */
+  autoTags: string[];
+}
+
+const SENT_KEY = 'nb.postcards.sent';
+
+/** Every postcard this browser has sent. */
+export function sentPostcards(): SentPostcard[] {
+  if (typeof localStorage === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem(SENT_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as SentPostcard[];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Remember a postcard this browser sent. */
+export function rememberPostcard(postcard: SentPostcard): void {
+  if (typeof localStorage === 'undefined') return;
+  try {
+    const all = sentPostcards().filter((p) => p.publicId !== postcard.publicId);
+    all.unshift(postcard);
+    localStorage.setItem(SENT_KEY, JSON.stringify(all.slice(0, 60)));
+  } catch {
+    // A full or disabled storage is not a reason to lose the postcard.
+  }
 }

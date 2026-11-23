@@ -6,6 +6,7 @@ import { rig } from '../three/rig';
 import { setFocusGoal } from '../three/focus';
 import { localToLonLat } from '../core/terrain';
 import { ConditionsPanel } from './ConditionsPanel';
+import { CloudinaryMenu } from './CloudinaryMenu';
 
 const TIMES: Array<'dawn' | 'day' | 'dusk' | 'night'> = ['dawn', 'day', 'dusk', 'night'];
 
@@ -150,6 +151,12 @@ export function Hud() {
             changes both rarely and both need a sentence of explanation.
           */}
           <ConditionsPanel />
+
+          {/*
+            What the cloud is doing for this city: the features, the
+            delivery addresses, and the wall of postcards everybody has sent.
+          */}
+          <CloudinaryMenu />
 
           {/*
             A postcard of this exact view.

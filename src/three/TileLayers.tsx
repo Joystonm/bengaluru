@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { world } from '../core/world';
-import type { TileKind } from '../core/tileWorker';
+import type { BuildingLod, TileKind } from '../core/tileWorker';
 import { quality } from '../core/quality';
 import { useApp } from '../state/store';
 import { applyFacadeShader, setFacadeLook } from './facade';
@@ -25,6 +25,15 @@ interface LayerProps {
   kind: TileKind;
   lod: 0 | 1 | 2;
   material: THREE.Material;
+  /** Bumped every time a chunk lands. */
+  version: number;
+  /**
+   * The finest chunk in memory for each building tile.
+   *
+   * Given to the building layers only; the roads and the ground are always
+   * at one level and have nothing to choose between.
+   */
+  finest?: Map<string, BuildingLod>;
   renderOrder?: number;
   castShadow?: boolean;
   receiveShadow?: boolean;
@@ -34,17 +43,37 @@ function TileLayer({
   kind,
   lod,
   material,
+  version,
+  finest,
   renderOrder = 0,
   castShadow = false,
   receiveShadow = false,
 }: LayerProps) {
-  const version = useWorldVersion();
   // Re-renders when the quality tier changes; the tier decides whether the
   // simplified blocks are drawn at all.
   const tier = useApp((s) => s.quality);
   const list = useMemo(
-    () => [...world.tiles.values()].filter((t) => t.kind === kind && t.lod === lod),
-    [version, kind, lod],
+    () =>
+      [...world.tiles.values()].filter((t) => {
+        if (t.kind !== kind || t.lod !== lod) return false;
+        /*
+          A tile can be in memory at two levels of detail at once: the chunk
+          built for the view the camera has left, and the one being built for
+          the view it is flying to. The old one is only thrown away when the
+          new one lands, so for the length of that build both are here.
+
+          Drawing both puts two copies of the same buildings on top of each
+          other, and they fight for the depth buffer — which reads as the
+          city flickering and tearing itself apart. Only the finer of the two
+          is drawn.
+        */
+        if (finest) {
+          const f = finest.get(`${t.tx}_${t.ty}`);
+          if (f !== undefined && f !== lod) return false;
+        }
+        return true;
+      }),
+    [version, kind, lod, finest],
   );
 
   // The furthest level is the first thing to go when the machine is
@@ -84,6 +113,25 @@ export function TileLayers({
   weather?: 'clear' | 'monsoon';
 }) {
   const tier = useApp((s) => s.quality);
+  /** Bumped every time a chunk lands. */
+  const version = useWorldVersion();
+
+  /**
+   * The finest chunk in memory for each building tile.
+   *
+   * A tile that is being rebuilt at another level of detail is in memory
+   * twice for a while, and only the finer of the two is drawn.
+   */
+  const finest = useMemo(() => {
+    const m = new Map<string, BuildingLod>();
+    for (const t of world.tiles.values()) {
+      if (t.kind !== 'buildings') continue;
+      const key = `${t.tx}_${t.ty}`;
+      const current = m.get(key);
+      if (current === undefined || t.lod < current) m.set(key, t.lod);
+    }
+    return m;
+  }, [version]);
 
   /** The glow each surface sits at before a festival is added on top of it. */
   const base = useRef({ road: 0, surface: 0, building: 0, weight: 1 });
@@ -223,34 +271,93 @@ export function TileLayers({
       <TileLayer
         kind="buildings"
         lod={0}
+        version={version}
+        finest={finest}
         renderOrder={2}
         material={materials.detail}
         castShadow
         receiveShadow
       />
-      <TileLayer kind="buildings" lod={1} renderOrder={1} material={materials.mid} castShadow />
-      <TileLayer kind="buildings" lod={2} renderOrder={1} material={materials.far} />
+      <TileLayer
+        kind="buildings"
+        lod={1}
+        version={version}
+        finest={finest}
+        renderOrder={1}
+        material={materials.mid}
+        castShadow
+      />
+      <TileLayer
+        kind="buildings"
+        lod={2}
+        version={version}
+        finest={finest}
+        renderOrder={1}
+        material={materials.far}
+      />
       <TileLayer
         kind="surface"
         lod={0}
+        version={version}
         renderOrder={0}
         material={materials.surface}
         receiveShadow
       />
-      <TileLayer kind="roads" lod={0} renderOrder={3} material={materials.road} receiveShadow />
+      <TileLayer
+        kind="roads"
+        lod={0}
+        version={version}
+        renderOrder={3}
+        material={materials.road}
+        receiveShadow
+      />
     </group>
   );
 }
 
 /**
  * Keeps the streaming manager pointed at whatever the camera is looking at.
+ *
+ * The working set is worked out on a slow clock rather than on every tick of
+ * the camera. The camera moves the focus point every frame while it is
+ * flying to a landmark, and the working set is a walk over the whole city:
+ * working it out sixty times a second while the camera is in the air is
+ * work for nothing — the chunks cannot arrive that fast either way — and it
+ * lands on the same frames as the chunks that are arriving.
+ *
+ * The focus point is read straight off the store rather than watched, so
+ * that a camera in flight does not re-render this layer sixty times a
+ * second to say that it has not moved much.
  */
 export function WorldStreamer() {
-  const focus = useApp((s) => s.focus);
   const mode = useApp((s) => s.mode);
   const tier = useApp((s) => s.quality);
+
   useEffect(() => {
-    world.update(focus.x, focus.z, focus.altitude, mode);
-  }, [focus.x, focus.z, focus.altitude, mode, tier]);
+    let lastX = Number.NaN;
+    let lastZ = Number.NaN;
+    let lastAlt = Number.NaN;
+
+    const update = () => {
+      const f = useApp.getState().focus;
+      lastX = f.x;
+      lastZ = f.z;
+      lastAlt = f.altitude;
+      world.update(f.x, f.z, f.altitude, mode);
+    };
+
+    // Straight away: the working set has to exist before the first frame is
+    // worth drawing.
+    update();
+
+    const timer = window.setInterval(() => {
+      const f = useApp.getState().focus;
+      if (f.x === lastX && f.z === lastZ && f.altitude === lastAlt) return;
+      update();
+    }, 200);
+
+    return () => window.clearInterval(timer);
+  }, [mode, tier]);
+
   return null;
 }

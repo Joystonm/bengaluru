@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useFilm } from '../state/filmStore';
 import {
   videoHlsFor,
   videoPosterFor,
-  videoSpriteFor,
+  videoPreviewFor,
   videoUrlFor,
 } from '../cloudinary/videoDelivery';
 
@@ -12,8 +12,9 @@ import {
  *
  * Two states: the recorder running, and the film that came of it. When the
  * film reached the cloud it is delivered from there — with the codec the
- * browser asked for, a poster frame cut out of the film by the cloud, and
- * the whole film laid out as a strip of frames for scrubbing.
+ * browser asked for, a poster frame cut out of the film by the cloud, the
+ * same film as an adaptive-streaming manifest, and the film taken apart by
+ * the cloud into an animation.
  *
  * The delivery URL is shown on screen, because a media pipeline is worth
  * more when you can see what it is doing.
@@ -34,15 +35,47 @@ export function FilmStudio() {
 
   /** Where the film is being delivered from. */
   const publicId = film?.publicId ?? null;
+
+  /**
+   * The cloud's copy of the film would not play.
+   *
+   * The copy recorded on this machine takes its place, because a film that
+   * was taken should be watchable even when the cloud's delivery of it
+   * fails — and the panel says so, rather than leaving a black rectangle.
+   */
+  const [cloudBroken, setCloudBroken] = useState(false);
+  /** The animation the cloud made of the film would not load. */
+  const [previewBroken, setPreviewBroken] = useState(false);
+  /** The film the two of them belong to. */
+  const [filmFor, setFilmFor] = useState(publicId);
+
+  // A new film gets a new delivery, so whatever went wrong with the last
+  // one says nothing about this one. The reset happens while rendering,
+  // so that there is never a moment in which the last film's failure is
+  // showing against the new one.
+  if (filmFor !== publicId) {
+    setFilmFor(publicId);
+    setCloudBroken(false);
+    setPreviewBroken(false);
+  }
+
   const delivery = useMemo(() => {
     if (!publicId) return null;
     return {
       video: videoUrlFor(publicId, { quality: 'auto', format: 'auto' }),
       poster: videoPosterFor(publicId, 1280, 1),
-      sprite: videoSpriteFor(publicId, 320),
+      preview: videoPreviewFor(publicId, 240),
       hls: videoHlsFor(publicId),
     };
   }, [publicId]);
+
+  /** The film on screen: the cloud's copy, or the one on this machine. */
+  const source = cloudBroken
+    ? (film?.localUrl ?? undefined)
+    : (delivery?.video ?? film?.localUrl ?? undefined);
+
+  /** The poster belongs to the cloud's copy, so it goes when that does. */
+  const poster = cloudBroken ? undefined : delivery?.poster;
 
   if (status === 'idle') return null;
 
@@ -104,17 +137,26 @@ export function FilmStudio() {
 
         {status === 'ready' && film && (
           <div className="nb-panel nb-panel-solid overflow-hidden rounded-sm border border-white/10">
-            <video
-              key={delivery?.video ?? film.localUrl ?? ''}
-              src={delivery?.video ?? film.localUrl ?? undefined}
-              poster={delivery?.poster}
-              controls
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full bg-ink-950"
-            />
+            {source ? (
+              <video
+                key={source}
+                src={source}
+                poster={poster}
+                controls
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="block w-full bg-ink-950"
+                onError={() => setCloudBroken(true)}
+              />
+            ) : (
+              <div className="grid aspect-video place-items-center px-5 text-center">
+                <p className="text-[11px] leading-relaxed text-mist-400">
+                  The film could not be played.
+                </p>
+              </div>
+            )}
 
             <div className="px-5 py-4">
               <div className="flex flex-wrap items-center gap-2">
@@ -132,6 +174,22 @@ export function FilmStudio() {
                 <p className="mt-3 text-[11.5px] leading-relaxed text-mist-400">{note}</p>
               )}
 
+              {/*
+                The cloud's copy did not play.
+
+                Said plainly, because the panel below goes on showing the
+                cloud's addresses — and a reader who took those at face
+                value would be told the film was being served when it was
+                not.
+              */}
+              {cloudBroken && (
+                <p className="mt-3 text-[11.5px] leading-relaxed text-mist-400">
+                  {film.localUrl
+                    ? 'The cloud’s copy of the film would not play, so the film on screen is the one recorded on this machine.'
+                    : 'The cloud’s copy of the film would not play, and there is no copy on this machine to fall back on.'}
+                </p>
+              )}
+
               {delivery && (
                 <>
                   <p className="mt-3 text-[11.5px] leading-relaxed text-mist-400">
@@ -143,20 +201,28 @@ export function FilmStudio() {
                     {delivery.video}
                   </p>
                   {delivery.hls && (
-                    <p className="mt-1.5 break-all font-mono text-[9.5px] leading-relaxed text-mist-500/70">
-                      HLS: {delivery.hls}
-                    </p>
+                    <>
+                      <p className="mt-1.5 break-all font-mono text-[9.5px] leading-relaxed text-mist-500/70">
+                        HLS: {delivery.hls}
+                      </p>
+                      <p className="mt-1 text-[10px] leading-relaxed text-mist-500">
+                        The same film as an adaptive-streaming manifest — a ladder of
+                        renditions the browser climbs or comes down as the connection
+                        changes.
+                      </p>
+                    </>
                   )}
-                  {delivery.sprite && (
-                    <div className="mt-3">
+                  {delivery.preview && !previewBroken && (
+                    <div className="mt-3 flex items-start gap-3">
                       <img
-                        src={delivery.sprite}
-                        alt="The film, laid out by Cloudinary as a strip of frames"
-                        className="h-10 w-full rounded-sm object-cover opacity-70"
+                        src={delivery.preview}
+                        alt="The film, played back by Cloudinary as an animation"
+                        className="h-12 w-auto shrink-0 rounded-sm border border-white/10 opacity-80"
+                        onError={() => setPreviewBroken(true)}
                       />
-                      <p className="mt-1 text-[10px] text-mist-500">
-                        The film as a strip of frames — one image, cut out of the film by
-                        the cloud.
+                      <p className="text-[10px] leading-relaxed text-mist-500">
+                        The film as an animation — the cloud took it apart into frames and
+                        put it back together, and the whole thing is one picture.
                       </p>
                     </div>
                   )}

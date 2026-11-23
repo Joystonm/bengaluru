@@ -42,6 +42,17 @@ export function useBootstrap(): Bootstrap {
   const [stats, setStats] = useState<WorldStats>(() => world.getStats());
   const started = useRef(false);
 
+  /**
+   * Whether the streaming statistics are still wanted.
+   *
+   * They are shown on the loading screen and nowhere else. Once the city is
+   * up that screen is gone, and the subscription stops with it: every chunk
+   * that lands would otherwise put the numbers into React state and
+   * re-render the page — the canvas and every layer in it — which is the
+   * last thing a city needs while its own chunks are arriving.
+   */
+  const wanted = useRef(true);
+
   useEffect(() => {
     if (started.current) return;
     started.current = true;
@@ -70,7 +81,46 @@ export function useBootstrap(): Bootstrap {
       });
   }, []);
 
-  useEffect(() => world.subscribeStats((s) => setStats(s)), []);
+  /*
+    The statistics arrive with every chunk that lands, which is dozens of
+    times a second while the city is building. They are only ever shown as
+    a percentage, so they go into React state a few times a second rather
+    than every time — and the last one is always delivered, so that the city
+    is never held back waiting for a number that was never pushed.
+  */
+  useEffect(() => {
+    const PUSH_MS = 150;
+    let last = 0;
+    let pending: WorldStats | null = null;
+    let timer = -1;
+
+    const flush = () => {
+      timer = -1;
+      const s = pending;
+      if (!s) return;
+      pending = null;
+      last = performance.now();
+      setStats(s);
+    };
+
+    const off = world.subscribeStats((s) => {
+      if (!wanted.current) return;
+      const now = performance.now();
+      if (now - last >= PUSH_MS) {
+        last = now;
+        pending = null;
+        setStats(s);
+        return;
+      }
+      pending = s;
+      if (timer < 0) timer = window.setTimeout(flush, PUSH_MS);
+    });
+
+    return () => {
+      off();
+      if (timer >= 0) window.clearTimeout(timer);
+    };
+  }, []);
 
   const tasks = useMemo<BootTask[]>(() => {
     const detailTotal = Math.max(stats.detailWanted, 1);
@@ -113,6 +163,11 @@ export function useBootstrap(): Bootstrap {
   }, [tasks]);
 
   const ready = tasks.every((t) => t.done);
+
+  // The city is up: the numbers are of no use to anybody now.
+  useEffect(() => {
+    if (ready) wanted.current = false;
+  }, [ready]);
 
   useEffect(() => {
     if (ready && useApp.getState().mode === 'loading') {

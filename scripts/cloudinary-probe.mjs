@@ -172,11 +172,14 @@ console.log('');
 
 /* --------------------------------------------------------------- video -- */
 console.log('VIDEO FEATURES (delivery probes)');
-await probe('video poster (so_ offset)', `${img}/so_2,w_400,q_auto,f_auto/${PUB}.jpg`);
+await probe('video poster (so_ offset, image pipeline)', `${img}/so_2,w_400,q_auto,f_auto/${PUB}.jpg`);
+await probe('video poster (so_ offset, video pipeline)', `${vid}/so_2,w_400,c_limit,q_auto,f_auto/${PUB}.jpg`);
 await probe('f_auto video', `${vid}/f_auto,q_auto/${PUB}.mp4`);
-await probe('hls m3u8', `${vid}/f_auto,q_auto,m3u8/${PUB}`);
+await probe('hls m3u8 (sp_auto)', `${vid}/sp_auto/${PUB}.m3u8`);
+await probe('hls m3u8 (with q_auto — refused)', `${vid}/sp_auto,q_auto/${PUB}.m3u8`);
 await probe('dash mpd', `${vid}/f_auto,q_auto,dash/${PUB}`);
 await probe('sp_ sprite sheet', `${vid}/sp_animated,w_400,q_auto,f_auto/${PUB}.jpg`);
+await probe('fl_animated gif (the animation)', `${vid}/fl_animated,f_gif,w_240,q_30/${PUB}.gif`);
 await probe('so_ + du_ trim', `${vid}/so_1,du_3,f_auto,q_auto/${PUB}.mp4`);
 await probe('e_volume:mute', `${vid}/e_volume:mute,f_auto/${PUB}.mp4`);
 await probe('ac_ audio codec', `${vid}/ac_aac,f_auto/${PUB}.mp4`);

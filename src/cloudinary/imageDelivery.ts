@@ -15,6 +15,7 @@
  */
 
 import { config, deliveryBase } from './config';
+import { noteDelivery, noteEffect, noteUse } from './usage';
 
 export interface ImageTransform {
   width?: number;
@@ -91,19 +92,33 @@ export function transformString(t: ImageTransform): string {
 
   if (t.aspectRatio) push('ar', t.aspectRatio);
   if (t.crop) push('c', t.crop);
-  if (t.gravity) push('g', t.gravity);
+  if (t.gravity) {
+    push('g', t.gravity);
+    // The smart crop is the one that looks at the picture and decides.
+    if (t.gravity === 'auto') noteUse('gravity');
+  }
   if (t.width !== undefined) push('w', t.width);
   if (t.height !== undefined) push('h', t.height);
-  push('q', t.quality ?? 'auto');
-  push('f', t.format ?? 'auto');
-  if (t.dpr !== undefined) push('dpr', t.dpr);
+  const quality = t.quality ?? 'auto';
+  push('q', quality);
+  if (String(quality).startsWith('auto')) noteUse('quality-auto');
+  const format = t.format ?? 'auto';
+  push('f', format);
+  if (format === 'auto') noteUse('format-auto');
+  if (t.dpr !== undefined) {
+    push('dpr', t.dpr);
+    noteUse('dpr');
+  }
   if (t.angle) push('a', t.angle);
   if (t.radius !== undefined) push('r', t.radius);
   if (t.opacity !== undefined) push('o', t.opacity);
   if (t.background) push('b', t.background);
 
   const [first] = effectList(t);
-  if (first) push('e', first);
+  if (first) {
+    push('e', first);
+    noteEffect(first);
+  }
 
   return parts.join(',');
 }
@@ -121,6 +136,7 @@ export function cropRegionComponent(region: {
   height: number;
 }): string {
   const { x, y, width, height } = region;
+  noteUse('region');
   return `c_crop,x_${Math.round(x)},y_${Math.round(y)},w_${Math.round(width)},h_${Math.round(height)}`;
 }
 
@@ -183,12 +199,19 @@ export function imageUrl(publicId: string, options: ImageOptions = {}): string {
     if (options.quality !== undefined) size.push(`q_${options.quality}`);
     if (options.format !== undefined) size.push(`f_${options.format}`);
     const [effect] = effectList(options);
-    if (effect) size.push(`e_${effect}`);
+    if (effect) {
+      size.push(`e_${effect}`);
+      noteEffect(effect);
+    }
 
     const chain = [`t_${options.named}`];
     if (size.length) chain.push(size.join(','));
     chain.push(...(options.components ?? []));
-    return `${deliveryBase()}/${chain.join('/')}/${publicId}`;
+    noteUse('named');
+    if ((options.components ?? []).length) noteUse('chained');
+    const url = `${deliveryBase()}/${chain.join('/')}/${publicId}`;
+    noteDelivery(url);
+    return url;
   }
 
   // The first effect rides in the first component; the rest are chained after
@@ -198,7 +221,10 @@ export function imageUrl(publicId: string, options: ImageOptions = {}): string {
     Boolean,
   );
   const suffix = chain.length ? `/${chain.join('/')}` : '';
-  return `${deliveryBase()}${suffix}/${publicId}`;
+  const url = `${deliveryBase()}${suffix}/${publicId}`;
+  if (chain.length > 1) noteUse('chained');
+  noteDelivery(url);
+  return url;
 }
 
 /** Convenience wrapper for landmark photographs stored under /assets/landmarks. */
@@ -348,6 +374,7 @@ export function responsiveImage(
   const srcSet = candidates
     .map((w) => `${imageUrl(publicId, { ...rest, width: w })} ${w}w`)
     .join(', ');
+  noteUse('responsive');
 
   // The placeholder is a deliberately tiny, heavily blurred rendition: a few
   // hundred bytes that arrive almost immediately and stand in for the
@@ -364,6 +391,7 @@ export function responsiveImage(
     effect: undefined,
     components: undefined,
   });
+  noteUse('lqip');
 
   return { src, srcSet, sizes: sizes ?? '', lqip };
 }
@@ -477,12 +505,13 @@ export function publicFull(
   width = 1600,
   localFallback?: string,
   effect?: string,
+  format?: 'png' | 'auto',
 ): string {
   return imageUrl(publicId, {
     width,
     crop: 'limit',
     quality: 'auto:best',
-    format: 'auto',
+    format: format ?? 'auto',
     effect,
     localFallback,
   });
@@ -516,7 +545,10 @@ export function publicGenerated(
     return '';
   }
   const t = `ar_16:9,b_gen_fill:prompt_${encodeURIComponent(prompt)},c_pad,w_${width},q_auto:best,f_auto`;
-  return `${deliveryBase()}/${t}/${publicId}`;
+  noteUse('ai-genfill');
+  const url = `${deliveryBase()}/${t}/${publicId}`;
+  noteDelivery(url);
+  return url;
 }
 
 /**
@@ -536,10 +568,11 @@ export function publicRegion(
   displayWidth = 1200,
   localFallback?: string,
   effect?: string,
+  format?: 'png' | 'auto',
 ): string {
   return imageUrl(publicId, {
     quality: 'auto:best',
-    format: 'auto',
+    format: format ?? 'auto',
     // The style is applied before the region is cut out, so a zoomed-in view
     // is the same painting as the whole photograph, seen more closely.
     effect,

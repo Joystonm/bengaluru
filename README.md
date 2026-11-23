@@ -43,6 +43,20 @@ delivery URL, so changing the caption changes the address and nothing else is
 uploaded twice. The cloud is also asked to read the picture and name what is
 in it, and the names are attached to the asset.
 
+**The postcard wall.** Every postcard anybody has sent to this city, in one
+grid, with the names the cloud gave each picture. The wall is not a list the
+app keeps — it is a list the cloud keeps: Cloudinary can list everything
+carrying a tag, so the browser asks the cloud what it holds and the pictures
+arrive from the same CDN as everything else. The **Cloudinary** button in the
+top bar opens it, along with the engine room.
+
+**The engine room.** What the cloud is doing for this city, made checkable.
+It asks the account what it can actually do, takes the last delivery address
+apart and explains every parameter in words — any Cloudinary address can be
+pasted in and read the same way — and keeps a running tally of which features
+this browser has genuinely used. The features that have *not* been used are
+listed too, and say so.
+
 **Links into the city.** The address bar follows the visitor. `?at=` the
 landmark, `?t=` the hour, `?w=` the weather, `?f=` the festival — so "the
 Vidhana Soudha in the rain at dusk" is a thing that can be sent to somebody
@@ -116,8 +130,12 @@ automatic format and quality (`f_auto`, `q_auto`) and responsive widths
 - `assetRegistry.ts` — one place that knows every asset, its public ID and its credit
 - `shareCard.ts` — the card, with the caption and the credit written on by the cloud
 - `contributions.ts` — a visitor's own photograph, uploaded unsigned
+- `uploadWidget.ts` — Cloudinary's own uploader, for offering a photograph
 - `postcard.ts` — a visitor's own frame of the city, uploaded unsigned and named by the cloud
+- `collections.ts` — listing what the cloud holds, by tag: the postcard wall
 - `effects.ts`, `capabilities.ts` — the AI styles, and the account's answer about them
+- `usage.ts` — a record of which features this browser has actually used
+- `explain.ts` — a Cloudinary delivery address, taken apart and read in words
 
 `CLOUDINARY.md` sets out exactly which Cloudinary features are used where.
 

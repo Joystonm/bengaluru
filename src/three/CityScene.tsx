@@ -14,6 +14,7 @@ import { Weather } from './Weather';
 import { Festivals } from './Festivals';
 import { Firecrackers } from './Firecrackers';
 import { rig, normaliseRig } from './rig';
+import { hasFocusGoal } from './focus';
 import { world } from '../core/world';
 import { quality, FOG_RANGES } from '../core/quality';
 import { useApp } from '../state/store';
@@ -72,7 +73,6 @@ function SceneFog({ color }: { color: string }) {
 function Lighting({ preset }: { preset: ReturnType<typeof skyFor> }) {
   const sunRef = useRef<THREE.DirectionalLight>(null);
   const { scene, gl } = useThree();
-  const focus = useApp((s) => s.focus);
   const tier = useApp((s) => s.quality);
   // The sun's direction is worked out once and kept, rather than built again
   // on every frame: this runs sixty times a second for the whole life of
@@ -100,13 +100,24 @@ function Lighting({ preset }: { preset: ReturnType<typeof skyFor> }) {
     l.shadow.bias = -0.0004;
     l.shadow.normalBias = 0.8;
     cam.updateProjectionMatrix();
-    l.target.position.set(focus.x, 0, focus.z);
-    l.target.updateMatrixWorld();
+  }, [preset, scene, tier]);
+
+  /*
+    The light's target is attached once and then left alone.
+
+    It used to be attached and detached again every time the focus point
+    moved — which is every frame while the camera is in flight — and each
+    of those attachments took the target out of the scene and put it back,
+    with the scene's own children reordered around it.
+  */
+  useEffect(() => {
+    const l = sunRef.current;
+    if (!l) return;
     scene.add(l.target);
     return () => {
       scene.remove(l.target);
     };
-  }, [preset, scene, focus.x, focus.z, tier]);
+  }, [scene]);
 
   // Each hour of the day carries its own exposure.
   useEffect(() => {
@@ -120,13 +131,20 @@ function Lighting({ preset }: { preset: ReturnType<typeof skyFor> }) {
     dir.current.set(...preset.sunPosition).normalize();
   }, [preset]);
 
-  // Keep the sun overhead of whatever the camera is centred on.
+  /**
+   * Keep the sun overhead of whatever the camera is centred on.
+   *
+   * The focus point is read from the rig rather than from the store. The
+   * store's copy changes on every tick of a camera in flight, and a layer
+   * that re-renders on every tick of a camera in flight is a layer that
+   * takes the whole scene down with it.
+   */
   useFrame(() => {
     const l = sunRef.current;
     if (!l) return;
     const d = dir.current;
-    l.target.position.set(focus.x, 0, focus.z);
-    l.position.set(focus.x + d.x * 2200, d.y * 2200, focus.z + d.z * 2200);
+    l.target.position.set(rig.target.x, 0, rig.target.z);
+    l.position.set(rig.target.x + d.x * 2200, d.y * 2200, rig.target.z + d.z * 2200);
     l.target.updateMatrixWorld();
   });
 
@@ -154,6 +172,17 @@ function IdleCamera() {
 
   useFrame((_, delta) => {
     if (mode !== 'landing') return;
+    /*
+      Stand down while the camera is on its way somewhere.
+
+      This drift and the flight to a landmark both write to the same rig,
+      and the drift wins if it goes last: the camera is pulled back to the
+      opening view every frame while it is trying to arrive somewhere else.
+      The visitor sees the city lurching about under them, and the streaming
+      manager sees a focus point that will not settle, so the chunks under
+      the camera keep changing and the city keeps re-forming.
+    */
+    if (hasFocusGoal()) return;
     t.current += delta;
     const s = t.current;
     rig.target.set(

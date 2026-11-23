@@ -5,8 +5,15 @@
  * visitor can also record a short film of it and keep it. That film is
  * uploaded to Cloudinary and delivered back through the video pipeline, which
  * knows how to serve a movie properly: it picks the codec the browser wants,
- * it can cut a poster frame out of the film for free, it can lay the film out
- * as a strip of frames for scrubbing, and it can stream it as HLS.
+ * it can cut a poster frame out of the film for free, it can take the film
+ * apart into an animation, and it can stream it as HLS.
+ *
+ * Every address in this file was checked against the cloud before it was
+ * written down. Three of them were wrong at first — the poster was asked for
+ * through the image pipeline, which answers with a 404 for a video, the
+ * streaming manifest carried a quality parameter it does not take, and the
+ * sprite sheet is refused by the cloud outright — and a broken address on
+ * screen is worse than no address at all.
  *
  * The video helpers here are all addressed by public ID, because a film made
  * in the browser is given its ID when it is uploaded.
@@ -20,6 +27,7 @@ import {
   uploadsEnabled,
   videoDeliveryBase,
 } from './config';
+import { noteDelivery, noteUse } from './usage';
 
 export interface VideoTransform {
   width?: number;
@@ -100,10 +108,13 @@ export function videoUrlFor(publicId: string, options: VideoOptions = {}): strin
     return '';
   }
   const t = videoTransformString(options);
-  return `${videoDeliveryBase()}${t ? `/${t}` : ''}/${publicId}`;
+  noteUse('video');
+  const url = `${videoDeliveryBase()}${t ? `/${t}` : ''}/${publicId}`;
+  noteDelivery(url);
+  return url;
 }
 
-/** A poster frame for a video, taken from the image pipeline. */
+/** A poster frame for a video, cut out of the film by the cloud. */
 export function videoPoster(slug: string, file: string, width = 1200): string {
   if (!config.enabled) {
     return `${import.meta.env.BASE_URL}assets/landmarks/${slug}/${file}`;
@@ -117,6 +128,12 @@ export function videoPoster(slug: string, file: string, width = 1200): string {
  * The poster is not a copy of the film and it is not stored separately: it is
  * cut out of the film by the cloud, at whatever moment is asked for, and
  * delivered as an ordinary image.
+ *
+ * It has to be asked for through the *video* pipeline. The image pipeline
+ * answers with a 404 for a film's public ID, because a film is not a
+ * picture — and the frame is cropped to fit rather than cut, because a film
+ * of the city is as wide as the window it was recorded in, and a poster that
+ * cut the sides off would show a different city from the one below it.
  */
 export function videoPosterFor(
   publicId: string,
@@ -125,19 +142,31 @@ export function videoPosterFor(
 ): string {
   if (!config.enabled) return '';
   const so = offsetSeconds > 0 ? `so_${offsetSeconds},` : '';
-  return `https://res.cloudinary.com/${config.cloudName}/image/upload/${so}w_${width},c_fill,q_auto,f_auto/${publicId}.jpg`;
+  noteUse('video-poster');
+  return `${videoDeliveryBase()}/${so}w_${width},c_limit,q_auto,f_auto/${publicId}.jpg`;
 }
 
 /**
- * The film laid out as a strip of frames.
+ * The film as an animation.
  *
- * Cloudinary cuts the film into a sprite sheet — a single wide image holding
- * the frames side by side — which is what lets a scrubber show the picture
- * that is coming next without downloading the whole film.
+ * The cloud takes the film apart into its frames and hands them back in one
+ * picture that plays by itself — an animated GIF, delivered from the video
+ * pipeline.
+ *
+ * The animation is cut short with `du_`, because this is a preview rather
+ * than the film itself: the whole film is watched in the player above, and
+ * a picture of every frame of a thirty-second film is a heavy thing to fetch
+ * for something that is only there to be looked at.
+ *
+ * The frame-strip form of this (`sp_animated`, the film laid out as one wide
+ * image of frames side by side) is refused by the cloud with a 400, on this
+ * account and on Cloudinary's own, so it is not used. The animation is the
+ * thing that verifiably plays.
  */
-export function videoSpriteFor(publicId: string, width = 320): string {
+export function videoPreviewFor(publicId: string, width = 240, seconds = 5): string {
   if (!config.enabled) return '';
-  return `https://res.cloudinary.com/${config.cloudName}/image/upload/sp_animated,w_${width},c_scale,q_auto,f_auto/${publicId}.jpg`;
+  noteUse('video-preview');
+  return `${videoDeliveryBase()}/fl_animated,f_gif,w_${width},q_30,du_${seconds}/${publicId}.gif`;
 }
 
 /** Adaptive-streaming manifest for a video (HLS). */
@@ -146,10 +175,18 @@ export function videoHlsUrl(slug: string, file: string): string {
   return videoHlsFor(videoPublicId(slug, file));
 }
 
-/** Adaptive-streaming manifest for a video already in the cloud. */
+/**
+ * Adaptive-streaming manifest for a video already in the cloud.
+ *
+ * The streaming profile is asked for by name — `sp_auto` — and the manifest
+ * ends in `.m3u8`. Nothing else goes in the address: the profile already
+ * carries the quality ladder, and a quality parameter beside it is refused
+ * with a 400.
+ */
 export function videoHlsFor(publicId: string): string {
   if (!config.enabled) return '';
-  return `${videoDeliveryBase()}/f_auto,q_auto,m3u8/${publicId}`;
+  noteUse('video-hls');
+  return `${videoDeliveryBase()}/sp_auto/${publicId}.m3u8`;
 }
 
 /** The result of uploading a film, as Cloudinary reports it. */
@@ -191,6 +228,7 @@ export async function uploadFilm(
   body.append('folder', `${config.root}/films`);
   body.append('public_id', options.publicId);
   body.append('tags', options.tags ?? 'film,bengaluru');
+  noteUse('upload');
 
   const res = await fetch(
     `https://api.cloudinary.com/v1_1/${config.cloudName}/video/upload`,

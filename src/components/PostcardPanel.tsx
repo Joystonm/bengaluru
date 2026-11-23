@@ -76,23 +76,31 @@ export function PostcardPanel() {
   /** The words written onto the card, large. */
   const title = caption.trim() || DEFAULT_CAPTION;
 
-  /** The small line under them: when the picture was taken. */
-  const credit = useMemo(() => {
-    const bits: string[] = [timeOfDay];
+  /**
+   * The line above them: where the picture was taken, and what the city was
+   * doing.
+   *
+   * The card used to carry a third line as well — the hour, the weather and
+   * "a visitor's postcard" — but the cloud wrote it under the caption and the
+   * two lines ran into each other. So the context is folded into the line
+   * above the caption instead: the card still says where and when, and
+   * nothing is written over the visitor's own words.
+   */
+  const kicker = useMemo(() => {
+    const bits: string[] = [landmark?.name ?? 'Namma Bengaluru', timeOfDay];
     if (weather !== 'clear') bits.push(weather);
     if (festival !== 'none') bits.push(festival);
-    bits.push("a visitor's postcard");
     return bits.join(' · ');
-  }, [timeOfDay, weather, festival]);
+  }, [landmark, timeOfDay, weather, festival]);
 
-  /** The line above them: where the picture was taken. */
-  const kicker = landmark?.name ?? 'Namma Bengaluru';
-
-  /** The three lines the card is written with. */
-  const cardOptions = useMemo(
-    () => ({ title, credit, kicker }),
-    [title, credit, kicker],
-  );
+  /**
+   * The card's words.
+   *
+   * There is no credit line: a postcard is the visitor's own picture of the
+   * city, so there is nothing to credit, and the line that would have said
+   * so was the one the caption ran into.
+   */
+  const cardOptions = useMemo(() => ({ title, kicker }), [title, kicker]);
 
   /** The card, with the crop and the quality named in the account. */
   const namedCard = publicId ? postcardCardUrl(publicId, cardOptions) : '';
@@ -361,9 +369,9 @@ export function PostcardPanel() {
                 {card}
               </p>
               <p className="mt-1.5 text-[10.5px] leading-relaxed text-mist-500">
-                The card is delivered by Cloudinary, with the caption and the credit written
-                onto it as text overlays — it is fetched as it is shown, rather than
-                composed here.
+                The card is delivered by Cloudinary, with the caption and the line of
+                context written onto it as text overlays — it is fetched as it is shown,
+                rather than composed here.
               </p>
             </>
           )}

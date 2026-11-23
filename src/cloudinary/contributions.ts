@@ -23,6 +23,7 @@ import {
   uploadPreset,
   uploadsEnabled,
 } from './config';
+import { noteUse } from './usage';
 
 /** A photograph a visitor has offered. */
 export interface Contribution {
@@ -108,6 +109,8 @@ export async function uploadContribution(
   const salt = Math.random().toString(36).slice(2, 8);
   body.append('public_id', `${stamp}-${salt}`);
   body.append('tags', `contribution,landmark:${options.slug}`);
+  noteUse('upload');
+  noteUse('context');
   body.append(
     'context',
     [

@@ -6,7 +6,8 @@ import {
   rememberContribution,
   uploadContribution,
 } from '../cloudinary/contributions';
-import { uploadsEnabled } from '../cloudinary/config';
+import { config, uploadsEnabled } from '../cloudinary/config';
+import { openUploadWidget, widgetEnabled, WidgetError } from '../cloudinary/uploadWidget';
 
 /**
  * Offer a photograph of a landmark.
@@ -14,6 +15,13 @@ import { uploadsEnabled } from '../cloudinary/config';
  * The picture goes straight from the browser to Cloudinary — it never
  * touches this server, and the API secret never comes near the browser. The
  * upload preset is unsigned, so the browser needs no credentials at all.
+ *
+ * There are two ways to offer a picture, and both end up in the same place.
+ * The plain uploader is a file input and a form body: small, always there,
+ * and it needs nothing but the preset. Cloudinary's own Upload Widget is a
+ * step up — it takes the picture from the file system, from a URL or
+ * straight from the camera on a phone, and it shows the progress of the
+ * upload and says what went wrong in the cloud's own words.
  *
  * What happens to a contributed photograph afterwards is stated plainly in
  * the form rather than left to be found out: it is published in this
@@ -38,6 +46,7 @@ export function ContributePhoto({
   const [title, setTitle] = useState('');
   const [license, setLicense] = useState<string>(CONTRIBUTION_LICENCES[0]);
   const [state, setState] = useState<'idle' | 'uploading' | 'done'>('idle');
+  const [widgetBusy, setWidgetBusy] = useState(false);
   const [error, setError] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const previewRef = useRef('');
@@ -80,6 +89,40 @@ export function ContributePhoto({
     if (!title) setTitle(f.name.replace(/\.[^.]+$/, ''));
   };
 
+  /**
+   * Record a picture the cloud now holds.
+   *
+   * Both ways of offering a photograph end here, so the picture is credited,
+   * remembered and shown in the panel in exactly the same way.
+   */
+  const register = (publicId: string, width: number | null, height: number | null) => {
+    const contribution = {
+      publicId,
+      title: title.trim() || 'A photograph of this landmark',
+      author: author.trim() || 'A visitor',
+      license,
+      uploadedAt: new Date().toISOString().slice(0, 10),
+      width,
+      height,
+    };
+    rememberContribution(slug, contribution);
+    onUploaded({
+      src: publicId,
+      publicId,
+      commonsUrl: null,
+      commonsTitle: contribution.title,
+      descriptionUrl: null,
+      author: contribution.author,
+      credit: 'Offered by a visitor',
+      license: contribution.license,
+      licenseUrl: null,
+      attributionRequired: true,
+      angle: 'contributed',
+      width,
+      height,
+    });
+  };
+
   const submit = async () => {
     if (!file) return;
     setState('uploading');
@@ -91,31 +134,7 @@ export function ContributePhoto({
         author: author.trim() || 'A visitor',
         license,
       });
-      const contribution = {
-        publicId: result.publicId,
-        title: title.trim() || file.name,
-        author: author.trim() || 'A visitor',
-        license,
-        uploadedAt: new Date().toISOString().slice(0, 10),
-        width: result.width,
-        height: result.height,
-      };
-      rememberContribution(slug, contribution);
-      onUploaded({
-        src: result.publicId,
-        publicId: result.publicId,
-        commonsUrl: null,
-        commonsTitle: contribution.title,
-        descriptionUrl: null,
-        author: contribution.author,
-        credit: 'Offered by a visitor',
-        license: contribution.license,
-        licenseUrl: null,
-        attributionRequired: true,
-        angle: 'contributed',
-        width: result.width,
-        height: result.height,
-      });
+      register(result.publicId, result.width, result.height);
       setState('done');
       setFile(null);
       clearPreview();
@@ -125,6 +144,56 @@ export function ContributePhoto({
     } catch (err) {
       setState('idle');
       setError(err instanceof Error ? err.message : 'The upload did not go through.');
+    }
+  };
+
+  /**
+   * Offer the photograph with Cloudinary's own uploader.
+   *
+   * The widget is a window of the cloud's own, drawn over the page. It is
+   * unsigned like everything else here — the preset name is the permission —
+   * and it reports what it uploaded, which is then recorded in exactly the
+   * same way as a picture offered through the plain uploader.
+   *
+   * A visitor who closes the widget without offering anything has not
+   * failed; they have changed their mind, and the panel says nothing.
+   */
+  const openTheWidget = async () => {
+    setError('');
+    setWidgetBusy(true);
+    try {
+      const uploads = await openUploadWidget({
+        folder: `${config.root}/contributions/${slug}`,
+        tags: `contribution,landmark:${slug}`,
+        context: {
+          author: author.trim() || 'A visitor',
+          license,
+          source: 'Visitor contribution',
+          title: title.trim() || 'A photograph of this landmark',
+        },
+        multiple: false,
+        sources: ['local', 'url', 'camera'],
+        formats: ['jpg', 'jpeg', 'png', 'webp'],
+        maxBytes: MAX_BYTES,
+      });
+      for (const upload of uploads) {
+        register(upload.publicId, upload.width, upload.height);
+      }
+      if (uploads.length) {
+        setState('done');
+        setTitle('');
+        setAuthor('');
+      }
+    } catch (err) {
+      if (err instanceof WidgetError && err.failure === 'cancelled') {
+        // The visitor closed the uploader without offering anything. That is
+        // not a failure and is not worth a sentence.
+        setError('');
+      } else {
+        setError(err instanceof Error ? err.message : 'The upload did not go through.');
+      }
+    } finally {
+      setWidgetBusy(false);
     }
   };
 
@@ -231,7 +300,7 @@ export function ContributePhoto({
         <p className="mt-2 text-[11px] leading-relaxed text-red-300/90">{error}</p>
       )}
 
-      <div className="mt-3 flex items-center gap-2">
+      <div className="mt-3 flex flex-wrap items-center gap-2">
         <button
           type="button"
           onClick={submit}
@@ -240,10 +309,29 @@ export function ContributePhoto({
         >
           {state === 'uploading' ? 'Uploading…' : 'Upload'}
         </button>
+        {widgetEnabled() && (
+          <button
+            type="button"
+            onClick={() => void openTheWidget()}
+            disabled={widgetBusy}
+            className="nb-btn nb-btn-ghost h-[42px] px-3 text-[11.5px] disabled:cursor-not-allowed disabled:opacity-45"
+            title="Cloudinary's own uploader — take the picture from a file, a URL or the camera"
+          >
+            {widgetBusy ? 'Opening…' : 'Use Cloudinary’s uploader'}
+          </button>
+        )}
         {state === 'done' && (
           <span className="text-[11px] text-saffron/85">Uploaded. Thank you.</span>
         )}
       </div>
+
+      {widgetEnabled() && (
+        <p className="mt-2 text-[10.5px] leading-relaxed text-mist-500">
+          Cloudinary&rsquo;s own uploader opens in a window of its own: it takes the picture
+          from a file, from a link or straight from the camera, and it is the same unsigned
+          preset that does the work.
+        </p>
+      )}
     </div>
   );
 }

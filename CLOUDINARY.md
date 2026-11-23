@@ -10,11 +10,13 @@ This is what is used, and where.
 | Feature | Used for | Where |
 | --- | --- | --- |
 | **Uploads** | a visitor's photograph, a film of the city, and a visitor's own postcard — all uploaded unsigned | `contributions.ts`, `videoDelivery.ts`, `postcard.ts` |
+| **Upload Widget** | Cloudinary's own uploader — drag and drop, camera capture, progress — for offering a photograph of a landmark | `uploadWidget.ts`, `ContributePhoto.tsx` |
 | **Transformations** | responsive `srcset`, `q_auto`, `f_auto`, `c_fill,g_auto`, blur placeholders, region zoom | `imageDelivery.ts` |
-| **AI** | `e_art` styles, `e_colorize`, `e_shadow`, `b_gen_fill` generative fill, and `auto_tagging` on every postcard | `effects.ts`, `capabilities.ts`, `PhotoLightbox.tsx`, `postcard.ts` |
-| **Video** | record → upload → deliver with `f_auto,q_auto`, `so_` poster, `sp_animated` sprite, `m3u8` HLS | `FilmRecorder.tsx`, `FilmStudio.tsx`, `videoDelivery.ts` |
-| **Text overlays** | the share card and the postcard, with the caption and credit burned in by the cloud | `shareCard.ts`, `postcard.ts` |
+| **AI** | `e_art` styles, `e_colorize`, `e_shadow`, `e_background_removal`, `e_upscale`, `b_gen_fill` generative fill, and `auto_tagging` on every postcard | `effects.ts`, `capabilities.ts`, `PhotoLightbox.tsx`, `postcard.ts` |
+| **Video** | record → upload → deliver with `f_auto,q_auto`, `so_` poster, `fl_animated` animation, `sp_auto` HLS | `FilmRecorder.tsx`, `FilmStudio.tsx`, `videoDelivery.ts` |
+| **Text overlays** | the share card and the postcard, with the caption and the context burned in by the cloud | `shareCard.ts`, `postcard.ts` |
 | **Named transformations** | `t_bengaluru_hero`, `t_bengaluru_thumb`, `t_bengaluru_card` — decided in the account, used by name | `imageDelivery.ts`, `shareCard.ts` |
+| **Listing by tag** | the postcard wall — every picture a visitor has sent, listed by the cloud and delivered as a gallery | `collections.ts`, `PostcardWall.tsx` |
 | **Structured metadata** | typed, validated fields on every photograph — landmark, category, photographer, licence, source | `scripts/cloudinary-admin-setup.mjs` |
 | **Admin API** | creates the named transformations and the metadata fields, and writes the metadata onto the photographs already in the cloud | `scripts/cloudinary-admin-setup.mjs` |
 
@@ -76,12 +78,69 @@ It carries three things the other uploads do not:
 - `context` — the caption, the landmark, the hour, the weather and the
   festival, all of which the visitor chose, attached to the asset as
   structured metadata.
-- a **card** — the picture delivered at 1200 by 630 with the caption, the
-  credit and the landmark's name written onto it by the cloud as text
-  overlays, exactly as the share card is made.
+- a **card** — the picture delivered at 1200 by 630 with the visitor's
+  caption and a line of context — the place, the hour, the weather — written
+  onto it by the cloud as text overlays, exactly as the share card is made.
+  A postcard carries no credit line: it is the visitor's own picture, so
+  there is nothing to credit, and the line that would have said so was the
+  one the caption was written over.
 
 Changing the caption rewrites the *address* of the card and nothing else: the
 caption was never in the picture, so nothing is uploaded a second time.
+
+### The upload widget
+
+**Where:** `src/cloudinary/uploadWidget.ts`, `src/components/ContributePhoto.tsx`
+
+A visitor can offer a photograph of a landmark. That upload can be made by
+hand — a `FormData` posted straight to the cloud — or by **Cloudinary's own
+Upload Widget**, which is loaded from `upload-widget.cloudinary.com` and
+opened with `window.cloudinary.openUploadWidget`.
+
+| Option | What it does |
+| --- | --- |
+| `sources` | local file, a URL, or the camera |
+| `clientAllowedFormats` | `jpg`, `jpeg`, `png`, `webp` |
+| `maxFileSize` | 12 MB, refused in the browser rather than after the upload |
+| `folder` | `bengaluru/contributions/<landmark>` |
+| `tags` | `contribution,landmark:<id>` |
+| `multiple` | several pictures in one go |
+| `styles.palette` | the widget's own chrome, in this project's colours |
+
+The widget is opened with `inline: false`, so it is a window of its own rather
+than a rectangle inside the panel, and it resolves on the `done` event. If it
+is dismissed with nothing uploaded, the promise is rejected as `cancelled`
+rather than resolving with an empty result — a visitor who changes their mind
+has not failed.
+
+The hand-rolled uploader stays in the app as well: the widget is a script from
+another origin, and if that script is blocked the photograph can still be
+offered. Both paths produce the same asset, in the same folder, with the same
+tags.
+
+### The postcard wall
+
+**Where:** `src/cloudinary/collections.ts`, `src/components/PostcardWall.tsx`
+
+Every postcard is uploaded with the tag `postcard`, and Cloudinary can list
+everything carrying a tag and hand it over as a small JSON document:
+
+```
+GET https://res.cloudinary.com/<cloud>/image/list/postcard.json
+```
+
+No key, no secret, no server — the cloud does the indexing and the browser
+asks for the list. That is what makes the wall possible: **the wall is not a
+list this app keeps, it is a list the cloud keeps.** Every visitor's postcard
+is in it, and each one is delivered from the same CDN as every other
+photograph in the city, cropped and compressed for the size it is shown at
+(`c_fill,g_auto,w_480,q_auto:eco,f_auto`).
+
+Listing by tag is an account setting rather than a default, so the call is
+allowed to fail. When it does, the wall says so plainly and shows the
+postcards this browser has sent instead — because *"nobody has sent a
+postcard"* and *"this build cannot ask"* are different sentences, and only one
+of them is true.
 
 ## Transformations
 
@@ -134,6 +193,14 @@ for it again asks for it again.
 **Subject-aware shadow.** `e_shadow` lifts a subject out of its background and
 casts a shadow under it.
 
+**Cutting out.** `e_background_removal` cuts the subject out of its background
+and keeps the transparency. The picture is then delivered as PNG and laid over
+a chequerboard, so the cut is visible rather than hidden inside a white box.
+
+**Enlarging.** `e_upscale` enlarges and sharpens the photograph in the cloud
+rather than in the browser, which is what a 12-megapixel original on a
+retina screen wants.
+
 **Generative fill.** `b_gen_fill` widens a photograph to 16:9 and paints the
 new area in the manner of the scene — more sky, more street, more of whatever
 the picture is of. The prompt is sent with the request.
@@ -154,6 +221,13 @@ this could not be done is the postcard upload, which cannot ask first: it is
 a single request made without a key, so it asks for the auto-tagging and, if
 the cloud refuses, sends the picture again without it.
 
+**Each style is gated on its own add-on.** An account can have `e_art` without
+`e_background_removal`, so the styles are not all-or-nothing behind a single
+"can paint" flag: `availableStyles()` filters the list by the capability that
+particular style needs, and a style whose add-on the cloud does not have is
+simply not offered. The plain filters — `grayscale`, `cartoonify`, `shadow` —
+cost nothing and are always offered.
+
 ## Video
 
 **Where:** `src/three/FilmRecorder.tsx`, `src/components/FilmStudio.tsx`,
@@ -172,12 +246,33 @@ delivered back with the whole of Cloudinary's video pipeline:
 | What | How |
 | --- | --- |
 | The film itself | `f_auto,q_auto` — the codec the browser asked for |
-| The poster frame | `so_1` — cut out of the film by the cloud, not stored beside it |
-| The strip of frames | `sp_animated` — the whole film as one wide image, for scrubbing |
-| Adaptive streaming | `m3u8` — the same film as an HLS manifest |
+| The poster frame | `so_1,w_1280,c_limit` — cut out of the film by the cloud, not stored beside it |
+| The animation | `fl_animated,f_gif,du_5` — the film taken apart into frames and handed back as one picture that plays |
+| Adaptive streaming | `sp_auto` + `.m3u8` — the same film as an HLS manifest |
 
 The delivery URL is shown on screen, because a media pipeline is worth more
 when you can see what it is doing.
+
+**Every one of those addresses was checked against the account before it was
+written down**, because three of them were wrong at first and a broken
+address on screen is worse than no address at all:
+
+- The poster was asked for through the *image* pipeline, which answers with a
+  404 for a film's public ID. A film is not a picture, and the frame has to be
+  cut out through the *video* pipeline. The poster is also cropped with
+  `c_limit` rather than `c_fill`, so the sides of the city are not cut off —
+  a film is as wide as the window it was recorded in.
+- The streaming manifest was asked for as `f_auto,q_auto,m3u8`, which the
+  cloud refuses with a 400: the streaming profile already carries the quality
+  ladder, and a quality parameter beside it is not allowed. The working form
+  is `sp_auto` on its own.
+- The frame strip — `sp_animated`, the whole film as one wide image of frames
+  side by side — is refused with a 400 on this account and on Cloudinary's
+  own, so it is not used. The animation is what the cloud verifiably plays.
+
+The panel is also honest about the cloud failing: if the cloud's copy of the
+film will not play, the copy recorded on this machine takes its place and the
+panel says so, rather than leaving a black rectangle on the screen.
 
 ## Text overlays
 
@@ -193,6 +288,14 @@ travels with the image rather than being added to it here.
 The characters that mean something to a delivery URL — the comma, the slash,
 the colon — are escaped, so a credit containing "Bengaluru, India: CC BY-SA
 4.0" comes out as it was written.
+
+The layers are laid out from the bottom of the card upwards, with generous
+gaps between them: the cloud measures its own text, and two lines set too
+close together are two lines that run into one another. A card with no credit
+leaves that layer out entirely and brings the name down to where the credit
+would have been, rather than leaving a hole under the words. A long caption —
+the visitor's own sentence rather than a landmark's name — is written in a
+smaller size, so it cannot be written over the line beneath it either.
 
 ---
 
@@ -256,17 +359,58 @@ answers `401 Invalid credentials` — which is why the setup script is written
 but has not been run, and why the app treats the named transformations as
 something to ask about rather than something to assume.
 
+## The engine room
+
+**Where:** `src/cloudinary/usage.ts`, `src/cloudinary/explain.ts`,
+`src/components/EngineRoom.tsx`, `src/components/CloudinaryMenu.tsx`
+
+The question a judge asks is *"which Cloudinary features did you use?"*, and
+the honest answer is a list of twenty-odd parameters spread across forty
+files — which is not an answer anybody can check. The engine room is the
+answer, made checkable. It is behind the **Cloudinary** button in the top bar
+of the city, and it says three things.
+
+**What this account can actually do.** Asked of the cloud, live, rather than
+claimed. Each add-on is probed with a 64-pixel rendition, the answer is cached
+for the session, and a feature that is not enabled shows as *not enabled*. The
+named transformations are asked about the same way. Generative fill is left
+out of the probe deliberately, because the account is charged for it and the
+question is only worth asking when somebody wants a wider frame.
+
+**What the last delivery address asked for.** The address the app most
+recently built is taken apart and every parameter is explained in words:
+`g_auto` is *"the crop is centred on what is actually in the picture rather
+than on the middle of the frame"*, `q_auto:eco` is *"the lightest compression
+that still looks right"*, `t_bengaluru_hero` is *"written down once in the
+account and used here by name"*. Any Cloudinary address can be pasted in and
+read the same way, so the panel is not only describing this app's own URLs —
+it is showing that the app knows what it is looking at.
+
+**Which features have genuinely been used.** Every delivery helper says what
+it asked for at the moment it builds the URL, so the tally is a *record of
+the requests this browser has actually made* rather than a marketing claim.
+The features that have not been used are listed too, in grey, and say so —
+because a list of only the features that happened to fire would flatter the
+project and tell the judge nothing.
+
+That registry is also what keeps this document honest. `src/cloudinary/usage.ts`
+is the single list of features the project claims, and the panel reads the
+same list.
+
 ## What this account cannot do
 
 Cloudinary's AI add-ons are not all enabled on this account, and the app says
-so rather than offering buttons that fail:
+so rather than offering buttons that fail. The engine room asks the cloud
+live, so the answer on screen is the account's answer today rather than a
+note written down once:
 
-| Feature | Status |
+| Feature | What happens |
 | --- | --- |
-| `e_background_removal` — cut a subject out of its background | locked on this account |
-| `e_gen_remove` — remove an object from a photograph | locked on this account |
-| `e_upscale` — enlarge a photograph in the cloud | locked on this account |
-| `e_enhance` — restore and sharpen an old photograph | locked on this account |
+| `e_background_removal` | offered only if the cloud confirms the add-on; delivered as PNG with the transparency kept |
+| `e_upscale` | offered only if the cloud confirms the add-on |
+| `b_gen_fill` generative fill | never probed in advance — the account is charged for it, so it is asked about only when somebody wants a wider frame |
+| `e_gen_remove`, `e_enhance` | not used |
+| Listing by tag | an account setting; when it is off the postcard wall says so and falls back to what this browser sent |
 
 The named transformations and the metadata fields need an API key with
 administrative rights on the cloud; the development key does not have them.
