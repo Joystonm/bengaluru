@@ -13,6 +13,7 @@
  */
 
 import type { Festival, Weather } from '../state/store';
+import { FESTIVAL_IDS } from '../data/festivals';
 
 /** The four hours of the day. */
 export type TimeOfDayLike = 'dawn' | 'day' | 'dusk' | 'night';
@@ -30,7 +31,7 @@ export interface SceneLink {
 
 const TIMES: TimeOfDayLike[] = ['dawn', 'day', 'dusk', 'night'];
 const WEATHERS: Weather[] = ['clear', 'monsoon'];
-const FESTIVALS: Festival[] = ['none', 'dasara', 'deepavali'];
+const FESTIVALS: Festival[] = FESTIVAL_IDS;
 
 /** Read the scene out of the address bar. */
 export function readSceneLink(): SceneLink {

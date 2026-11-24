@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { Landmark } from '../data/landmarks';
+import { festivalInfo } from '../data/festivals';
 import type { QualityTier } from '../core/quality';
 
 export type AppMode = 'loading' | 'landing' | 'explore' | 'cinematic' | 'inspect';
@@ -18,9 +19,15 @@ export type Weather = 'clear' | 'monsoon';
  *
  * Dasara is Mysore's, but the procession it is famous for ends at the
  * Vidhana Soudha in Bengaluru, and the buildings are lit for it. Deepavali is
- * the one festival everybody in the city keeps.
+ * the one festival everybody in the city keeps. Ugadi is the new year, and it
+ * is a morning. Christmas is Commercial Street's, and it is the only cold
+ * festival of the four.
+ *
+ * The names, the hours and the colours of all of them are written down in
+ * `data/festivals.ts`, and everything else asks that file rather than
+ * keeping its own list.
  */
-export type Festival = 'none' | 'dasara' | 'deepavali';
+export type Festival = 'none' | 'dasara' | 'deepavali' | 'ugadi' | 'christmas';
 
 export interface ProgressState {
   phase: string;
@@ -134,24 +141,23 @@ export const useApp = create<AppState>((set) => ({
    * Dress the city for a festival.
    *
    * A festival has its own hour — Dasara is an evening, Deepavali is a
-   * night — and putting the clock right is most of what makes the mode
-   * read. Going back to an ordinary day gives the daylight back, but only
-   * if the clock was the festival's to begin with: a visitor who set the
-   * time themselves keeps it.
+   * night, Ugadi is a morning — and putting the clock right is most of what
+   * makes the mode read. Going back to an ordinary day gives the daylight
+   * back, but only if the clock was the festival's to begin with: a visitor
+   * who set the time themselves keeps it.
    */
   setFestival: (festival) =>
     set((s) => {
-      const time: Record<Festival, 'dawn' | 'day' | 'dusk' | 'night'> = {
-        none: 'day',
-        dasara: 'dusk',
-        deepavali: 'night',
-      };
       const held = s.timeByFestival;
       return {
         festival,
         timeByFestival: festival !== 'none',
         timeOfDay:
-          festival === 'none' ? (held ? time.none : s.timeOfDay) : time[festival],
+          festival === 'none'
+            ? held
+              ? 'day'
+              : s.timeOfDay
+            : festivalInfo(festival).hour,
       };
     }),
 }));

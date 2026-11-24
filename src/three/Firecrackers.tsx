@@ -5,6 +5,7 @@ import { terrainAtClamped } from '../core/terrain';
 import { useApp } from '../state/store';
 import { useTerrain } from './Ground';
 import { festivalGlow } from './festivalGlow';
+import { lookFor, type FireworkStyle } from './festivalSpec';
 
 /**
  * The firecrackers.
@@ -21,6 +22,14 @@ import { festivalGlow } from './festivalGlow';
  * is a point of light, in the same way the festival lamps are points of
  * light, and they are drawn the same way.
  *
+ * **Each festival fires its own kind of shell.** Dasara's are formal gold
+ * peonies, spaced out, thrown high: a declaration. Deepavali's are fast and
+ * in every colour at once, and they come apart into balls with long tails
+ * on every piece. Christmas's are silver and slow and hang in the air like
+ * rain before they fall — a willow, which is the coldest shape there is.
+ * And Ugadi fires nothing at all, because it is a morning and there are no
+ * firecrackers at dawn.
+ *
  * The whole thing runs on the processor rather than in the shader. There
  * are four thousand particles at the most, and none of them is moving in a
  * way that a vertex shader could not also do — but a shell that is thrown,
@@ -36,16 +45,6 @@ import { festivalGlow } from './festivalGlow';
 /** How many pieces the pool holds. More are alive at once than this never. */
 const POOL = 4000;
 
-/** The colours of the firecrackers: gold, amber, red, green and silver. */
-const PALETTE: Array<[number, number, number]> = [
-  [1, 0.72, 0.28],
-  [1, 0.5, 0.14],
-  [1, 0.22, 0.12],
-  [0.95, 0.95, 1],
-  [0.45, 1, 0.55],
-  [1, 0.45, 0.85],
-];
-
 /** How far from the middle of the city a shell is thrown from, in metres. */
 const LAUNCH_RADIUS = 2000;
 
@@ -55,11 +54,32 @@ const GRAVITY = 9.8;
 /** How much air the sparks lose their speed to. */
 const DRAG = 0.75;
 
+/**
+ * The pull on a rising shell, in metres a second squared.
+ *
+ * It is more than the earth's, deliberately. A shell slowed by nothing but
+ * gravity would take ten seconds to come apart, and a firework that takes
+ * ten seconds to come apart is not a firework. This puts the burst three or
+ * four seconds after the launch, which is what a firework takes.
+ */
+const SHELL_GRAVITY = 45;
+
+/** The radius of a ring shell, in metres. */
+const RING_RADIUS = 46;
+
 export function Firecrackers() {
   const festival = useApp((s) => s.festival);
   const tier = useApp((s) => s.quality);
   const terrain = useTerrain();
   const { gl } = useThree();
+
+  /**
+   * The show for the festival that is on.
+   *
+   * Some festivals have none, and then the sky stays empty — which is the
+   * correct answer for a festival that is held in the morning.
+   */
+  const style = useMemo(() => lookFor(festival)?.fireworks ?? null, [festival]);
 
   /**
    * The pool.
@@ -138,7 +158,6 @@ export function Firecrackers() {
       vy: number;
       vz: number;
       age: number;
-      life: number;
       trail: number;
     }>
   >([]);
@@ -212,30 +231,89 @@ export function Firecrackers() {
     ph.needsUpdate = true;
   };
 
-  /** A shell comes apart at the top of its climb. */
-  const burst = (x: number, y: number, z: number) => {
+  /**
+   * A shell comes apart at the top of its climb.
+   *
+   * The shape is the festival's: a peony is a ball of stars with an edge
+   * to it, a chrysanthemum is a ball whose every piece trails, a willow is
+   * a spray that hangs in the air on the way down, and a ring is a circle
+   * thrown flat and seen edge-on as it opens.
+   */
+  const burst = (x: number, y: number, z: number, show: FireworkStyle) => {
     const count = tier === 'low' ? 60 : tier === 'medium' ? 110 : 160;
+    const palette = show.palette;
+
     for (let i = 0; i < count; i++) {
-      // A direction on the sphere, and a speed for it.
-      const u = Math.random() * 2 - 1;
-      const theta = Math.random() * Math.PI * 2;
-      const ring = Math.sqrt(Math.max(0, 1 - u * u));
-      const speed = 15 + Math.random() * 27;
-      const colour = PALETTE[(Math.random() * PALETTE.length) | 0];
+      const colour = palette[(Math.random() * palette.length) | 0];
+      let dx = 0;
+      let dy = 0;
+      let dz = 0;
+      let speed = 0;
+      let span = 1;
+      let size = 10;
+      // A ring shell's pieces start on the ring, not at the middle.
+      let ox = 0;
+      let oz = 0;
+
+      if (show.shape === 'ring') {
+        // The pieces are laid evenly around the circle and thrown straight
+        // out along it, so the ring opens as it grows.
+        const theta = (i / count) * Math.PI * 2 + Math.random() * 0.1;
+        ox = Math.cos(theta) * RING_RADIUS;
+        oz = Math.sin(theta) * RING_RADIUS;
+        dx = Math.cos(theta);
+        dz = Math.sin(theta);
+        dy = (Math.random() - 0.5) * 0.12;
+        speed = 24 + Math.random() * 10;
+        span = 1.5 + Math.random() * 0.6;
+        size = 9 + Math.random() * 5;
+      } else {
+        // A direction on the sphere.
+        const u = Math.random() * 2 - 1;
+        const theta = Math.random() * Math.PI * 2;
+        const ring = Math.sqrt(Math.max(0, 1 - u * u));
+        dx = ring * Math.cos(theta);
+        dz = ring * Math.sin(theta);
+
+        if (show.shape === 'willow') {
+          // Thrown out and down, and burning for a long time on the way, so
+          // that it hangs in the air like a spray of rain.
+          dy = u * 0.5 - 0.4;
+          speed = 11 + Math.random() * 15;
+          span = 3.4 + Math.random() * 1.8;
+          size = 7 + Math.random() * 5;
+        } else if (show.shape === 'chrysanthemum') {
+          // Every piece trails, so the ball fills out and hangs there for a
+          // moment before it falls.
+          dy = u;
+          speed = 17 + Math.random() * 20;
+          span = 2.2 + Math.random() * 1.2;
+          size = 8 + Math.random() * 6;
+        } else {
+          // A peony: every piece at the same speed, so the ball has a hard
+          // edge to it.
+          dy = u;
+          speed = 15 + Math.random() * 27;
+          span = 0.9 + Math.random() * 0.9;
+          size = 10 + Math.random() * 8;
+        }
+      }
+
       emit(
-        x,
+        x + ox,
         y,
-        z,
-        ring * Math.cos(theta) * speed,
-        u * speed,
-        ring * Math.sin(theta) * speed,
-        0.9 + Math.random() * 0.9,
-        10 + Math.random() * 8,
+        z + oz,
+        dx * speed,
+        dy * speed,
+        dz * speed,
+        span,
+        size,
         colour[0],
         colour[1],
         colour[2],
       );
     }
+
     // The flash of the burst itself: one bright, very large, very short
     // piece, which is what the eye sees before it sees the shower.
     emit(x, y, z, 0, 0, 0, 0.26, 62, 1, 0.86, 0.6);
@@ -245,7 +323,7 @@ export function Firecrackers() {
   };
 
   /** Throw a shell up from somewhere in the city. */
-  const launch = () => {
+  const launch = (show: FireworkStyle) => {
     const angle = Math.random() * Math.PI * 2;
     const radius = Math.sqrt(Math.random()) * LAUNCH_RADIUS;
     const x = Math.cos(angle) * radius;
@@ -253,15 +331,16 @@ export function Firecrackers() {
     // The scene's north is the other way round: the world is laid out with
     // north as −z, so a point at z has a northing of −z.
     const ground = terrainAtClamped(terrain, x, -z);
+    // The speed that carries it exactly as high as the festival wants.
+    const up = Math.sqrt(2 * SHELL_GRAVITY * show.height);
     shells.current.push({
       x,
       y: ground + 4,
       z,
       vx: (Math.random() - 0.5) * 9,
-      vy: 60 + Math.random() * 30,
+      vy: up,
       vz: (Math.random() - 0.5) * 9,
       age: 0,
-      life: 2.6 + Math.random() * 1.8,
       trail: 0,
     });
   };
@@ -284,12 +363,16 @@ export function Firecrackers() {
     festivalGlow.flash = Math.max(0, festivalGlow.flash - dt * 6.5);
 
     // The shells.
-    if (festival !== 'none') {
+    if (style) {
       next.current -= dt;
       if (next.current <= 0) {
-        next.current = 0.22 + Math.random() * 0.6;
-        launch();
+        next.current = style.interval[0] + Math.random() * (style.interval[1] - style.interval[0]);
+        launch(style);
       }
+    } else {
+      // A festival with no firecrackers: the sky is empty, and the shells
+      // that were still up go out with it.
+      shells.current.length = 0;
     }
 
     for (let i = shells.current.length - 1; i >= 0; i--) {
@@ -298,14 +381,18 @@ export function Firecrackers() {
       s.x += s.vx * dt;
       s.y += s.vy * dt;
       s.z += s.vz * dt;
+      // The shell slows as it climbs, and comes apart when it stops
+      // climbing — at the top of its climb, where it belongs.
+      s.vy -= SHELL_GRAVITY * dt;
 
       // The shell itself: a white-hot head.
       emit(s.x, s.y, s.z, 0, 0, 0, 0.14, 8, 1, 0.94, 0.78);
 
-      // The trail behind it.
+      // The trail behind it, in the colour of the festival's fire.
       s.trail -= dt;
-      if (s.trail <= 0) {
+      if (s.trail <= 0 && style) {
         s.trail = 0.035;
+        const c = style.trail;
         emit(
           s.x,
           s.y,
@@ -315,14 +402,14 @@ export function Firecrackers() {
           (Math.random() - 0.5) * 3,
           0.85,
           5,
-          1,
-          0.58,
-          0.2,
+          c[0],
+          c[1],
+          c[2],
         );
       }
 
-      if (s.age >= s.life) {
-        burst(s.x, s.y, s.z);
+      if (s.vy <= 0 && style) {
+        burst(s.x, s.y, s.z, style);
         shells.current.splice(i, 1);
       }
     }

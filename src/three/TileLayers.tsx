@@ -134,7 +134,14 @@ export function TileLayers({
   }, [version]);
 
   /** The glow each surface sits at before a festival is added on top of it. */
-  const base = useRef({ road: 0, surface: 0, building: 0, weight: 1 });
+  const base = useRef({
+    road: 0,
+    surface: 0,
+    building: 0,
+    weight: 1,
+    /** The colour of the roads before a festival adds its own light to them. */
+    roadColour: [1, 0.7, 0.36] as [number, number, number],
+  });
 
   const materials = useMemo(() => {
     // The city's own light. Multiplying the emissive by the vertex colour
@@ -220,6 +227,11 @@ export function TileLayers({
     base.current.surface = surfaceGlow;
     base.current.building = glow;
     base.current.weight = night ? 1 : dusk ? 0.55 : 0.4;
+    base.current.roadColour = [
+      materials.road.emissive.r,
+      materials.road.emissive.g,
+      materials.road.emissive.b,
+    ];
 
     // The facades follow the same clock: glass by day, lamplight by night.
     // The lowest tier turns the pass off — the machine that needs it is the
@@ -242,6 +254,11 @@ export function TileLayers({
    * And the firecrackers are added on top of that: a burst is a light that
    * was not there a moment ago, and the whole city under it is lit for as
    * long as it lasts — the roofs, the streets and the grass alike.
+   *
+   * The roads also take the *colour* of the festival's light, not only the
+   * amount of it. A cold festival laid over warm orange roads reads as the
+   * same festival twice, so the colour of the light lying on the tarmac
+   * follows the colour of the lamps hanging over it.
    */
   useFrame(() => {
     const w = base.current.weight;
@@ -249,7 +266,20 @@ export function TileLayers({
     materials.road.emissiveIntensity =
       base.current.road + festivalGlow.lamps * 0.3 * w + flash * 0.55 * w;
     materials.surface.emissiveIntensity =
-      base.current.surface + festivalGlow.dasara * 0.12 * w + flash * 0.3 * w;
+      base.current.surface + festivalGlow.grass * 0.12 * w + flash * 0.3 * w;
+
+    // The colour of the light on the road eases from one festival to the
+    // next, so that the change of festival is a change of light and not a
+    // cut from warm to cold.
+    const c = festivalGlow.colour;
+    const mix = festivalGlow.lamps * 0.7 * w;
+    const baseColour = base.current.roadColour;
+    materials.road.emissive.setRGB(
+      baseColour[0] * (1 - mix) + c[0] * mix,
+      baseColour[1] * (1 - mix) + c[1] * mix,
+      baseColour[2] * (1 - mix) + c[2] * mix,
+    );
+
     for (const m of [materials.detail, materials.mid, materials.far]) {
       m.emissiveIntensity = base.current.building + flash * 0.4;
     }

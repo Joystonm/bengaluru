@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useThree } from '@react-three/fiber';
 import { usePostcard } from '../state/postcardStore';
 import { useApp } from '../state/store';
+import { festivalInfo } from '../data/festivals';
 import { uploadPostcard, rememberSentPostcard, PostcardError } from '../cloudinary/postcard';
 
 /**
@@ -135,7 +136,10 @@ export function PostcardCapture() {
           landmark: city.selectedId,
           timeOfDay: city.timeOfDay,
           weather: city.weather,
-          festival: city.festival,
+          // The festival is recorded under its name rather than under its
+          // internal id, so that the context is readable in the Media
+          // Library without asking what the library knows about this app.
+          festival: festivalInfo(city.festival).label,
         });
         usePostcard.getState().ready(upload.publicId, localUrl, upload.autoTags);
         // The postcard is remembered here as well as in the cloud, so that

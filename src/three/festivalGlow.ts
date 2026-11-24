@@ -21,12 +21,20 @@ export const festivalGlow = {
   lamps: 0,
 
   /**
-   * How far Dasara's lighting has come up, from 0 to 1.
+   * How far the festival's lighting has come up over the grass, from 0 to 1.
    *
-   * The park carries this one: Dasara is lit over the grass, where the
-   * procession is drawn up, and Deepavali is lit along the roads.
+   * Only Dasara lights the park, where the procession is drawn up, and the
+   * other festivals light the roads instead.
    */
-  dasara: 0,
+  grass: 0,
+
+  /**
+   * The colour of the light lying on the streets, as three components.
+   *
+   * It eases from one festival to the next, so that the roads of a cold
+   * festival are not the same warm orange as the roads of a hot one.
+   */
+  colour: [1, 0.64, 0.24] as [number, number, number],
 
   /**
    * How bright the last firecracker burst is, from 0 to 1.

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { usePostcard } from '../state/postcardStore';
 import { useApp } from '../state/store';
+import { festivalInfo } from '../data/festivals';
 import { postcardCardUrl } from '../cloudinary/postcard';
 import { shareCardUrl } from '../cloudinary/shareCard';
 import { uploadsEnabled } from '../cloudinary/config';
@@ -85,13 +86,18 @@ export function PostcardPanel() {
    * two lines ran into each other. So the context is folded into the line
    * above the caption instead: the card still says where and when, and
    * nothing is written over the visitor's own words.
+   *
+   * The festival is written in its own name and not in its internal id: a
+   * card that says "deepavali" in lower case and no vowels is not a card
+   * anybody would keep.
    */
+  const festivalDetails = festivalInfo(festival);
   const kicker = useMemo(() => {
     const bits: string[] = [landmark?.name ?? 'Namma Bengaluru', timeOfDay];
     if (weather !== 'clear') bits.push(weather);
-    if (festival !== 'none') bits.push(festival);
+    if (festival !== 'none') bits.push(festivalDetails.label);
     return bits.join(' · ');
-  }, [landmark, timeOfDay, weather, festival]);
+  }, [landmark, timeOfDay, weather, festival, festivalDetails.label]);
 
   /**
    * The card's words.
@@ -99,8 +105,19 @@ export function PostcardPanel() {
    * There is no credit line: a postcard is the visitor's own picture of the
    * city, so there is nothing to credit, and the line that would have said
    * so was the one the caption ran into.
+   *
+   * The line of context is written in the festival's own colour, so that a
+   * card sent at Christmas is a cold card and a card sent at Deepavali is a
+   * warm one.
    */
-  const cardOptions = useMemo(() => ({ title, kicker }), [title, kicker]);
+  const cardOptions = useMemo(
+    () => ({
+      title,
+      kicker,
+      accent: festival !== 'none' ? festivalDetails.accent : undefined,
+    }),
+    [title, kicker, festival, festivalDetails.accent],
+  );
 
   /** The card, with the crop and the quality named in the account. */
   const namedCard = publicId ? postcardCardUrl(publicId, cardOptions) : '';

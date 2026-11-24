@@ -6,34 +6,53 @@ import { useApp } from '../state/store';
 import type { Festival } from '../state/store';
 import type { Landmark } from '../data/landmarks';
 import { festivalGlow } from './festivalGlow';
+import {
+  lookFor,
+  starFestival,
+  theStar,
+  type FestivalLook,
+  type Floodlit,
+  type LampsAround,
+  type Rangolis,
+  type RouteStrings,
+  type Rgb,
+  type StreetStrings,
+} from './festivalSpec';
 
 /**
  * The festivals.
  *
- * Bengaluru keeps two of them that change what the city looks like from the
- * outside, and both are worth building:
+ * Bengaluru keeps four of them that change what the city looks like from the
+ * outside, and each one is a different city: a different colour, a different
+ * hour, and a different shape of light in a different place.
  *
- *   **Dasara** is Mysore's, but the procession it is famous for ends here,
- *   at the Vidhana Soudha, and the state buildings on Cubbon Road are lit
- *   from the ground up for it. That is a floodlit city: warm gold standing
- *   off the stone, with strings of bulbs strung the length of the road the
- *   procession comes down.
+ *   **Dasara** is gold, and it is one road. The state buildings on Cubbon
+ *   Road are lit from the ground up, the park is full of torches, and the
+ *   road the procession comes down is lined with bulbs — and nowhere else in
+ *   the city is lit at all.
  *
- *   **Deepavali** is the one everybody keeps, in every street, on every
- *   doorstep and every roof. The city is covered in small lights: lamps on
- *   the ground, and strings of bulbs slung across the roads from one side to
- *   the other.
+ *   **Deepavali** is the whole city, in every colour. Strings over every
+ *   street, lamps on every roof, an oil lamp on every doorstep.
  *
- * Both are drawn as a single cloud of points with a shader that gives each
- * one its own slow flicker. The bulbs are not modelled — there are tens of
- * thousands of them — but a point of light with a soft halo and a filament
- * that is never quite steady is exactly what a bulb is at two kilometres.
+ *   **Ugadi** is green, and it is a morning. Mango-leaf garlands are hung
+ *   across the doorways — low, at head height, from one side of the street
+ *   to the other — and a rangoli is drawn on the ground at the threshold.
+ *
+ *   **Christmas** is the only cold festival here: white and ice-blue lights
+ *   over the shopping streets, and a star turning over the middle of the
+ *   city.
+ *
+ * All of them are drawn as a single cloud of points with a shader that gives
+ * each one its own slow flicker. The bulbs are not modelled — there are tens
+ * of thousands of them — but a point of light with a soft halo and a
+ * filament that is never quite steady is exactly what a bulb is at two
+ * kilometres.
  *
  * The lamps are put where they belong in the world: the ground lamps stand
- * on the terrain at the height of a first-floor window, and the strings
- * sag in a catenary between their two anchors, the way a strung cable does.
- * The buildings occlude them, so the ones that are left showing are the ones
- * in the streets — which is why the pattern of light that appears across the
+ * on the terrain at the height of a first-floor window, and the strings sag
+ * in a catenary between their two anchors, the way a strung cable does. The
+ * buildings occlude them, so the ones that are left showing are the ones in
+ * the streets — which is why the pattern of light that appears across the
  * city follows the shape of the city rather than a grid.
  *
  * The cloud itself is made once and kept for the life of the component: the
@@ -42,24 +61,11 @@ import { festivalGlow } from './festivalGlow';
  * reads as a switch rather than as a city being dressed, and a festival that
  * is torn down and rebuilt from scratch every time it changes is a festival
  * that flickers and stutters while the visitor is looking at it.
+ *
+ * How each festival is dressed is written down in `festivalSpec.ts` — the
+ * colours, the counts, the places and the fireworks — so that the
+ * differences are visible in one place rather than guessed at in four.
  */
-
-/** The landmarks that are lit for Dasara. */
-const DASARA_BUILDINGS = ['vidhana-soudha', 'attara-kacheri', 'mayo-hall'];
-
-/** The landmark that the procession ends at, and the park it comes through. */
-const DASARA_ROUTE = ['vidhana-soudha', 'cubbon-park'];
-
-/** The temples that keep a special pooja for Deepavali. */
-const DEEPAVALI_TEMPLE = [
-  'bull-temple',
-  'iskcon-temple-bengaluru',
-  'ranganathaswamy-temple',
-  'gavi-gangadhareshwara-temple',
-];
-
-/** How far from the centre of the city the lights reach, in metres. */
-const REACH = 2600;
 
 /**
  * How many lamps the cloud can hold.
@@ -201,6 +207,11 @@ class LampBuilder {
   }
 }
 
+/** One of a list of colours, at random. */
+function pick(colours: Rgb[]): Rgb {
+  return colours[(Math.random() * colours.length) | 0];
+}
+
 /**
  * A string of bulbs hung between two points.
  *
@@ -289,167 +300,50 @@ function place(
 }
 
 /**
- * Dasara: the state buildings lit from the ground, the park full of
- * torches, and the road the procession comes down lined with bulbs.
- */
-function buildDasara(
-  byId: Map<string, Landmark>,
-  terrain: Terrain | null,
-  scale: number,
-): LampSet {
-  const builder = new LampBuilder();
-  const gold: [number, number, number] = [1, 0.72, 0.34];
-
-  // The state buildings, lit from the ground.
-  for (const id of DASARA_BUILDINGS) {
-    const at = place(byId.get(id), terrain);
-    if (!at) continue;
-    floodlitBuilding(builder, at.x, at.z, at.ground, 200, 130, gold);
-
-    // The crowd on the ground in front of them: a hundred or so small
-    // lamps, which is what a crowd carrying small lamps looks like from
-    // above.
-    const crowd = Math.round(150 * scale);
-    for (let i = 0; i < crowd; i++) {
-      const a = Math.random() * Math.PI * 2;
-      const r = 40 + Math.random() * 130;
-      builder.add(
-        at.x + Math.cos(a) * r,
-        at.ground + 1.4 + Math.random() * 2.4,
-        at.z + Math.sin(a) * r,
-        4.4,
-        gold,
-        1.2,
-      );
-    }
-  }
-
-  // Cubbon Park is lit for the procession as well, but with a softer and
-  // much larger spread, because it is trees and grass rather than stone.
-  // The park is the size of the celebration: the procession is drawn up in
-  // it, and the whole of it is lit.
-  const park = place(byId.get('cubbon-park'), terrain);
-  if (park) {
-    const torches = Math.round(2600 * scale);
-    for (let i = 0; i < torches; i++) {
-      const a = Math.random() * Math.PI * 2;
-      const r = Math.sqrt(Math.random()) * 640;
-      builder.add(
-        park.x + Math.cos(a) * r,
-        park.ground + 1.6 + Math.random() * 9,
-        park.z + Math.sin(a) * r,
-        7 + Math.random() * 7,
-        gold,
-        2,
-        0.55,
-      );
-    }
-  }
-
-  // Strings of bulbs down the length of the road the procession comes
-  // along, from the Vidhana Soudha to the park — both sides, the whole way,
-  // rather than a scatter of short strings near the two ends.
-  const route = DASARA_ROUTE.map((id) => place(byId.get(id), terrain)).filter(Boolean);
-  if (route.length === 2 && route[0] && route[1]) {
-    const [a, b] = route;
-    const span = Math.hypot(b.x - a.x, b.z - a.z);
-    const ox = -(b.z - a.z) / (span || 1);
-    const oz = (b.x - a.x) / (span || 1);
-    const spans = Math.max(8, Math.round(span / 70));
-    for (let i = 0; i <= spans; i++) {
-      const t = i / spans;
-      const x = a.x + (b.x - a.x) * t;
-      const z = a.z + (b.z - a.z) * t;
-      const ground = a.ground + (b.ground - a.ground) * t;
-      // Two strings, one on each side of the road.
-      for (const side of [-1, 1]) {
-        stringOfBulbs(
-          builder,
-          x + ox * 13 * side,
-          ground + 9.5,
-          z + oz * 13 * side,
-          x + ox * 96 * side,
-          ground + 9.5,
-          z + oz * 96 * side,
-          20,
-          2.8,
-          5.8,
-          gold,
-        );
-      }
-      // And lamps on the ground along the kerb, which is what makes the
-      // road read as a road of light from the air.
-      for (const side of [-1, 1]) {
-        for (let k = 0; k < 5; k++) {
-          const d = 26 + k * 13;
-          builder.add(
-            x + ox * d * side,
-            ground + 1.2,
-            z + oz * d * side,
-            4.2,
-            gold,
-            0.8,
-          );
-        }
-      }
-    }
-  }
-
-  return builder.build();
-}
-
-/**
- * Deepavali: the whole city.
+ * The strings slung over the streets.
  *
- * The strings are laid on a grid that follows the two directions of the
- * street grid, so that the web of light across the city has the shape of the
- * city in it. A lamp on every roof and every doorstep fills in the rest.
+ * They are laid on the grid of the streets, so that the web of light across
+ * the city has the shape of the city in it. A city strung for a festival is
+ * not lit evenly: some streets are done and some are not, and the gaps are
+ * what stop the grid reading as graph paper.
+ *
+ * The string may run along the street, as a string of bulbs is slung, or
+ * across it, as a garland is hung from a doorframe to a doorframe.
  */
-function buildDeepavali(
-  byId: Map<string, Landmark>,
+function buildStreetStrings(
+  builder: LampBuilder,
+  spec: StreetStrings,
   terrain: Terrain | null,
   scale: number,
-): LampSet {
-  const builder = new LampBuilder();
-  const lamp: [number, number, number] = [1, 0.58, 0.2];
-  const bright: [number, number, number] = [1, 0.78, 0.42];
+): void {
+  // A smaller machine gets fewer strings rather than thinner ones.
+  const gap = Math.min(0.85, spec.gap + (1 - scale) * 0.25);
 
-  // Two grid directions, a little apart from true north and east, and each
-  // one a little wrong, which is how a real street grid is.
-  const axes = [0.13, Math.PI / 2 + 0.11];
-
-  // The strings slung across the streets, in lines. A line every hundred
-  // and forty metres in each direction, and along each line a run of short
-  // strings, gives the crossing web of light that a city lit for Deepavali
-  // actually is — rather than the scatter of isolated strings that a purely
-  // random placement gives.
-  const spacing = 140;
-  const run = 96;
-  const bulb = 15;
-  for (const axis of axes) {
+  for (const axis of spec.axes) {
     const dirX = Math.cos(axis);
     const dirZ = -Math.sin(axis);
     const acrossX = -dirZ;
     const acrossZ = dirX;
 
-    for (let line = -REACH; line <= REACH; line += spacing) {
-      const along = line;
-      for (let at = -REACH; at <= REACH; at += run) {
-        // Gaps. A city strung for a festival is not lit evenly: some streets
-        // are done and some are not, and the gaps are what stop the grid
-        // reading as graph paper.
-        if (Math.random() < 0.22) continue;
+    // Which way the string itself runs.
+    const runX = spec.across ? acrossX : dirX;
+    const runZ = spec.across ? acrossZ : dirZ;
 
-        const cx = along * dirX + at * acrossX;
-        const cz = along * dirZ + at * acrossZ;
-        if (Math.hypot(cx, cz) > REACH) continue;
+    for (let line = -spec.reach; line <= spec.reach; line += spec.spacing) {
+      for (let at = -spec.reach; at <= spec.reach; at += spec.run) {
+        if (Math.random() < gap) continue;
+
+        const cx = line * dirX + at * acrossX;
+        const cz = line * dirZ + at * acrossZ;
+        if (Math.hypot(cx, cz) > spec.reach) continue;
 
         // The string is not the same length every time.
-        const half = run * (0.34 + Math.random() * 0.22);
-        const ax = cx - dirX * half;
-        const az = cz - dirZ * half;
-        const bx = cx + dirX * half;
-        const bz = cz + dirZ * half;
+        const length = spec.span[0] + Math.random() * (spec.span[1] - spec.span[0]);
+        const half = length / 2;
+        const ax = cx - runX * half;
+        const az = cz - runZ * half;
+        const bx = cx + runX * half;
+        const bz = cz + runZ * half;
 
         const ga = terrainAtClamped(terrain, ax, -az);
         const gb = terrainAtClamped(terrain, bx, -bz);
@@ -457,63 +351,325 @@ function buildDeepavali(
         stringOfBulbs(
           builder,
           ax,
-          ga + 9.5,
+          ga + spec.height,
           az,
           bx,
-          gb + 9.5,
+          gb + spec.height,
           bz,
-          bulb,
-          1.6 + Math.random() * 1.4,
-          4.8,
-          Math.random() < 0.22 ? bright : lamp,
+          spec.bulbs,
+          spec.sag,
+          spec.size,
+          pick(spec.colours),
         );
       }
     }
   }
+}
 
-  // Lamps on the roofs and the balconies: the lights that are in the
-  // windows and on the parapets, which is most of what a city lit for
-  // Deepavali actually is. They sit above the roofline, where they can be
-  // seen, and where a balcony light actually is.
-  const rooftop = Math.round(14000 * scale);
-  for (let i = 0; i < rooftop; i++) {
+/**
+ * The road the procession comes down.
+ *
+ * Two strings on each side of the road, the whole way, rather than a
+ * scatter of short strings near the two ends — and lamps on the kerb
+ * beside them, which is what makes the road read as a road of light from
+ * the air.
+ */
+function buildRoute(
+  builder: LampBuilder,
+  route: RouteStrings,
+  byId: Map<string, Landmark>,
+  terrain: Terrain | null,
+): void {
+  const ends = route.ids.map((id) => place(byId.get(id), terrain)).filter(Boolean);
+  const a = ends[0];
+  const b = ends[ends.length - 1];
+  if (!a || !b) return;
+
+  const span = Math.hypot(b.x - a.x, b.z - a.z);
+  const ox = -(b.z - a.z) / (span || 1);
+  const oz = (b.x - a.x) / (span || 1);
+  const spans = Math.max(8, Math.round(span / 70));
+
+  for (let i = 0; i <= spans; i++) {
+    const t = i / spans;
+    const x = a.x + (b.x - a.x) * t;
+    const z = a.z + (b.z - a.z) * t;
+    const ground = a.ground + (b.ground - a.ground) * t;
+
+    for (const side of [-1, 1]) {
+      stringOfBulbs(
+        builder,
+        x + ox * 13 * side,
+        ground + route.height,
+        z + oz * 13 * side,
+        x + ox * 96 * side,
+        ground + route.height,
+        z + oz * 96 * side,
+        route.bulbs,
+        route.sag,
+        route.size,
+        route.colour,
+      );
+    }
+
+    for (const side of [-1, 1]) {
+      for (let k = 0; k < route.kerb; k++) {
+        const d = 26 + k * 13;
+        builder.add(
+          x + ox * d * side,
+          ground + 1.2,
+          z + oz * d * side,
+          4.2,
+          route.colour,
+          0.8,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * The lamps around one particular place — a crowd, a park, a street.
+ *
+ * The inner radius matters: a crowd stands in front of a building rather
+ * than inside it, and a park is lit from its middle outwards.
+ */
+function buildAround(
+  builder: LampBuilder,
+  around: LampsAround,
+  byId: Map<string, Landmark>,
+  terrain: Terrain | null,
+  scale: number,
+): void {
+  const at = place(byId.get(around.id), terrain);
+  if (!at) return;
+  const count = Math.round(around.count * scale);
+  for (let i = 0; i < count; i++) {
     const a = Math.random() * Math.PI * 2;
-    const r = Math.sqrt(Math.random()) * REACH;
-    const x = Math.cos(a) * r;
-    const z = Math.sin(a) * r;
-    const ground = terrainAtClamped(terrain, x, -z);
-    // At the height of a parapet, so that the light is above the roofline
-    // and not buried in the storeys below it.
+    const r = around.inner + Math.sqrt(Math.random()) * (around.radius - around.inner);
     builder.add(
-      x,
-      ground + 16 + Math.random() * 20,
-      z,
-      5 + Math.random() * 2.6,
-      Math.random() < 0.18 ? bright : lamp,
-      1.4,
+      at.x + Math.cos(a) * r,
+      at.ground + 1.2 + Math.random() * around.height,
+      at.z + Math.sin(a) * r,
+      around.size,
+      around.colour,
+      2,
+      around.glow,
     );
   }
+}
 
-  // Lamps on the doorsteps, right down in the streets.
-  const doorstep = Math.round(9000 * scale);
-  for (let i = 0; i < doorstep; i++) {
+/**
+ * The rangolis.
+ *
+ * A rangoli is drawn on the ground at the threshold: a set of concentric
+ * rings of colour, in powder, that nobody is allowed to walk on. Here they
+ * are rings of light, a few metres across, scattered through the city.
+ */
+function buildRangolis(
+  builder: LampBuilder,
+  spec: Rangolis,
+  terrain: Terrain | null,
+  scale: number,
+): void {
+  const count = Math.round(spec.count * scale);
+  for (let i = 0; i < count; i++) {
     const a = Math.random() * Math.PI * 2;
-    const r = Math.sqrt(Math.random()) * REACH * 0.85;
-    const x = Math.cos(a) * r;
-    const z = Math.sin(a) * r;
-    const ground = terrainAtClamped(terrain, x, -z);
-    builder.add(x, ground + 0.9, z, 3.8 + Math.random() * 1.8, lamp, 0.8);
+    const r = Math.sqrt(Math.random()) * 1800;
+    const cx = Math.cos(a) * r;
+    const cz = Math.sin(a) * r;
+    const ground = terrainAtClamped(terrain, cx, -cz);
+    for (let ring = 0; ring < spec.rings; ring++) {
+      const rr = spec.radius * (0.42 + ring * 0.3);
+      for (let p = 0; p < spec.points; p++) {
+        const th = (p / spec.points) * Math.PI * 2;
+        builder.add(
+          cx + Math.cos(th) * rr,
+          ground + 0.6,
+          cz + Math.sin(th) * rr,
+          3.4,
+          pick(spec.colours),
+          0.4,
+          0.85,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * The lamps for one festival, as the look says.
+ *
+ * Every part of a festival is here: what is lit from the ground, what is
+ * strung over the streets, what is stood on the pavement, what is hung on
+ * the roofs, and what is drawn on the ground. The look decides which of
+ * them there are and how many.
+ */
+function buildFestival(
+  look: FestivalLook,
+  byId: Map<string, Landmark>,
+  terrain: Terrain | null,
+  scale: number,
+): LampSet {
+  const builder = new LampBuilder();
+
+  // The buildings lit from the ground.
+  for (const flood of look.floods) {
+    const at = place(byId.get(flood.id), terrain);
+    if (!at) continue;
+    floodlitBuilding(builder, at.x, at.z, at.ground, flood.radius, flood.height, flood.colour);
   }
 
-  // The temples, where the pooja is.
-  for (const id of DEEPAVALI_TEMPLE) {
-    const at = place(byId.get(id), terrain);
-    if (!at) continue;
-    floodlitBuilding(builder, at.x, at.z, at.ground, 34, 22, bright);
+  // The road the procession comes down.
+  if (look.route) buildRoute(builder, look.route, byId, terrain);
+
+  // The strings over the streets.
+  if (look.streets) buildStreetStrings(builder, look.streets, terrain, scale);
+
+  // The crowds, the parks and the streets that are lit specially.
+  for (const around of look.around) {
+    buildAround(builder, around, byId, terrain, scale);
   }
+
+  // The lamps on the ground.
+  if (look.ground) {
+    const count = Math.round(look.ground.count * scale);
+    for (let i = 0; i < count; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const r = Math.sqrt(Math.random()) * look.ground.radius;
+      const x = Math.cos(a) * r;
+      const z = Math.sin(a) * r;
+      const ground = terrainAtClamped(terrain, x, -z);
+      builder.add(
+        x,
+        ground + look.ground.height,
+        z,
+        look.ground.size,
+        pick(look.ground.colours),
+        0.8,
+        look.ground.glow,
+      );
+    }
+  }
+
+  // The lamps on the roofs.
+  if (look.roofs) {
+    const count = Math.round(look.roofs.count * scale);
+    for (let i = 0; i < count; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const r = Math.sqrt(Math.random()) * 2600;
+      const x = Math.cos(a) * r;
+      const z = Math.sin(a) * r;
+      const ground = terrainAtClamped(terrain, x, -z);
+      builder.add(
+        x,
+        ground + look.roofs.height * (0.45 + Math.random() * 0.55),
+        z,
+        look.roofs.size,
+        pick(look.roofs.colours),
+        1.4,
+      );
+    }
+  }
+
+  // The rangolis on the ground.
+  if (look.rangolis) buildRangolis(builder, look.rangolis, terrain, scale);
 
   return builder.build();
 }
+
+/**
+ * A star of light hanging over the city.
+ *
+ * It is drawn as rays rather than as a shape, so that it is the same star
+ * from the street and from the air: a set of spokes of light running out
+ * from a bright core, turning slowly.
+ */
+function buildStar(
+  radius: number,
+  colour: Rgb,
+): { geometry: THREE.BufferGeometry; material: THREE.ShaderMaterial } {
+  const rays = 14;
+  const perRay = 26;
+  const core = 60;
+  const count = rays * perRay + core;
+
+  const positions = new Float32Array(count * 3);
+  const sizes = new Float32Array(count);
+  const phases = new Float32Array(count);
+  const colors = new Float32Array(count * 3);
+  const glows = new Float32Array(count);
+
+  let n = 0;
+  const put = (x: number, y: number, z: number, size: number, glow: number) => {
+    positions[n * 3] = x;
+    positions[n * 3 + 1] = y;
+    positions[n * 3 + 2] = z;
+    sizes[n] = size;
+    phases[n] = Math.random();
+    glows[n] = glow;
+    colors[n * 3] = colour[0];
+    colors[n * 3 + 1] = colour[1];
+    colors[n * 3 + 2] = colour[2];
+    n += 1;
+  };
+
+  for (let r = 0; r < rays; r++) {
+    // The rays are spread over the sphere on a spiral, so that they are
+    // evenly apart whichever way the star is turned.
+    const y = 1 - (r / (rays - 1)) * 2;
+    const ring = Math.sqrt(Math.max(0, 1 - y * y));
+    const theta = r * 2.399963;
+    const dx = Math.cos(theta) * ring;
+    const dz = Math.sin(theta) * ring;
+    for (let p = 0; p < perRay; p++) {
+      const t = p / (perRay - 1);
+      const d = radius * (0.16 + 0.84 * t);
+      // The light is brightest at the core and thins out along the ray.
+      put(dx * d, y * d, dz * d, 17 - 11 * t, 1);
+    }
+  }
+
+  for (let c = 0; c < core; c++) {
+    const a = Math.random() * Math.PI * 2;
+    const b = Math.acos(2 * Math.random() - 1);
+    const d = Math.cbrt(Math.random()) * radius * 0.2;
+    put(
+      Math.sin(b) * Math.cos(a) * d,
+      Math.cos(b) * d,
+      Math.sin(b) * Math.sin(a) * d,
+      20,
+      1,
+    );
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
+  geometry.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1));
+  geometry.setAttribute('aGlow', new THREE.BufferAttribute(glows, 1));
+  geometry.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
+  geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(), radius * 2);
+
+  const material = new THREE.ShaderMaterial({
+    vertexShader: LAMP_VERT,
+    fragmentShader: LAMP_FRAG,
+    uniforms: {
+      uTime: { value: 0 },
+      uScale: { value: 900 },
+      uOpacity: { value: 0 },
+    },
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    toneMapped: false,
+  });
+
+  return { geometry, material };
+}
+
+/** A floodlight, and the place it stands. */
+type FloodSite = Floodlit & { at: { x: number; z: number; ground: number } };
 
 export function Festivals({
   festival,
@@ -552,7 +708,7 @@ export function Festivals({
     // The cloud reaches over the whole city, and it is never culled anyway;
     // the sphere is here so that anything which does ask about its bounds
     // gets a sensible answer rather than a zero-sized one.
-    g.boundingSphere = new THREE.Sphere(new THREE.Vector3(), REACH * 2);
+    g.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 2600 * 2);
     return g;
   }, []);
 
@@ -574,12 +730,27 @@ export function Festivals({
     [],
   );
 
+  /**
+   * The star over the city.
+   *
+   * It is made once, whatever festival is on, and left at zero brightness
+   * until the festival that has a star is dressed. Making it once is what
+   * lets it fade in and out rather than appearing and disappearing.
+   */
+  const starSpec = useMemo(() => theStar(), []);
+  const star = useMemo(
+    () => (starSpec ? buildStar(starSpec.radius, starSpec.colour) : null),
+    [starSpec],
+  );
+
   useEffect(
     () => () => {
       geometry.dispose();
       material.dispose();
+      star?.geometry.dispose();
+      star?.material.dispose();
     },
-    [geometry, material],
+    [geometry, material, star],
   );
 
   /**
@@ -594,19 +765,17 @@ export function Festivals({
   const wanted = useRef<LampSet | null>(null);
   const showing = useRef<LampSet | null>(null);
   const opacity = useRef(0);
+  /** How brightly the star is burning. */
+  const starOpacity = useRef(0);
+  /** The colour of the light on the ground, easing from one festival to the next. */
+  const glowColour = useRef<[number, number, number]>([1, 0.64, 0.24]);
 
   useEffect(() => {
     // How many of each kind of light, by quality tier.
     const scale = tier === 'high' ? 1 : tier === 'medium' ? 0.6 : 0.3;
 
-    if (festival === 'none') {
-      wanted.current = null;
-      return;
-    }
-    wanted.current =
-      festival === 'dasara'
-        ? buildDasara(byId, terrain, scale)
-        : buildDeepavali(byId, terrain, scale);
+    const look = lookFor(festival);
+    wanted.current = look ? buildFestival(look, byId, terrain, scale) : null;
   }, [festival, terrain, tier, byId]);
 
   /** Write a set of lamps into the buffers the cloud draws from. */
@@ -631,6 +800,29 @@ export function Festivals({
     }
     geometry.setDrawRange(0, count);
   };
+
+  /**
+   * The floodlights.
+   *
+   * They are mounted whether or not a festival is on, and simply left at zero
+   * brightness, because a light that appears and disappears changes the
+   * number of lights in the scene and every material in the city has to be
+   * compiled again when it does.
+   */
+  const floods = useMemo(() => {
+    const look = lookFor(festival);
+    if (!look) return [] as FloodSite[];
+    const sites: FloodSite[] = [];
+    for (const flood of look.floods) {
+      const at = place(byId.get(flood.id), terrain);
+      if (at) sites.push({ ...flood, at });
+    }
+    return sites.slice(0, 3);
+  }, [festival, byId, terrain]);
+
+  const floodRefs = useRef<Array<THREE.PointLight | null>>([]);
+  /** The star, so that it can be turned. */
+  const starRef = useRef<THREE.Points>(null);
 
   // The scale that turns a lamp's size in metres into pixels: how many
   // pixels one metre covers at the distance of the camera's focal plane.
@@ -660,24 +852,46 @@ export function Festivals({
     }
     uniforms.uOpacity.value = opacity.current;
 
+    // The star comes up and goes down on its own, so that switching away
+    // from the festival that has one is a fade rather than a cut.
+    const starTarget = festival === starFestival() ? 1 : 0;
+    starOpacity.current += (starTarget - starOpacity.current) * Math.min(1, delta * 2.2);
+    if (star) {
+      star.material.uniforms.uScale.value = uniforms.uScale.value;
+      star.material.uniforms.uTime.value = clock.elapsedTime;
+      star.material.uniforms.uOpacity.value = starOpacity.current;
+      if (starRef.current) starRef.current.rotation.y = clock.elapsedTime * 0.06;
+    }
+
+    // The floodlights come up with the lamps, rather than being switched on
+    // at the same instant as the rest of the city.
+    for (let i = 0; i < 3; i++) {
+      const light = floodRefs.current[i];
+      if (!light) continue;
+      const site = floods[i];
+      if (!site) {
+        light.intensity = 0;
+        continue;
+      }
+      light.intensity = site.power * opacity.current;
+      light.color.setRGB(site.colour[0], site.colour[1], site.colour[2]);
+    }
+
     // The streets and the grass under the lights come up with them.
     festivalGlow.lamps = opacity.current;
-    festivalGlow.dasara = festival === 'dasara' ? opacity.current : 0;
-  });
+    festivalGlow.grass = festival === 'dasara' ? opacity.current : 0;
 
-  /**
-   * The floodlights.
-   *
-   * They are mounted whether or not a festival is on, and simply left at zero
-   * brightness, because a light that appears and disappears changes the
-   * number of lights in the scene and every material in the city has to be
-   * compiled again when it does.
-   */
-  const floods = useMemo(
-    () =>
-      DASARA_BUILDINGS.map((id) => place(byId.get(id), terrain)).filter(Boolean),
-    [byId, terrain],
-  );
+    // The colour of the light on the ground follows the festival, so that a
+    // cold festival does not light the streets the same warm orange as a
+    // hot one.
+    const look = lookFor(festival);
+    const tint = look ? look.tint : ([1, 0.64, 0.24] as [number, number, number]);
+    const mix = Math.min(1, delta * 2.2);
+    glowColour.current[0] += (tint[0] - glowColour.current[0]) * mix;
+    glowColour.current[1] += (tint[1] - glowColour.current[1]) * mix;
+    glowColour.current[2] += (tint[2] - glowColour.current[2]) * mix;
+    festivalGlow.colour = glowColour.current;
+  });
 
   return (
     <>
@@ -686,18 +900,36 @@ export function Festivals({
         <primitive object={material} attach="material" />
       </points>
 
-      {floods.map((f, i) =>
-        f ? (
+      {star && starSpec && (
+        <points
+          ref={starRef}
+          frustumCulled={false}
+          renderOrder={805}
+          position={[0, starSpec.height, 0]}
+        >
+          <primitive object={star.geometry} attach="geometry" />
+          <primitive object={star.material} attach="material" />
+        </points>
+      )}
+
+      {[0, 1, 2].map((i) => {
+        const site = floods[i];
+        return (
           <pointLight
             key={i}
+            ref={(el) => {
+              floodRefs.current[i] = el;
+            }}
             color="#ffc271"
-            intensity={festival === 'dasara' ? 22000 : 0}
-            distance={1200}
+            intensity={0}
+            distance={1400}
             decay={2}
-            position={[f.x, f.ground + 55, f.z]}
+            position={
+              site ? [site.at.x, site.at.ground + site.height * 0.6, site.at.z] : [0, -1200, 0]
+            }
           />
-        ) : null,
-      )}
+        );
+      })}
     </>
   );
 }

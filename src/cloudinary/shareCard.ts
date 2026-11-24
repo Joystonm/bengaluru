@@ -61,6 +61,14 @@ export interface ShareCardOptions {
   /** A line under the title — the landmark's category, or the city. */
   kicker?: string;
   /**
+   * The colour of the line of context, as a hex colour.
+   *
+   * A card sent during a festival is written in that festival's own colour,
+   * so that the card is dressed for the city it was sent from rather than
+   * being the same card every time.
+   */
+  accent?: string;
+  /**
    * An effect to paint the picture with before the words go on.
    *
    * The effect is applied to the photograph and the words are laid over the
@@ -98,6 +106,10 @@ export function shareCardUrl(
   const title = escapeOverlayText(options.title);
   const credit = options.credit ? escapeOverlayText(options.credit) : '';
   const kicker = options.kicker ? escapeOverlayText(options.kicker) : '';
+  // The colour of the context line: the festival's own colour when the card
+  // was sent during one, and the usual saffron otherwise.
+  const accent = (options.accent ?? '').replace('#', '').toLowerCase();
+  const kickerColour = /^[0-9a-f]{6}$/.test(accent) ? accent : 'e8a33d';
 
   const layers: string[] = [];
 
@@ -119,7 +131,7 @@ export function shareCardUrl(
 
   if (kicker) {
     layers.push(
-      `l_text:Arial_20_bold:${kicker},b_rgb:07090c,o_78,co_rgb:e8a33d,g_south,y_-${kickerY}`,
+      `l_text:Arial_20_bold:${kicker},b_rgb:07090c,o_78,co_rgb:${kickerColour},g_south,y_-${kickerY}`,
     );
   }
   layers.push(

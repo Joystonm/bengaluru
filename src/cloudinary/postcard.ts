@@ -297,7 +297,7 @@ export function rememberSentPostcard(
  */
 export function postcardCardUrl(
   publicId: string,
-  options: { title: string; credit?: string; kicker?: string },
+  options: { title: string; credit?: string; kicker?: string; accent?: string },
   named: string = 'bengaluru_card',
 ): string {
   return shareCardUrl(publicId, options, named);
